@@ -15,8 +15,6 @@ ActiveRecord::Schema.define(version: 2020_06_09_094224) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
-=======
   create_table "likes", force: :cascade do |t|
     t.bigint "liker_id"
     t.bigint "liked_id"
@@ -27,7 +25,6 @@ ActiveRecord::Schema.define(version: 2020_06_09_094224) do
     t.index ["liker_id"], name: "index_likes_on_liker_id"
   end
 
->>>>>>> d43b8d4cb7e79618b48ffd3bde653df709594633
   create_table "pets", force: :cascade do |t|
     t.string "name"
     t.string "animal"
