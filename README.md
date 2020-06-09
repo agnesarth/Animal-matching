@@ -12,17 +12,22 @@
 
 ## Features
 <dl>
-  <dt>Non-registered users</dt>
+  <dt>Non-registered users can:</dt>
   <dd>Sign up</dd>
-  <dd>See photos</dd>
+  <dd>Receive a welcome email</dd>
+  <dd>See general info about the app</dd>
 
-  <dt>Registered users</dt>
+  <dt>Registered users can:</dt>
   <dd>Login & log out</dd>
   <dd>Retrieve password</dd>
   <dd>Update user info</dd>
-  <dd>Add & remove photos from cart</dd>
-  <dd>Pay for cart (checkout)</dd>
-  <dd></dd>
+  <dd>Add & remove pet</dd>
+  <dd>Receive an email when add pet</dd>
+  <dd>Modify my pet profile</dd>
+  <dd>See other pets</dd>
+  <dd>Like othe pets</dd>
+  <dd>Like othe pets</dd>
+  <dd>Chat with other users when there's a match</dd>
 </dl>
 
 ## Instructions
