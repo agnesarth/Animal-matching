@@ -1,0 +1,25 @@
+<div class="text-center m-4">
+<h1>Ton bourreau des coeurs à quatre pattes</h1>
+</div>
+
+
+
+<div class="mt-3 mb-3 text-center">
+<%= form_for @pet, :url => pets_path, multipart: true do |f| %>
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-text">Prénom: <br> <%= f.text_field :name %></h6>
+          <p class="card-text">Age : <br>  <%= f.number_field :age%></p>
+          <p class="card-text mb-0">Genre:</p>
+          <%= f.radio_button :sex, :checked => true %> Femelle
+          <%= f.radio_button :sex, 'Male' %> Mâle
+          <p class="card-text mt-2">Race : </p><br>
+          <%= f.select :breed, ['Boxer',​'Terrier'​,'Labrador','Bouledogue'].sort %>
+          <p class="card-text mb-0">Mise en ligne le : <%= Time.now.strftime("%d/%m/%Y") %> </p><br>
+          <%= f.file_field :photo, class: "ml-5 mt-0 mb-2" %><br>
+
+<%= submit_tag "Télécharge ton petit amis", class: "m-2" %>
+<% end %>
+      </div>
+
+<%= link_to 'Back', pets_path %>
