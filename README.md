@@ -31,7 +31,7 @@
     - 🍴 Fork this repo & **HACK AWAY!** 🔨🔨🔨
     
 - **Option 2**
-    - 👯 Clone this repo to your local machine using `git clone https://github.com/agnesarth/Projet-chatons/tree/master`
+    - 👯 Clone this repo to your local machine using `git clone https://github.com/agnesarth/Animal-matching/`
 
     ### Steps
 - `bundle install`
@@ -42,11 +42,11 @@
 - Have fun :heartpulse:
 
 - **Option 3**
-    - 👯 Visit us online :arrow_right: https://arcane-basin-51216.herokuapp.com
+    - 👯 Visit us online :arrow_right: https://whispaw.herokuapp.com/
     
  - **Want to try admin mode?**
     - email: animalmatching2020@gmail.com
-    - password: chatons
+    - password: 
 
 ## Versioning
 
