@@ -12,6 +12,55 @@
  *
  */
  // Custom bootstrap variables must be set or imported *before* bootstrap.
- @import "bootstrap";
- @import "font-awesome";
 
+ // Required variables bootstrap
+
+ @import "functions";
+ @import "minty";
+ @import "variables";
+ @import "mixins";
+
+ // Optionnal variables bootstrap
+ 
+ @import "root";
+ @import "reboot";
+ @import "type";
+ @import "images";
+ @import "code";
+ @import "grid";
+ @import "tables";
+ @import "forms";
+ @import "buttons";
+ @import "transitions";
+ @import "dropdown";
+ @import "button-group";
+ @import "input-group";
+ @import "custom-forms";
+ @import "nav";
+ @import "navbar";
+ @import "card";
+ @import "breadcrumb";
+ @import "pagination";
+ @import "badge";
+ @import "jumbotron";
+ @import "alert";
+ @import "progress";
+ @import "media";
+ @import "list-group";
+ @import "close";
+ @import "modal";
+ @import "tooltip";
+ @import "popover";
+ @import "carousel";
+ @import "utilities";
+ @import "print";
+ 
+
+ @import "bootstrap";
+ @import "bootswatch";
+
+
+ // Icones
+@import "font-awesome";
+ 
+ 
