@@ -12,18 +12,6 @@ class PetsController < ApplicationController
     @pet = Pet.new
   end
 
-  # GET /pets/1
-  # GET /pets/1.json
-  def show
-  end
-
-
-
-  # GET /pets/1/edit
-  def edit
-    @pet = Pet.find(params[:id])
-  end
-
   # POST /pets
   # POST /pets.json
   def create
@@ -31,23 +19,41 @@ class PetsController < ApplicationController
 
     respond_to do |format|
       if @pet.save
-        format.html { redirect_to @pet, notice: 'Pet was successfully created.' }
+        flash[:success] = 'Animal bien ajouté!'
+        format.html { redirect_to @pet }
         format.json { render :show, status: :created, location: @pet }
       else
-        p "****"
-        p @pet.errors.messages
         format.html { render :new }
         format.json { render json: @pet.errors, status: :unprocessable_entity }
       end
     end
   end
 
+  # GET /pets/1
+  # GET /pets/1.json
+  def show
+  end
+
+  # GET /pets/1/edit
+  def edit
+    @pet = Pet.find(params[:id])
+  end
+
+  def delete_photo
+    @photo = ActiveStorage::Blob.find(params[:id])
+    @photo.purge
+    redirect_to edit_pet_path(@pet.id)
+  end
+
+
+
   # PATCH/PUT /pets/1
   # PATCH/PUT /pets/1.json
   def update
     respond_to do |format|
       if @pet.update(pet_params)
-        format.html { redirect_to @pet, notice: 'Pet was successfully updated.' }
+        flash[:notice] = 'Tes modifications ont bien été suaveguardées, miao!'
+        format.html { redirect_to @pet }
         format.json { render :show, status: :ok, location: @pet }
       else
         format.html { render :edit }
