@@ -7,15 +7,17 @@ class PetsController < ApplicationController
     @pets = Pet.all
   end
 
+  # GET /pets/new
+  def new
+    @pet = Pet.new
+  end
+
   # GET /pets/1
   # GET /pets/1.json
   def show
   end
 
-  # GET /pets/new
-  def new
-    @pet = Pet.new
-  end
+
 
   # GET /pets/1/edit
   def edit
@@ -25,13 +27,15 @@ class PetsController < ApplicationController
   # POST /pets
   # POST /pets.json
   def create
-    @pet = Pet.new(pet_params)
+    @pet = Pet.create(pet_params)
 
     respond_to do |format|
       if @pet.save
         format.html { redirect_to @pet, notice: 'Pet was successfully created.' }
         format.json { render :show, status: :created, location: @pet }
       else
+        p "****"
+        p @pet.errors.messages
         format.html { render :new }
         format.json { render json: @pet.errors, status: :unprocessable_entity }
       end
@@ -70,6 +74,6 @@ class PetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pet_params
-      params.require(:pet).permit(:name, :animal, :chip_number, :breed, :sex, :age)
+      params.require(:pet).permit(:name, :animal, :chip_number, :breed, :sex, :age, photos: [])
     end
 end
