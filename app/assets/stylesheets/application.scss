@@ -64,3 +64,16 @@
 
 
  // CSS changes
+
+.jumbotron {
+  background-image: url("https://images.unsplash.com/photo-1558929996-da64ba858215?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  transition: background-image 2s ease;
+}
+
+.title-jumbotron {
+  font-size: 35px;
+}
