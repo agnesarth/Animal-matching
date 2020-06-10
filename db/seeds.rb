@@ -12,9 +12,23 @@ require 'faker'
 #User.destroy_all
 Pet.destroy_all
 Like.destroy_all
+User.destroy_all
 
-pet_nb = 0
-like_nb = 0
+
+# Seed User
+12.times do
+  new_user = User.new(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    password: "whispaw",
+    latitude: rand(42.4210787..51.0531826),
+    longitude: rand(-4.8842806..8.2333951),
+  )
+  new_user.email = "#{new_user.first_name}.#{new_user.last_name}@yopmail.com"
+  new_user.save
+end
+
+puts "#{User.all.size} humains crées"
 
 # Seed Pet
 20.times do
@@ -24,6 +38,7 @@ like_nb = 0
     chip_number: Faker::Alphanumeric.alphanumeric(number: 5),
     sex: Faker::Creature::Cat.gender,
     age: rand(0..17),
+    user: User.all.sample
   )
   if my_pet.animal == "chat"
     my_pet.breed = Faker::Creature::Cat.race
@@ -31,13 +46,13 @@ like_nb = 0
     my_pet.breed = Faker::Creature::Dog.race
   end
   my_pet.save
-  pet_nb += 1
+  my_pet.user.default_pet_id = my_pet
 end
 
-puts "#{pet_nb} animaux crées"
+puts "#{Pet.all.size} animaux crées"
 
 # Like seed
-20.times do
+40.times do
   my_like = Like.new(liker: Pet.all.sample)
   if my_like.liker.animal == "chat"
    my_like.liked = Pet.where(animal: "chat").sample
@@ -45,7 +60,6 @@ puts "#{pet_nb} animaux crées"
     my_like.liked = Pet.where(animal: "chien").sample
   end
   my_like.save
-  like_nb += 1
 end
 
-puts "#{like_nb} likes crées"
+puts "#{Like.all.size} likes crées"
