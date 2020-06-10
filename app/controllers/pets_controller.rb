@@ -16,7 +16,10 @@ class PetsController < ApplicationController
   # POST /pets
   # POST /pets.json
   def create
-    @pet = Pet.create(pet_params)
+    @pet = Pet.new(pet_params)
+    @pet.user_id = current_user.id
+    # user_default_pet() defined in application_controller
+    user_default_pet(current_user, @pet)
 
     respond_to do |format|
       if @pet.save
