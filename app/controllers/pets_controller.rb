@@ -1,6 +1,7 @@
 class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
 
+
   # GET /pets
   # GET /pets.json
   def index
@@ -50,8 +51,12 @@ class PetsController < ApplicationController
   def update
     respond_to do |format|
       if @pet.update(pet_params)
+<<<<<<< HEAD
         flash[:notice] = 'Tes modifications ont bien été suaveguardées, miao!'
         format.html { redirect_to @pet }
+=======
+        format.html { redirect_to @pet, notice: "Profil de #{@pet.name} modifié avec succès." }
+>>>>>>> development
         format.json { render :show, status: :ok, location: @pet }
       else
         format.html { render :edit }
@@ -65,7 +70,7 @@ class PetsController < ApplicationController
   def destroy
     @pet.destroy
     respond_to do |format|
-      format.html { redirect_to pets_url, notice: 'Pet was successfully destroyed.' }
+      format.html { redirect_to pets_url, notice: "Profil de #{@pet.name} supprimé avec succès." }
       format.json { head :no_content }
     end
   end

@@ -1,5 +1,6 @@
 # Whispaw 
-<a href="#"><img src="" width="200" height="200" title="Chatons logo" alt="logo"></a>
+<a href="#"><img src="https://images.pexels.com/photos/4148962/pexels-photo-4148962.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" width="640" height="426" title="Photo by Gustavo Fring from Pexels" alt="fluffy dog"></a>
+
 > Animal lover's favorite place to socialize & mingle
 
 ## Table of Contents
