@@ -59,8 +59,55 @@
  @import "bootstrap";
  @import "bootswatch";
 
-
  // Icones
-@import "font-awesome";
- 
- 
+ @import "font-awesome";
+
+
+ // CSS changes
+
+.jumbotron {
+  background-image: url("https://images.unsplash.com/photo-1558929996-da64ba858215?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  position: relative;
+  align-items: center;
+}
+
+.title-jumbotron {
+  font-size: 60px;
+  color: white;
+}
+
+.jumbotron div {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+}
+
+.btn-main-page {
+  background-color: white;
+  border: white;
+  margin-right: 5px;
+}
+
+.first-card {
+  border-radius: 37px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.14);
+  background-color: #ffe1c2;
+  border: none;
+  color: #212529;
+  margin-bottom: 20px;
+}
+
+.second-card {
+  margin-left: auto;
+  border-radius: 37px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.14);
+  background-color: #d5efd5;
+  border: none;
+  color: #212529;
+  margin-bottom: 20px;
+}
