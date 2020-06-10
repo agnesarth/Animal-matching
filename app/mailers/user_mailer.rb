@@ -7,10 +7,10 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Bienvenue chez nous!')
   end
 
-  def new_pet_email(user)
-    @user = user
+  def new_pet_email(pet)
+    @pet = pet
     @url = 'whispaw.herokuapp.com'
-    mail(to: @user.email, subject: 'Ton petit compagnon à quatre pattes a été ajouté!')
+    mail(to: @pet.user.email, subject: 'Tu as ajouté un nouveau petit compagnon à quatre pattes')
   end
 
   def new_match_email(user)
