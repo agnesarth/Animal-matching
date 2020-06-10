@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
   end
-  
+
   def edit
     @user = current_user
   end
@@ -13,10 +13,10 @@ class UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       flash[:success]="Bravo ! Ton profil à correctement été mis à jour."
-      redirect_to root_path
+      redirect_to users_path
     else
       flash[:error]="Mince, il y a eu une erreur"
-      redirect_to root_path
+      redirect_to users_path
     end
   end
 
