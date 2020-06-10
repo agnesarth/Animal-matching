@@ -21,8 +21,8 @@ User.destroy_all
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     password: "whispaw",
-    latitude: rand(42.4210787..51.0531826),
-    longitude: rand(-4.8842806..8.2333951),
+    latitude: rand(42.421..51.053),
+    longitude: rand(-4.884..8.233),
   )
   new_user.email = "#{new_user.first_name}.#{new_user.last_name}@yopmail.com"
   new_user.save
@@ -38,7 +38,8 @@ puts "#{User.all.size} humains crées"
     chip_number: Faker::Alphanumeric.alphanumeric(number: 5),
     sex: Faker::Creature::Cat.gender,
     age: rand(0..17),
-    user: User.all.sample
+    user_id: User.all.sample.id,
+    description: Faker::GreekPhilosophers.quote,
   )
   if my_pet.animal == "chat"
     my_pet.breed = Faker::Creature::Cat.race
@@ -46,7 +47,7 @@ puts "#{User.all.size} humains crées"
     my_pet.breed = Faker::Creature::Dog.race
   end
   my_pet.save
-  my_pet.user.default_pet_id = my_pet
+  User.find(my_pet.user_id).update(default_pet_id: my_pet.id)
 end
 
 puts "#{Pet.all.size} animaux crées"
@@ -63,3 +64,20 @@ puts "#{Pet.all.size} animaux crées"
 end
 
 puts "#{Like.all.size} likes crées"
+
+#Tag seed
+10.times do
+  new_tag = Tag.create!(value: Faker::Coffee.intensifier)
+end
+
+puts "#{Tag.all.size} tags crées"
+
+# Tag_who
+30.times do
+  join_tag = TagWho.create!(
+    pet: Pet.all.sample,
+    tag: Tag.all.sample,
+    )
+end
+
+puts "#{TagWho.all.size} tags associés"
