@@ -94,9 +94,7 @@
 }
 
 .first-card {
-  border-radius: 37px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.14);
-  background-color: #ffe1c2;
+  background-color: none;
   border: none;
   color: #212529;
   margin-bottom: 20px;
@@ -104,10 +102,20 @@
 
 .second-card {
   margin-left: auto;
-  border-radius: 37px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.14);
-  background-color: #d5efd5;
+  background-color: none;
   border: none;
   color: #212529;
   margin-bottom: 20px;
+}
+
+.cat-img-home {
+  width:100%;
+  height: auto;
+}
+
+.img-cat-box {
+  max-width: 50%;
+  float: left;
+  margin-right: 4em;
+  margin-bottom: 2em;
 }
