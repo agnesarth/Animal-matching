@@ -16,6 +16,20 @@
                 <%= @user.email %>  
               </span>
             </div>
+
+            <% @user.pets.each do |pet| %>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fa fa-paw"></i></span>
+                <%= link_to " #{pet.name}  le #{pet.breed}", pet_path(pet) %> 
+                 <% pet.photos.each do |p| %>
+                  <%= image_tag p, style: "height: 60px; width: 30px; ", class: "p-1" %>
+                <% end %>
+                <%if pet.id == @user.default_pet_id%>  
+                  <p> C'est ton animal de compagnie par défaut </p>
+                <%end%>
+              </div>
+          <%end%>
+
           </div>
           <div class="col md-6 text-center">
             <div class="actions my-3">          

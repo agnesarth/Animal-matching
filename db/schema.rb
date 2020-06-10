@@ -10,13 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2020_06_10_084459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
-=======
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -97,5 +95,4 @@ ActiveRecord::Schema.define(version: 0) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "tag_whos", "pets"
   add_foreign_key "tag_whos", "tags"
->>>>>>> development
 end
