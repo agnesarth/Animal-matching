@@ -71,9 +71,43 @@
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
-  transition: background-image 2s ease;
+  position: relative;
+  align-items: center;
 }
 
 .title-jumbotron {
-  font-size: 35px;
+  font-size: 60px;
+  color: white;
+}
+
+.jumbotron div {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+}
+
+.btn-main-page {
+  background-color: white;
+  border: white;
+  margin-right: 5px;
+}
+
+.first-card {
+  border-radius: 37px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.14);
+  background-color: #ffe1c2;
+  border: none;
+  color: #212529;
+  margin-bottom: 20px;
+}
+
+.second-card {
+  margin-left: auto;
+  border-radius: 37px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.14);
+  background-color: #d5efd5;
+  border: none;
+  color: #212529;
+  margin-bottom: 20px;
 }
