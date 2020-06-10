@@ -1,5 +1,5 @@
 class PetsController < ApplicationController
-  before_action :set_pet, only: [:show, :edit, :update, :destroy]
+  before_action :set_pet, only: [:show, :edit, :update, :destroy, :delete_photo]
 
 
   # GET /pets
@@ -43,7 +43,7 @@ class PetsController < ApplicationController
   def delete_photo
     @photo = ActiveStorage::Attachment.find(params[:id])
     @photo.purge
-    redirect_to edit_pet_path(@pet.id)
+    redirect_back(fallback_location: pet_path(@pet.id))
   end
 
   # PATCH/PUT /pets/1
@@ -51,12 +51,8 @@ class PetsController < ApplicationController
   def update
     respond_to do |format|
       if @pet.update(pet_params)
-<<<<<<< HEAD
         flash[:notice] = 'Tes modifications ont bien été suaveguardées, miao!'
         format.html { redirect_to @pet }
-=======
-        format.html { redirect_to @pet, notice: "Profil de #{@pet.name} modifié avec succès." }
->>>>>>> development
         format.json { render :show, status: :ok, location: @pet }
       else
         format.html { render :edit }

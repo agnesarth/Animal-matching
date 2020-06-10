@@ -27,7 +27,7 @@
       <% @pet.photos.each do |p| %>
         <%= image_tag p, style: "height: 200px; width: 150px; ", class: "p-1" %>
         <div class="maintext">
-          <i class="fa fa-trash"></i>
+          <%= link_to "Delete", delete_photo_pet_url(p.id), method: :delete %> 
           </div>
       <% end %>
     </div>
