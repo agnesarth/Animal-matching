@@ -1,0 +1,28 @@
+  <% if user_signed_in? %>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <%= link_to "Whispaw ®", root_path, class: "navbar-brand" %>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <%=link_to "Accueil", root_path, class:"nav-link"%>
+        </li>
+        <li class="dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown">Mon espace</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a><%= link_to "Mon profil", pets_path, class:"dropdown-item" %></a>
+                <a><%= link_to "Settings", pets_path, class:"dropdown-item" %></a>
+            </div>
+            </li>
+            <li class="nav-link">
+            <%=link_to "Mes Pets", pets_path, class:"dropdown-item" %>
+            </li>
+            <li class="nav-link">
+            <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+            </li>
+      </ul>
+    </div>
+  </nav>
+<% end %>
