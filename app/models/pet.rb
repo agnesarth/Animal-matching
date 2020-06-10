@@ -2,7 +2,7 @@ class Pet < ApplicationRecord
   after_create :new_pet_send
   after_update :new_match_send
 
-  #belongs_to :user
+  belongs_to :user
   has_many :liker_likes, foreign_key: "liker", class_name: "Like", dependent: :destroy
   has_many :liked_likes, foreign_key: "liked", class_name: "Like", dependent: :destroy
   has_many_attached :photos, dependent: :destroy
