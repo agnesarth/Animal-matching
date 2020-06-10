@@ -1,5 +1,5 @@
 class PetsController < ApplicationController
-  before_action :set_pet, only: [:show, :edit, :update, :destroy, :delete_photo]
+  before_action :set_pet, only: [:show, :edit, :update, :destroy, :upload_photo, :delete_photo]
 
 
   # GET /pets
@@ -16,18 +16,24 @@ class PetsController < ApplicationController
   # POST /pets
   # POST /pets.json
   def create
-    @pet = Pet.create(pet_params)
+    @pet = Pet.new(pet_params)
 
     respond_to do |format|
-      if @pet.save
+      if @pet.save!
         flash[:success] = 'Animal bien ajouté!'
-        format.html { redirect_to @pet }
+        format.html { redirect_back(fallback_location: request.referrer) }
         format.json { render :show, status: :created, location: @pet }
       else
         format.html { render :new }
         format.json { render json: @pet.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def upload_photo
+    @photo = ActiveStorage::Attachment.find(params[:id])
+    @photo.purge
+    redirect_back(fallback_location: pet_path(@pet.id))
   end
 
   # GET /pets/1
