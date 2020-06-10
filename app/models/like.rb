@@ -6,8 +6,8 @@ class Like < ApplicationRecord
 
   def different_pets
     if self.liked == self.liker
-      errors.add(:liked, 'Narcissism!')
-      errors.add(:liker, 'Narcissism!')
+      errors.add(:liked, 'Narcissisme!')
+      errors.add(:liker, 'Narcissisme!')
     end
   end
 
