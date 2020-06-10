@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-    before_action :authenticate_user!
 
     def already_liked(current_pet, other_pet)
         return current_pet.liked_likes.where(liker_id: other_pet).exists?
