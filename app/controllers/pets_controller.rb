@@ -14,6 +14,9 @@ class PetsController < ApplicationController
 
   def create
     @pet = Pet.new(pet_params)
+    @pet.user_id = current_user.id
+    # user_default_pet() defined in application_controller as first pet created
+    user_default_pet(current_user, @pet)
 
     respond_to do |format|
       if @pet.save!
@@ -33,6 +36,7 @@ class PetsController < ApplicationController
 
   def edit
     @pet = Pet.find(params[:id])
+    flash[:notice] = 'Tes modifications ont bien été suaveguardées, miao!'
   end
 
   def delete_photo
@@ -45,7 +49,7 @@ class PetsController < ApplicationController
     respond_to do |format|
       if @pet.update(pet_params)
         flash[:notice] = 'Tes modifications ont bien été suaveguardées, miao!'
-        format.html { redirect_to pets_path}
+        format.html { redirect_to @pet}
         format.json { render :show, status: :ok, location: @pet }
       else
         format.html { render :edit }
