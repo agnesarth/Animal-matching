@@ -36,7 +36,6 @@ class PetsController < ApplicationController
 
   def edit
     @pet = Pet.find(params[:id])
-    flash[:notice] = 'Tes modifications ont bien été suaveguardées, miao!'
   end
 
   def delete_photo
@@ -48,8 +47,7 @@ class PetsController < ApplicationController
   def update
     respond_to do |format|
       if @pet.update(pet_params)
-        flash[:notice] = 'Tes modifications ont bien été suaveguardées, miao!'
-        format.html { redirect_to @pet}
+        format.html { redirect_to @pet, notice: 'Tes modifications ont bien été suaveguardées, miao!'}
         format.json { render :show, status: :ok, location: @pet }
       else
         format.html { render :edit }
