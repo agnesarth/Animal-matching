@@ -17,19 +17,19 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black:    #000 !default;
 
-$blue:    #007bff !default;
+$blue:    #57afc7 !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
 $pink:    #e83e8c !default;
-$red:     #FF7851 !default;
-$orange:  #fd7e14 !default;
-$yellow:  #FFCE67 !default;
-$green:   #56CC9D !default;
-$teal:    #20c997 !default;
-$cyan:    #6CC3D5 !default;
+$red:     #dd3019 !default;
+$orange:  #ffe1c2 !default;
+$yellow:  #f3c316 !default;
+$green:   #6f8821 !default;
+$teal:    #d5efd5 !default;
+$cyan:    #c2e2eb !default;
 
-$primary:       #78C2AD !default;
-$secondary:     #F3969A !default;
+$primary:       #9d112a !default;
+$secondary:     #00916e !default;
 $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
@@ -51,7 +51,7 @@ $border-radius-sm:            .3rem !default;
 
 // Fonts
 
-$headings-font-family:        "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$headings-font-family:        "Ubuntu", "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
 $headings-color:              $gray-700 !default;
 
 // Tables
