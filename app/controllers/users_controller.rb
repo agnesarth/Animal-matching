@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   before_action :authenticate_user!
 
   def show
@@ -26,4 +27,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:id, :first_name, :last_name, :default_pet_id)
   end
+
 end
