@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_09_163615) do
+ActiveRecord::Schema.define(version: 2020_06_10_084459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,24 @@ ActiveRecord::Schema.define(version: 2020_06_09_163615) do
     t.string "breed"
     t.string "sex"
     t.integer "age"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "description"
+    t.index ["user_id"], name: "index_pets_on_user_id"
+  end
+
+  create_table "tag_whos", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "pet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_tag_whos_on_pet_id"
+    t.index ["tag_id"], name: "index_tag_whos_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -75,4 +93,6 @@ ActiveRecord::Schema.define(version: 2020_06_09_163615) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "tag_whos", "pets"
+  add_foreign_key "tag_whos", "tags"
 end

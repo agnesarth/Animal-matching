@@ -20,12 +20,15 @@
           <p class="card-text mt-2 mb-0">Race :
           <%= f.select :breed, options_for_select(Pet::BREED), include_blank: true, autofocus: true %></p><br>
           <p class="card-text mb-0">Mise en ligne le : <%= Time.now.strftime("%d/%m/%Y") %> </p><br>
-          <p class="card-text mb-0">Selectionne toutes les photos à télécharger</p><br>
-          <%=
-            #f.hidden_field :photos, value: f.object.photos.signed_id if f.object.photos.attached?
-            f.file_field :photos, multiple: true, value: "Selectionne plusieurs fichiers à la fois", class: "ml-5 mt-0 mb-2" %><br>
+          <p class="card-text mb-0">Selectionne une ou plusieures photos à télécharger</p><br>
+            <%= f.file_field :photos, multiple: true, value: "", class: "uploadPreview ml-5 mt-0 mb-2" %><br>
+
+<div id="showPreview"></div>
+
 <%= f.submit "Télécharge ton petit amis", class: "m-2" %>
 <% end %>
+
+
       </div>
 
 <%= link_to 'Back', pets_path %>

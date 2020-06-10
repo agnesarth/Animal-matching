@@ -27,14 +27,11 @@
       <% @pet.photos.each do |p| %>
         <%= image_tag p, style: "height: 200px; width: 150px; ", class: "p-1" %>
         <div class="maintext">
-          <%= link_to "Delete", delete_photo_pet_url(p.id), method: :delete %> 
+          <%= link_to "Delete", delete_photo_pet_url(p.id), method: :delete %>
           </div>
       <% end %>
     </div>
 </div>
-
-
-
           <p class="card-text mt-4 mb-0">Selectionne toutes les photos à télécharger</p><br>
           <%= f.file_field :photos, multiple: true, value: "Selectionne plusieurs fichiers à la fois", class: "ml-5 mt-0 mb-2" %><br>
 <%= f.submit "Télécharge ton petit amis", class: "m-2" %>
