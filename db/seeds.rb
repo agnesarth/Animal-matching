@@ -21,8 +21,8 @@ User.destroy_all
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     password: "whispaw",
-    latitude: Faker::Address.latitude,
-    longitude: Faker::Address.longitude,
+    latitude: rand(42.4210787..51.0531826),
+    longitude: rand(-4.8842806..8.2333951),
   )
   new_user.email = "#{new_user.first_name}.#{new_user.last_name}@yopmail.com"
   new_user.save
