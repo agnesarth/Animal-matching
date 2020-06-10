@@ -5,9 +5,11 @@ class LikesController < ApplicationController
     end
 
     def show
-        @pet = Pet.find(params[:id])
-        @likes = current_pet.likes
-        @matches = @likes.where(match: true)
+        #array containing all likes from the current_pet
+        @my_likes_ids = current_pet.liker_likes.all
+        #array containing all likes towards the current_pet
+        @iam_liked_ids = current_pet.liked_likes.all
+        @matches = @my_likes_ids.where(match: true)
     end
 
     def new
@@ -15,7 +17,7 @@ class LikesController < ApplicationController
     end 
 
     def create
-        @pet = Pet.find(params[:id])
+        @pet = Pet.find(pet_params.id)
         @like = Like.new(liker: current_pet, liked: @pet)
         # already_liked() and matches_back() are defined in application_controller.rb
         if already_liked(current_pet, @pet)
@@ -28,6 +30,20 @@ class LikesController < ApplicationController
 
     end
 
+
+    def destroy
+        @pet = Pet.find(pet_params.id)
+        @my_likes_ids = current_pet.liker_likes.all
+        @unliked = @my_likes_ids.where(liked: @pet)
+        # already_liked() and unmatch() are defined in application_controller.rb
+        if already_liked(current_pet, @pet)
+            unmatch(current_pet, @pet)
+            @unliked.destroy
+        else
+            @unliked.destroy
+        end
+
+    end
 
     private
 

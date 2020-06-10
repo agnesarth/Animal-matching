@@ -16,7 +16,10 @@ class PetsController < ApplicationController
   # POST /pets
   # POST /pets.json
   def create
-    @pet = Pet.create(pet_params)
+    @pet = Pet.new(pet_params)
+    @pet.user_id = current_user.id
+    # user_default_pet() defined in application_controller as first pet created
+    user_default_pet(current_user, @pet)
 
     respond_to do |format|
       if @pet.save
@@ -51,7 +54,7 @@ class PetsController < ApplicationController
   def update
     respond_to do |format|
       if @pet.update(pet_params)
-        flash[:notice] = 'Tes modifications ont bien été suaveguardées, miao!'
+        flash[:notice] = 'Tes modifications ont bien été sauveguardées!'
         format.html { redirect_to @pet }
         format.json { render :show, status: :ok, location: @pet }
       else
