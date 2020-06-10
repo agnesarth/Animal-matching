@@ -16,7 +16,7 @@
 //= require activestorage
 //= require popper
 //= require bootstrap-sprockets
-//= require turbolinks
+
 
 $(function() {
   $('.uploadPreview').on('change', function(event) {
