@@ -40,12 +40,10 @@ class PetsController < ApplicationController
   end
 
   def delete_photo
-    @photo = ActiveStorage::Blob.find(params[:id])
+    @photo = ActiveStorage::Attachment.find(params[:id])
     @photo.purge
     redirect_to edit_pet_path(@pet.id)
   end
-
-
 
   # PATCH/PUT /pets/1
   # PATCH/PUT /pets/1.json

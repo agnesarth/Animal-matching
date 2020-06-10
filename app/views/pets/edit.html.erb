@@ -7,7 +7,7 @@
 <%= form_for @pet, :url => pet_path(@pet.id), method: :patch, multipart: true do |f| %>
       <div class="card">
         <div class="card-body">
-          <h6 class="card-text mt-2">Prénom: <br> <%= f.text_field :name, autofocus: true, placeholder: @pet.name %> </h6>
+          <h6 class="card-text mt-2">Prénom: <br> <%= f.text_field :name, autofocus: true,  placeholder: @pet.name %> </h6>
           <p class="card-text mt-2 mb-0">Type:</p>
           <%= f.radio_button :animal, 'Chien', :checked => true %> Chien
           <%= f.radio_button :animal, 'Chat' %> Chat
@@ -27,8 +27,7 @@
       <% @pet.photos.each do |p| %>
         <%= image_tag p, style: "height: 200px; width: 150px; ", class: "p-1" %>
         <div class="maintext">
-          <!--link_to "Delete", delete_photo, method: :delete, data: {confirm: "Confirmez-vous?"} -->
-          <i class="fa fa-trash"></i></a>
+          <i class="fa fa-trash"></i>
           </div>
       <% end %>
     </div>

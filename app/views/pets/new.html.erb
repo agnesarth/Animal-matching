@@ -8,20 +8,22 @@
 <%= form_for @pet, :url => pets_path, multipart: true do |f| %>
       <div class="card">
         <div class="card-body">
-          <h6 class="card-text mt-2">Prénom: <br> <%= f.text_field :name %></h6>
+          <h6 class="card-text mt-2">Prénom: <br> <%= f.text_field :name, autofocus: true %></h6>
           <p class="card-text mt-2 mb-0">Type:</p>
           <%= f.radio_button :animal, 'Chien', :checked => true %> Chien
           <%= f.radio_button :animal, 'Chat' %> Chat
-          <p class="card-text mt-2">Numéro de chip: <br>  <%= f.text_field :chip_number %></p>
-          <p class="card-text mt-2">Age : <br>  <%= f.number_field :age %></p>
+          <p class="card-text mt-2">Numéro de chip: <br>  <%= f.text_field :chip_number, autofocus: true %></p>
+          <p class="card-text mt-2">Age : <br>  <%= f.number_field :age, autofocus: true %></p>
           <p class="card-text mb-0">Genre:</p>
           <%= f.radio_button :sex, 'Femelle', :checked => true %> Femelle
           <%= f.radio_button :sex, 'Mâle' %> Mâle
           <p class="card-text mt-2 mb-0">Race :
-          <%= f.select :breed, options_for_select(Pet::BREED), include_blank: true %></p><br>
+          <%= f.select :breed, options_for_select(Pet::BREED), include_blank: true, autofocus: true %></p><br>
           <p class="card-text mb-0">Mise en ligne le : <%= Time.now.strftime("%d/%m/%Y") %> </p><br>
           <p class="card-text mb-0">Selectionne toutes les photos à télécharger</p><br>
-          <%= f.file_field :photos, multiple: true, value: "Selectionne plusieurs fichiers à la fois", class: "ml-5 mt-0 mb-2" %><br>
+          <%=
+            #f.hidden_field :photos, value: f.object.photos.signed_id if f.object.photos.attached?
+            f.file_field :photos, multiple: true, value: "Selectionne plusieurs fichiers à la fois", class: "ml-5 mt-0 mb-2" %><br>
 <%= f.submit "Télécharge ton petit amis", class: "m-2" %>
 <% end %>
       </div>
