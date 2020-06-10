@@ -4,25 +4,26 @@
 
     <div class="container-fluid">
       <%= form_for(current_user, url: users_path(current_user), method: :put) do |f| %>
-      <div class="field">
-        <%= f.label "Ton prénom" %><br />
-        <%= f.text_field :first_name, autofocus: true, autocomplete: :first_name %>
-      </div><br />
-      <div class="field">
-        <%= f.label "Ton nom" %> <br />
-        <%= f.text_field :last_name, autocomplete: :last_name %>
-      </div><br />
-      <div class="field">
-        <%= f.label "Ton animal de compagnie préféré" %> <br />
-         <%= f.select :default_pet_id, Pet.all.collect { |p| [ p.name, p.id ] }, include_blank: true %>
-      </div><br />
-      <div class="actions">
-        <%= f.submit "Mets ton profil à jour", class:"btn btn-outline-primary btn-sm" %>
-      </div>
-    <% end %>
+        <div class="field">
+          <%= f.label "Ton prénom" %><br />
+          <%= f.text_field :first_name, autofocus: true, autocomplete: :first_name %>
+        </div><br />
+        <div class="field">
+          <%= f.label "Ton nom" %> <br />
+          <%= f.text_field :last_name, autocomplete: :last_name %>
+        </div><br />
+        <div class="field">
+          <%= f.label "Ton animal de compagnie préféré" %> <br />
+          <%= f.select :default_pet_id, Pet.all.collect { |p| [ p.name, p.id ] }, include_blank: true %>
+        </div><br />
+        <div class="actions">
+          <%= f.submit "Mets ton profil à jour", class:"btn btn-outline-primary btn-sm" %>
+        </div>
+      <% end %>
     </div>
 
     <div class="mt-5">
       <%= link_to "Retour", :back %>
     </div>
+  </div>
 </div>

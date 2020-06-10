@@ -1,38 +1,38 @@
 <div class="container mt-5 text-center">
-<div class="my-5 alert col-md-6 offset-md-3 shadow p-3 mb-5 bg-secondary rounded">
-  <%= render "devise/shared/svg" %>
-  <h2 class="mt-3 mb-3">Changer de mot de passe</h2>
+  <div class="my-5 alert col-md-6 offset-md-3 shadow p-3 mb-5 bg-secondary rounded">
+    <%= render "devise/shared/svg" %>
+    <h2 class="mt-3 mb-3">Changer de mot de passe</h2>
 
-  <div class="text-center my-2">
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-      <%= f.hidden_field :reset_password_token %>
+    <div class="text-center my-2">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <%= f.hidden_field :reset_password_token %>
 
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text"><i class="fa fa-key"></i></span>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-key"></i></span>
+          </div>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "6 caractères minimum", class:"form-control" %>
         </div>
-       <%= f.password_field :password, autocomplete: "new-password", placeholder: "6 caractères minimum", class:"form-control" %>
-      </div>
 
-      <div class="input-group my-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text"><i class="fa fa-lock"></i></span>
+        <div class="input-group my-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+          </div>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "confirmer le mot de passe", class:"form-control" %>
         </div>
-       <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "confirmer le mot de passe", class:"form-control" %>
-      </div>
 
-      <div class="actions my-3">
-        <%= f.submit "Change my password", class:"btn btn-primary" %>
-      </div>
-    <% end %>
+        <div class="actions my-3">
+          <%= f.submit "Change my password", class:"btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="mt-4 pl-5 ml-2 d-flex justify-content-around">
+      <%= render "devise/shared/links" %>
+    </div>
+
   </div>
-
-  <div class="mt-4 pl-5 ml-2 d-flex justify-content-around">
-    <%= render "devise/shared/links" %>
-  </div>
-
-</div>
 </div>
 <div class="container font-weight-bold">
 <%= link_to " < Retour", :back %>
