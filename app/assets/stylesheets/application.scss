@@ -74,6 +74,7 @@
   min-height: 100vh;
   position: relative;
   align-items: center;
+  margin-bottom: 4em;
 }
 
 .title-jumbotron {
@@ -95,9 +96,7 @@
 }
 
 .first-card {
-  border-radius: 37px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.14);
-  background-color: #ffe1c2;
+  background-color: none;
   border: none;
   color: #212529;
   margin-bottom: 20px;
@@ -105,10 +104,44 @@
 
 .second-card {
   margin-left: auto;
-  border-radius: 37px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.14);
-  background-color: #d5efd5;
+  background-color: none;
   border: none;
   color: #212529;
   margin-bottom: 20px;
 }
+
+.cat-img-home {
+  width:100%;
+  height: auto;
+}
+
+.img-cat-box {
+  max-width: 50%;
+  margin-bottom: 2em;
+  float: left;
+}
+
+.text-cat-box {
+  float: right;
+  width: 50%;
+  padding-left: 4em;
+}
+
+.dog-img-home {
+  width:100%;
+  height: auto;
+}
+
+.text-dog-box {
+  float: left;
+  width: 50%;
+  padding-right: 4em;
+  margin-bottom: 10em;
+}
+
+.img-dog-box {
+  max-width: 50%;
+  float: right;
+  margin-bottom: 4em;
+}
+

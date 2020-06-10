@@ -1,5 +1,6 @@
 class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy, :delete_photo]
+  before_action :authenticate_user!, only: [:create,:edit,:destroy]
 
 
   def index
@@ -14,7 +15,7 @@ class PetsController < ApplicationController
 
   def create
     @pet = Pet.new(pet_params)
-    @pet.user_id = current_user.id
+    @pet.user = current_user
     # user_default_pet() defined in application_controller as first pet created
     user_default_pet(current_user, @pet)
 
@@ -70,6 +71,6 @@ class PetsController < ApplicationController
     end
 
     def pet_params
-      params.require(:pet).permit(:name, :animal, :chip_number, :breed, :sex, :age, photos: [])
+      params.require(:pet).permit(:name, :animal, :chip_number, :breed, :sex, :age, :user_id, photos: [])
     end
 end
