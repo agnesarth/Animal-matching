@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
+<<<<<<< HEAD
 
+=======
+>>>>>>> user
   before_action :authenticate_user!
 
   def show
