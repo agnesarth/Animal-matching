@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
         back_like = current_pet.liked_likes.where(liker_id: other_pet)
         back_like.update(match: true)
         back_like.save
-    end 
+    end
 
     def unmatch(current_pet, other_pet)
         iam_liked_ids = current_pet.liked_likes.all
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
         if current_user.default_pet_id.nil?
         current_user.update(default_pet_id: my_pet.id)
         current_user.save
-        end 
+        end
     end
 
 

@@ -1,8 +1,14 @@
 <div class="jumbotron jumbotron-fluid">
   <div class= "text-center">
     <h1 class="title-jumbotron">Matchez. Rencontrez. Jouez.</h1>
+
+    <% unless user_signed_in? %>
     <%= link_to "Se connecter", new_user_session_path, class: "btn btn-outline-primary btn-lg btn-main-page" %>
     <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+    <% else %>
+    <%= link_to "Se deconnecter", destroy_user_session_path, method: :delete, class: "btn btn-outline-primary btn-lg btn-main-page" %>
+    <% end %>
+
   </div>
 </div>
 
@@ -27,5 +33,3 @@
     </div>
   </div>
 </div>
-
-
