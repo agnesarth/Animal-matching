@@ -18,7 +18,7 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(pet_params)
     @pet.user_id = current_user.id
-    # user_default_pet() defined in application_controller
+    # user_default_pet() defined in application_controller as first pet created
     user_default_pet(current_user, @pet)
 
     respond_to do |format|
