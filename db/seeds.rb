@@ -9,7 +9,7 @@
 
 require 'faker'
 
-#User.destroy_all
+User.destroy_all
 Pet.destroy_all
 Like.destroy_all
 User.destroy_all
@@ -37,8 +37,8 @@ puts "#{User.all.size} humains crées"
     animal: ["chat", "chien"].sample,
     chip_number: Faker::Alphanumeric.alphanumeric(number: 5),
     sex: Faker::Creature::Cat.gender,
-    age: rand(0..17),
     user_id: User.all.sample.id,
+    age: rand(0..17),
     description: Faker::GreekPhilosophers.quote,
   )
   if my_pet.animal == "chat"
@@ -60,21 +60,28 @@ puts "#{Pet.all.size} animaux crées"
   elsif my_like.liker.animal == "chien"
     my_like.liked = Pet.where(animal: "chien").sample
   end
-  my_like.save
+  back_like = my_like.liker.liked_likes.where(liker_id: my_like.liked)
+  if back_like.exists?
+    my_like.match = true
+    back_like.update(match: true)
+    my_like.save
+  else
+    my_like.save
+  end
 end
 
 puts "#{Like.all.size} likes crées"
 
 #Tag seed
 10.times do
-  new_tag = Tag.create!(value: Faker::Coffee.intensifier)
+  new_tag = Tag.create(value: Faker::Coffee.intensifier)
 end
 
 puts "#{Tag.all.size} tags crées"
 
 # Tag_who
 30.times do
-  join_tag = TagWho.create!(
+  join_tag = TagWho.create(
     pet: Pet.all.sample,
     tag: Tag.all.sample,
     )
