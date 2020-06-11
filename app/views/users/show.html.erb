@@ -16,21 +16,25 @@
               <%= @user.email %>  
             </span>
           </div>
-
-          <% @user.pets.each do |pet| %>
-            <div class="input-group mb-3">
-              <span class="input-group-text"><i class="fa fa-paw"></i></span>
-              <%= link_to " #{pet.name}  le #{pet.breed}", pet_path(pet) %> 
-              <% pet.photos.each do |p| %>
-                <%= image_tag p, style: "height: 60px; width: 30px; ", class: "p-1" %>
-              <% end %>
-              <%if pet.id == @user.default_pet_id%>  
-                <p> C'est ton animal de compagnie par défaut </p>
-              <%end%>
-            </div>
-          <%end%>
-        </div>
-
+          <div class="row">
+            <% @user.pets.each do |pet| %>
+              <div class='col-12 col-lg-6 col-xl-4 d-flex'>
+                <div class='card card-lg card-body align-items-center bg-secondary'>
+                  <% pet.photos.each do |p| %>
+                    <%= image_tag p, style: "width: 100px; height: 100px; ", class: "avatar avatar-xlg mb-3 rounded-circle"  %>
+                  <% end %>         
+                  <h6 class='mb-0'><%= pet.name%> le <%=pet.breed%></h6>
+                  <span><%= pet.animal%></span>
+                  <div class='float-right'>
+                    <%=link_to "Voir son profil", pet_path(pet), class:'btn btn-sm btn-primary' %> 
+                  </div>
+                  <%if pet.id == @user.default_pet_id%>  
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  <%end%>
+                </div>
+              </div>
+            <%end%>
+          </div>
         <div class="col md-6 text-center">
           <div class="actions my-3">          
             <%= link_to "Ajouter un animal de compagnie", new_pet_path, class:"btn btn-primary" %>
@@ -49,4 +53,4 @@
     <%= link_to " < Retour", :back %>
   </div>
 </div>
- 
+  
