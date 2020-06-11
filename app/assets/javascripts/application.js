@@ -18,6 +18,7 @@
 //= require bootstrap-sprockets
 
 
+
 $(function() {
   $('.uploadPreview').on('change', function(event) {
     console.log("ok");
@@ -39,3 +40,4 @@ $(function() {
     console.log(files);
   });
 });
+
