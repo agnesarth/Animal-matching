@@ -1,1 +1,80 @@
-<%= render 'pets/index'%>
+<div class="small-jumbotron text-center ">
+    <div class="container">
+    </div>
+</div>
+
+<% unless current_user.pets.present? %>
+<div class="container text-center">
+<h1>C'est parti!</h1>
+
+<h3>La recherche de ton amour en fourrure commence ici</h3>
+<%= link_to 'Ajoute ton animal single', new_pet_path, class: "btn btn-lg btn-outline-warning" %>
+</div>
+
+<div class="bubbling-heart">
+  <div><i class="fa fa-heart fa-5x"></i></div>
+  <div><i class="fa fa-heart fa-5x"></i></div>
+  <div><i class="fa fa-heart fa-5x"></i></div>
+  <div><i class="fa fa-heart fa-5x"></i></div>
+  <div><i class="fa fa-heart fa-5x"></i></div>
+  <div><i class="fa fa-heart fa-5x"></i></div>
+</div>
+<% else %>
+
+
+<div class="container text-center">
+<h1 class="m-5">Pets</h1>
+</div>
+
+<div class="row justify-content-around ml-3 mr-3">
+
+    <% @pets_list.each do |pet| %>
+
+      <div class="col-sm-3">
+          <div id="likeCard<%= pet.id %>" class="card bg-light mb-3" ">
+              <div class="card-header">
+                  <%= pet.name %>
+              </div>
+              <div class="card-body">
+                  <div id="demo" class="carousel slide" data-ride="carousel">
+
+
+                      <div class="carousel-inner" >
+
+                              <div class="carousel-item active">
+
+      <!--image_tag pet.photos.first, style: "height: 20px; width: 15px; ", class: "card-img-top"-->
+
+
+
+                                  </div>
+
+                                  <div class="carousel-item">
+
+
+
+
+                                  </div>
+                      <!---------------------CARD BODY END--------------------->
+
+                  </div>
+
+              </div>
+
+                <div><h5 class="card-subtitle mb-2 float-left"><%= pet.age %>, <%= pet.sex %></h5><span>
+                  <% if pet.liker_likes.all.where(liked_id: @current_pet.id).exists? %>
+                  <% like = Like.all.where(liker_id: pet.id, liked_id: @current_pet.id) %>
+                  <%= link_to pet_like_path(pet.id,like.id), method: :put, remote: true do %><i id="likeButton<%= pet.id %>" class="btn btn-outline-secondary btn-sm fa fa-heart float-right"></i><% end %>
+                  <% else %>
+                  <%= link_to pet_likes_path(pet.id), method: :post, remote: true do %><i id="likeButton<%= pet.id %>" class="btn btn-outline-primary btn-sm fa fa-heart float-right"></i><% end %>
+                  <% end %>
+                </div>
+
+          </div>
+      </div>
+
+  </div>
+<% end %>
+
+
+<% end %>

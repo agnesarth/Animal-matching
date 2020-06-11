@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  before_action :current_pet, only: [:create,:update,:destroy]
 
   def index
     @likes = Like.all
@@ -14,18 +15,46 @@ class LikesController < ApplicationController
 
   def new
     @like = Like.new
-  end 
+  end
 
   def create
-    @pet = Pet.find(pet_params.id)
-    @like = Like.new(liker: current_pet, liked: @pet)
-    # already_liked() and matches_back() are defined in application_controller.rb
-    if already_liked(current_pet, @pet)
-      @like.match = true
-      matches_back(current_pet, @pet)  
-    end
-    @like.save
+    #@pet = Pet.find(params['pet_id'])
+    @like = Like.new(liker_id: current_pet.id, liked_id: params['pet_id'])
+    p current_pet.id
+    p params['pet_id']
+    p "*************"
 
+    if @like.save!
+      flash[:notice] = "J\'adore!"
+      redirect_back fallback_location: request.referrer
+    end
+
+  end
+
+  def update
+    @pet = Pet.find(params['pet_id'])
+    @like = Like.find(params['id'])
+    @like.update(match: true)
+
+    respond_to do |format|
+      format.html { redirect_back fallback_location: request.referrer, notice: 'C\'est un match!'}
+      format.json { }
+    end
+  end
+
+  def destroy
+    @pet = Pet.find(params['pet_id'])
+    @my_likes_ids = current_pet.liker_likes.all
+    @unliked = @my_likes_ids.where(liked: @pet)
+    # already_liked() and unmatch() are defined in application_controller.rb
+    if already_liked(current_pet, @pet)
+      unmatch(current_pet, @pet)
+    end
+    @unliked.destroy
+  end
+
+  def current_pet
+    @pet = Pet.find(current_user.default_pet_id)
   end
 
   def already_liked(current_pet, other_pet)
@@ -37,29 +66,10 @@ class LikesController < ApplicationController
     back_like.update(match: true)
   end
 
-
-  def destroy
-    @pet = Pet.find(pet_params.id)
-    @my_likes_ids = current_pet.liker_likes.all
-    @unliked = @my_likes_ids.where(liked: @pet)
-    # already_liked() and unmatch() are defined in application_controller.rb
-    if already_liked(current_pet, @pet)
-      unmatch(current_pet, @pet)
-    end
-    @unliked.destroy
-
-  end
-
   def unmatch(current_pet, other_pet)
     iam_liked_ids = current_pet.liked_likes.all
     unmatched = iam_liked_ids.where(liker: other_pet)
     unmatched.match = false
-  end
-
-  private
-
-  def pet_params
-    params.require(:pet).permit(:name, :animal, :chip_number, :breed, :sex, :age, :id)
   end
 
 end
