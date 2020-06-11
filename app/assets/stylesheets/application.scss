@@ -185,3 +185,11 @@
 .bg-primary {
   background-image: linear-gradient(to right, #9d112a, #dd3019);
 }
+
+.dropdown-item:hover {
+  background-color: #9d112a;
+}
+
+.dropdown-item:focus {
+  background-color: #6f0c1e;
+}
