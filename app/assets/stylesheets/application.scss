@@ -66,6 +66,19 @@
 
  // CSS changes
 
+ html {
+  height: 100%;
+}
+
+body {
+  background-color: #f8f9fa;
+  position:absolute;
+  top:0;
+  right:0;
+  left:0;
+}
+
+
 .jumbotron {
   background-image: url("https://images.unsplash.com/photo-1558929996-da64ba858215?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80");
   background-position: center center;
@@ -127,37 +140,19 @@
   height: auto;
 }
 
-.img-cat-box {
-  max-width: 50%;
-  margin-bottom: 2em;
-  float: left;
-}
-
-.text-cat-box {
-  float: right;
-  width: 50%;
-  padding-left: 4em;
-}
-
 .dog-img-home {
   width:100%;
   height: auto;
 }
 
-.text-dog-box {
-  float: left;
-  width: 50%;
-  padding-right: 4em;
-  margin-bottom: 10em;
-}
-
-.img-dog-box {
-  max-width: 50%;
-  float: right;
-  margin-bottom: 4em;
-}
-
 .carousel-caption {
-    top: 0;
-    bottom: auto;
+  top: 0;
+  bottom: auto;
+}
+
+#footer{
+  position: static;
+  bottom: 0;
+  max-height: auto;
+  background-color: $cyan;
 }
