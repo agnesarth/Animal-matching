@@ -7,24 +7,24 @@
           <div class="input-group mb-3">
             <span class="input-group-text">
               <i class="fa fa-user" aria-hidden="true"></i></i>
-              <p><%= @user.first_name %><%= @user.last_name %></p>  
+              <p><%= @user.first_name %><%= @user.last_name %></p>
             </span>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text">
               <i class="fa fa-envelope" aria-hidden="true" style="margin-right: 0.4em"></i>
-              <%= @user.email %>  
+              <%= @user.email %>
             </span>
           </div>
 
           <% @user.pets.each do |pet| %>
             <div class="input-group mb-3">
               <span class="input-group-text"><i class="fa fa-paw"></i></span>
-              <%= link_to " #{pet.name}  le #{pet.breed}", pet_path(pet) %> 
+              <%= link_to " #{pet.name}  le #{pet.breed}", pet_path(pet) %>
               <% pet.photos.each do |p| %>
                 <%= image_tag p, style: "height: 60px; width: 30px; ", class: "p-1" %>
               <% end %>
-              <%if pet.id == @user.default_pet_id%>  
+              <%if pet.id == @user.default_pet_id%>
                 <p> C'est ton animal de compagnie par défaut </p>
               <%end%>
             </div>
@@ -32,13 +32,13 @@
         </div>
 
         <div class="col md-6 text-center">
-          <div class="actions my-3">          
+          <div class="actions my-3">
             <%= link_to "Ajouter un animal de compagnie", new_pet_path, class:"btn btn-primary" %>
             <%= link_to "Editer mon profil", edit_users_path, class:"btn btn-warning" %>
           </div>
         </div>
       </div>
-    </div>    
+    </div>
   </div>
 
   <div class="offset-8">
@@ -46,7 +46,7 @@
     <%= link_to "Cancel my account", registration_path(@user), class:"btn btn-outline-primary", data: { confirm: "Are you sure?" }, method: :delete %></p>
   </div>
   <div class="container font-weight-bold offset-0">
+    <%= link_to 'New Pet', new_pet_path %><br>
     <%= link_to " < Retour", :back %>
   </div>
 </div>
- 

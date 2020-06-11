@@ -1,39 +1,39 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class= "text-center">
-
+<div class="small-jumbotron text-center ">
     <div class="container">
-      <input class="form-control" id="anythingSearch" type="text" placeholder="Type something to search list items">
+      <!--<input class="form-control" id="anythingSearch" type="text" placeholder="Type something to search list items">
       <div id="myDIV">
         <button class="btn btn-outline-primary btn-main-page">Rechercher</button>
         <button class="btn btn-info">Another button</button>
         <hr />
         <p></p>
-      </div>
+      </div>-->
     </div>
-  </div>
 </div>
 
+<% unless current_user.pets.present? %>
+<div class="container text-center">
+<h1>C'est parti!</h1>
 
-<p id="notice"><%= notice %></p>
+<h3>La recherche de ton amour en fourrure commence ici</h3>
+<%= link_to 'Ajoute ton animal single', new_pet_path, class: "btn btn-lg btn-outline-warning" %>
+</div>
 
+<div class="bubbling-heart">
+  <div><i class="fa fa-heart fa-5x"></i></div>
+  <div><i class="fa fa-heart fa-5x"></i></div>
+  <div><i class="fa fa-heart fa-5x"></i></div>
+  <div><i class="fa fa-heart fa-5x"></i></div>
+  <div><i class="fa fa-heart fa-5x"></i></div>
+  <div><i class="fa fa-heart fa-5x"></i></div>
+</div>
+<% else %>
+
+
+<div class="container text-center">
 <h1>Pets</h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Animal</th>
-      <th>Chip number</th>
-      <th>Breed</th>
-      <th>Sex</th>
-      <th>Age</th>
-      <th>Foto</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% Pet.all.each do |pet| %>
+    <% Pet.all.where.not(user_id: current_user.id).each do |pet| %>
       <tr>
         <td><%= pet.name %></td>
         <td><%= pet.animal %></td>
@@ -47,9 +47,7 @@
         <td><%= link_to 'Destroy', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Pet', new_pet_path %>
+
+<% end %>

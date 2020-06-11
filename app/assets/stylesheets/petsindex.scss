@@ -1,0 +1,47 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// CSS changes
+
+.small-jumbotron {
+ background-image: url(https://images.unsplash.com/photo-1558929996-da64ba858215?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80);
+ background-position: center center;
+ background-repeat: no-repeat;
+ background-size: cover;
+ min-height: 35vh;
+ position: relative;
+ align-items: center;
+ margin-bottom: 4em;
+}
+
+ .bubbling-heart {
+	 color: #FCE205;
+	 text-shadow: 0 0 40px #FFFFF0;
+}
+ .bubbling-heart div {
+	 position: fixed;
+	 top: 50%;
+	 left: 50%;
+	 transform: translate(-50%,25vh) scale(0);
+	 opacity: 0;
+	 animation: bubbleUp 2s infinite;
+}
+ .bubbling-heart div .fa {
+	 transform: translateX(12.5vw) rotate(25deg);
+	 animation: oscillate 4s ease-in-out infinite;
+}
+
+ @keyframes bubbleUp {
+	 50% {
+		 opacity: 1;
+	}
+	 100% {
+		 transform: translate(-50%,-25vh) scale(2);
+	}
+}
+ @keyframes oscillate {
+	 50% {
+		 transform: translateX(-12.5vw) rotate(-25deg);
+	}
+}
