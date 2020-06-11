@@ -80,5 +80,5 @@ gem 'stripe'
 gem 'aws-sdk-s3', require: false
 gem 'geocoder'
 gem 'jquery-rails'
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '~> 4.3.1'
 gem 'font-awesome-rails'
