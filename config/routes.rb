@@ -10,6 +10,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/à_propos', to: 'static_pages#about'
+  get '/whispaw', to: 'static_pages#about'
   
 end
