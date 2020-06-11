@@ -66,6 +66,8 @@
 
  // CSS changes
 
+ // Home page when user is not signed in
+
 .jumbotron {
   background-image: url("https://images.unsplash.com/photo-1558929996-da64ba858215?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80");
   background-position: center center;
@@ -160,4 +162,18 @@
 .carousel-caption {
     top: 0;
     bottom: auto;
+}
+
+ // Flash
+
+.alert {
+  margin-bottom: 0;
+  border-radius: 0;
+  font-family: "Ubuntu", "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.alert-info {
+  color: #28687B;
+  border: 1px solid;
+  border-color: #D1E9F0;
 }
