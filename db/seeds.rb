@@ -79,12 +79,12 @@ end
 
 puts "#{Tag.all.size} tags crées"
 
-# Tag_who
+# Tag_pet
 30.times do
-  join_tag = TagWho.create(
+  join_tag = TagPet.create(
     pet: Pet.all.sample,
     tag: Tag.all.sample,
     )
 end
 
-puts "#{TagWho.all.size} tags associés"
+puts "#{TagPet.all.size} tags associés"
