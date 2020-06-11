@@ -11,7 +11,9 @@
   </head>
 
   <body>
-    <%= render 'layouts/navbar'%>
+    <% if user_signed_in? %>
+      <%= render 'layouts/navbar'%>
+    <% end %>
     <%= render 'layouts/flash'%>
     <%= yield %>
   </body>
