@@ -1,36 +1,39 @@
- <footer class="py-3 mt-5" id="footer">
+ <footer class="p-3 mt-5 d-flex justify-content-around" id="footer">
   <div class="container row">
-    <div class="text-center pb-2 col-md-3 border-right">
-      <%= link_to "A propos de Whispaw ®"%>
-      <%= link_to "Nous contacter"%>
+    <div class="text-center col-md-4 border-right">
+      <p class="text-light">© 2020 Copyright :</p>
+      <p><%=link_to "Session # 12 The Hacking Project", "https://www.thehackingproject.org/", class:"text-light" %></p>
     </div>
-    
-    <div class="text-center pb-2">© 2020 Copyright :
-      <%=link_to "Session # 12", "https://www.thehackingproject.org/", class:"a-secondary" %>
-      <%=link_to "The Hacking Project", "https://www.thehackingproject.org/", class:"a-secondary" %>
+
+    <div class="text-center col-md-3 border-right">
+      <p><%= link_to "A propos de Whispaw ®", whispaw_path, class:"text-light" %></p>
+      <p><%= link_to "Nous contacter", contact_path, class:"text-light" %></p>
     </div>
-  </div>
-  <div>
-    <div class="social d-table mx-auto">
-      <%=link_to "https://www.instagram.com/", class:"mx-3 h4 text-primary" do %>
+
+    <div class="text-center col-md-4">
+      <p class="d-flex justify-content-around"><%= link_to "S'inscrire", new_user_registration_path, class:"btn btn-outline-light"  %>
+      <%= link_to "Se connecter", new_user_session_path, class:"btn btn-outline-light" %></p>
+      <p>
+      <%=link_to "https://www.instagram.com/", class:"mx-3 h4 text-light" do %>
         <i class="fa fa-instagram fa-1x"></i>
         <span class="sr-only">Follow us on Instagram</span>
       <%end%>
 
-      <%=link_to "https://www.facebook.com/", class:"mx-3 h4 text-primary" do %>
+      <%=link_to "https://www.facebook.com/", class:"mx-3 h4 text-light" do %>
         <i class="fa fa-facebook fa-1x"></i>
         <span class="sr-only">Follow us on Facebook<span>
       <%end%>
       
-      <%=link_to "https://www.googleplus.com/", class:"mx-3 h4 text-primary" do %>
+      <%=link_to "https://www.googleplus.com/", class:"mx-3 h4 text-light" do %>
         <i class="fa fa-google-plus fa-1x"></i>
         <span class="sr-only">Follow us on Google Plus<span>
       <%end%>
 
-      <%=link_to "https://github.com/agnesarth/Animal-matching", class:"mx-3 h4 text-primary" do %>
+      <%=link_to "https://github.com/agnesarth/Animal-matching", class:"mx-3 h4 text-light" do %>
         <i class="fa fa-github fa-1x"></i>
-        <span class="sr-only">Follow us on Google Plus<span>
+        <span class="sr-only">Follow us on GitHub<span>
       <%end%>
+      </p>
 
     </div>
   </div>
