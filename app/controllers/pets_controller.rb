@@ -1,6 +1,6 @@
 class PetsController < ApplicationController
-  before_action :set_pet, only: [:show, :edit, :update, :destroy, :delete_photo]
-  before_action :authenticate_user!, only: [:create,:edit,:destroy]
+  before_action :set_pet, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:create,:edit,:destroy, :delete_photo]
 
 
   def index
@@ -47,13 +47,13 @@ class PetsController < ApplicationController
   def delete_photo
     @photo = ActiveStorage::Attachment.find(params[:id])
     @photo.purge
-    redirect_back(fallback_location: pet_path(@pet.id))
+    redirect_back(fallback_location: request.referrer)
   end
 
   def update
     respond_to do |format|
       if @pet.update(pet_params)
-        format.html { redirect_to @pet, notice: 'Tes modifications ont bien été suaveguardées, miao!'}
+        format.html { redirect_to @pet, notice: 'Tes modifications ont bien été sauveguardées, miao!'}
         format.json { render :show, status: :ok, location: @pet }
       else
         format.html { render :edit }
@@ -71,6 +71,7 @@ class PetsController < ApplicationController
   end
 
   private
+
     def set_pet
       @pet = Pet.find(params[:id])
     end
