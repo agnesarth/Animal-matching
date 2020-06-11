@@ -42,7 +42,7 @@ class PetsController < ApplicationController
   def delete_photo
     @photo = ActiveStorage::Attachment.find(params[:id])
     @photo.purge
-    redirect_back(fallback_location: pet_path(@pet.id))
+    render "edit"
   end
 
   def update
@@ -67,7 +67,7 @@ class PetsController < ApplicationController
 
   private
     def set_pet
-      @pet = Pet.find(params[:id])
+      @pet = Pet.where(user_id: current_user.id).first
     end
 
     def pet_params
