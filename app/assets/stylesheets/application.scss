@@ -145,23 +145,23 @@ body {
   height: auto;
 }
 
-.img-cat-box {
-  max-width: 50%;
-  margin-bottom: 2em;
-  float: left;
-}
-
-.text-cat-box {
-  float: right;
-  width: 50%;
-  padding-left: 4em;
-}
-
 .dog-img-home {
   width:100%;
   height: auto;
 }
 
+.carousel-caption {
+  top: 0;
+  bottom: auto;
+}
+
+#footer{
+  position: static;
+  bottom: 0;
+  max-height: auto;
+  background-color: $cyan;
+}
+  
 .text-dog-box {
   float: left;
   width: 50%;

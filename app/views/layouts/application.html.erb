@@ -11,10 +11,11 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
       <%= render 'layouts/navbar'%>
-    <% end %>
-    <%= render 'layouts/flash'%>
-    <%= yield %>
+      <%= render 'layouts/flash'%>
+      <%= yield %>
+      <%= render 'layouts/footer'%>
+
   </body>
+
 </html>

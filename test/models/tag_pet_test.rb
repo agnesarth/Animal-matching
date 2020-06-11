@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TagWhoTest < ActiveSupport::TestCase
+class TagPetTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
