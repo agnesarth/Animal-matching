@@ -1,22 +1,14 @@
 class PetsController < ApplicationController
-  before_action :set_pet, only: [:show, :edit, :update, :destroy, :delete_photo]
-  before_action :authenticate_user!, only: [:create,:edit,:destroy]
-
-
-  def index
-    @pets = Pet.all
-  end
-
+  before_action :set_pet, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:create,:edit,:destroy, :delete_photo]
 
   def new
     @pet = Pet.new
   end
 
-
   def create
     @pet = Pet.new(pet_params)
     @pet.user = current_user
-    # user_default_pet() defined in application_controller as first pet created
     user_default_pet(current_user, @pet)
 
     respond_to do |format|
@@ -31,29 +23,21 @@ class PetsController < ApplicationController
     end
   end
 
-  def user_default_pet(current_user, @pet)
-    if current_user.default_pet_id.nil?
-      current_user.update(default_pet_id: @pet.id)
-    end
+  def show
   end
 
-  def show
+  def index
+    @pets = Pet.all
   end
 
   def edit
     @pet = Pet.find(params[:id])
   end
 
-  def delete_photo
-    @photo = ActiveStorage::Attachment.find(params[:id])
-    @photo.purge
-    redirect_back(fallback_location: pet_path(@pet.id))
-  end
-
   def update
     respond_to do |format|
       if @pet.update(pet_params)
-        format.html { redirect_to @pet, notice: 'Tes modifications ont bien été suaveguardées, miao!'}
+        format.html { redirect_to @pet, notice: 'Tes modifications ont bien été sauveguardées, miao!'}
         format.json { render :show, status: :ok, location: @pet }
       else
         format.html { render :edit }
@@ -70,7 +54,20 @@ class PetsController < ApplicationController
     end
   end
 
+  def user_default_pet(current_user, pet)
+    if current_user.default_pet_id.nil? 
+      current_user.update(default_pet_id: pet.id)
+    end
+  end
+
+  def delete_photo
+    @photo = ActiveStorage::Attachment.find(params[:id])
+    @photo.purge
+    redirect_back(fallback_location: request.referrer)
+  end
+
   private
+
     def set_pet
       @pet = Pet.find(params[:id])
     end

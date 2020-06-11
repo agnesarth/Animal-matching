@@ -21,7 +21,7 @@
  @import "mixins";
 
  // Optionnal variables bootstrap
- 
+
  @import "root";
  @import "reboot";
  @import "type";
@@ -54,20 +54,24 @@
  @import "carousel";
  @import "utilities";
  @import "print";
- 
+
 
  @import "bootstrap";
  @import "bootswatch";
 
  // Icones
- 
+
  @import "font-awesome";
 
-
+ // Timeline
+ @import "timeline";
+ 
  // CSS changes
 
+ // Home page when user is not signed in
+
 .jumbotron {
-  background-image: url("https://images.unsplash.com/photo-1558929996-da64ba858215?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80");
+  background-image: url(https://images.unsplash.com/photo-1558929996-da64ba858215?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -148,7 +152,7 @@
   float: left;
   width: 50%;
   padding-right: 4em;
-  margin-bottom: 10em;
+  margin-bottom: 11em;
 }
 
 .img-dog-box {
@@ -160,4 +164,32 @@
 .carousel-caption {
     top: 0;
     bottom: auto;
+}
+
+ // Flash
+
+.alert {
+  margin-bottom: 0;
+  border-radius: 0;
+  font-family: "Ubuntu", "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.alert-info {
+  color: #28687B;
+  border: 1px solid;
+  border-color: #D1E9F0;
+}
+
+ // Navbar
+
+.bg-primary {
+  background-image: linear-gradient(to right, #9d112a, #dd3019);
+}
+
+.dropdown-item:hover {
+  background-color: #9d112a;
+}
+
+.dropdown-item:focus {
+  background-color: #6f0c1e;
 }
