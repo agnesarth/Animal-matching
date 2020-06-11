@@ -1,15 +1,6 @@
 class PetsController < ApplicationController
-<<<<<<< HEAD
-  before_action :set_pet, only: [:show, :edit, :update, :destroy, :delete_photo]
-  before_action :authenticate_user!, only: [:create,:edit,:destroy]
-
-  def index
-    @pets = Pet.all
-  end
-=======
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:create,:edit,:destroy, :delete_photo]
->>>>>>> development
 
   def new
     @pet = Pet.new
@@ -32,14 +23,7 @@ class PetsController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-  def user_default_pet(current_user, pet)
-    if current_user.default_pet_id.nil?
-      current_user.update(default_pet_id: pet.id)
-    end
-=======
   def show
->>>>>>> development
   end
 
   def index
