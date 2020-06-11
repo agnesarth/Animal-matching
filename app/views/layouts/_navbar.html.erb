@@ -1,0 +1,34 @@
+<% if user_signed_in? %>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-secondary">
+    <a class="navbar-brand" href="/">Whispaw ®</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>
+          <div class="dropdown-menu">
+            <%= link_to "Mon profile", users_path(current_user.id), {:class => "dropdown-item"} %>
+            <%= link_to "Mes settings", edit_users_path(current_user.id), {:class => "dropdown-item"} %>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mes Pets</a>
+          <div class="dropdown-menu">
+            <%= link_to "Mes Pets", pets_path, {:class => "dropdown-item"} %>
+            <%= link_to "Mes Match", pets_path, {:class => "dropdown-item"} %>
+          </div>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Mes Messages", "javascript:void(0)", :class => "nav-link" %>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <%= link_to "Se deconnecter", destroy_user_session_path, {:method => :delete, :class => "nav-link"} %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+<% end %>
