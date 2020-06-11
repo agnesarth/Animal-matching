@@ -31,6 +31,11 @@ class PetsController < ApplicationController
     end
   end
 
+  def user_default_pet(current_user, @pet)
+    if current_user.default_pet_id.nil?
+      current_user.update(default_pet_id: @pet.id)
+    end
+  end
 
   def show
   end
