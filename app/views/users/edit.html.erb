@@ -14,7 +14,7 @@
         </div><br />
         <div class="field">
           <%= f.label "Ton animal de compagnie préféré" %> <br />
-          <%= f.select :default_pet_id, Pet.all.collect { |p| [ p.name, p.id ] }, include_blank: true %>
+          <%= f.select :default_pet_id, Pet.where(user_id: current_user.id).collect { |p| [ p.name, p.id ] }, include_blank: true %>
         </div><br />
         <div class="actions">
           <%= f.submit "Mets ton profil à jour", class:"btn btn-outline-primary btn-sm" %>
