@@ -1,6 +1,6 @@
  <footer class="py-3 mt-5" id="footer">
-  <div class="container">
-    <div class="text-center pb-2">
+  <div class="container row">
+    <div class="text-center pb-2 col-md-3 border-right">
       <%= link_to "A propos de Whispaw ®"%>
       <%= link_to "Nous contacter"%>
     </div>
@@ -12,18 +12,23 @@
   </div>
   <div>
     <div class="social d-table mx-auto">
-      <%=link_to "https://www.instagram.com/", class:"instagram mx-3 h4 text-primary" do %>
-        <i class="fa fa-instagram"></i>
+      <%=link_to "https://www.instagram.com/", class:"mx-3 h4 text-primary" do %>
+        <i class="fa fa-instagram fa-1x"></i>
         <span class="sr-only">Follow us on Instagram</span>
       <%end%>
 
-      <%=link_to "https://www.facebook.com/", class:"facebook mx-3 h4 text-primary" do %>
-        <i class="fa fa-facebook"></i>
+      <%=link_to "https://www.facebook.com/", class:"mx-3 h4 text-primary" do %>
+        <i class="fa fa-facebook fa-1x"></i>
         <span class="sr-only">Follow us on Facebook<span>
       <%end%>
       
-      <%=link_to "https://www.googleplus.com/", class:"google-plus mx-3 h4 text-primary" do %>
-        <i class="fa fa-google-plus"></i>
+      <%=link_to "https://www.googleplus.com/", class:"mx-3 h4 text-primary" do %>
+        <i class="fa fa-google-plus fa-1x"></i>
+        <span class="sr-only">Follow us on Google Plus<span>
+      <%end%>
+
+      <%=link_to "https://github.com/agnesarth/Animal-matching", class:"mx-3 h4 text-primary" do %>
+        <i class="fa fa-github fa-1x"></i>
         <span class="sr-only">Follow us on Google Plus<span>
       <%end%>
 
