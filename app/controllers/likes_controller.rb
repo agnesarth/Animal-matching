@@ -28,6 +28,15 @@ class LikesController < ApplicationController
 
   end
 
+  def already_liked(current_pet, other_pet)
+    return current_pet.liked_likes.where(liker_id: other_pet).exists?
+  end
+
+  def matches_back(current_pet, other_pet)
+    back_like = current_pet.liked_likes.where(liker_id: other_pet)
+    back_like.update(match: true)
+  end
+
 
   def destroy
     @pet = Pet.find(pet_params.id)
@@ -39,6 +48,12 @@ class LikesController < ApplicationController
     end
     @unliked.destroy
 
+  end
+
+  def unmatch(current_pet, other_pet)
+    iam_liked_ids = current_pet.liked_likes.all
+    unmatched = iam_liked_ids.where(liker: other_pet)
+    unmatched.match = false
   end
 
   private
