@@ -1,34 +1,28 @@
 class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:create,:edit,:destroy, :delete_photo]
 
-  # GET /pets
-  # GET /pets.json
+
   def index
     @pets = Pet.all
   end
 
-  # GET /pets/1
-  # GET /pets/1.json
-  def show
-  end
 
-  # GET /pets/new
   def new
     @pet = Pet.new
   end
 
-  # GET /pets/1/edit
-  def edit
-  end
 
-  # POST /pets
-  # POST /pets.json
   def create
     @pet = Pet.new(pet_params)
+    @pet.user = current_user
+    # user_default_pet() defined in application_controller as first pet created
+    user_default_pet(current_user, @pet)
 
     respond_to do |format|
-      if @pet.save
-        format.html { redirect_to @pet, notice: 'Pet was successfully created.' }
+      if @pet.save!
+        flash[:success] = 'Animal bien ajouté!'
+        format.html { redirect_to pets_path }
         format.json { render :show, status: :created, location: @pet }
       else
         format.html { render :new }
@@ -37,12 +31,29 @@ class PetsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /pets/1
-  # PATCH/PUT /pets/1.json
+  def user_default_pet(current_user, @pet)
+    if current_user.default_pet_id.nil?
+      current_user.update(default_pet_id: @pet.id)
+    end
+  end
+
+  def show
+  end
+
+  def edit
+    @pet = Pet.find(params[:id])
+  end
+
+  def delete_photo
+    @photo = ActiveStorage::Attachment.find(params[:id])
+    @photo.purge
+    redirect_back(fallback_location: request.referrer)
+  end
+
   def update
     respond_to do |format|
       if @pet.update(pet_params)
-        format.html { redirect_to @pet, notice: 'Pet was successfully updated.' }
+        format.html { redirect_to @pet, notice: 'Tes modifications ont bien été sauveguardées, miao!'}
         format.json { render :show, status: :ok, location: @pet }
       else
         format.html { render :edit }
@@ -51,24 +62,21 @@ class PetsController < ApplicationController
     end
   end
 
-  # DELETE /pets/1
-  # DELETE /pets/1.json
   def destroy
     @pet.destroy
     respond_to do |format|
-      format.html { redirect_to pets_url, notice: 'Pet was successfully destroyed.' }
+      format.html { redirect_to pets_url, notice: "Profil de #{@pet.name} supprimé avec succès." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_pet
       @pet = Pet.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def pet_params
-      params.require(:pet).permit(:name, :animal, :chip_number, :breed, :sex, :age)
+      params.require(:pet).permit(:name, :animal, :chip_number, :breed, :sex, :age, :user_id, photos: [])
     end
 end

@@ -1,5 +1,6 @@
 # Whispaw 
-<a href="#"><img src="" width="200" height="200" title="Chatons logo" alt="logo"></a>
+<a href="#"><img src="https://images.pexels.com/photos/4148962/pexels-photo-4148962.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" width="640" height="426" title="Photo by Gustavo Fring from Pexels" alt="fluffy dog"></a>
+
 > Animal lover's favorite place to socialize & mingle
 
 ## Table of Contents
@@ -12,17 +13,22 @@
 
 ## Features
 <dl>
-  <dt>Non-registered users</dt>
+  <dt>Non-registered users can:</dt>
   <dd>Sign up</dd>
-  <dd>See photos</dd>
+  <dd>Receive a welcome email</dd>
+  <dd>See general info about the app</dd>
 
-  <dt>Registered users</dt>
+  <dt>Registered users can:</dt>
   <dd>Login & log out</dd>
   <dd>Retrieve password</dd>
   <dd>Update user info</dd>
-  <dd>Add & remove photos from cart</dd>
-  <dd>Pay for cart (checkout)</dd>
-  <dd></dd>
+  <dd>Add & remove pet</dd>
+  <dd>Receive an email when add pet</dd>
+  <dd>Modify my pet profile</dd>
+  <dd>See other pets</dd>
+  <dd>Like othe pets</dd>
+  <dd>Like othe pets</dd>
+  <dd>Chat with other users when there's a match</dd>
 </dl>
 
 ## Instructions

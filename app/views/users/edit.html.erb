@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="mt-5 text-center my-5 alert col shadow p-3 mb-5 bg-secondary rounded">
+    <h2 class="mt-5">Edit my profile</h2>
+
+    <div class="container-fluid">
+      <%= form_for(current_user, url: users_path(current_user), method: :put) do |f| %>
+        <div class="field">
+          <%= f.label "Ton prénom" %><br />
+          <%= f.text_field :first_name, autofocus: true, autocomplete: :first_name %>
+        </div><br />
+        <div class="field">
+          <%= f.label "Ton nom" %> <br />
+          <%= f.text_field :last_name, autocomplete: :last_name %>
+        </div><br />
+        <div class="field">
+          <%= f.label "Ton animal de compagnie préféré" %> <br />
+          <%= f.select :default_pet_id, Pet.where(user_id: current_user.id).collect { |p| [ p.name, p.id ] }, include_blank: true %>
+        </div><br />
+        <div class="actions">
+          <%= f.submit "Mets ton profil à jour", class:"btn btn-outline-primary btn-sm" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="mt-5">
+      <%= link_to "Retour", :back %>
+    </div>
+  </div>
+</div>
