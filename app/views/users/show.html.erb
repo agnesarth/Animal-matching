@@ -4,7 +4,6 @@
     <div class="text-center my-2">
       <div class="row">
         <div class="col-12">
-<<<<<<< HEAD
           <div class="text-center my-2">
             <div class="input-group info-user mb-3">
               <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
@@ -18,49 +17,6 @@
               <%= link_to "Editer mon profil", edit_users_path, class:"btn btn-primary" %>
               <%= link_to "Editer mon log in", edit_user_registration_path(@user), class:"btn btn-outline-primary" %>
             </div>
-=======
-
-          <div class="my-2">
-            <i class="fa fa-user" aria-hidden="true"></i></i>
-            <h6><%= @user.first_name %> <%= @user.last_name %></h6><br />
-          </div>
-
-          <div>
-            <i class="fa fa-envelope" aria-hidden="true" ></i>
-            <h6><%= @user.email%></h6> <br />
-          </div>
-
-          <div class="row" >
-            <% @user.pets.each do |pet| %>
-              <div class='col-12 col-lg-6 col-xl-3 d-flex alert' style="margin-bottom: 20px;">
-                <div class='card card-lg card-body align-items-center bg-primary'>
-                  <%if pet.photos.present? %>
-                    <% pet.photos.each do |p| %>
-                      <%= image_tag p, style: "width: 100px; height: 100px; ", class: "avatar avatar-xlg mb-3 rounded-circle"  %>
-                    <% end %>
-                  <%else%>
-                    <%= image_tag "michat.jpg", style: "width: 100px; height: 100px; ", class: "avatar avatar-xlg mb-3 rounded-circle"  %>
-                  <%end%>
-                  <h6 class='mb-0'><%= pet.name%> le <%=pet.breed%></h6>
-                  <span><%= pet.animal%></span>
-                  <div class='float-right' style='margin-top: 10px;'>
-                    <%=link_to "Voir son profil", pet_path(pet), class:'btn btn-sm btn-outline-warning' %>
-                  </div>
-                  <div class='float-right' style='margin-top: 10px;'>
-                    <%if pet.id == @user.default_pet_id%>
-                      <i class="fa fa-star fa-3x" aria-hidden="true" style="color:yellow"></i>
-                    <%end%>
-                  </div>
-                </div>
-              </div>
-            <%end%>
-          </div>
-        </div>
-        <div class="col md-6 text-center">
-          <div class="actions my-3">
-            <%= link_to "Ajouter un animal de compagnie", new_pet_path, class:"btn btn-primary" %>
-            <%= link_to "Editer mon profil", edit_users_path, class:"btn btn-secondary" %>
->>>>>>> 24763db724e8b8ab9f1dc06c0f1a31dd21ed0d8b
           </div>
         </div>
       </div>
@@ -104,14 +60,7 @@
       </div>
     </div>
   </div>
-<<<<<<< HEAD
   <div class="container offset-0">
     <%= link_to "Retour", :back %>
-=======
-
-  <div class="container font-weight-bold offset-0">
-    <%= link_to 'New Pet', new_pet_path %><br>
-    <%= link_to " < Retour", :back %>
->>>>>>> 24763db724e8b8ab9f1dc06c0f1a31dd21ed0d8b
   </div>
 </div>
