@@ -9,10 +9,10 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(pet_params)
     @pet.user = current_user
-    user_default_pet(current_user, @pet)
 
     respond_to do |format|
       if @pet.save!
+        user_default_pet(current_user, @pet)
         flash[:success] = 'Animal bien ajouté!'
         format.html { redirect_to pets_path }
         format.json { render :show, status: :created, location: @pet }
