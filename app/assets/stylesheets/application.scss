@@ -65,12 +65,16 @@
 
  // Timeline
  @import "timeline";
- 
- // CSS changes
 
+<<<<<<< HEAD
  @import "users";
 
 
+=======
+ // CSS changes
+@import "custom";
+@import "petsindex";
+>>>>>>> 24763db724e8b8ab9f1dc06c0f1a31dd21ed0d8b
  // All site
 
 html {
@@ -79,7 +83,7 @@ html {
 
 body {
   background-color: #f8f9fa;
-  position:absolute;
+  position: absolute;
   top:0;
   right:0;
   left:0;
@@ -162,9 +166,9 @@ body {
   position: static;
   bottom: 0;
   max-height: auto;
-  background-color: $gray-900;
+  background-color: $gray-800;
 }
-  
+
 .text-dog-box {
   float: left;
   width: 50%;
@@ -183,7 +187,7 @@ body {
     bottom: auto;
 }
 
-
+ // Searchbar
 
 .searchbar{
   margin-bottom: auto;
@@ -227,6 +231,7 @@ body {
   border-radius: 50%;
   color:white;
   }
+
  // Flash
 
 .alert {
@@ -239,6 +244,17 @@ body {
   color: #28687B;
   border: 1px solid;
   border-color: #D1E9F0;
+}
+
+.alert-success {
+  background-color: #E2F3E2;
+  color: #389438;
+  border: 1px solid;
+  border-color: #F0F9F0;
+}
+
+.alert-success .close {
+  color: #389438;
 }
 
  // Navbar
@@ -259,15 +275,13 @@ body {
 
 .container-devise {
   background-image: linear-gradient(
-    rgba(0, 0, 0, 0.45), 
+    rgba(0, 0, 0, 0.45),
     rgba(0, 0, 0, 0.45)
   ),url(asset_path( 'background_signup.jpeg' ));
-  background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
-  position: absolute;
-  align-items: center;
+  position: inherit;
   top: 0;
   right: 0;
   left: 0;
@@ -299,3 +313,15 @@ body {
   border-color: #9d112a;
 }
 
+<<<<<<< HEAD
+=======
+.btn-outline-light:hover {
+  color: $gray-800;
+}
+
+ // Pets view
+
+.container-pet {
+  background-color: #FFF;
+}
+>>>>>>> 24763db724e8b8ab9f1dc06c0f1a31dd21ed0d8b

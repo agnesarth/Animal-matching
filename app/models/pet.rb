@@ -1,5 +1,5 @@
 class Pet < ApplicationRecord
-  #after_commit :new_pet_send
+  #after_create :new_pet_send
   #after_update :new_match_send
 
   belongs_to :user
