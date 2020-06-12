@@ -316,3 +316,29 @@ body {
 .container-pet {
   background-color: #FFF;
 }
+
+.shadow {
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15) !important;
+}
+
+.input-group select {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #5a5a5a;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.4rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.input-group select:focus {
+  color: #5a5a5a;
+  background-color: #fff;
+  border-color: #eb4361;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(157, 17, 42, 0.25);
+}
