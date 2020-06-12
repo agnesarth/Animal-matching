@@ -1,5 +1,6 @@
-alert("<3")
-document.getElementById("likeCard<%= @pet.id %>").classList.replace("bg-light","bg-danger")
+document.getElementById("likeCard<%= @pet.id %>").classList.add("wiggle")
+document.getElementById("likeCard<%= @pet.id %>").classList.replace("bg-light","bg-custom")
 document.getElementById("likeCard<%= @pet.id %>").classList.add("text-white")
+document.getElementById("likeCard<%= @pet.id %>").classList.add("scale-down")
 document.getElementById("likeHeader<%= @pet.id %>").insertAdjacentHTML("beforeend","<%= j render 'match' %>")
 document.getElementById("likeHeader<%= @pet.id %>").insertAdjacentHTML("beforeend","<%= j render 'userinfo', pet: @pet %>")

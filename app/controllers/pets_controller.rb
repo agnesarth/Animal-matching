@@ -1,5 +1,4 @@
 class PetsController < ApplicationController
-  before_action :set_pet, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:index, :create,:edit,:destroy, :delete_photo]
 
 
@@ -27,16 +26,6 @@ class PetsController < ApplicationController
         format.json { }
       end
     end
-  end
-
-  #def user_default_pet(current_user,pet)
-    #if user.default_pet_id.nil?
-      #user.update(default_pet_id: pet.id)
-    #end
-  #end
-
-  def index
-    @pets = Pet.all
   end
 
   def edit
@@ -76,10 +65,6 @@ class PetsController < ApplicationController
   end
 
   private
-
-    def set_pet
-      @pet = Pet.find(params[:id])
-    end
 
     def pet_params
       params.require(:pet).permit(:name, :animal, :chip_number, :breed, :sex, :age, :user, photos: [])
