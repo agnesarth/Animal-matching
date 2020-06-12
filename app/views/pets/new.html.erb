@@ -10,8 +10,8 @@
       <div class="card-body">
         <h6 class="card-text mt-2">Prénom: <br> <%= f.text_field :name, autofocus: true %></h6>
         <p class="card-text mt-2 mb-0">Type:</p>
-        <%= f.radio_button :animal, 'Chien', :checked => true %> Chien
-        <%= f.radio_button :animal, 'Chat' %> Chat
+        <%= f.radio_button :animal, 'chien', :checked => true %> Chien
+        <%= f.radio_button :animal, 'chat' %> Chat
         <p class="card-text mt-2">Numéro de chip: <br>  <%= f.text_field :chip_number, autofocus: true %></p>
         <p class="card-text mt-2">Age : <br>  <%= f.number_field :age, autofocus: true %></p>
         <p class="card-text mb-0">Genre:</p>
