@@ -38,6 +38,7 @@ class PetsController < ApplicationController
   end
 
   def update
+    @pet = Pet.find(params[:id])
     respond_to do |format|
       if @pet.update(pet_params)
         format.html { redirect_to @pet, notice: 'Tes modifications ont bien été sauveguardées, miao!'}
