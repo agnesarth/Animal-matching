@@ -66,6 +66,10 @@
  // Timeline
  @import "timeline";
 
+ // User
+ @import "users";
+
+
  // CSS changes
 @import "custom";
 @import "petsindex";
@@ -181,6 +185,8 @@ body {
     bottom: auto;
 }
 
+ // Searchbar
+
 .searchbar{
   margin-bottom: auto;
   margin-top: auto;
@@ -223,6 +229,7 @@ body {
   border-radius: 50%;
   color:white;
   }
+
  // Flash
 
 .alert {
@@ -306,4 +313,10 @@ body {
 
 .btn-outline-light:hover {
   color: $gray-800;
+}
+
+ // Pets view
+
+.container-pet {
+  background-color: #FFF;
 }
