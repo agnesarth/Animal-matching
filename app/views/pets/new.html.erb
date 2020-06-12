@@ -11,10 +11,10 @@
           <%= f.text_field :name, autofocus: true, class:"form-control" %>
         </div>
 
-        <h6 class="card-text mt-2 mb-0">Espèce :</h6>
-        <div class="input-group mb-4">
-          <%= f.radio_button :animal, 'Chien', :checked => true %> Chien
-          <%= f.radio_button :animal, 'Chat' %> Chat
+        <h6 class="card-text mt-2">Espèce :</h6>
+        <div class="input-group mb-4 input-checkbox">
+          <%= f.radio_button :animal, 'Chien'%><span>Chien</span>
+          <%= f.radio_button :animal, 'Chat' %><span>Chat</span>
         </div>
 
         <h6 class="card-text mt-2">Numéro de puce :</h6> 
@@ -27,21 +27,21 @@
           <%= f.number_field :age, autofocus: true, class:"form-control" %>
         </div>
 
-        <h6 class="card-text mb-0">Genre :</h6>
-        <div class="input-group mb-4">
-          <%= f.radio_button :sex, 'Femelle', :checked => true %> Femelle
-          <%= f.radio_button :sex, 'Mâle' %> Mâle
+        <h6 class="card-text mt-2">Genre :</h6>
+        <div class="input-group mb-4 input-checkbox">
+          <%= f.radio_button :sex, 'Femelle'%><span>Femelle</span>
+          <%= f.radio_button :sex, 'Mâle' %><span>Mâle</span>
         </div>
 
-        <h6 class="card-text mt-2 mb-0">Race :</h6>
+        <h6 class="card-text mt-2">Race :</h6>
         <div class="input-group mb-4">
           <%= f.select :breed, options_for_select(Pet::BREED), include_blank: true, autofocus: true, class:"form-control" %>
         </div>
 
         <p class="card-text mb-0">Mise en ligne le : <%= Time.now.strftime("%d/%m/%Y") %> </p><br>
 
-        <h6 class="card-text mb-0">Photos :</h6>
-        <div class="input-group mb-4">
+        <h6 class="card-text">Photos :</h6>
+        <div class="input-group mb-4 input-checkbox">
           <%= f.file_field :photos, multiple: true, value: "", class: "uploadPreview ml-5 mt-0 mb-2" %>
         </div>
 
