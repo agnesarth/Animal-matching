@@ -11,69 +11,11 @@
     <hr />
     <p></p>
   </div>
+
+  <div class="container text-center">
+    <%= link_to "Trouver des Amimaux", pets_path, class:"btn btn-large btn-primary"  %>
+  </div>
 </div>
 
 
-<div class="container">
 
-<table>
-<h3 class="m-5">Plus de choix</h3>
-  <tbody>
-    <%current_pet = Pet.find(current_user.default_pet_id)%>
-    <%pets_list = Pet.all.where.not(user_id: current_user.id).where(animal: current_pet.animal.downcase)%>
-    <% pets_list.each do |pet| %>
-      <tr>
-        <td class="mb-3 col-md-3 p-2">
-          <div id="likeBody<%= pet.id %>" class="card-body border">
-            <div id="demo" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner" >
-                <% unless pet.photos.empty? %>
-                  <div class="carousel-item active">
-                    <%= image_tag pet.photos.first, class: "card-img-top" %>
-                  </div>
-                  <% pet.photos[1..-1].each do |p| %>
-                    <div class="carousel-item">
-                      <%= image_tag p, class: "card-img-top" %>
-                    </div>
-                  <%end%>
-                <% else %>
-                  <div class="carousel-item active">
-                    <%= image_tag("paw.jpeg", {class: "card-img-top"} ) %>
-                  </div>
-                  <div class="carousel-item">
-                    <%= image_tag("paw.jpeg", {class: "card-img-top"} ) %>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </td>
-        <td class="mb-3 col-md-2 p-2"><h3 class="card-title ml-3"><%= pet.name%></h3></td>
-        <td class="mb-3 col-md-2 p-2 lead"><%= pet.sex %>, <%= pet.age %>
-          <%if pet.age.to_s == "1" || pet.age.to_s == "0" %>
-            <span> an </span>
-          <%else%>
-            <span> ans </span>
-          <%end%>
-        </td>
-        <td class="mb-3 col-md-2 p-2 lead">Type <%= pet.breed %></td>
-        <td class="mb-3 col-md-2 p-2 lead">
-          <div class="mt-3">
-            <% if pet.likes_as_liker.all.where(liked_id: current_pet.id).exists? %>
-              <% like = Like.all.where(liker_id: pet.id, liked_id: current_pet.id) %>
-              <%= link_to pet_like_path(pet.id,like.ids), method: :put, remote: true do %>
-                <i id="likeButton<%= pet.id %>" class="btn btn-outline-primary btn-sm fa fa-heart float-right"></i>
-              <% end %>
-            <% else %>
-              <%= link_to pet_likes_path(pet.id), method: :post, remote: true do %>
-                <i id="likeButton<%= pet.id %>" class="btn btn-outline-primary btn-sm fa fa-heart float-right"></i>
-              <% end %>
-            <% end %>
-          </div>
-        </td>
-
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
