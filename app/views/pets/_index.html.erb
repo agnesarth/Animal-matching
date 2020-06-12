@@ -48,14 +48,16 @@
             </div>
           </div>
         </td>
-        <td><h3 class="card-title ml-3"><%= pet.name%></h3></td>
-        <td><%= pet.sex %></td>
-        <td>
-          <%= pet.age %>
-          <%if (pet.age.to_i > 1) %> an <%else%> ans <%end%>
+        <td class="mb-3 col-md-2 p-2"><h3 class="card-title ml-3"><%= pet.name%></h3></td>
+        <td class="mb-3 col-md-2 p-2 lead"><%= pet.sex %>, <%= pet.age %>
+          <%if pet.age.to_s == "1" || pet.age.to_s == "0" %>
+            <span> an </span>
+          <%else%>
+            <span> ans </span>
+          <%end%>
         </td>
-        <td><%= pet.breed %></td>
-        <td>
+        <td class="mb-3 col-md-2 p-2 lead">Type <%= pet.breed %></td>
+        <td class="mb-3 col-md-2 p-2 lead">
           <div class="mt-3">
             <% if pet.likes_as_liker.all.where(liked_id: current_pet.id).exists? %>
               <% like = Like.all.where(liker_id: pet.id, liked_id: current_pet.id) %>
