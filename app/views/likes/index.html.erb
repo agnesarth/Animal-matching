@@ -72,7 +72,7 @@
 <div class="text-center">
 <h3>Oh you can't hurry love, oh you just have to wait...</h3>
 <h6>On est pas totalement d'accord<br>
-  L'internet est plein d'animaux single, <a href="/pets">vas les liker <i class="fa fa-paw"></i></a></h6>
+  L'internet est plein d'animaux qui cherchent des amis, <a href="/pets">vas les liker <i class="fa fa-paw"></i></a></h6>
 </div>
 
 <% else %>
@@ -87,9 +87,12 @@
     <% @my_matches.each do |pet| %>
 
       <div class="col-sm-3">
-          <div id="likeCard<%= pet.id %>" class="card bg-light mb-3" ">
+          <div id="likeCard<%= pet.id %>" class="card bg-custom text-white mb-3" ">
               <div id="likeHeader<%= pet.id %>" class="card-header">
                   <h5 class="card-title float-left"><%= pet.name%></h5>
+                  <span class="badge badge-warning float-right">C'est un match</span>
+                  <h6 class="float-left">C'est le pet de <%= pet.user.first_name%>. Ecris-lui!<br>
+                  Voici le mél pour lui écrire <b><%= pet.user.email%></b></h6>
               </div>
               <div id="likeBody<%= pet.id %>" class="card-body">
                   <div id="demo" class="carousel slide" data-ride="carousel">
