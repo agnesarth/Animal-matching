@@ -202,6 +202,10 @@ body {
   transition: width 0.4s linear;
   }
 
+  ::placeholder{
+    color: white
+  }
+  
   .searchbar:hover > .search_input{
   padding: 0 10px;
   width: 450px;
@@ -211,7 +215,7 @@ body {
 
   .searchbar:hover > .search_icon{
   background: white;
-  color: #e74c3c;
+  color:#e74c3c;
   }
 
   .search_icon{
