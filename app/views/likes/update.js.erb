@@ -1,2 +1,5 @@
 alert("<3")
-document.getElementById("likeCard<%= @pet.id %>").classList.replace("bg-light","bg-dark")
+document.getElementById("likeCard<%= @pet.id %>").classList.replace("bg-light","bg-danger")
+document.getElementById("likeCard<%= @pet.id %>").classList.add("text-white")
+document.getElementById("likeHeader<%= @pet.id %>").insertAdjacentHTML("beforeend","<%= j render 'match' %>")
+document.getElementById("likeHeader<%= @pet.id %>").insertAdjacentHTML("beforeend","<%= j render 'userinfo', pet: @pet %>")

@@ -20,12 +20,14 @@ class LikesController < ApplicationController
   def create
     @pet = Pet.find(params['pet_id'])
     @like = Like.new(liker_id: current_pet.id, liked_id: @pet.id)
-
     if @like.save!
       flash[:notice] = "J\'adore!"
-      redirect_to pets_path
     end
 
+    respond_to do |format|
+        format.html { redirect_to pets_path }
+        format.js { }
+    end
   end
 
   def update
@@ -35,7 +37,7 @@ class LikesController < ApplicationController
     flash.now[:notice] = "C\'est un match!"
     respond_to do |format|
       format.html { redirect_back fallback_location: request.referrer, notice: 'C\'est un match!'}
-      format.json { }
+      format.js { }
     end
   end
 
