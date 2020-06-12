@@ -9,28 +9,24 @@
       </div>
 
 <!--Second search bar testing-->
-<select class="mdb-select md-form colorful-select dropdown-primary" searchable="Search here..">
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3</option>
-  <option value="4">Option 4</option>
-  <option value="5">Option 5</option>
-</select>
 
-<label class="mdb-main-label">Example label</label>
+<div class="dropdown">
+<button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+    aria-expanded="false">
+    Rechercher
+</button>
+<div class="dropdown-menu" aria-labelledby="dropdown_user">
+    <form class="px-4 py-2">
+        <input type="search" class="form-control search" placeholder="Recherche" autofocus="autofocus">
+    </form>
+    <div class="menuItems">
+        <input type="button" class="dropdown-item" type="button" value="Test1"/>
+        <input type="button" class="dropdown-item" type="button" value="Test2"/>
+        <input type="button" class="dropdown-item" type="button" value="Test3"/>
+    </div>
+    <div style="display:none;" class="dropdown-header dropdown_empty">No entry found</div>
+</div>
 
-<select class="mdb-select" searchable="Search here..">
-  <option value="1" disabled selected>Choose your option</option>
-  <option value="2" data-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">
-    example
-    1</option>
-  <option value="3" data-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">
-    example
-    2</option>
-  <option value="4" data-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-3.jpg" class="rounded-circle">
-    example
-    1</option>
-</select>
 <!--Second search bar testing-->
 
 
