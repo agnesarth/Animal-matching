@@ -1,56 +1,77 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class= "text-center">
+<div class="small-jumbotron text-center ">
 
-    
-  </div>
 </div>
 
 <div class="container">
-      <input class="form-control" id="anythingSearch" type="text" placeholder="Type something to search list items">
-      <div id="myDIV">
-        <button class="btn btn-outline-primary btn-main-page">Rechercher</button>
-        <button class="btn btn-info">Another button</button>
-        <hr />
-        <p></p>
-      </div>
-    </div>
+<!-- Search bar disabled for now, need to implement post-MVP -->
+  <input class="form-control" id="anythingSearch" type="text" placeholder="Type something to search list items" disabled>
+  <div id="myDIV" class="my-3">
+    <button class="btn btn-outline-primary btn-main-page" disabled>Rechercher</button>
+    <button class="btn btn-info" disabled>Another button</button>
+    <hr />
+    <p></p>
+  </div>
+</div>
 
-<p id="notice"><%= notice %></p>
 
-<h1>Pets</h1>
+<div class="container">
 
 <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Animal</th>
-      <th>Chip number</th>
-      <th>Breed</th>
-      <th>Sex</th>
-      <th>Age</th>
-      <th>Foto</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
+<h3 class="m-5">Plus de choix</h3>
   <tbody>
-    <% Pet.all.each do |pet| %>
+    <%current_pet = Pet.find(current_user.default_pet_id)%>
+    <%pets_list = Pet.all.where.not(user_id: current_user.id).where(animal: current_pet.animal.downcase)%>
+    <% pets_list.each do |pet| %>
       <tr>
-        <td><%= pet.name %></td>
-        <td><%= pet.animal %></td>
-        <td><%= pet.chip_number %></td>
-        <td><%= pet.breed %></td>
+        <td class="mb-3 col-md-3 p-2">
+          <div id="likeBody<%= pet.id %>" class="card-body border">
+            <div id="demo" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner" >
+                <% unless pet.photos.empty? %>
+                  <div class="carousel-item active">
+                    <%= image_tag pet.photos.first, class: "card-img-top" %>
+                  </div>
+                  <% pet.photos[1..-1].each do |p| %>
+                    <div class="carousel-item">
+                      <%= image_tag p, class: "card-img-top" %>
+                    </div>
+                  <%end%>
+                <% else %>
+                  <div class="carousel-item active">
+                    <%= image_tag("paw.jpeg", {class: "card-img-top"} ) %>
+                  </div>
+                  <div class="carousel-item">
+                    <%= image_tag("paw.jpeg", {class: "card-img-top"} ) %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td><h3 class="card-title ml-3"><%= pet.name%></h3></td>
         <td><%= pet.sex %></td>
-        <td><%= pet.age %></td>
-        <td><%= pet.photos.count %></td>
-        <td><%= link_to 'Show', pet %></td>
-        <td><%= link_to 'Edit', edit_pet_path(pet) %></td>
-        <td><%= link_to 'Destroy', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= pet.age %>
+          <%if (pet.age.to_i > 1) %> an <%else%> ans <%end%>
+        </td>
+        <td><%= pet.breed %></td>
+        <td>
+          <div class="mt-3">
+            <% if pet.likes_as_liker.all.where(liked_id: current_pet.id).exists? %>
+              <% like = Like.all.where(liker_id: pet.id, liked_id: current_pet.id) %>
+              <%= link_to pet_like_path(pet.id,like.ids), method: :put, remote: true do %>
+                <i id="likeButton<%= pet.id %>" class="btn btn-outline-primary btn-sm fa fa-heart float-right"></i>
+              <% end %>
+            <% else %>
+              <%= link_to pet_likes_path(pet.id), method: :post, remote: true do %>
+                <i id="likeButton<%= pet.id %>" class="btn btn-outline-primary btn-sm fa fa-heart float-right"></i>
+              <% end %>
+            <% end %>
+          </div>
+        </td>
+
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Pet', new_pet_path %>
+</div>

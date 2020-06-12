@@ -1,82 +1,63 @@
 <div class="small-jumbotron text-center ">
-    <div class="container">
-    </div>
+
 </div>
 
-<% unless current_user.pets.present? %>
-<div class="container text-center">
-<h1>C'est parti!</h1>
-
-<h3>La recherche de ton amour en fourrure commence ici</h3>
-<%= link_to 'Ajoute ton animal single', new_pet_path, class: "btn btn-lg btn-outline-warning" %>
-</div>
-
-<div class="bubbling-heart">
-  <div><i class="fa fa-heart fa-5x"></i></div>
-  <div><i class="fa fa-heart fa-5x"></i></div>
-  <div><i class="fa fa-heart fa-5x"></i></div>
-  <div><i class="fa fa-heart fa-5x"></i></div>
-  <div><i class="fa fa-heart fa-5x"></i></div>
-  <div><i class="fa fa-heart fa-5x"></i></div>
-</div>
-<% else %>
-
-
-<div class="container text-center">
-<h1 class="m-5">Pets</h1>
-</div>
-
-<div class="row justify-content-around ml-3 mr-3">
-
-    <% @pets_list.each do |pet| %>
-
-      <div class="col-sm-3">
-          <div id="likeCard<%= pet.id %>" class="card bg-light mb-3" ">
-              <div id="likeHeader<%= pet.id %>" class="card-header">
-                  <h5 class="card-title float-left"><%= pet.name%></h5>
-              </div>
-              <div id="likeBody<%= pet.id %>" class="card-body">
-                  <div id="demo" class="carousel slide" data-ride="carousel">
-                      <div class="carousel-inner" >
-                          <% unless pet.photos.empty? %>
-                              <div class="carousel-item active">
-                                <%= image_tag pet.photos.first, class: "card-img-top" %>
-                              </div>
-                              <% pet.photos[1..-1].each do |p| %>
-                              <div class="carousel-item">
-                                <%= image_tag p, class: "card-img-top" %>
-                              </div>
-                              <% end %>
-                              <% else %>
-                              <div class="carousel-item active">
-                              <%= image_tag("paw.jpeg", {class: "card-img-top"} ) %>
-                              </div>
-                              <div class="carousel-item">
-                              <%= image_tag("paw.jpeg", {class: "card-img-top"} ) %>
-                              </div>
-                          <% end %>
-
-                      </div>
-                    </div>
-
-                      <!---------------------CARD BODY END--------------------->
-
-
-
-                <div class="mt-3"><h6 class="card-subtitle mt-2 float-left"><%= pet.age.to_i %>, <%= pet.sex %></h6><span>
-                  <% if pet.likes_as_liker.all.where(liked_id: @current_pet.id).exists? %>
-                  <% like = Like.all.where(liker_id: pet.id, liked_id: @current_pet.id) %>
-                  <%= link_to pet_like_path(pet.id,like.ids), method: :put, remote: true do %><i id="likeButton<%= pet.id %>" class="btn btn-outline-primary btn-sm fa fa-heart float-right"></i><% end %>
-                  <% else %>
-                  <%= link_to pet_likes_path(pet.id), method: :post, remote: true do %><i id="likeButton<%= pet.id %>" class="btn btn-outline-primary btn-sm fa fa-heart float-right"></i><% end %>
-                  <% end %>
-                </div>
-
-          </div>
-      </div>
-
+<div class="container">
+<!-- Search bar disabled for now, need to implement post-MVP -->
+  <input class="form-control" id="anythingSearch" type="text" placeholder="Type something to search list items" disabled>
+  <div id="myDIV" class="my-3">
+    <button class="btn btn-outline-primary btn-main-page" disabled>Rechercher</button>
+    <button class="btn btn-info" disabled>Another button</button>
+    <hr />
+    <p></p>
   </div>
-<% end %>
+</div>
 
 
-<% end %>
+<div class="container">
+<h3 class="m-5">Plus de choix</h3>
+  <% @pets_list.each do |pet| %>
+    <div class="col-sm-3">
+      <div id="likeCard<%= pet.id %>" class="card bg-light mb-3" ">
+        <div id="likeHeader<%= pet.id %>" class="card-header">
+          <h5 class="card-title float-left"><%= pet.name%></h5>
+        </div>
+        <div id="likeBody<%= pet.id %>" class="card-body">
+          <div id="demo" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" >
+              <% unless pet.photos.empty? %>
+                <div class="carousel-item active">
+                  <%= image_tag pet.photos.first, class: "card-img-top" %>
+                </div>
+                <% pet.photos[1..-1].each do |p| %>
+                  <div class="carousel-item">
+                    <%= image_tag p, class: "card-img-top" %>
+                  </div>
+                <%end%>
+              <% else %>
+                <div class="carousel-item active">
+                  <%= image_tag("paw.jpeg", {class: "card-img-top"} ) %>
+                </div>
+                <div class="carousel-item">
+                  <%= image_tag("paw.jpeg", {class: "card-img-top"} ) %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+                  <!---------------------CARD BODY END--------------------->
+        <div class="mt-3"><h6 class="card-subtitle mt-2 float-left"><%= pet.age.to_i %>, <%= pet.sex %></h6><span>
+          <% if pet.likes_as_liker.all.where(liked_id: @current_pet.id).exists? %>
+            <% like = Like.all.where(liker_id: pet.id, liked_id: @current_pet.id) %>
+            <%= link_to pet_like_path(pet.id,like.ids), method: :put, remote: true do %><i id="likeButton<%= pet.id %>" class="btn btn-outline-primary btn-sm fa fa-heart float-right"></i><% end %>
+          <% else %>
+            <%= link_to pet_likes_path(pet.id), method: :post, remote: true do %><i id="likeButton<%= pet.id %>" class="btn btn-outline-primary btn-sm fa fa-heart float-right"></i><% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
