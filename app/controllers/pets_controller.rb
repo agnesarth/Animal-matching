@@ -41,7 +41,7 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     respond_to do |format|
       if @pet.update(pet_params)
-        format.html { redirect_to @pet, notice: 'Tes modifications ont bien été sauveguardées, miao!'}
+        format.html { redirect_to @pet, notice: 'Le profil de l'animal a bien été édité.'}
         format.json { render :show, status: :ok, location: @pet }
       else
         format.html { render :edit }
