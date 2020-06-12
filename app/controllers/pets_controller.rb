@@ -4,7 +4,7 @@ class PetsController < ApplicationController
 
   def index
     if current_user.default_pet_id.nil?
-      flash[:error] = "Vous devez d'abord enregistrer un animal!"
+      flash[:error] = "Tu dois d'abord enregistrer un animal !"
       redirect_to root_path
     else
       @current_pet = Pet.find(current_user.default_pet_id)
@@ -26,7 +26,7 @@ class PetsController < ApplicationController
     respond_to do |format|
       if @pet.save!
         user_default_pet(current_user, @pet)
-        flash[:success] = 'Animal bien ajouté!'
+        flash[:success] = "Le profil de l'animal a bien été créé." 
         format.html { redirect_to pets_path }
         format.json { }
       end
@@ -59,7 +59,7 @@ class PetsController < ApplicationController
     @pet.destroy
     if current_user.pets.empty?
       current_user.update(default_pet_id: nil)
-      flash[:alert] = "Pas des pets, miao! Tu dois ajouter un pet"
+      flash[:alert] = "Tu n'as plus aucun profil d'animaux."
       redirect_to users_path
     else
       redirect_to pets_url
