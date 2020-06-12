@@ -18,9 +18,9 @@
 <h3 class="m-5">Plus de choix</h3>
   <tbody>
     <% @pets_list.each do |pet| %>
-      <tr>
-        <td class="mb-3 col-md-3 p-2">
-          <div id="likeBody<%= pet.id %>" class="card-body border">
+      <tr class="border-bottom border-success">
+        <td class="col-md-3 p-2">
+          <div id="likeBody<%= pet.id %>" class="card-body">
             <div id="demo" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner" >
                 <% unless pet.photos.empty? %>
