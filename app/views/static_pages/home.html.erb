@@ -1,4 +1,5 @@
 <%if user_signed_in? && current_user.default_pet_id.nil? %>
+
   <%=render 'users/show'%>
 <% elsif user_signed_in?%>
   <%=render 'pets/index'%>

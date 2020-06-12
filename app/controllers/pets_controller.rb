@@ -1,6 +1,12 @@
 class PetsController < ApplicationController
-  before_action :set_pet, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:create,:edit,:destroy, :delete_photo]
+  before_action :authenticate_user!, only: [:index, :create,:edit,:destroy, :delete_photo]
+
+
+  def index
+    @current_pet = Pet.find(current_user.default_pet_id)
+    @pets_list = Pet.all.where.not(user_id: current_user.id, sex: @current_pet.sex).where(animal: @current_pet.animal.downcase)
+  end
+
 
   def new
     @pet = Pet.new
@@ -15,19 +21,9 @@ class PetsController < ApplicationController
         user_default_pet(current_user, @pet)
         flash[:success] = 'Animal bien ajouté!'
         format.html { redirect_to pets_path }
-        format.json { render :show, status: :created, location: @pet }
-      else
-        format.html { render :new }
-        format.json { render json: @pet.errors, status: :unprocessable_entity }
+        format.json { }
       end
     end
-  end
-
-  def show
-  end
-
-  def index
-    @pets = Pet.all
   end
 
   def edit
@@ -55,7 +51,7 @@ class PetsController < ApplicationController
   end
 
   def user_default_pet(current_user, pet)
-    if current_user.default_pet_id.nil? 
+    if current_user.default_pet_id.nil?
       current_user.update(default_pet_id: pet.id)
     end
   end
@@ -68,11 +64,7 @@ class PetsController < ApplicationController
 
   private
 
-    def set_pet
-      @pet = Pet.find(params[:id])
-    end
-
     def pet_params
-      params.require(:pet).permit(:name, :animal, :chip_number, :breed, :sex, :age, :user_id, photos: [])
+      params.require(:pet).permit(:name, :animal, :chip_number, :breed, :sex, :age, :user, photos: [])
     end
 end

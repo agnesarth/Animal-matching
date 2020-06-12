@@ -65,9 +65,10 @@
 
  // Timeline
  @import "timeline";
- 
- // CSS changes
 
+ // CSS changes
+@import "custom";
+@import "petsindex";
  // All site
 
 html {
@@ -161,7 +162,7 @@ body {
   max-height: auto;
   background-color: $gray-800;
 }
-  
+
 .text-dog-box {
   float: left;
   width: 50%;
@@ -268,7 +269,7 @@ body {
 
 .container-devise {
   background-image: linear-gradient(
-    rgba(0, 0, 0, 0.45), 
+    rgba(0, 0, 0, 0.45),
     rgba(0, 0, 0, 0.45)
   ),url(asset_path( 'background_signup.jpeg' ));
   background-repeat: no-repeat;

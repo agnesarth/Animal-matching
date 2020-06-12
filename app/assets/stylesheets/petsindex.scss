@@ -1,0 +1,74 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// CSS changes
+
+.small-jumbotron {
+ background-image: url(https://images.unsplash.com/photo-1558929996-da64ba858215?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80);
+ background-position: center center;
+ background-repeat: no-repeat;
+ background-size: cover;
+ min-height: 35vh;
+ position: relative;
+ align-items: center;
+ margin-bottom: 4em;
+}
+
+ .bubbling-heart {
+	 color: #FCE205;
+	 text-shadow: 0 0 40px #FFFFF0;
+}
+ .bubbling-heart div {
+	 position: fixed;
+	 top: 50%;
+	 left: 50%;
+	 transform: translate(-50%,25vh) scale(0);
+	 opacity: 0;
+	 animation: bubbleUp 2s infinite;
+}
+ .bubbling-heart div .fa {
+	 transform: translateX(12.5vw) rotate(25deg);
+	 animation: oscillate 4s ease-in-out infinite;
+}
+
+ @keyframes bubbleUp {
+	 50% {
+		 opacity: 1;
+	}
+	 100% {
+		 transform: translate(-50%,-25vh) scale(2);
+	}
+}
+ @keyframes oscillate {
+	 50% {
+		 transform: translateX(-12.5vw) rotate(-25deg);
+	}
+}
+
+.wiggle {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.bg-custom {
+  background-image: linear-gradient(#A40606, #D98324);
+}
+
+.scale-down {
+  transform: scaleY(0.9);
+  transform-origin: 0 0;
+}
