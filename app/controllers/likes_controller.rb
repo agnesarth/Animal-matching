@@ -7,8 +7,6 @@ class LikesController < ApplicationController
     @my_matches = []
     Like.where(match: true,liker_id: current_pet.id).each do |l| @my_matches << Pet.find(l.liked_id) end
     Like.where(match: true,liked_id: current_pet.id).each do |l| @my_matches << Pet.find(l.liker_id) end
-    p @my_matches
-    p @my_matches.empty?
   end
 
   def show
@@ -26,15 +24,15 @@ class LikesController < ApplicationController
   def create
     @pet = Pet.find(params['pet_id'])
     @like = Like.new(liker_id: current_pet.id, liked_id: @pet.id)
-    if @like.save!
-      if already_liked(current_pet, @pet)
-        matches_back(current_pet, @pet)
-      end      
-      respond_to do |format|
-        format.html { redirect_to pets_path, notice: "J'adore!" }
+
+
+    respond_to do |format|
+      if @like.save!
+        format.html { redirect_to pets_path, notice: 'J\'adore!' }
         format.js { }
       end
     end
+
   end
 
   def update

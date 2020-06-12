@@ -1,14 +1,16 @@
 class PetsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create,:edit,:destroy, :delete_photo]
 
-
   def index
     if current_user.default_pet_id.nil?
-      flash[:error] = "Tu dois d'abord enregistrer un animal !"
+      p current_user.default_pet_id.nil?
+      flash[:error] = "Vous devez d'abord enregistrer un animal!"
       redirect_to root_path
     else
       @current_pet = Pet.find(current_user.default_pet_id)
       @pets_list = Pet.all.where.not(user_id: current_user.id).where(animal: @current_pet.animal.downcase)
+      #@pets_list.each.select do |p| p.likes_as_liked.where.not(liker_id: @current_pet.id) end
+      #return @pets_list
     end
   end
 
@@ -19,6 +21,7 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(pet_params)
     @pet.user = current_user
+    current_user.pets << @pet
     if current_user.default_pet_id.nil?
       current_user.update(default_pet_id: @pet.id)
     end
@@ -26,7 +29,7 @@ class PetsController < ApplicationController
     respond_to do |format|
       if @pet.save!
         user_default_pet(current_user, @pet)
-        flash[:success] = "Le profil de l'animal a bien été créé." 
+        flash[:success] = "Le profil de l'animal a bien été créé."
         format.html { redirect_to pets_path }
         format.json { }
       end

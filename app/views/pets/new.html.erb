@@ -5,7 +5,7 @@
 
     <div class="text-center my-2">
       <%= form_for @pet, :url => pets_path, multipart: true do |f| %>
-        
+
         <h6 class="card-text mt-2">Nom :</h6>
         <div class="input-group mb-4">
           <%= f.text_field :name, autofocus: true, class:"form-control" %>
@@ -17,7 +17,7 @@
           <%= f.radio_button :animal, 'Chat', class:"radio-button" %><span>Chat</span>
         </div>
 
-        <h6 class="card-text mt-2">Numéro de puce :</h6> 
+        <h6 class="card-text mt-2">Numéro de puce :</h6>
         <div class="input-group mb-4">
           <%= f.text_field :chip_number, autofocus: true, class:"form-control" %>
         </div>
