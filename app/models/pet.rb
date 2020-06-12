@@ -8,6 +8,8 @@ class Pet < ApplicationRecord
   has_many_attached :photos, dependent: :destroy
   has_many :tag_pets, dependent: :destroy
   has_many :tags, through: :tag_pets
+  validates :animal, presence: true
+  
 
   BREED=['Terrier','Dalmatien','Manx','Birman','Boxer','Berger Allemand','Labrador','Bouledogue','Chihuahua','Beagle','Setter','Cocker','Husky','Teckel','Persan','Siamois','Somali','Sibérien','Ragdoll'].sort
 
