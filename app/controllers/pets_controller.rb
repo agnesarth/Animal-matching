@@ -2,21 +2,13 @@ class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:create,:edit,:destroy, :delete_photo]
 
-
-  def index
-    @pets = Pet.all
-  end
-
-
   def new
     @pet = Pet.new
   end
 
-
   def create
     @pet = Pet.new(pet_params)
     @pet.user = current_user
-    # user_default_pet() defined in application_controller as first pet created
     user_default_pet(current_user, @pet)
 
     respond_to do |format|
@@ -31,23 +23,15 @@ class PetsController < ApplicationController
     end
   end
 
-  def user_default_pet(current_user, pet)
-    if current_user.default_pet_id.nil?
-      current_user.update(default_pet_id: pet.id)
-    end
+  def show
   end
 
-  def show
+  def index
+    @pets = Pet.all
   end
 
   def edit
     @pet = Pet.find(params[:id])
-  end
-
-  def delete_photo
-    @photo = ActiveStorage::Attachment.find(params[:id])
-    @photo.purge
-    redirect_back(fallback_location: request.referrer)
   end
 
   def update
@@ -68,6 +52,18 @@ class PetsController < ApplicationController
       format.html { redirect_to pets_url, notice: "Profil de #{@pet.name} supprimé avec succès." }
       format.json { head :no_content }
     end
+  end
+
+  def user_default_pet(current_user, pet)
+    if current_user.default_pet_id.nil?
+      current_user.update(default_pet_id: pet.id)
+    end
+  end
+
+  def delete_photo
+    @photo = ActiveStorage::Attachment.find(params[:id])
+    @photo.purge
+    redirect_back(fallback_location: request.referrer)
   end
 
   private

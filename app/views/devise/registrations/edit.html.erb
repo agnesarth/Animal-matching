@@ -1,59 +1,61 @@
-<div class="container mt-5 mb-4 text-center">
-  <div class="my-5 alert col-md-6 offset-md-3 shadow p-3 mb-5 bg-secondary rounded">
-    <%= render "devise/shared/svg" %>
-    <h3 class="mt-3 mb-3">Mettre à jour votre compte</h3>
+<div class="container-devise">
+  <div class="container text-center">
+    <div class="mt-5 col-md-6 offset-md-3 shadow p-3 mb-5 rounded bg-devise">
+      <i class="fa fa-paw mt-2 fa-5x"></i>
+      <h3 class="mt-3 mb-3">Mettre à jour votre compte</h3>
 
-    <div class="text-center my-2">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
-        <div class="input-group mb-4">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fa fa-user"></i></span>
+      <div class="text-center my-2">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="input-group mb-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fa fa-user"></i></span>
+            </div>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email", class:"form-control" %>
           </div>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email", class:"form-control" %>
-        </div>
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div>En attente de confirmation: <%= resource.unconfirmed_email %></div>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>En attente de confirmation: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+          <span>Pour conserver votre mot de passe actuel, ne pas remplir les cases:</span>
+
+          <div class="input-group mt-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fa fa-key"></i></span>
+            </div>
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "nouveau mot de passe", class:"form-control" %>
+          </div>
+
+          <div class="input-group my-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fa fa-lock"></i></span>
+            </div>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "confirmer le mot de passe", class:"form-control" %>
+          </div>
+
+          <span>Pour confirmer les modifications, entrez votre mot de passe actuel</span>
+
+          <div class="input-group mb-3 mt-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fa fa-unlock"></i></span>
+            </div>
+          <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "mot de passe actuel", class:"form-control" %>
+          </div>
+
+          <div class="actions my-3">
+            <%= f.submit "Mise a jour", class:"btn btn-primary" %>
+          </div>
         <% end %>
+      </div>
+    </div>
 
-        <span>Pour conserver votre mot de passe actuel, ne pas remplir les cases:</span>
-
-        <div class="input-group mt-2">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fa fa-key"></i></span>
-          </div>
-        <%= f.password_field :password, autocomplete: "new-password", placeholder: "nouveau mot de passe", class:"form-control" %>
-        </div>
-
-        <div class="input-group my-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fa fa-lock"></i></span>
-          </div>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "confirmer le mot de passe", class:"form-control" %>
-        </div>
-
-        <span>Pour confirmer les modifications, entrez votre mot de passe actuel</span>
-
-        <div class="input-group mb-3 mt-2">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fa fa-unlock"></i></span>
-          </div>
-        <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "mot de passe actuel", class:"form-control" %>
-        </div>
-
-        <div class="actions my-3">
-          <%= f.submit "Mise a jour", class:"btn btn-primary" %>
-        </div>
-      <% end %>
+    <div class="my-5 col-md-6 offset-md-3 shadow p-3 bg-white rounded">
+      <h5 class="mb-4">Vous partez déjà?</h5>
+      <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Etes-vous certain(e)?" }, method: :delete , class:"btn btn-primary" %>
     </div>
   </div>
 
-  <div class="my-5 col-md-6 offset-md-3 shadow p-3 bg-white rounded">
-    <h5 class="mb-4">Vous partez déjà?</h5>
-    <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Etes-vous certain(e)?" }, method: :delete , class:"btn btn-primary" %>
+  <div class="container font-weight-bold">
+    <%= link_to "Retour", :back , class:"button-back" %>
   </div>
-</div>
-
-<div class="container font-weight-bold">
-  <%= link_to " < Retour", :back %>
 </div>

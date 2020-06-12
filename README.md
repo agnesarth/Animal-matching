@@ -29,6 +29,9 @@
   <dd>Like othe pets</dd>
   <dd>Like othe pets</dd>
   <dd>Chat with other users when there's a match</dd>
+  
+   <dt>Premium users can:</dt>
+   <dd>Coming soon...</dd>
 </dl>
 
 ## Instructions

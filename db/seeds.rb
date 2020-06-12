@@ -53,6 +53,24 @@ end
 puts "#{Pet.all.size} animaux crées"
 
 # Like seed
+40.times do
+  my_like = Like.new(liker: Pet.all.sample)
+  if my_like.liker.animal == "chat"
+   my_like.liked = Pet.where(animal: "chat").sample
+  elsif my_like.liker.animal == "chien"
+    my_like.liked = Pet.where(animal: "chien").sample
+  end
+  back_like = my_like.liker.likes_as_liked.where(liker_id: my_like.liked)
+  if back_like.exists?
+    my_like.match = true
+    back_like.update(match: true)
+    my_like.save
+  else
+    my_like.save
+  end
+end
+
+puts "#{Like.all.size} likes crées"
 
 #Tag seed
 10.times do
@@ -61,12 +79,12 @@ end
 
 puts "#{Tag.all.size} tags crées"
 
-# Tag_who
+# Tag_pet
 30.times do
-  join_tag = TagWho.create(
+  join_tag = TagPet.create(
     pet: Pet.all.sample,
     tag: Tag.all.sample,
     )
 end
 
-puts "#{TagWho.all.size} tags associés"
+puts "#{TagPet.all.size} tags associés"

@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/whispaw', to: 'static_pages#about'
 
 end

@@ -1,5 +1,4 @@
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
- 
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="https://images.unsplash.com/photo-1558929996-da64ba858215?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80" class="d-block w-100" alt="">
@@ -14,53 +13,52 @@
     <div class="item">
       <div class="content">
         <div class= "text-center carousel-caption">
-        <h1 class="title-jumbotron">Matchez. Rencontrez. Jouez.</h1>
-        <% unless user_signed_in? %>
-          <%= link_to "Se connecter", new_user_session_path, class: "btn btn-outline-primary btn-lg btn-main-page" %>
-          <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-primary btn-lg" %>
-        <% else %>
-          <%= link_to "Se deconnecter", destroy_user_session_path, method: :delete, class: "btn btn-outline-primary btn-lg btn-main-page" %>
-        <% end %>
+          <h1 class="title-jumbotron">Matchez. Rencontrez. Jouez.</h1>
+          <% unless user_signed_in? %>
+            <%= link_to "Se connecter", new_user_session_path, class: "btn btn-outline-primary btn-lg btn-main-page" %>
+            <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+          <% else %>
+            <%= link_to "Se deconnecter", destroy_user_session_path, method: :delete, class: "btn btn-outline-primary btn-lg btn-main-page" %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-<div class="container container-dog">
-  <hr >
-  <div class='text-dog-box'>
-    <span class='badge badge-primary'>Tommy</span>
-    <span class='badge badge-secondary'>Canidé foufou</span>
-    <div class='my-3'>
-      <span class='h1'>Copain !</span>
-    </div>
-    <p class='lead'>J'aime beaucoup beaucoup jouer avec toi ! </p>
-    <p class='lead'>On passe de si bons moments ensemble ! Imagine comment ce serait si on était encore plus à jouer !</p>
-    <p class='lead mb-0'>Ce serait incroy... Oh ! Baballe !</p>
-  </div>
-  <div class='img-dog-box'>
-    <img alt="Friendly_dog" class="rounded dog-img-home" src="https://images.unsplash.com/photo-1566468161591-6ed35cb5565d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" />
-  </div>
+<div class="container text-center my-4 pt-4 rounded">
+  <h1 class="py-3"><span class="alert alert-primary rounded"> <i class="fa fa-paw"></i> Whispaw</span> le réseau social des animaux de compagnie</h1>
+  <h2 class="pb-3"><blockquote>Une app qui a du chien, ils sont félins pour l'autre.</blockquote></h2>
 </div>
-
-
-
 <div class="container">
-  
-  <div class='img-cat-box'>
-    <img alt="Cat_the_best" class="rounded cat-img-home" src="https://images.unsplash.com/flagged/photo-1557427705-88c1e5a11a52?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" />
-  </div>
-  <div class='text-cat-box'>
-    <span class='badge badge-primary'>Cacahuète</span>
-    <span class='badge badge-secondary'>Félin suprême</span>
-    <div class='my-3'>
-      <span class='h1'>Eh humain !</span>
+  <div class="mt-5 row d-flex justify-content-center">
+    <div class="col-md-6">
+      <span class='badge badge-primary'>Tommy</span>
+      <span class='badge badge-secondary'>Canidé foufou</span>
+      <div class='my-3'>
+        <span class='h1'>Copain !</span>
+      </div>
+      <p class='lead'>J'aime beaucoup beaucoup jouer avec toi ! </p>
+      <p class='lead'>On passe de si bons moments ensemble ! Imagine comment ce serait si on était encore plus à jouer !</p>
+      <p class='lead'>Ce serait incroy... Oh ! Baballe !</p>
     </div>
-    <p class='lead'>T'es bien gentil, et j'apprécie la nourriture que tu m'apportes en offrande.</p>
-    <p class='lead'>Mais parfois tu ne comprends vraiment rien... Et j'apprécierais de pouvoir converser avec des « ami »maux qui me comprennent.</p>
-    <p class='lead mb-0'>Alors inscris-moi sur Whispaw. Je t'offrirai un miaulement comme présent, en gage de ma gratitude.</p>
+    <div class="col-md-6">
+      <img alt="Friendly_dog" class="rounded dog-img-home" src="https://images.unsplash.com/photo-1566468161591-6ed35cb5565d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" />
+    </div>
   </div>
 
+  <div class="my-5 row d-flex justify-content-center">  
+    <div class='col-md-6'>
+      <img alt="Cat_the_best" class="rounded cat-img-home" src="https://images.unsplash.com/flagged/photo-1557427705-88c1e5a11a52?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" />
+    </div>
+    <div class='col-md-6'>
+      <span class='badge badge-primary'>Cacahuète</span>
+      <span class='badge badge-secondary'>Félin suprême</span>
+      <div class='my-3'>
+        <span class='h1'>Eh humain !</span>
+      </div>
+      <p class='lead'>T'es bien gentil, et j'apprécie la nourriture que tu m'apportes en offrande.</p>
+      <p class='lead'>Mais parfois tu ne comprends vraiment rien... Et j'apprécierais de pouvoir converser avec des « ami »maux qui me comprennent.</p>
+      <p class='lead'>Alors inscris-moi sur Whispaw. Je t'offrirai un miaulement comme présent, en gage de ma gratitude.</p>
+    </div>
+  </div>
 </div>
