@@ -238,6 +238,17 @@ body {
   border-color: #D1E9F0;
 }
 
+.alert-success {
+  background-color: #E2F3E2;
+  color: #389438;
+  border: 1px solid;
+  border-color: #F0F9F0;
+}
+
+.alert-success .close {
+  color: #389438;
+}
+
  // Navbar
 
 .bg-primary {
