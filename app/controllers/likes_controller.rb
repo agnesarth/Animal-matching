@@ -18,15 +18,12 @@ class LikesController < ApplicationController
   end
 
   def create
-    #@pet = Pet.find(params['pet_id'])
-    @like = Like.new(liker_id: current_pet.id, liked_id: params['pet_id'])
-    p current_pet.id
-    p params['pet_id']
-    p "*************"
+    @pet = Pet.find(params['pet_id'])
+    @like = Like.new(liker_id: current_pet.id, liked_id: @pet.id)
 
     if @like.save!
       flash[:notice] = "J\'adore!"
-      redirect_back fallback_location: request.referrer
+      redirect_to pets_path
     end
 
   end
@@ -35,7 +32,7 @@ class LikesController < ApplicationController
     @pet = Pet.find(params['pet_id'])
     @like = Like.find(params['id'])
     @like.update(match: true)
-
+    flash.now[:notice] = "C\'est un match!"
     respond_to do |format|
       format.html { redirect_back fallback_location: request.referrer, notice: 'C\'est un match!'}
       format.json { }
@@ -54,7 +51,7 @@ class LikesController < ApplicationController
   end
 
   def current_pet
-    @pet = Pet.find(current_user.default_pet_id)
+    current_pet = Pet.find(current_user.default_pet_id)
   end
 
   def already_liked(current_pet, other_pet)
