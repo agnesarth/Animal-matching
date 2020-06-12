@@ -19,8 +19,13 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Animaux</a>
           <div class="dropdown-menu">
-            <%= link_to "Mes animaux", pets_path, {:class => "dropdown-item"} %>
-            <%= link_to "Mes matchs", pets_path, {:class => "dropdown-item"} %>
+            <% if user_signed_in? && !current_user.default_pet_id.nil? %>
+            <%= link_to "Mes likes", pet_likes_path(current_user.default_pet_id), {:class => "dropdown-item"} %>
+            <%= link_to "Mes matches", pet_likes_path(current_user.default_pet_id), {:class => "dropdown-item"} %>
+            <% else %>
+            <%= link_to "Mes likes", root_path, {:class => "dropdown-item"} %>
+            <%= link_to "Mes matches", root_path, {:class => "dropdown-item"} %>
+            <% end %>
           </div>
         </li>
         <li class="nav-item">

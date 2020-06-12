@@ -19,6 +19,9 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(pet_params)
     @pet.user = current_user
+    if current_user.default_pet_id.nil?
+      current_user.update(default_pet_id: @pet.id)
+    end
 
     respond_to do |format|
       if @pet.save!
@@ -28,6 +31,10 @@ class PetsController < ApplicationController
         format.json { }
       end
     end
+  end
+
+  def show
+    @pet = Pet.find(params[:id])
   end
 
   def edit
@@ -47,11 +54,16 @@ class PetsController < ApplicationController
   end
 
   def destroy
+    @pet = Pet.find(params[:id])
     @pet.destroy
-    respond_to do |format|
-      format.html { redirect_to pets_url, notice: "Profil de #{@pet.name} supprimé avec succès." }
-      format.json { head :no_content }
+    if current_user.pets.empty?
+      current_user.update(default_pet_id: nil)
+      flash[:alert] = "Pas des pets, miao! Tu dois ajouter un pet"
+      redirect_to users_path
+    else
+      redirect_to pets_url
     end
+
   end
 
   def user_default_pet(current_user, pet)
