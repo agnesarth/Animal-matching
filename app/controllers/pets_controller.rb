@@ -8,7 +8,7 @@ class PetsController < ApplicationController
       redirect_to root_path
     else
       @current_pet = Pet.find(current_user.default_pet_id)
-      @pets_list = Pet.all.where.not(user_id: current_user.id, sex: @current_pet.sex).where(animal: @current_pet.animal.downcase)
+      @pets_list = Pet.all.where.not(user_id: current_user.id).where(animal: @current_pet.animal.downcase)
     end
   end
 
@@ -37,7 +37,7 @@ class PetsController < ApplicationController
   def update
     respond_to do |format|
       if @pet.update(pet_params)
-        format.html { redirect_to @pet, notice: 'Tes modifications ont bien été sauveguardées, miao!'}
+        format.html { redirect_to @pet, notice: 'Tes modifications ont bien été sauvegardées, miao!'}
         format.json { render :show, status: :ok, location: @pet }
       else
         format.html { render :edit }
