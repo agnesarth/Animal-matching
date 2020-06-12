@@ -1,23 +1,7 @@
-<% if user_signed_in? && !current_user.pets.present? %>
-<div class="small-jumbotron text-center ">
-    <div class="container">
-    </div>
-</div>
-<div class="container text-center">
-<h1>C'est parti!</h1>
-
-<h3>La recherche de ton amour en fourrure commence ici</h3>
-<%= link_to 'Ajoute ton animal single', new_pet_path, class: "btn btn-lg btn-outline-warning" %>
-</div>
-
-<div class="bubbling-heart">
-  <div><i class="fa fa-heart fa-5x"></i></div>
-  <div><i class="fa fa-heart fa-5x"></i></div>
-  <div><i class="fa fa-heart fa-5x"></i></div>
-  <div><i class="fa fa-heart fa-5x"></i></div>
-  <div><i class="fa fa-heart fa-5x"></i></div>
-  <div><i class="fa fa-heart fa-5x"></i></div>
-</div>
-<% else %>
-  <%= render 'signed_out'%>
-<% end %>
+<%if user_signed_in? && current_user.default_pet_id.nil? %>
+  <%=render 'users/show'%>
+<% elsif user_signed_in?%>
+  <%=render 'pets/index'%>
+<%else%>
+  <%=render 'signed_out'%>
+<%end%>

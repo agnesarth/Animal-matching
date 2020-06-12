@@ -13,14 +13,12 @@ class PetsController < ApplicationController
   end
 
   def create
-    @pet = Pet.create(user: current_user)
-    @pet.update(pet_params)
-    if current_user.default_pet_id.nil?
-      current_user.update(default_pet_id: @pet.id)
-    end
+    @pet = Pet.new(pet_params)
+    @pet.user = current_user
 
     respond_to do |format|
       if @pet.save!
+        user_default_pet(current_user, @pet)
         flash[:success] = 'Animal bien ajouté!'
         format.html { redirect_to pets_path }
         format.json { }

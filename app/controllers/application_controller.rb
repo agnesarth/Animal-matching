@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   include PetsHelper
 
   def after_sign_in_path_for(resource)
-    root_path
+    pets_path
   end
 
 end
