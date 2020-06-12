@@ -1,29 +1,5 @@
-<div class="small-jumbotron text-center ">
-    <div class="container">
-    </div>
-</div>
-
-<% unless current_user.pets.present? %>
 <div class="container text-center">
-<h1>C'est parti!</h1>
-
-<h3>La recherche de ton amour en fourrure commence ici</h3>
-<%= link_to 'Ajoute ton animal single', new_pet_path, class: "btn btn-lg btn-outline-warning" %>
-</div>
-
-<div class="bubbling-heart">
-  <div><i class="fa fa-heart fa-5x"></i></div>
-  <div><i class="fa fa-heart fa-5x"></i></div>
-  <div><i class="fa fa-heart fa-5x"></i></div>
-  <div><i class="fa fa-heart fa-5x"></i></div>
-  <div><i class="fa fa-heart fa-5x"></i></div>
-  <div><i class="fa fa-heart fa-5x"></i></div>
-</div>
-<% else %>
-
-
-<div class="container text-center">
-<h1 class="m-5">Pets</h1>
+<h1 class="m-5">Amimaux</h1>
 </div>
 
 <div class="row justify-content-around ml-3 mr-3">
@@ -77,6 +53,4 @@
 
   </div>
 <% end %>
-
-
-<% end %>
+  </div>
