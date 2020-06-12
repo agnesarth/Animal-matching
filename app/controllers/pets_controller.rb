@@ -3,10 +3,14 @@ class PetsController < ApplicationController
 
 
   def index
-    @current_pet = Pet.find(current_user.default_pet_id)
-    @pets_list = Pet.all.where.not(user_id: current_user.id, sex: @current_pet.sex).where(animal: @current_pet.animal.downcase)
+    if current_user.default_pet_id.nil?
+      flash[:error] = "Vous devez d'abord enregistrer un animal!"
+      redirect_to root_path
+    else
+      @current_pet = Pet.find(current_user.default_pet_id)
+      @pets_list = Pet.all.where.not(user_id: current_user.id).where(animal: @current_pet.animal.downcase)
+    end
   end
-
 
   def new
     @pet = Pet.new
