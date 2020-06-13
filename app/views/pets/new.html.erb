@@ -13,13 +13,8 @@
 
         <h6 class="card-text mt-2">Espèce :</h6>
         <div class="input-group mb-4 input-checkbox">
-          <%= f.radio_button :animal, 'chien', class:"radio-button" %><span>Chien</span>
-          <%= f.radio_button :animal, 'chat', class:"radio-button" %><span>Chat</span>
-        </div>
-
-        <h6 class="card-text mt-2">Numéro de puce :</h6>
-        <div class="input-group mb-4">
-          <%= f.text_field :chip_number, autofocus: true, class:"form-control" %>
+          <%= f.radio_button :animal, 'Chien', class:"radio-button" %><span>Chien</span>
+          <%= f.radio_button :animal, 'Chat', class:"radio-button" %><span>Chat</span>
         </div>
 
         <h6 class="card-text mt-2">Âge :</h6>
@@ -31,11 +26,6 @@
         <div class="input-group mb-4 input-checkbox">
           <%= f.radio_button :sex, 'Femelle', class:"radio-button" %><span>Femelle</span>
           <%= f.radio_button :sex, 'Mâle', class:"radio-button" %><span>Mâle</span>
-        </div>
-
-        <h6 class="card-text mt-2">Race :</h6>
-        <div class="input-group mb-4">
-          <%= f.select :breed, options_for_select(Pet::BREED), include_blank: true, autofocus: true, class:"form-control" %>
         </div>
 
         <h6 class="card-text mt-2">En quelques mots :</h6>

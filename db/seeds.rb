@@ -34,8 +34,7 @@ puts "#{User.all.size} humains crées"
 20.times do
   my_pet = Pet.new(
     name: Faker::Artist.name,
-    animal: ["chat", "chien"].sample,
-    chip_number: Faker::Alphanumeric.alphanumeric(number: 5),
+    animal: ["Chat", "Chien"].sample,
     sex: Faker::Creature::Cat.gender,
     user_id: User.all.sample.id,
     age: rand(0..17),
