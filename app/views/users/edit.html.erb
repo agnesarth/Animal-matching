@@ -12,7 +12,7 @@
           <%= f.text_field :last_name, autocomplete: :last_name %>
         </div><br />
         <div class="field">
-          <%= f.label "Animal de compagnie préféré" %> <br />
+          <%= f.label "Animal favoris" %> <br />
           <%= f.select :default_pet_id, Pet.where(user_id: current_user.id).collect { |p| [ p.name, p.id ] }, include_blank: true %>
         </div><br />
         <div class="actions">

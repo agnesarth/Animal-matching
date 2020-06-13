@@ -25,12 +25,15 @@ class PetsController < ApplicationController
     if current_user.default_pet_id.nil?
       current_user.update(default_pet_id: @pet.id)
     end
-
     respond_to do |format|
       if @pet.save!
         user_default_pet(current_user, @pet)
         flash[:success] = "Le profil de l'animal a bien été créé."
         format.html { redirect_to pets_path }
+        format.json { }
+      else
+        flash[:error] = "Le profil de l'animal n'a pas été créé."
+        format.html { render :new }
         format.json { }
       end
     end
@@ -67,7 +70,6 @@ class PetsController < ApplicationController
     else
       redirect_to pets_url
     end
-
   end
 
   def user_default_pet(current_user, pet)
@@ -83,7 +85,6 @@ class PetsController < ApplicationController
   end
 
   private
-
     def pet_params
       params.require(:pet).permit(:name, :animal, :chip_number, :breed, :sex, :age, :user, :description, photos: [])
     end

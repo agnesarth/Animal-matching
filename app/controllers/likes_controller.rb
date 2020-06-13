@@ -24,22 +24,18 @@ class LikesController < ApplicationController
   def create
     @pet = Pet.find(params['pet_id'])
     @like = Like.new(liker_id: current_pet.id, liked_id: @pet.id)
-
-
     respond_to do |format|
       if @like.save!
         format.html { redirect_to pets_path, notice: 'J\'adore!' }
         format.js { }
       end
     end
-
   end
 
   def update
     @pet = Pet.find(params['pet_id'])
     @like = Like.find(params['id'])
     @like.update(match: true)
-
     respond_to do |format|
       format.html { redirect_back fallback_location: request.referrer, notice: "C'est un match!"}
       format.js { }
@@ -74,5 +70,4 @@ class LikesController < ApplicationController
     unmatched = iam_liked_ids.where(liker: other_pet)
     unmatched.match = false
   end
-
 end

@@ -1,140 +1,106 @@
 <div class="small-jumbotron text-center "></div>
-
-<div class="container text-center">
-<h1 class="m-5">Mes Likes</h1>
-</div>
-
-<% if @my_likes.empty? %>
-
-<div class="text-center">
-<h6>Dépèche-toi, <a href="/pets">vas liker les animaux plus cool<i class="fa fa-paw"></i></a> du web</h6>
-</div>
-
-<% else %>
-
-<div class="row justify-content-around ml-3 mr-3">
-
-    <% @my_likes.each do |pet| %>
-
-      <div class="col-sm-3">
+  <div class="container text-center">
+    <h1 class="m-5">Mes Likes</h1>
+  </div>
+  <% if @my_likes.empty? %>
+    <div class="text-center">
+      <h6>Dépèche-toi, <a href="/pets">vas liker les animaux plus cool<i class="fa fa-paw"></i></a> du web</h6>
+    </div>
+  <% else %>
+    <div class="row justify-content-around ml-3 mr-3">
+      <% @my_likes.each do |pet| %>
+        <div class="col-sm-3">
           <div id="likeCard<%= pet.id %>" class="card bg-light mb-3" ">
-              <div id="likeHeader<%= pet.id %>" class="card-header">
-                  <h5 class="card-title float-left"><%= pet.name%></h5>
-              </div>
-              <div id="likeBody<%= pet.id %>" class="card-body">
-                  <div id="demo" class="carousel slide" data-ride="carousel">
-                      <div class="carousel-inner" >
-                          <% unless pet.photos.empty? %>
-                              <div class="carousel-item active">
-                                <%= image_tag pet.photos.first, class: "card-img-top" %>
-                              </div>
-                              <% pet.photos[1..-1].each do |p| %>
-                              <div class="carousel-item">
-                                <%= image_tag p, class: "card-img-top" %>
-                              </div>
-                              <% end %>
-                              <% else %>
-                              <div class="carousel-item active">
-                              <%= image_tag("paw.svg", {class: "card-img-top"} ) %>
-                              </div>
-                              <div class="carousel-item">
-                              <%= image_tag("paw.svg", {class: "card-img-top"} ) %>
-                              </div>
-                          <% end %>
-
-                      </div>
+            <div id="likeHeader<%= pet.id %>" class="card-header">
+              <h5 class="card-title float-left"><%= pet.name%></h5>
+            </div>
+            <div id="likeBody<%= pet.id %>" class="card-body">
+              <div id="demo" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" >
+                  <% unless pet.photos.empty? %>
+                    <div class="carousel-item active">
+                      <%= image_tag pet.photos.first, class: "card-img-top" %>
                     </div>
-
-                      <!---------------------CARD BODY END--------------------->
-
-
-
-                <div class="mt-3">
+                    <% pet.photos[1..-1].each do |p| %>
+                      <div class="carousel-item">
+                        <%= image_tag p, class: "card-img-top" %>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <div class="carousel-item active">
+                      <%= image_tag("paw.svg", {class: "card-img-top"} ) %>
+                    </div>
+                    <div class="carousel-item">
+                      <%= image_tag("paw.svg", {class: "card-img-top"} ) %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <!---------------------CARD BODY END--------------------->
+              <div class="mt-3">
                 <h6 class="card-subtitle my-3 text-primary"><em>"<%= pet.short_description%>"</em></h6>
                 <h6 class="card-subtitle mt-2 float-left"><%= pet.age.to_i %>, <%= pet.sex %></h6><span>
-                  <%= link_to pet_likes_path(pet.id), method: :delete, remote: true do %><i id="dislikeButton<%= pet.id %>" class="btn btn-outline-primary btn-sm fa fa-heart float-right"></i><% end %>
-                </div>
-
-          </div>
-      </div>
-
-  </div>
-<% end %>
-  </div>
-
-<% end %>
-
-  <div class="container text-center">
-  <h1 class="m-5">Mes Matches</h1>
-  </div>
-
-
-<% if @my_matches.empty? %>
-
-<div class="text-center">
-<h3>Oh you can't hurry love, oh you just have to wait...</h3>
-<h6>On est pas totalement d'accord<br>
-  L'internet est plein d'animaux qui cherchent des amis, <a href="/pets">vas les liker <i class="fa fa-paw"></i></a></h6>
-</div>
-
-<% else %>
-
-<div class="container text-center">
-<h3 class="m-5">Les animaux plus chanceux qui ont match avec toi</h3>
-</div>
-
-
-<div class="row justify-content-around ml-3 mr-3 mb-5">
-
-    <% @my_matches.each do |pet| %>
-
-      <div class="col-sm-3">
-          <div id="likeCard<%= pet.id %>" class="card bg-custom text-white mb-3" ">
-              <div id="likeHeader<%= pet.id %>" class="card-header">
-                  <h5 class="card-title float-left"><%= pet.name%></h5>
-                  <span class="badge badge-warning float-right">C'est un match</span>
-                  <h6 class="float-left">C'est le pet de <%= pet.user.first_name%>. Ecris-lui!<br>
-                  Voici le mél pour lui écrire <b><%= pet.user.email%></b></h6>
+                <%= link_to pet_likes_path(pet.id), method: :delete, remote: true do %><i id="dislikeButton<%= pet.id %>" class="btn btn-outline-primary btn-sm fa fa-heart float-right"></i><% end %>
               </div>
-              <div id="likeBody<%= pet.id %>" class="card-body">
-                  <div id="demo" class="carousel slide" data-ride="carousel">
-                      <div class="carousel-inner" >
-                          <% unless pet.photos.empty? %>
-                              <div class="carousel-item active">
-                                <%= image_tag pet.photos.first, class: "card-img-top" %>
-                              </div>
-                              <% pet.photos[1..-1].each do |p| %>
-                              <div class="carousel-item">
-                                <%= image_tag p, class: "card-img-top" %>
-                              </div>
-                              <% end %>
-                              <% else %>
-                              <div class="carousel-item active">
-                              <%= image_tag("paw.svg", {class: "card-img-top"} ) %>
-                              </div>
-                              <div class="carousel-item">
-                              <%= image_tag("paw.svg", {class: "card-img-top"} ) %>
-                              </div>
-                          <% end %>
-
-                      </div>
-                    </div>
-
-                      <!---------------------CARD BODY END--------------------->
-
-
-
-                <div class="mt-3">
-                <h6 class="card-subtitle my-3"><em>"<%= pet.short_description%>"</em></h6>
-                <h6 class="card-subtitle mt-2 float-left"><%= pet.age.to_i %>, <%= pet.sex %></h6><span>
-                  <%= link_to pet_likes_path(pet.id), method: :delete, remote: true do %><i id="dislikeButton<%= pet.id %>" class="btn btn-outline-primary btn-sm fa fa-heart float-right"></i><% end %>
-                </div>
-
+            </div>
           </div>
-      </div>
-
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="container text-center">
+    <h1 class="m-5">Mes Matchs</h1>
   </div>
-<% end %>
-  </div>
+  <% if @my_matches.empty? %>
+    <div class="text-center">
+      <h3>Oh you can't hurry love, oh you just have to wait...</h3>
+      <h6>On est pas totalement d'accord<br> L'internet est plein d'animaux qui cherchent des amis, <a href="/pets">vas les liker <i class="fa fa-paw"></i></a></h6>
+    </div>
+  <% else %>
+    <div class="container text-center">
+      <h3 class="m-5">Les animaux plus chanceux qui ont match avec toi</h3>
+    </div>
+    <div class="row justify-content-around ml-3 mr-3 mb-5">
+      <% @my_matches.each do |pet| %>
+        <div class="col-sm-3">
+          <div id="likeCard<%= pet.id %>" class="card bg-custom text-white mb-3" ">
+            <div id="likeHeader<%= pet.id %>" class="card-header">
+              <h5 class="card-title float-left"><%= pet.name%></h5>
+              <span class="badge badge-warning float-right">C'est un match</span>
+              <h6 class="float-left">C'est l'animal de <%= pet.user.first_name%>. Ecris-lui!<br>Voici son e-mail <b><%= pet.user.email%></b></h6>
+          </div>
+          <div id="likeBody<%= pet.id %>" class="card-body">
+            <div id="demo" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner" >
+                <% unless pet.photos.empty? %>
+                  <div class="carousel-item active">
+                    <%= image_tag pet.photos.first, class: "card-img-top" %>
+                  </div>
+                  <% pet.photos[1..-1].each do |p| %>
+                    <div class="carousel-item">
+                      <%= image_tag p, class: "card-img-top" %>
+                    </div>
+                  <% end %>
+                <% else %>
+                  <div class="carousel-item active">
+                    <%= image_tag("paw.svg", {class: "card-img-top"} ) %>
+                  </div>
+                  <div class="carousel-item">
+                    <%= image_tag("paw.svg", {class: "card-img-top"} ) %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <!---------------------CARD BODY END--------------------->
+            <div class="mt-3">
+              <h6 class="card-subtitle my-3"><em>"<%= pet.short_description%>"</em></h6>
+              <h6 class="card-subtitle mt-2 float-left"><%= pet.age.to_i %>, <%= pet.sex %></h6><span>
+              <%= link_to pet_likes_path(pet.id), method: :delete, remote: true do %><i id="dislikeButton<%= pet.id %>" class="btn btn-outline-primary btn-sm fa fa-heart float-right"></i><% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
-<% end %>
