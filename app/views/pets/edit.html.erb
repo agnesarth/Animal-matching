@@ -5,47 +5,37 @@
 
     <div class="text-center my-2">
       <%= form_for @pet, :url => pet_path(@pet.id), method: :patch, multipart: true do |f| %>
-
         <h6 class="card-text mt-2">Nom :</h6>
         <div class="input-group mb-4">
           <%= f.text_field :name, autofocus: true, placeholder: @pet.name, class:"form-control" %>
         </div>
-
         <h6 class="card-text mt-2">Espèce :</h6>
         <div class="input-group mb-4 input-checkbox">
           <%= f.radio_button :animal, 'chien', :checked => (@pet.animal == "chien" || @pet.animal == "Chien"), class:"radio-button" %><span>Chien</span>
           <%= f.radio_button :animal, 'chat', :checked => (@pet.animal == "chat" || @pet.animal == "Chat"), class:"radio-button" %><span>Chat</span>
         </div>
-
         <h6 class="card-text mt-2">Numéro de puce :</h6>
         <div class="input-group mb-4">
           <%= f.text_field :chip_number, autofocus: true, placeholder: @pet.chip_number, class:"form-control" %>
         </div>
-
         <h6 class="card-text mt-2">Âge :</h6>
         <div class="input-group mb-3">
           <%= f.number_field :age, autofocus: true, placeholder: @pet.age, class:"form-control" %>
         </div>
-
         <h6 class="card-text mt-2">Genre :</h6>
         <div class="input-group mb-4 input-checkbox">
           <%= f.radio_button :sex, 'Femelle', :checked => (@pet.sex == "Femelle"), class:"radio-button" %><span>Femelle</span>
           <%= f.radio_button :sex, 'Mâle', :checked => (@pet.sex == "Mâle"), class:"radio-button" %><span>Mâle</span>
         </div>
-
         <h6 class="card-text mt-2">Race :</h6>
         <div class="input-group mb-4">
           <%= f.select :breed, options_for_select(Pet::BREED), include_blank: @pet.breed, autofocus: true, class:"form-control" %>
         </div>
-
         <h6 class="card-text mt-2">En quelques mots :</h6>
         <div class="input-group mb-4">
           <%= f.text_field :description, autofocus: true, placeholder: @pet.description, class:"form-control" %>
         </div>
-
-
         <p class="card-text mb-0">Mise en ligne le : <%= Time.now.strftime("%d/%m/%Y") %> </p><br>
-
         <h6 class="card-text">Photos actuelles :</h6>
         <div class="d-flex flex-row justify-content-center mb-4">
           <% @pet.photos.each do |p| %>
@@ -55,21 +45,17 @@
             </div>
           <% end %>
         </div>
-
         <h6 class="card-text">Ajouter des photos :</h6>
         <div class="input-group mb-4 input-checkbox">
           <%= f.file_field :photos, multiple: true, value: "", class: "uploadPreview ml-5 mt-0 mb-2" %>
         </div>
-
         <div id="showPreview"></div>
-
         <div class="actions my-3">
           <%= f.submit "Editer le profil", class:"btn btn-primary" %>
         </div>
       <% end %>
     </div>
   </div>
-
   <div class="container font-weight-bold">
     <%= link_to "Retour", :back %>
   </div>
