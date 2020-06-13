@@ -11,7 +11,6 @@ class Pet < ApplicationRecord
   validates :animal, presence: true
   validates :age, :numericality => {:greater_than => 0, message: "L'âge doit être supérieur à 0."}
   
-
   BREED=['Terrier','Dalmatien','Manx','Birman','Boxer','Berger Allemand','Labrador','Bouledogue','Chihuahua','Beagle','Setter','Cocker','Husky','Teckel','Persan','Siamois','Somali','Sibérien','Ragdoll'].sort
 
   def new_pet_send
@@ -29,5 +28,4 @@ class Pet < ApplicationRecord
     end
     return short
   end
-
 end

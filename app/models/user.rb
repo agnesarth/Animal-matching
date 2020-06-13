@@ -6,7 +6,7 @@ class User < ApplicationRecord
   (?=.*[A-Z])        # Must contain an upper case character
   (?=.*[[:^alnum:]]) # Must contain a symbol
   /x
-  
+
   #after_create :welcome_send
 
   # Include default devise modules. Others available are:
@@ -38,5 +38,4 @@ class User < ApplicationRecord
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
-
 end
