@@ -9,6 +9,7 @@ class Pet < ApplicationRecord
   has_many :tag_pets, dependent: :destroy
   has_many :tags, through: :tag_pets
   validates :animal, presence: true
+  validates :age, :numericality => {:greater_than => 0, message: "L'âge doit être supérieur à 0."}
   
 
   BREED=['Terrier','Dalmatien','Manx','Birman','Boxer','Berger Allemand','Labrador','Bouledogue','Chihuahua','Beagle','Setter','Cocker','Husky','Teckel','Persan','Siamois','Somali','Sibérien','Ragdoll'].sort

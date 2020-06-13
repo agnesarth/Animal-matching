@@ -32,6 +32,10 @@ class PetsController < ApplicationController
         flash[:success] = "Le profil de l'animal a bien été créé."
         format.html { redirect_to pets_path }
         format.json { }
+      else
+        flash[:error] = @post.errors.full_messages.to_sentence
+        format.html { render :new }
+        format.json { }
       end
     end
   end
