@@ -20,6 +20,7 @@
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Animaux</a>
           <div class="dropdown-menu">
             <% if user_signed_in? && !current_user.default_pet_id.nil? %>
+            <%= link_to "Recherche des amimaux", pets_path, {:class => "dropdown-item"} %>
             <%= link_to "Mes likes", pet_likes_path(current_user.default_pet_id), {:class => "dropdown-item"} %>
             <%= link_to "Mes matches", pet_likes_path(current_user.default_pet_id), {:class => "dropdown-item"} %>
             <% else %>
