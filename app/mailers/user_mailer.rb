@@ -18,5 +18,4 @@ class UserMailer < ApplicationMailer
     @url = 'whispaw.herokuapp.com'
     mail(to: @pet.user.email, subject: 'New match... Love is in the air!')
   end
-
 end
