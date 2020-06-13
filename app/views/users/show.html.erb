@@ -43,7 +43,15 @@
             </h6>
             <span><%= pet.animal%></span>
             <div class='float-right' style='margin-top: 10px;'>
-              <%=link_to "Voir son profil", pet_path(pet), class:'btn btn-sm btn-outline-primary' %> 
+              <div class='text-center' style='margin-top: 10px;'>
+                <%=link_to "Voir son profil", pet_path(pet), class:'btn btn-sm btn-warning' %>
+              </div>
+              <div class='float-right' style='margin-top: 10px;'>
+                <%= form_for(current_user, url: users_path(current_user), method: :put) do |f| %>
+                  <%= f.hidden_field :default_pet_id, :value => pet.id %>
+                  <%= f.submit "Choisir comme favoris",class:"btn btn-sm btn-secondary" %>
+                <%end%>
+              </div>
             </div>
             <div class='float-right' style='margin-top: 10px;'>
               <%if pet.id == @user.default_pet_id%>  
