@@ -14,6 +14,7 @@
     <p><strong>Race :</strong> <%= @pet.breed %></p>
     <p><strong>Genre :</strong> <%= @pet.sex %></p>
     <p><strong>Age :</strong> <%= @pet.age %></p>
+    <p><strong>A propos :</strong> <%= @pet.description %></p>
     <p class='mt-2 text-justify card-text'>
       <%if current_user == @pet.user%>
         <%= link_to 'Editer le profil de mon animal', edit_pet_path(@pet), class: "btn  btn-warning" %> |

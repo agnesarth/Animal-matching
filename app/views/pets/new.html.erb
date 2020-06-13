@@ -38,6 +38,11 @@
           <%= f.select :breed, options_for_select(Pet::BREED), include_blank: true, autofocus: true, class:"form-control" %>
         </div>
 
+        <h6 class="card-text mt-2">En quelques mots :</h6>
+        <div class="input-group mb-4">
+          <%= f.text_field :description, autofocus: true, class:"form-control" %>
+        </div>
+
         <p class="card-text mb-0">Mise en ligne le : <%= Time.now.strftime("%d/%m/%Y") %> </p><br>
 
         <h6 class="card-text">Photos :</h6>

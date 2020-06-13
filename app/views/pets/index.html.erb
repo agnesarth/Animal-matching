@@ -29,9 +29,9 @@
               <div id="likeHeader<%= pet.id %>" class="card-header">
                   <h5 class="card-title float-left"><%= pet.name%></h5>
                   <% if Like.where(liker_id: @current_pet.id, liked_id: pet.id, match: true).exists? || Like.where(liked_id: @current_pet.id, liker_id: pet.id, match: true).exists? %>
-<span class="badge badge-warning float-right">C'est un match</span>
-<h6 class="float-left">C'est le pet de <%= pet.user.first_name%>. Ecris-lui!<br>
-Voici le mél pour lui écrire <b><%= pet.user.email%></b></h6>
+                    <span class="badge badge-warning float-right">C'est un match</span>
+                    <h6 class="float-left">C'est le pet de <%= pet.user.first_name%>. Ecris-lui!<br>
+                    Voici le mél pour lui écrire <b><%= pet.user.email%></b></h6>
                   <% end %>
               </div>
               <div id="likeBody<%= pet.id %>" class="card-body">
@@ -61,7 +61,9 @@ Voici le mél pour lui écrire <b><%= pet.user.email%></b></h6>
 
 
 
-                <div class="mt-3"><h6 class="card-subtitle mt-2 float-left"><%= pet.age.to_i %>, <%= pet.sex %></h6><span>
+                <div class="mt-3">
+                <h6 class="card-subtitle my-3 text-primary"><em>"<%= pet.short_description%>"</em></h6>
+                <h6 class="card-subtitle mt-2 float-left"><%= pet.age.to_i %>, <%= pet.sex %></h6><span>
                   <% if pet.likes_as_liked.where(liker_id: @current_pet.id, match: false).exists? %>
                   <i id="likeButton<%= pet.id %>" class="btn btn-primary btn-sm fa fa-heart float-right"></i>
                   <% elsif pet.likes_as_liker.where(liked_id: @current_pet.id).exists? %>

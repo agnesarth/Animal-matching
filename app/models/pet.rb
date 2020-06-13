@@ -21,4 +21,12 @@ class Pet < ApplicationRecord
     UserMailer.new_match_email(self).deliver_now
   end
 
+  def short_description
+    short = self.description.split(" ").slice(0,13).join(" ")
+    if short.slice(-1) != "."
+      short = short + " ..."
+    end
+    return short
+  end
+
 end
