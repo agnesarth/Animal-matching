@@ -15,9 +15,9 @@
         </div>
         <h6 class="card-text mt-2">Race :</h6>
         <div class="input-group mb-4">
-          <%if @pet.breed == 'chat'%> 
+          <%if @pet.animal == 'chat' %> 
             <%= f.select :breed, options_for_select(Pet::CATBREED), include_blank: @pet.breed, autofocus: true, class:"form-control" %>
-          <% elsif @pet.breed == 'chien'%>
+          <% elsif @pet.animal == 'chien' %>
            <%= f.select :breed, options_for_select(Pet::DOGBREED), include_blank: @pet.breed, autofocus: true, class:"form-control" %>
           <% end %>
         </div>
