@@ -38,7 +38,8 @@
             <%end%>         
             <h6 class='mb-0'>
               <%= pet.name%> 
-              <%if pet.breed.present?%> le <%=pet.breed%>
+              <%if pet.breed.present?%> 
+                le <%=pet.breed%>
               <%end%>
             </h6>
             <span><%= pet.animal%></span>
@@ -68,7 +69,7 @@
       </div>
     </div>
   </div>
-  <div class="container offset-0">
+  <div class="container font-weight-bold">
     <%= link_to "Retour", :back %>
   </div>
 </div>
