@@ -160,6 +160,8 @@ body {
   bottom: auto;
 }
 
+// Footer
+
 #footer{
   position: static;
   bottom: 0;
@@ -167,22 +169,9 @@ body {
   background-color: $gray-800;
 }
 
-.text-dog-box {
-  float: left;
-  width: 50%;
-  padding-right: 4em;
-  margin-bottom: 11em;
-}
-
-.img-dog-box {
-  max-width: 50%;
-  float: right;
-  margin-bottom: 4em;
-}
-
-.carousel-caption {
-    top: 0;
-    bottom: auto;
+.footer-icon:hover{
+  text-decoration: none;
+  color: $warning;
 }
 
  // Searchbar
