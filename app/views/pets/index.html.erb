@@ -10,6 +10,15 @@
     <hr />
     <p></p>
   </div>
+
+  <h4>Search</h4>
+  <%= form_tag(pets_path, method: :get) do%>
+    <%= text_field_tag(:search, params[:search])%>
+    <%= submit_tag ('Search') %>
+  <% end %>
+
+
+
 </div>
 <div class="container justify-content-around">
   <div class="row justify-content-around ml-3 mr-3">
