@@ -26,30 +26,33 @@ class LikesController < ApplicationController
     @like = Like.new(liker_id: current_pet.id, liked_id: @pet.id)
     respond_to do |format|
       if @like.save!
-        format.html { redirect_to pets_path, notice: 'J\'adore!' }
+        if already_liked(@pet, current_pet)
+          @like.update(match: true)
+          matches_back(current_pet, @pet)
+        end
+        format.html { redirect_to pets_path, notice: "J'adore!" }
         format.js { }
       end
     end
   end
 
-  def update
-    @pet = Pet.find(params['pet_id'])
-    @like = Like.find(params['id'])
-    @like.update(match: true)
-    respond_to do |format|
-      format.html { redirect_back fallback_location: request.referrer, notice: "C'est un match!"}
-      format.js { }
-    end
-  end
+#  def update
+#    @pet = Pet.find(params['pet_id'])
+#    @like = Like.find(params['id'])
+#    @like.update(match: true)
+#    respond_to do |format|
+#      format.html { redirect_back fallback_location: request.referrer, notice: "C'est un match!"}
+#      format.js { }
+#    end
+#  end
 
   def destroy
     @pet = Pet.find(params['pet_id'])
-    @my_likes_ids = current_pet.liker_likes.all
-    @unliked = @my_likes_ids.where(liked: @pet)
-    if already_liked(current_pet, @pet)
+    @like = Like.find(params['id'])
+    if already_liked(@pet, current_pet)
       unmatch(current_pet, @pet)
     end
-    @unliked.destroy
+    @like.destroy
   end
 
   def current_pet
@@ -57,17 +60,18 @@ class LikesController < ApplicationController
   end
 
   def already_liked(current_pet, other_pet)
-    return current_pet.liked_likes.where(liker_id: other_pet).exists?
+    return current_pet.likes_as_liker.where(liked_id: other_pet).exists?
   end
 
   def matches_back(current_pet, other_pet)
-    back_like = current_pet.liked_likes.where(liker_id: other_pet)
+    back_like = current_pet.likes_as_liked.where(liker_id: other_pet)
     back_like.update(match: true)
   end
 
   def unmatch(current_pet, other_pet)
     iam_liked_ids = current_pet.likes_as_liked.all
     unmatched = iam_liked_ids.where(liker: other_pet)
-    unmatched.match = false
+    unmatched.update(match: false)
   end
+
 end

@@ -1,12 +1,14 @@
 <div class= "container text-center">
  <div class='card card-lg card-body align-items-center'>
+  <div class="col-md-3">
      <%if @pet.photos.present? %>
         <% @pet.photos.each do |p| %>
-          <%= image_tag p, style: "width: 200px; height: 200px; ", class: "avatar avatar-xlg mb-3 rounded-circle"  %>
+          <%= image_tag p, class: "img-thumbnail mb-3 rounded"  %>
         <% end %>
       <%else%>
-        <%= image_tag "michat.jpg", style: "width: 200px; height: 200px; ", class: "avatar avatar-xlg mb-3 rounded-circle"  %>
+        <%= image_tag "michat.jpg", class: "mb-3 rounded"  %>
       <%end%>
+  </div>
 
     <h6 class='mb-0'><%= @pet.name %></h6>
     <p> <%= @pet.animal %></p>
