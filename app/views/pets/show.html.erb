@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+<div class= "container text-center">
+ <div class='card card-lg card-body align-items-center'>
+  <div class="col-md-3">
+     <%if @pet.photos.present? %>
+        <% @pet.photos.each do |p| %>
+          <%= image_tag p, class: "img-thumbnail mb-3 rounded"  %>
+        <% end %>
+      <%else%>
+        <%= image_tag "michat.jpg", class: "mb-3 rounded"  %>
+=======
 <div class="container text-center">
   <div class="mt-5 col-md-6 offset-md-3 shadow p-3 mb-5 rounded bg-devise container-pet shadow container-pet-show">
      <%if @pet.photos.present? %>
@@ -6,7 +17,9 @@
         <% end %>
       <%else%>
         <%= image_tag "michat.jpg", class: "avatar avatar-xlg mb-3 rounded-circle"  %>
+>>>>>>> 58ea5f8b250d8451b2701eab5c5be6f55d220680
       <%end%>
+  </div>
 
     <h4 class="pet-name"><%= @pet.name %> · <%= @pet.animal %></h4>
     <p><strong>Race :</strong> <%= @pet.breed %></p>
