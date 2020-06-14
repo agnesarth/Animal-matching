@@ -9,6 +9,7 @@ class Pet < ApplicationRecord
   has_many :tag_pets, dependent: :destroy
   has_many :tags, through: :tag_pets
   validates :animal, presence: true
+  enum animal: [ :Chat, :Chien ]
   validates :age, :numericality => {:greater_than => 0, message: "L'âge doit être supérieur à 0."}
   
   CATBREED=['Manx','Birman','Persan','Siamois','Somali','Sibérien','Ragdoll', "Sphinx", "Européen"].sort
@@ -31,5 +32,7 @@ class Pet < ApplicationRecord
       return short
     end
   end
+
+
 end
  

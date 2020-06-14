@@ -3,18 +3,12 @@ class LikesController < ApplicationController
 
   def index
     @my_likes = Like.where(match: false,liker_id: current_pet.id)
-
-    #Like.where(match: false,liker_id: current_pet.id).each do |l| @my_likes << Pet.find(l.liked_id) end
     @my_matches = Like.where(match: true,liker_id: current_pet.id)
-    #Like.where(match: true,liker_id: current_pet.id).each do |l| @my_matches << Pet.find(l.liked_id) end
   end
 
   def show
-    #array containing all likes from the current_pet
-    #@my_likes_ids = current_pet.likes_as_liker.all
-    #array containing all likes towards the current_pet
-    #@iam_liked_ids = current_pet.likes_as_liked.all
-    @my_matches = @my_likes_ids.where(match: true)
+    @my_likes = Like.where(match: false,liker_id: current_pet.id)
+    @my_matches = Like.where(match: true,liker_id: current_pet.id)
   end
 
   def new

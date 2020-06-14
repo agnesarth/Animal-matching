@@ -3,7 +3,6 @@ class PetsController < ApplicationController
 
   def index
     if current_user.default_pet_id.nil?
-      p current_user.default_pet_id.nil?
       flash[:error] = "Vous devez ajouter un animal pour accéder à cette partie du site !"
       redirect_to root_path
     else
