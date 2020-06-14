@@ -9,7 +9,7 @@ class Pet < ApplicationRecord
   has_many :tags, through: :tag_pets
   validates :animal, presence: true
   validates :age, :numericality => {:greater_than => 0, message: "L'âge doit être supérieur à 0."}
-
+  accepts_nested_attributes_for :tags
   CATBREED=['Manx','Birman','Persan','Siamois','Somali','Sibérien','Ragdoll', "Sphinx", "Européen"].sort
   DOGBREED=['Terrier','Dalmatien','Boxer','Berger Allemand','Labrador','Bouledogue','Chihuahua','Beagle','Setter','Cocker','Husky','Teckel'].sort
 

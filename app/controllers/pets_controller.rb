@@ -16,6 +16,7 @@ class PetsController < ApplicationController
 
   def new
     @pet = Pet.new
+    @tag = Tag.all
   end
 
   def create
@@ -86,6 +87,7 @@ class PetsController < ApplicationController
 
   private
     def pet_params
-      params.require(:pet).permit(:name, :animal, :breed, :sex, :age, :user, :description, photos: [])
+      params.require(:pet).permit(:name, :animal, :breed, :sex, :age, :user, :description, photos: [], tag_ids: [])
     end
+
 end

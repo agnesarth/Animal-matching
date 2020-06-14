@@ -1,0 +1,17 @@
+<div class="container mt-2 ">
+  <table class="table table-striped rounded">
+  <thead>
+    <tr class= "bg-primary text-white text-center">
+      <th scope="col">#</th>
+      <th scope="col">Tag</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @tags.each do |tag| %>
+    <tr>
+      <th scope="row" class="text-center"><%=tag.id%></th>
+      <td class="text-center"><%=tag.value%></td>
+    </tr>
+  <%end%>
+  </tbody>
+</table>
