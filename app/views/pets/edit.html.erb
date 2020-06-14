@@ -15,9 +15,9 @@
         </div>
         <h6 class="card-text mt-2">Race :</h6>
         <div class="input-group mb-4">
-          <%if @pet.animal == 'chat' %> 
+          <%if @pet.animal == 'chat' || @pet.animal == 'Chat' %> 
             <%= f.select :breed, options_for_select(Pet::CATBREED), include_blank: @pet.breed, autofocus: true, class:"form-control" %>
-          <% elsif @pet.animal == 'chien' %>
+          <% elsif @pet.animal == 'chien' || @pet.animal == 'Chien' %>
            <%= f.select :breed, options_for_select(Pet::DOGBREED), include_blank: @pet.breed, autofocus: true, class:"form-control" %>
           <% end %>
         </div>
@@ -25,7 +25,6 @@
         <div class="input-group mb-4">
           <%= f.text_field :description, autofocus: true, placeholder: @pet.description, class:"form-control" %>
         </div>
-        <p class="card-text mb-0">Mise en ligne le : <%= Time.now.strftime("%d/%m/%Y") %> </p><br>
         <h6 class="card-text">Photos actuelles :</h6>
         <div class="d-flex flex-row justify-content-center mb-4">
           <% @pet.photos.each do |p| %>
