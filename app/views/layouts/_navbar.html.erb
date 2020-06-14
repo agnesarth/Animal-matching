@@ -6,9 +6,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <%= link_to "Accueil", pets_path, :class => "nav-link" %>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>
           <div class="dropdown-menu">
@@ -16,16 +13,19 @@
             <%= link_to "Paramètres", edit_users_path, {:class => "dropdown-item"} %>
           </div>
         </li>
+        <% if !current_user.default_pet_id.nil?%>
+          <li class="nav-item">
+            <em><%= link_to "#{Pet.find(current_user.default_pet_id).name} en ligne", users_path, :class => "nav-link" %></em>
+          </li>
+        <% end %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Animaux</a>
           <div class="dropdown-menu">
             <% if user_signed_in? && !current_user.default_pet_id.nil? %>
               <%= link_to "Recherche des amimaux", pets_path, {:class => "dropdown-item"} %>
-              <%= link_to "Mes likes", pet_likes_path(current_user.default_pet_id), {:class => "dropdown-item"} %>
-              <%= link_to "Mes matches", pet_likes_path(current_user.default_pet_id), {:class => "dropdown-item"} %>
+              <%= link_to "Mes likes / mes matches", pet_likes_path(current_user.default_pet_id), {:class => "dropdown-item"} %>
             <% else %>
-              <%= link_to "Mes likes", root_path, {:class => "dropdown-item"} %>
-              <%= link_to "Mes matches", root_path, {:class => "dropdown-item"} %>
+              <%= link_to "Ajouter un animal", new_pet_path, {:class => "dropdown-item"} %>
             <% end %>
           </div>
         </li>
