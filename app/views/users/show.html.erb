@@ -5,10 +5,12 @@
       <div class="row">
         <div class="col-12">
           <div class="text-center my-2">
-            <div class="input-group info-user mb-3">
-              <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
-              <span class="user-email ml-2"><h6 class="info-user"><%= @user.first_name %> <%= @user.last_name %></h6></span>
-            </div>
+            <% if @user.first_name != nil || @user.first_name != nil %>
+              <div class="input-group info-user mb-3">
+                <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
+                <span class="user-email ml-2"><h6 class="info-user"><%= @user.first_name %> <%= @user.last_name %></h6></span>
+              </div>
+            <% end %>
             <div class="input-group info-user mb-3">
               <span class="input-group-text info-user"><i class="fa fa-envelope" aria-hidden="true" ></i></span>
               <span class="user-email ml-2"><h6 class="info-user"><%= @user.email%></h6></span>
