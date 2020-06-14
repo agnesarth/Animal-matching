@@ -68,6 +68,15 @@ ActiveRecord::Schema.define(version: 2020_06_13_170205) do
     t.index ["tag_id"], name: "index_tag_pets_on_tag_id"
   end
 
+  create_table "tag_whos", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "pet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_tag_whos_on_pet_id"
+    t.index ["tag_id"], name: "index_tag_whos_on_tag_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "value"
     t.datetime "created_at", null: false
@@ -94,4 +103,6 @@ ActiveRecord::Schema.define(version: 2020_06_13_170205) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "tag_pets", "pets"
   add_foreign_key "tag_pets", "tags"
+  add_foreign_key "tag_whos", "pets"
+  add_foreign_key "tag_whos", "tags"
 end

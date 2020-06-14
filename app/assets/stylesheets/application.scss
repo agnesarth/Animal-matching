@@ -59,7 +59,7 @@
  @import "bootstrap";
  @import "bootswatch";
 
- // Icones
+ // Icons
 
  @import "font-awesome";
 
@@ -69,10 +69,20 @@
  // User
  @import "users";
 
-
  // CSS changes
 @import "custom";
 @import "petsindex";
+
+ // Flash
+@import "flash";
+
+ // Footer
+@import "footer";
+
+ // Pets view - New and Edit
+@import "pets_new_edit";
+
+
  // All site
 
 html {
@@ -160,20 +170,6 @@ body {
   bottom: auto;
 }
 
-// Footer
-
-#footer{
-  position: static;
-  bottom: 0;
-  max-height: auto;
-  background-color: $gray-800;
-}
-
-.footer-icon:hover{
-  text-decoration: none;
-  color: $warning;
-}
-
  // Searchbar
 
 .searchbar{
@@ -218,31 +214,6 @@ body {
   border-radius: 50%;
   color:white;
   }
-
- // Flash
-
-.alert {
-  margin-bottom: 0;
-  border-radius: 0;
-  font-family: "Ubuntu", "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-
-.alert-info {
-  color: #28687B;
-  border: 1px solid;
-  border-color: #D1E9F0;
-}
-
-.alert-success {
-  background-color: #E2F3E2;
-  color: #389438;
-  border: 1px solid;
-  border-color: #F0F9F0;
-}
-
-.alert-success .close {
-  color: #389438;
-}
 
  // Navbar
 
@@ -302,52 +273,4 @@ body {
 
 .btn-outline-light:hover {
   color: $gray-800;
-}
-
- // Pets view
-
-.container-pet {
-  background-color: #FFF;
-}
-
-.shadow {
-  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15) !important;
-}
-
-.input-group select {
-  display: block;
-  width: 100%;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #5a5a5a;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: 0.4rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.input-group select:focus {
-  color: #5a5a5a;
-  background-color: #fff;
-  border-color: #eb4361;
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(157, 17, 42, 0.25);
-}
-
-.input-checkbox {
-  justify-content: center;
-  align-items: center;
-}
-
-.radio-button {
-  margin-right: 0.5em;
-  margin-left: 2em;
-}
-
-
-.img-pet-new-edit {
-  max-width: 400px;
-  height: auto;
 }
