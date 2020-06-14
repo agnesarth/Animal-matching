@@ -22,12 +22,21 @@
 }
 
 .alert-warning {
-  background-color: #FCF0C5;
-  color: #C29A0A;
+  color: #fff;
   border: 1px solid;
-  border-color: #FEFAEC;
+  border-color: #F5CD3D;
 }
 
 .alert-warning .close {
-  color: #C29A0A;
+  color: #fff;
+}
+
+.alert-danger {
+  color: #fff;
+  border: 1px solid;
+  border-color: #E94A35;
+}
+
+.alert-danger .close {
+  color: #fff;
 }
