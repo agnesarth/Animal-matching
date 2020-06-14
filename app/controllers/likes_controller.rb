@@ -2,11 +2,11 @@ class LikesController < ApplicationController
   before_action :current_pet, only: [:create,:update,:destroy]
 
   def index
-    @my_likes = Like.where(match: false,liker_id: current_pet.id)
-
-    #Like.where(match: false,liker_id: current_pet.id).each do |l| @my_likes << Pet.find(l.liked_id) end
-    @my_matches = Like.where(match: true,liker_id: current_pet.id)
-    #Like.where(match: true,liker_id: current_pet.id).each do |l| @my_matches << Pet.find(l.liked_id) end
+    @my_likes = []
+    Like.where(match: false,liker_id: current_pet.id).each do |l| @my_likes << Pet.find(l.liked_id) end
+    @my_matches = []
+    Like.where(match: true,liker_id: current_pet.id).each do |l| @my_matches << Pet.find(l.liked_id) end
+    Like.where(match: true,liked_id: current_pet.id).each do |l| @my_matches << Pet.find(l.liker_id) end
   end
 
   def show
@@ -24,10 +24,10 @@ class LikesController < ApplicationController
   def create
     @pet = Pet.find(params['pet_id'])
     @like = Like.new(liker_id: current_pet.id, liked_id: @pet.id)
-    if already_liked(@pet, current_pet)
-      @like.match =  true
-      matches_back(@pet, current_pet)
-    end
+    #if already_liked(@pet, current_pet)
+      #@like.match =  true
+      #matches_back(@pet, current_pet)
+    #end
     respond_to do |format|
       if @like.save!
         format.html { redirect_to pets_path, notice: "J'adore!" }
@@ -36,15 +36,16 @@ class LikesController < ApplicationController
     end
   end
 
-#  def update
-#    @pet = Pet.find(params['pet_id'])
-#    @like = Like.find(params['id'])
-#    @like.update(match: true)
-#    respond_to do |format|
-#      format.html { redirect_back fallback_location: request.referrer, notice: "C'est un match!"}
-#      format.js { }
-#    end
-#  end
+  def update
+    @pet = Pet.find(params['pet_id'])
+    @like = Like.find(params['id'])
+    @like.update(match: true)
+    p @like.errors.messages
+    respond_to do |format|
+      format.html { redirect_back fallback_location: request.referrer, notice: "C'est un match!"}
+      format.js { }
+    end
+  end
 
   def destroy
     @pet = Pet.find(params['pet_id'])

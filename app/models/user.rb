@@ -13,19 +13,19 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
-  validates :password, 
-    presence: true, 
-    length: { in: Devise.password_length }, 
-    format: { with: PASSWORD_FORMAT }, 
-    confirmation: true, 
-    on: :create 
-       
-  validates :password, 
-    allow_nil: true, 
-    length: { in: Devise.password_length }, 
-    format: { with: PASSWORD_FORMAT }, 
-    confirmation: true, 
+
+  validates :password,
+    presence: true,
+    length: { in: Devise.password_length },
+    format: { with: PASSWORD_FORMAT },
+    confirmation: true,
+    on: :create
+
+  validates :password,
+    allow_nil: true,
+    length: { in: Devise.password_length },
+    format: { with: PASSWORD_FORMAT },
+    confirmation: true,
     on: :update
 
   validates :email,

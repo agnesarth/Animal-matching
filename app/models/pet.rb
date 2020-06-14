@@ -1,6 +1,5 @@
 class Pet < ApplicationRecord
-  #after_create :new_pet_send
-  #after_update :new_match_send
+  after_create :new_pet_send
 
   belongs_to :user
   has_many :likes_as_liker, foreign_key: "liker", class_name: "Like", dependent: :destroy
@@ -10,16 +9,12 @@ class Pet < ApplicationRecord
   has_many :tags, through: :tag_pets
   validates :animal, presence: true
   validates :age, :numericality => {:greater_than => 0, message: "L'âge doit être supérieur à 0."}
-  
+
   CATBREED=['Manx','Birman','Persan','Siamois','Somali','Sibérien','Ragdoll', "Sphinx", "Européen"].sort
   DOGBREED=['Terrier','Dalmatien','Boxer','Berger Allemand','Labrador','Bouledogue','Chihuahua','Beagle','Setter','Cocker','Husky','Teckel'].sort
 
   def new_pet_send
     UserMailer.new_pet_email(self).deliver_now
-  end
-
-  def new_match_send
-    UserMailer.new_match_email(self).deliver_now
   end
 
   def short_description
@@ -32,4 +27,3 @@ class Pet < ApplicationRecord
     end
   end
 end
- 
