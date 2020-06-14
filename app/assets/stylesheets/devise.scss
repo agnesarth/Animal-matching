@@ -1,0 +1,45 @@
+ // Devise
+
+ .container-devise {
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.45),
+    rgba(0, 0, 0, 0.45)
+  ),url(asset_path( 'background_signup.jpeg' ));
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  position: inherit;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.button-back {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.button-back:hover {
+  color: white;
+}
+
+.button-back:focus {
+  color: white;
+}
+
+.bg-devise {
+  background-color: #f8f9fa;
+  font-family: "Ubuntu", "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.input-group-text {
+  min-width: 42px;
+}
+
+.form-control:focus {
+  border-color: #9d112a;
+}
+
+.btn-outline-light:hover {
+  color: $gray-800;
+}

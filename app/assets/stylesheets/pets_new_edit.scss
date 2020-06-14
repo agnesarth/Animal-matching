@@ -1,10 +1,4 @@
-// Place all the styles related to the pets controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
- // Pets view
-
- .container-pet {
+.container-pet {
   background-color: #FFF;
 }
 
@@ -47,27 +41,4 @@
 .img-pet-new-edit {
   max-width: 400px;
   height: auto;
-}
-
-.avatar-pet {
-	width: 100px;
-	height: 100px;
-	object-fit: cover;
-}
-
-.btn-edit-pet-profile {
-  margin-right: 5px;
-}
-
-.container-pet-show {
-  justify-content: center;
-}
-
-.btns-pet-show {
-  margin-top: 2em;
-  margin-bottom: 1em;
-}
-
-.pet-name {
-  margin-bottom: 0.7em;
 }

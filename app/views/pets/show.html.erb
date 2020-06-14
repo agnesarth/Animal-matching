@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class= "container text-center">
  <div class='card card-lg card-body align-items-center'>
   <div class="col-md-3">
@@ -7,25 +8,32 @@
         <% end %>
       <%else%>
         <%= image_tag "michat.jpg", class: "mb-3 rounded"  %>
+=======
+<div class="container text-center">
+  <div class="mt-5 col-md-6 offset-md-3 shadow p-3 mb-5 rounded bg-devise container-pet shadow container-pet-show">
+     <%if @pet.photos.present? %>
+        <% @pet.photos.each do |p| %>
+          <%= image_tag p, class: "avatar avatar-xlg mb-3 rounded-circle"  %>
+        <% end %>
+      <%else%>
+        <%= image_tag "michat.jpg", class: "avatar avatar-xlg mb-3 rounded-circle"  %>
+>>>>>>> 58ea5f8b250d8451b2701eab5c5be6f55d220680
       <%end%>
   </div>
 
-    <h6 class='mb-0'><%= @pet.name %></h6>
-    <p> <%= @pet.animal %></p>
+    <h4 class="pet-name"><%= @pet.name %> · <%= @pet.animal %></h4>
     <p><strong>Race :</strong> <%= @pet.breed %></p>
     <p><strong>Genre :</strong> <%= @pet.sex %></p>
-    <p><strong>Age :</strong> <%= @pet.age %></p>
-    <p><strong>A propos :</strong> <%= @pet.description %></p>
-    <p class='mt-2 text-justify card-text'>
+    <p><strong>Âge :</strong> <%= @pet.age %> ans</p>
+    <p><strong>À propos :</strong> <%= @pet.description %></p>
+    <div class="btns-pet-show">
       <%if current_user == @pet.user%>
-        <%= link_to 'Editer le profil de mon animal', edit_pet_path(@pet), class: "btn  btn-warning" %> |
-        <%= link_to 'Supprimer le profil de mon animal', pet_path(@pet), method: :delete, class: "btn btn-outline-primary" %>
+        <%= link_to 'Editer son profil', edit_pet_path(@pet), class: "btn btn-primary btn-edit-pet-profile" %>
+        <%= link_to 'Supprimer', pet_path(@pet), method: :delete, class: "btn btn-outline-primary" %>
       <%end%>
-    </p>
+    </div>
   </div>
-
-
-  <div class="container font-weight-bold offset-0">
-    <%= link_to "Retour", :back %>
-  </div>
+</div>
+<div class="container font-weight-bold">
+  <%= link_to "Retour", :back %>
 </div>

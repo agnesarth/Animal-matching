@@ -59,7 +59,8 @@
  @import "bootstrap";
  @import "bootswatch";
 
- // Icones
+ // Icons
+
  @import "font-awesome";
 
  // Timeline
@@ -68,13 +69,25 @@
  // User
  @import "users";
 
-
  // CSS changes
  @import "custom";
- @import "pets";
- @import "petsindex";
- @import "static_pages";
  @import "devise";
+ @import "custom";
+@import "petsindex";
+
+ // Flash
+@import "flash";
+
+ // Footer
+@import "footer";
+
+ // Pets view
+@import "pets_new_edit";
+@import "pets";
+
+// Static pages
+
+@import "static_pages";
 
  // All site
 
@@ -149,32 +162,7 @@ body {
   color:white;
   }
 
-    // Flash
-
-.alert {
-  margin-bottom: 0;
-  border-radius: 0;
-  font-family: "Ubuntu", "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-
-.alert-info {
-  color: #28687B;
-  border: 1px solid;
-  border-color: #D1E9F0;
-}
-
-.alert-success {
-  background-color: #E2F3E2;
-  color: #389438;
-  border: 1px solid;
-  border-color: #F0F9F0;
-}
-
-.alert-success .close {
-  color: #389438;
-}
-
-    // Navbar
+ // Navbar
 
 .bg-primary {
   background-image: linear-gradient(to right, #9d112a, #dd3019);
