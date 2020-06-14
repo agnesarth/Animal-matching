@@ -8,7 +8,7 @@ class PetsController < ApplicationController
       redirect_to root_path
     else
       @current_pet = Pet.find(current_user.default_pet_id)
-      @pets_list = Pet.all.where.not(user_id: current_user.id).where(animal: @current_pet.animal.downcase)
+      @pets_list = Pet.all.where.not(user_id: current_user.id).where(animal: @current_pet.animal)
       #@pets_list.each.select do |p| p.likes_as_liked.where.not(liker_id: @current_pet.id) end
       #return @pets_list
     end
