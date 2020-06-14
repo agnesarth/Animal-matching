@@ -11,13 +11,13 @@
         </div>
         <h6 class="card-text mt-2">Âge :</h6>
         <div class="input-group mb-4">
-          <%= f.number_field :age, autofocus: true, placeholder: @pet.age, class:"form-control" %>
+          <%= f.number_field :age, autofocus: true, placeholder: @pet.age, class:"form-control",:max => 30, :min => 0 %>
         </div>
         <h6 class="card-text mt-2">Race :</h6>
         <div class="input-group mb-4">
-          <%if @pet.animal == 'chat' || @pet.animal == 'Chat' %> 
+          <%if @pet.animal == 'Chat' %> 
             <%= f.select :breed, options_for_select(Pet::CATBREED), include_blank: @pet.breed, autofocus: true, class:"form-control" %>
-          <% elsif @pet.animal == 'chien' || @pet.animal == 'Chien' %>
+          <% elsif @pet.animal == 'Chien' %>
            <%= f.select :breed, options_for_select(Pet::DOGBREED), include_blank: @pet.breed, autofocus: true, class:"form-control" %>
           <% end %>
         </div>

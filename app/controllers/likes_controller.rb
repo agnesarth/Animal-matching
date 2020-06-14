@@ -2,11 +2,11 @@ class LikesController < ApplicationController
   before_action :current_pet, only: [:create,:update,:destroy]
 
   def index
-    @my_likes = []
-    Like.where(match: false,liker_id: current_pet.id).each do |l| @my_likes << Pet.find(l.liked_id) end
-    @my_matches = []
-    Like.where(match: true,liker_id: current_pet.id).each do |l| @my_matches << Pet.find(l.liked_id) end
-    Like.where(match: true,liked_id: current_pet.id).each do |l| @my_matches << Pet.find(l.liker_id) end
+    @my_likes = Like.where(match: false,liker_id: current_pet.id)
+
+    #Like.where(match: false,liker_id: current_pet.id).each do |l| @my_likes << Pet.find(l.liked_id) end
+    @my_matches = Like.where(match: true,liker_id: current_pet.id)
+    #Like.where(match: true,liker_id: current_pet.id).each do |l| @my_matches << Pet.find(l.liked_id) end
   end
 
   def show
@@ -24,12 +24,12 @@ class LikesController < ApplicationController
   def create
     @pet = Pet.find(params['pet_id'])
     @like = Like.new(liker_id: current_pet.id, liked_id: @pet.id)
+    if already_liked(@pet, current_pet)
+      @like.match =  true
+      matches_back(@pet, current_pet)
+    end
     respond_to do |format|
       if @like.save!
-        if already_liked(@pet, current_pet)
-          @like.update(match: true)
-          matches_back(current_pet, @pet)
-        end
         format.html { redirect_to pets_path, notice: "J'adore!" }
         format.js { }
       end
@@ -59,12 +59,12 @@ class LikesController < ApplicationController
     current_pet = Pet.find(current_user.default_pet_id)
   end
 
-  def already_liked(current_pet, other_pet)
-    return current_pet.likes_as_liker.where(liked_id: other_pet).exists?
+  def already_liked(liker_pet, liked_pet)
+    return liker_pet.likes_as_liker.where(liked_id: liked_pet).exists?
   end
 
-  def matches_back(current_pet, other_pet)
-    back_like = current_pet.likes_as_liked.where(liker_id: other_pet)
+  def matches_back(liker_pet, liked_pet)
+    back_like = liked_pet.likes_as_liked.where(liker_id: liker_pet)
     back_like.update(match: true)
   end
 

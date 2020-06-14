@@ -9,11 +9,6 @@
 
 require 'faker'
 
-User.destroy_all
-Pet.destroy_all
-Like.destroy_all
-User.destroy_all
-
 
 # Seed User
 12.times do
@@ -52,7 +47,7 @@ end
 puts "#{Pet.all.size} animaux crées"
 
 # Like seed
-40.times do
+30.times do
   my_like = Like.new(liker: Pet.all.sample)
   if my_like.liker.animal == "Chat"
    my_like.liked = Pet.where(animal: "Chat").sample

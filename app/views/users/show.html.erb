@@ -34,7 +34,7 @@
             <div class='card card-lg card-body align-items-center bg-primary'>
               <%if pet.photos.present? %>               
                 <% pet.photos.each do |p| %>
-                  <%= image_tag p, class: "avatar-pet avatar-xlg mb-3 rounded-circle"  %>
+                  <%= image_tag p, class: "avatar-pet avatar-xlg mb-3 rounded-circle" %>
                 <% end %>
               <%else%>
                 <%= image_tag "michat.jpg", class: "avatar-pet avatar-xlg mb-3 rounded-circle"  %>
