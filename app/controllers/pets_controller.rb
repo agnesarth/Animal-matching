@@ -2,6 +2,7 @@ class PetsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create,:edit,:destroy, :delete_photo]
 
   def index
+    #For search in index
     @pets = Pet.search(params[:search])
 
     if current_user.default_pet_id.nil?
