@@ -1,0 +1,33 @@
+.alert {
+  margin-bottom: 0;
+  border-radius: 0;
+  font-family: "Ubuntu", "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.alert-info {
+  color: #28687B;
+  border: 1px solid;
+  border-color: #D1E9F0;
+}
+
+.alert-success {
+  background-color: #E2F3E2;
+  color: #389438;
+  border: 1px solid;
+  border-color: #F0F9F0;
+}
+
+.alert-success .close {
+  color: #389438;
+}
+
+.alert-warning {
+  background-color: #FCF0C5;
+  color: #C29A0A;
+  border: 1px solid;
+  border-color: #FEFAEC;
+}
+
+.alert-warning .close {
+  color: #C29A0A;
+}
