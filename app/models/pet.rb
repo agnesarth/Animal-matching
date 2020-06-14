@@ -29,6 +29,7 @@ class Pet < ApplicationRecord
   end
 
   
+  
 
   def new_pet_send
     UserMailer.new_pet_email(self).deliver_now
