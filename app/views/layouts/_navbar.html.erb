@@ -13,11 +13,7 @@
             <%= link_to "Paramètres", edit_users_path, {:class => "dropdown-item"} %>
           </div>
         </li>
-        <% if !current_user.default_pet_id.nil?%>
-          <li class="nav-item">
-            <em><%= link_to "#{Pet.find(current_user.default_pet_id).name} en ligne", users_path, :class => "nav-link" %></em>
-          </li>
-        <% end %>
+        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Animaux</a>
           <div class="dropdown-menu">
@@ -41,6 +37,11 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
+        <% if !current_user.default_pet_id.nil?%>
+          <li class="nav-item">
+            <em><%= link_to "#{Pet.find(current_user.default_pet_id).name} en ligne", users_path, :class => "nav-link" %></em>
+          </li>
+        <% end %>
         <li class="nav-item">
             <%= link_to "Se déconnecter", destroy_user_session_path, {:method => :delete, :class => "nav-link"} %>
         </li>
