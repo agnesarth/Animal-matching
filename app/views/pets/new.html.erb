@@ -30,9 +30,9 @@
 
         <h6 class="card-text mt-2">Tags :</h6>
         <div class="input-group mb-4">
-          <%= f.select :tag, Tag.all.collect {|p| [ p.value, p.id ]}, include_blank: true, multiple: true, class:"form-control"%>
+          <%= f.select :tag_ids, Tag.all.collect {|p| [ p.value, p.id ]}, {}, include_blank: true, multiple: true, class:"form-control"%>
         </div>
-
+        
         <h6 class="card-text mt-2">En quelques mots :</h6>
         <div class="input-group mb-4">
           <%= f.text_field :description, autofocus: true, class:"form-control" %>
