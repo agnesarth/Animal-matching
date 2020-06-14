@@ -1,6 +1,18 @@
 class PetsController < ApplicationController
-  before_action :set_pet, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:create,:edit,:destroy, :delete_photo]
+  before_action :authenticate_user!, only: [:index, :create,:edit,:destroy, :delete_photo]
+
+  def index
+    if current_user.default_pet_id.nil?
+      p current_user.default_pet_id.nil?
+      flash[:error] = "Vous devez ajouter un animal pour accéder à cette partie du site !"
+      redirect_to root_path
+    else
+      @current_pet = Pet.find(current_user.default_pet_id)
+      @pets_list = Pet.all.where.not(user_id: current_user.id).where(animal: @current_pet.animal)
+      #@pets_list.each.select do |p| p.likes_as_liked.where.not(liker_id: @current_pet.id) end
+      #return @pets_list
+    end
+  end
 
   def new
     @pet = Pet.new
@@ -9,25 +21,26 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(pet_params)
     @pet.user = current_user
-    user_default_pet(current_user, @pet)
-
+    current_user.pets << @pet
+    if current_user.default_pet_id.nil?
+      current_user.update(default_pet_id: @pet.id)
+    end
     respond_to do |format|
       if @pet.save!
-        flash[:success] = 'Animal bien ajouté!'
+        user_default_pet(current_user, @pet)
+        flash[:success] = "Le profil de l'animal a bien été créé."
         format.html { redirect_to pets_path }
-        format.json { render :show, status: :created, location: @pet }
+        format.json { }
       else
+        flash[:error] = "Le profil de l'animal n'a pas été créé."
         format.html { render :new }
-        format.json { render json: @pet.errors, status: :unprocessable_entity }
+        format.json { }
       end
     end
   end
 
   def show
-  end
-
-  def index
-    @pets = Pet.all
+    @pet = Pet.find(params[:id])
   end
 
   def edit
@@ -35,9 +48,10 @@ class PetsController < ApplicationController
   end
 
   def update
+    @pet = Pet.find(params[:id])
     respond_to do |format|
       if @pet.update(pet_params)
-        format.html { redirect_to @pet, notice: 'Tes modifications ont bien été sauveguardées, miao!'}
+        format.html { redirect_to @pet, notice: "Le profil de l'animal a bien été édité."}
         format.json { render :show, status: :ok, location: @pet }
       else
         format.html { render :edit }
@@ -47,15 +61,19 @@ class PetsController < ApplicationController
   end
 
   def destroy
+    @pet = Pet.find(params[:id])
     @pet.destroy
-    respond_to do |format|
-      format.html { redirect_to pets_url, notice: "Profil de #{@pet.name} supprimé avec succès." }
-      format.json { head :no_content }
+    if current_user.pets.empty?
+      current_user.update(default_pet_id: nil)
+      flash[:alert] = "Tu n'as plus aucun profil d'animaux."
+      redirect_to users_path
+    else
+      redirect_to pets_url
     end
   end
 
   def user_default_pet(current_user, pet)
-    if current_user.default_pet_id.nil? 
+    if current_user.default_pet_id.nil?
       current_user.update(default_pet_id: pet.id)
     end
   end
@@ -67,12 +85,7 @@ class PetsController < ApplicationController
   end
 
   private
-
-    def set_pet
-      @pet = Pet.find(params[:id])
-    end
-
     def pet_params
-      params.require(:pet).permit(:name, :animal, :chip_number, :breed, :sex, :age, :user_id, photos: [])
+      params.require(:pet).permit(:name, :animal, :breed, :sex, :age, :user, :description, photos: [])
     end
 end

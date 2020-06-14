@@ -10,6 +10,4 @@ class Like < ApplicationRecord
       errors.add(:liker, 'Narcissisme!')
     end
   end
-
-
 end

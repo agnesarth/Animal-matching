@@ -1,5 +1,5 @@
 class Pet < ApplicationRecord
-  #after_commit :new_pet_send
+  #after_create :new_pet_send
   #after_update :new_match_send
 
   belongs_to :user
@@ -8,8 +8,11 @@ class Pet < ApplicationRecord
   has_many_attached :photos, dependent: :destroy
   has_many :tag_pets, dependent: :destroy
   has_many :tags, through: :tag_pets
-
-  BREED=['Terrier','Dalmatien','Manx','Birman','Boxer','Berger Allemand','Labrador','Bouledogue','Chihuahua','Beagle','Setter','Cocker','Husky','Teckel','Persan','Siamois','Somali','Sibérien','Ragdoll'].sort
+  validates :animal, presence: true
+  validates :age, :numericality => {:greater_than => 0, message: "L'âge doit être supérieur à 0."}
+  
+  CATBREED=['Manx','Birman','Persan','Siamois','Somali','Sibérien','Ragdoll', "Sphinx", "Européen"].sort
+  DOGBREED=['Terrier','Dalmatien','Boxer','Berger Allemand','Labrador','Bouledogue','Chihuahua','Beagle','Setter','Cocker','Husky','Teckel'].sort
 
   def new_pet_send
     UserMailer.new_pet_email(self).deliver_now
@@ -19,4 +22,14 @@ class Pet < ApplicationRecord
     UserMailer.new_match_email(self).deliver_now
   end
 
+  def short_description
+    unless self.description.nil?
+      short = self.description.split(" ").slice(0,13).join(" ")
+      if short.slice(-1) != "."
+        short = short + " ..."
+      end
+      return short
+    end
+  end
 end
+ 

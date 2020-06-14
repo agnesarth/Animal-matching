@@ -1,4 +1,4 @@
-<% if user_signed_in? %> 
+<% if user_signed_in? %>
   <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
     <a class="navbar-brand" href="/"><i class="fa fa-paw mr-1"></i>Whispaw</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,22 +6,31 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <%= link_to "Accueil", pets_path, :class => "nav-link" %>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>
           <div class="dropdown-menu">
             <%= link_to "Mon profil", users_path, {:class => "dropdown-item"} %>
-              <%= link_to "Paramètres", edit_users_path, {:class => "dropdown-item"} %>
+            <%= link_to "Paramètres", edit_users_path, {:class => "dropdown-item"} %>
           </div>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Amimaux</a>
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Animaux</a>
           <div class="dropdown-menu">
-            <%= link_to "Mes amimaux", pets_path, {:class => "dropdown-item"} %>
-            <%= link_to "Mes matchs", pets_path, {:class => "dropdown-item"} %>
+            <% if user_signed_in? && !current_user.default_pet_id.nil? %>
+              <%= link_to "Recherche des amimaux", pets_path, {:class => "dropdown-item"} %>
+              <%= link_to "Mes likes", pet_likes_path(current_user.default_pet_id), {:class => "dropdown-item"} %>
+              <%= link_to "Mes matches", pet_likes_path(current_user.default_pet_id), {:class => "dropdown-item"} %>
+            <% else %>
+              <%= link_to "Mes likes", root_path, {:class => "dropdown-item"} %>
+              <%= link_to "Mes matches", root_path, {:class => "dropdown-item"} %>
+            <% end %>
           </div>
         </li>
         <li class="nav-item">
-            <%= link_to "Mes messages", "javascript:void(0)", :class => "nav-link" %>
+          <%= link_to "Mes messages", "javascript:void(0)", :class => "nav-link" %>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">

@@ -59,14 +59,35 @@
  @import "bootstrap";
  @import "bootswatch";
 
- // Icones
+ // Icons
 
  @import "font-awesome";
 
  // Timeline
  @import "timeline";
- 
+
+ // User
+ @import "users";
+
  // CSS changes
+ @import "custom";
+ @import "devise";
+ @import "custom";
+@import "petsindex";
+
+ // Flash
+@import "flash";
+
+ // Footer
+@import "footer";
+
+ // Pets view
+@import "pets_new_edit";
+@import "pets";
+
+// Static pages
+
+@import "static_pages";
 
  // All site
 
@@ -76,111 +97,27 @@ html {
 
 body {
   background-color: #f8f9fa;
-  position:absolute;
+  position: absolute;
   top:0;
   right:0;
   left:0;
 }
 
- // Home page when user is not signed in
-
-.jumbotron {
-  background-image: url(https://images.unsplash.com/photo-1558929996-da64ba858215?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 100vh;
-  position: relative;
-  align-items: center;
-  margin-bottom: 4em;
-}
-
-.content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.title-jumbotron {
-  font-size: 60px;
-  color: white;
-}
-
-.jumbotron div {
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-}
-
-.btn-main-page {
-  background-color: white;
-  border: white;
-  margin-right: 5px;
-}
-
-.first-card {
-  background-color: none;
-  border: none;
-  color: #212529;
-  margin-bottom: 20px;
-}
-
-.second-card {
-  margin-left: auto;
-  background-color: none;
-  border: none;
-  color: #212529;
-  margin-bottom: 20px;
-}
-
-.cat-img-home {
-  width:100%;
-  height: auto;
-}
-
-.dog-img-home {
-  width:100%;
-  height: auto;
-}
-
-.carousel-caption {
-  top: 0;
-  bottom: auto;
-}
+    // Footer
 
 #footer{
   position: static;
   bottom: 0;
   max-height: auto;
-  background-color: $cyan;
-}
-  
-.text-dog-box {
-  float: left;
-  width: 50%;
-  padding-right: 4em;
-  margin-bottom: 11em;
+  background-color: $gray-800;
 }
 
-.img-dog-box {
-  max-width: 50%;
-  float: right;
-  margin-bottom: 4em;
+.footer-icon:hover{
+  text-decoration: none;
+  color: $warning;
 }
 
-.carousel-caption {
-    top: 0;
-    bottom: auto;
-}
-
-
+    // Searchbar
 
 .searchbar{
   margin-bottom: auto;
@@ -228,19 +165,6 @@ body {
   border-radius: 50%;
   color:white;
   }
- // Flash
-
-.alert {
-  margin-bottom: 0;
-  border-radius: 0;
-  font-family: "Ubuntu", "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-
-.alert-info {
-  color: #28687B;
-  border: 1px solid;
-  border-color: #D1E9F0;
-}
 
  // Navbar
 
@@ -256,46 +180,3 @@ body {
   background-color: #6f0c1e;
 }
 
- // Devise
-
-.container-devise {
-  background-image: linear-gradient(
-    rgba(0, 0, 0, 0.45), 
-    rgba(0, 0, 0, 0.45)
-  ),url(asset_path( 'background_signup.jpeg' ));
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 100vh;
-  position: absolute;
-  align-items: center;
-  top: 0;
-  right: 0;
-  left: 0;
-}
-
-.button-back {
-  color: white;
-  font-size: 1.2rem;
-}
-
-.button-back:hover {
-  color: white;
-}
-
-.button-back:focus {
-  color: white;
-}
-
-.bg-devise {
-  background-color: #f8f9fa;
-  font-family: "Ubuntu", "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-
-.input-group-text {
-  min-width: 42px;
-}
-
-.form-control:focus {
-  border-color: #9d112a;
-}

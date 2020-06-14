@@ -1,43 +1,57 @@
-<div class="text-center m-4">
-  <h1>Edite ton ami à quatre pattes</h1>
-</div>
+<div class="container">
+  <div class="mt-5 col-md-6 offset-md-3 shadow p-3 mb-5 rounded bg-devise container-pet shadow text-center">
+    <i class="fa fa-paw mt-2 fa-5x"></i>
+    <h3 class="mt-3 mb-5">Edite ton ami à quatre pattes</h3>
 
-
-<div class="mt-3 mb-3 text-center">
-  <%= form_for @pet, :url => pet_path(@pet.id), method: :patch, multipart: true do |f| %>
-    <div class="card">
-      <div class="card-body">
-        <h6 class="card-text mt-2">Prénom: <br> <%= f.text_field :name, autofocus: true,  placeholder: @pet.name %> </h6>
-        <p class="card-text mt-2 mb-0">Type:</p>
-        <%= f.radio_button :animal, 'Chien', :checked => true %> Chien
-        <%= f.radio_button :animal, 'Chat' %> Chat
-        <p class="card-text mt-2">Numéro de chip: <br>  <%= f.text_field :chip_number, placeholder: @pet.chip_number %></p>
-        <p class="card-text mt-2">Age : <br>  <%= f.number_field :age, placeholder: @pet.age %></p>
-        <p class="card-text mb-0">Genre:</p>
-        <%= f.radio_button :sex, 'Femelle', :checked => true %> Femelle
-        <%= f.radio_button :sex, 'Mâle' %> Mâle
-        <p class="card-text mt-2 mb-0">Race :
-        <%= f.select :breed, options_for_select(Pet::BREED), include_blank: true %></p><br>
-        <p class="card-text mb-0">Mise en ligne le : <%= Time.now.strftime("%d/%m/%Y") %> </p><br>
-        <p class="card-text mb-0">Tes photos currentes</p><br>
-        <div style="text-center">
-          <div class="d-flex flex-row justify-content-center">
-            <% @pet.photos.each do |p| %>
-              <%= image_tag p, style: "height: 200px; width: 150px; ", class: "p-1" %>
-              <div class="maintext">
-                <%= link_to delete_photo_pet_url(p.id), method: :delete do %><i class="fa fa-trash"></i><% end %>
-              </div>
-            <% end %>
-          </div>
+    <div class="text-center my-2">
+      <%= form_for @pet, :url => pet_path(@pet.id), method: :patch, multipart: true do |f| %>
+        <h6 class="card-text mt-2">Nom :</h6>
+        <div class="input-group mb-4">
+          <%= f.text_field :name, autofocus: true, placeholder: @pet.name, class:"form-control" %>
         </div>
-        <p class="card-text mt-4 mb-0">Selectionne une ou plusieurs photos à télécharger</p><br>
-        <%= f.file_field :photos, multiple: true, value: "Selectionne plusieurs fichiers à la fois", class: "uploadPreview ml-5 mt-0 mb-2" %><br>
-<div id="showPreview"></div>
-        <%= f.submit "Télécharge ton petit amis", class: "m-2" %>
-      </div>
+        <h6 class="card-text mt-2">Âge :</h6>
+        <div class="input-group mb-4">
+          <%= f.number_field :age, autofocus: true, placeholder: @pet.age, class:"form-control" %>
+        </div>
+        <h6 class="card-text mt-2">Race :</h6>
+        <div class="input-group mb-4">
+<<<<<<< HEAD
+          <%if @pet.animal == 'Chat' %> 
+            <%= f.select :breed, options_for_select(Pet::CATBREED), include_blank: @pet.breed, autofocus: true, class:"form-control" %>
+          <% elsif @pet.animal == 'Chien' %>
+=======
+          <%if @pet.animal == 'chat' || @pet.animal == 'Chat' %> 
+            <%= f.select :breed, options_for_select(Pet::CATBREED), include_blank: @pet.breed, autofocus: true, class:"form-control" %>
+          <% elsif @pet.animal == 'chien' || @pet.animal == 'Chien' %>
+>>>>>>> 58ea5f8b250d8451b2701eab5c5be6f55d220680
+           <%= f.select :breed, options_for_select(Pet::DOGBREED), include_blank: @pet.breed, autofocus: true, class:"form-control" %>
+          <% end %>
+        </div>
+        <h6 class="card-text mt-2">En quelques mots :</h6>
+        <div class="input-group mb-4">
+          <%= f.text_field :description, autofocus: true, placeholder: @pet.description, class:"form-control" %>
+        </div>
+        <h6 class="card-text">Photos actuelles :</h6>
+        <div class="d-flex flex-row justify-content-center mb-4">
+          <% @pet.photos.each do |p| %>
+            <%= image_tag p, class: "p-1 img-pet-new-edit" %>
+            <div class="maintext">
+              <%= link_to delete_photo_pet_url(p.id), method: :delete do %><i class="fa fa-trash"></i><% end %>
+            </div>
+          <% end %>
+        </div>
+        <h6 class="card-text">Ajouter des photos :</h6>
+        <div class="input-group mb-4 input-checkbox">
+          <%= f.file_field :photos, multiple: true, value: "", class: "uploadPreview ml-5 mt-0 mb-2" %>
+        </div>
+        <div id="showPreview"></div>
+        <div class="actions my-3">
+          <%= f.submit "Editer le profil", class:"btn btn-primary" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
+  <div class="container font-weight-bold">
+    <%= link_to "Retour", :back %>
+  </div>
 </div>
-
-<%= link_to 'Show', @pet %> |
-<%= link_to 'Back', pets_path %>
