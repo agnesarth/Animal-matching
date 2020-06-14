@@ -29,15 +29,15 @@ puts "#{User.all.size} humains crées"
 20.times do
   my_pet = Pet.new(
     name: Faker::Artist.name,
-    animal: ["Chat", "Chien"].sample,
+    animal: [0,1].sample,
     sex: Faker::Creature::Cat.gender,
     user_id: User.all.sample.id,
     age: rand(0..17),
     description: Faker::GreekPhilosophers.quote,
   )
-  if my_pet.animal == "Chat"
+  if my_pet.chat?
     my_pet.breed = Faker::Creature::Cat.race
-  elsif my_pet.animal == "Chien"
+  elsif my_pet.chien?
     my_pet.breed = Faker::Creature::Dog.race
   end
   my_pet.save
@@ -49,10 +49,10 @@ puts "#{Pet.all.size} animaux crées"
 # Like seed
 30.times do
   my_like = Like.new(liker: Pet.all.sample)
-  if my_like.liker.animal == "Chat"
-   my_like.liked = Pet.where(animal: "Chat").sample
-  elsif my_like.liker.animal == "Chien"
-    my_like.liked = Pet.where(animal: "Chien").sample
+  if my_like.liker.chat?
+   my_like.liked = Pet.all.chat.sample
+  elsif my_like.liker.chien?
+    my_like.liked = Pet.all.chien.sample
   end
   back_like = my_like.liker.likes_as_liked.where(liker_id: my_like.liked)
   if back_like.exists?
