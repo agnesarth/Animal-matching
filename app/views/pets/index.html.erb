@@ -3,14 +3,6 @@
 </div>
 
 
-  <!-- Search bar in progress -->
-  <h4>Search</h4>
-  <%= form_tag(pets_path, method: :get) do%>
-    <%= text_field_tag(:search, params[:search])%>
-    <%= submit_tag ('Search') %>
-  <% end %>
-
-
 <div class="container">
   <!-- Search bar disabled for now, need to implement post-MVP -->
   <input class="form-control" id="anythingSearch" type="text" placeholder="Type something to search list items" disabled>
@@ -21,6 +13,20 @@
     <p></p>
   </div>
 </div>
+
+ <!-- Search bar in progress -->
+  <h4>Search</h4>
+  <%= form_tag(pets_path, method: :get) do%>
+    <%= text_field_tag(:search, params[:search])%>
+    <%= submit_tag ("Search") %>
+  <% end %>
+
+  <%=@pets.each do | pet | %>
+  <ul>
+    <li><%= link_to pet.name, pet_path(@pet)%></li><br>
+  </ul>
+  <% end %>
+   <!-- Search bar in progress -->
 
 <div class="container justify-content-around">
   <div class="row justify-content-around ml-3 mr-3">
