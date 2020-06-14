@@ -49,7 +49,7 @@
                   <%=link_to "Voir son profil", pet_path(pet), class:'btn btn-sm btn-warning' %>
                 </div>
                 <div class='float-right' style='margin-top: 10px;'>
-                  <%= form_for(current_user, url: users_path(current_user), method: :put) do |f| %>
+                  <%= form_for(current_user, url: users_path, method: :put) do |f| %>
                     <%= f.hidden_field :default_pet_id, :value => pet.id %>
                     <%= f.submit "Choisir comme favori",class:"btn btn-sm btn-secondary" %>
                   <%end%>
