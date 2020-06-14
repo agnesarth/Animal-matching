@@ -9,18 +9,13 @@
 
 require 'faker'
 
-User.destroy_all
-Pet.destroy_all
-Like.destroy_all
-User.destroy_all
-
 
 # Seed User
 12.times do
   new_user = User.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    password: "whispaw",
+    password: "Whispaw+1",
     latitude: rand(42.421..51.053),
     longitude: rand(-4.884..8.233),
   )
@@ -34,16 +29,15 @@ puts "#{User.all.size} humains crées"
 20.times do
   my_pet = Pet.new(
     name: Faker::Artist.name,
-    animal: ["chat", "chien"].sample,
-    chip_number: Faker::Alphanumeric.alphanumeric(number: 5),
+    animal: ["Chat", "Chien"].sample,
     sex: Faker::Creature::Cat.gender,
     user_id: User.all.sample.id,
     age: rand(0..17),
     description: Faker::GreekPhilosophers.quote,
   )
-  if my_pet.animal == "chat"
+  if my_pet.animal == "Chat"
     my_pet.breed = Faker::Creature::Cat.race
-  elsif my_pet.animal == "chien"
+  elsif my_pet.animal == "Chien"
     my_pet.breed = Faker::Creature::Dog.race
   end
   my_pet.save
@@ -53,14 +47,14 @@ end
 puts "#{Pet.all.size} animaux crées"
 
 # Like seed
-40.times do
+30.times do
   my_like = Like.new(liker: Pet.all.sample)
-  if my_like.liker.animal == "chat"
-   my_like.liked = Pet.where(animal: "chat").sample
-  elsif my_like.liker.animal == "chien"
-    my_like.liked = Pet.where(animal: "chien").sample
+  if my_like.liker.animal == "Chat"
+   my_like.liked = Pet.where(animal: "Chat").sample
+  elsif my_like.liker.animal == "Chien"
+    my_like.liked = Pet.where(animal: "Chien").sample
   end
-  back_like = my_like.liker.liked_likes.where(liker_id: my_like.liked)
+  back_like = my_like.liker.likes_as_liked.where(liker_id: my_like.liked)
   if back_like.exists?
     my_like.match = true
     back_like.update(match: true)
@@ -79,12 +73,12 @@ end
 
 puts "#{Tag.all.size} tags crées"
 
-# Tag_who
+# Tag_pet
 30.times do
-  join_tag = TagWho.create(
+  join_tag = TagPet.create(
     pet: Pet.all.sample,
     tag: Tag.all.sample,
     )
 end
 
-puts "#{TagWho.all.size} tags associés"
+puts "#{TagPet.all.size} tags associés"

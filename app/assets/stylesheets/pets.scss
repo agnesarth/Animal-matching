@@ -1,3 +1,73 @@
 // Place all the styles related to the pets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ // Pets view
+
+ .container-pet {
+  background-color: #FFF;
+}
+
+.shadow {
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15) !important;
+}
+
+.input-group select {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #5a5a5a;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.4rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.input-group select:focus {
+  color: #5a5a5a;
+  background-color: #fff;
+  border-color: #eb4361;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(157, 17, 42, 0.25);
+}
+
+.input-checkbox {
+  justify-content: center;
+  align-items: center;
+}
+
+.radio-button {
+  margin-right: 0.5em;
+  margin-left: 2em;
+}
+
+.img-pet-new-edit {
+  max-width: 400px;
+  height: auto;
+}
+
+.avatar-pet {
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+}
+
+.btn-edit-pet-profile {
+  margin-right: 5px;
+}
+
+.container-pet-show {
+  justify-content: center;
+}
+
+.btns-pet-show {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+.pet-name {
+  margin-bottom: 0.7em;
+}

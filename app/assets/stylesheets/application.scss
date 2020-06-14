@@ -21,7 +21,7 @@
  @import "mixins";
 
  // Optionnal variables bootstrap
- 
+
  @import "root";
  @import "reboot";
  @import "type";
@@ -54,93 +54,125 @@
  @import "carousel";
  @import "utilities";
  @import "print";
- 
+
 
  @import "bootstrap";
  @import "bootswatch";
 
- // Icones
+ // Icons
+
  @import "font-awesome";
 
+ // Timeline
+ @import "timeline";
+
+ // User
+ @import "users";
 
  // CSS changes
+ @import "custom";
+ @import "devise";
+ @import "custom";
+@import "petsindex";
 
-.jumbotron {
-  background-image: url("https://images.unsplash.com/photo-1558929996-da64ba858215?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 100vh;
-  position: relative;
-  align-items: center;
-  margin-bottom: 4em;
+ // Flash
+@import "flash";
+
+ // Footer
+@import "footer";
+
+ // Pets view
+@import "pets_new_edit";
+@import "pets";
+
+// Static pages
+
+@import "static_pages";
+
+ // All site
+
+html {
+  height: 100%;
 }
 
-.title-jumbotron {
-  font-size: 60px;
-  color: white;
-}
-
-.jumbotron div {
+body {
+  background-color: #f8f9fa;
   position: absolute;
-  bottom: 20px;
-  left: 0;
-  right: 0;
+  top:0;
+  right:0;
+  left:0;
 }
 
-.btn-main-page {
-  background-color: white;
-  border: white;
-  margin-right: 5px;
+    // Footer
+
+#footer{
+  position: static;
+  bottom: 0;
+  max-height: auto;
+  background-color: $gray-800;
 }
 
-.first-card {
-  background-color: none;
-  border: none;
-  color: #212529;
-  margin-bottom: 20px;
+.footer-icon:hover{
+  text-decoration: none;
+  color: $warning;
 }
 
-.second-card {
-  margin-left: auto;
-  background-color: none;
-  border: none;
-  color: #212529;
-  margin-bottom: 20px;
-}
+    // Searchbar
 
-.cat-img-home {
-  width:100%;
-  height: auto;
-}
+.searchbar{
+  margin-bottom: auto;
+  margin-top: auto;
+  height: 60px;
+  background-color: #00916e;
+  border-radius: 30px;
+  padding: 10px;
+  }
 
-.img-cat-box {
-  max-width: 50%;
-  margin-bottom: 2em;
-  float: left;
-}
+  .search_input{
+  color: white;
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 0;
+  caret-color:transparent;
+  line-height: 40px;
+  transition: width 0.4s linear;
+  }
 
-.text-cat-box {
+  .searchbar:hover > .search_input{
+  padding: 0 10px;
+  width: 450px;
+  caret-color:red;
+  transition: width 0.4s linear;
+  }
+
+  .searchbar:hover > .search_icon{
+  background: white;
+  color: #e74c3c;
+  }
+
+  .search_icon{
+  height: 40px;
+  width: 40px;
   float: right;
-  width: 50%;
-  padding-left: 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color:white;
+  }
+
+ // Navbar
+
+.bg-primary {
+  background-image: linear-gradient(to right, #9d112a, #dd3019);
 }
 
-.dog-img-home {
-  width:100%;
-  height: auto;
+.dropdown-item:hover {
+  background-color: #9d112a;
 }
 
-.text-dog-box {
-  float: left;
-  width: 50%;
-  padding-right: 4em;
-  margin-bottom: 10em;
-}
-
-.img-dog-box {
-  max-width: 50%;
-  float: right;
-  margin-bottom: 4em;
+.dropdown-item:focus {
+  background-color: #6f0c1e;
 }
 

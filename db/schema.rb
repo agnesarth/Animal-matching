@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_10_084459) do
+ActiveRecord::Schema.define(version: 2020_06_13_170205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 2020_06_10_084459) do
   create_table "pets", force: :cascade do |t|
     t.string "name"
     t.string "animal"
-    t.string "chip_number"
     t.string "breed"
     t.string "sex"
     t.integer "age"
@@ -60,13 +59,13 @@ ActiveRecord::Schema.define(version: 2020_06_10_084459) do
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
-  create_table "tag_whos", force: :cascade do |t|
+  create_table "tag_pets", force: :cascade do |t|
     t.bigint "tag_id"
     t.bigint "pet_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["pet_id"], name: "index_tag_whos_on_pet_id"
-    t.index ["tag_id"], name: "index_tag_whos_on_tag_id"
+    t.index ["pet_id"], name: "index_tag_pets_on_pet_id"
+    t.index ["tag_id"], name: "index_tag_pets_on_tag_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -93,6 +92,6 @@ ActiveRecord::Schema.define(version: 2020_06_10_084459) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "tag_whos", "pets"
-  add_foreign_key "tag_whos", "tags"
+  add_foreign_key "tag_pets", "pets"
+  add_foreign_key "tag_pets", "tags"
 end

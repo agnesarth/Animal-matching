@@ -27,8 +27,10 @@
   <dd>Modify my pet profile</dd>
   <dd>See other pets</dd>
   <dd>Like othe pets</dd>
-  <dd>Like othe pets</dd>
   <dd>Chat with other users when there's a match</dd>
+  
+   <dt>Premium users can:</dt>
+   <dd>Coming soon...</dd>
 </dl>
 
 ## Instructions
@@ -51,8 +53,7 @@
     - 👯 Visit us online :arrow_right: https://whispaw.herokuapp.com/
     
  - **Want to try admin mode?**
-    - email: animalmatching2020@gmail.com
-    - password: 
+    - Coming soon
 
 ## Versioning
 
