@@ -16,6 +16,7 @@ class PetsController < ApplicationController
 
   def new
     @pet = Pet.new
+    @tag = Tag.all
   end
 
   def create
