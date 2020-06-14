@@ -2,10 +2,10 @@
   <div class="mt-5 col-md-6 offset-md-3 shadow p-3 mb-5 rounded bg-devise container-pet shadow container-pet-show">
      <%if @pet.photos.present? %>
         <% @pet.photos.each do |p| %>
-          <%= image_tag p, style: "width: 200px; height: 200px; ", class: "avatar avatar-xlg mb-3 rounded-circle"  %>
+          <%= image_tag p, class: "avatar avatar-xlg mb-3 rounded-circle"  %>
         <% end %>
       <%else%>
-        <%= image_tag "michat.jpg", style: "width: 200px; height: 200px; ", class: "avatar avatar-xlg mb-3 rounded-circle"  %>
+        <%= image_tag "michat.jpg", class: "avatar avatar-xlg mb-3 rounded-circle"  %>
       <%end%>
 
     <h4 class="pet-name"><%= @pet.name %> · <%= @pet.animal %></h4>
