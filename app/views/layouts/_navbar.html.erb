@@ -13,11 +13,7 @@
             <%= link_to "Paramètres", edit_users_path, {:class => "dropdown-item"} %>
           </div>
         </li>
-        <% if !current_user.default_pet_id.nil?%>
-          <li class="nav-item">
-            <em><%= link_to "#{Pet.find(current_user.default_pet_id).name} en ligne", users_path, :class => "nav-link" %></em>
-          </li>
-        <% end %>
+        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Animaux</a>
           <div class="dropdown-menu">
@@ -25,8 +21,15 @@
               <%= link_to "Recherche des amimaux", pets_path, {:class => "dropdown-item"} %>
               <%= link_to "Mes likes / mes matches", pet_likes_path(current_user.default_pet_id), {:class => "dropdown-item"} %>
             <% else %>
-              <%= link_to "Ajouter un animal", new_pet_path, {:class => "dropdown-item"} %>
+              <%= link_to "Créer un animal", new_pet_path, {:class => "dropdown-item"} %>
             <% end %>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tags</a>
+          <div class="dropdown-menu">
+            <%= link_to "Créer un tag", new_tag_path, :class => "dropdown-item" %>
+            <%= link_to "Liste des tags", tags_path, :class => "dropdown-item" %>
           </div>
         </li>
         <li class="nav-item">
@@ -34,6 +37,11 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
+        <% if !current_user.default_pet_id.nil?%>
+          <li class="nav-item">
+            <em><%= link_to "#{Pet.find(current_user.default_pet_id).name} en ligne", users_path, :class => "nav-link" %></em>
+          </li>
+        <% end %>
         <li class="nav-item">
             <%= link_to "Se déconnecter", destroy_user_session_path, {:method => :delete, :class => "nav-link"} %>
         </li>
@@ -41,3 +49,4 @@
     </div>
   </nav>
 <% end %>
+
