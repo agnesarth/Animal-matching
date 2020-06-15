@@ -9,7 +9,7 @@
  background-position: center center;
  background-repeat: no-repeat;
  background-size: cover;
- min-height: 35vh;
+ min-height: 45vh;
  position: relative;
  align-items: center;
  margin-bottom: 4em;
@@ -74,6 +74,19 @@
 }
 
 .card-img-top {
-	max-width: 300px;
-	max-height: 300px;
+	width: 300px;
+	height: 300px;
+	object-fit: cover;
+}
+
+.form-inline .form-control {
+	width: 100%;
+}
+
+.form-inline-search {
+	justify-content: center;
+}
+
+.btn-info-match {
+	margin-bottom: 2em;
 }

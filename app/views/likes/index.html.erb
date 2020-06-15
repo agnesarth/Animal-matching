@@ -117,6 +117,34 @@ Voici le mél pour lui écrire <b><%= pet.user.email%></b></h6>
                               </div>
                           <% end %>
 
+  <div class="container text-center">
+    <h1 class="m-5">Mes Likes</h1>
+  </div>
+  <% if @my_likes.empty? %>
+    <div class="text-center">
+      <h4>Dépèche-toi, <a href="/pets">vas liker les animaux plus cool<i class="fa fa-paw"></i></a> du web</h4>
+    </div>
+  <% else %>
+    <div class="row justify-content-around ml-3 mr-3">
+      <% @my_likes.each do |like| %>
+        <div class="col-sm-3">
+          <div id="likeCard<%= like.liked_id %>" class="card bg-light mb-3" ">
+            <div id="likeHeader<%= like.liked_id %>" class="card-header">
+              <h5 class="card-title float-left"><%= Pet.find(like.liked_id).name%></h5>
+              <% Pet.find(like.liked_id).tags.each do |tag|%>
+                <span class='badge badge-secondary mr-2 mb-1 float-right'><%=tag.value%></span>
+              <%end%>
+            </div>
+            <div id="likeBody<%= like.liked_id %>" class="card-body">
+              <div id="demo" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" >
+                  <% unless Pet.find(like.liked_id).photos.empty? %>
+                    <div class="carousel-item active">
+                      <%= image_tag Pet.find(like.liked_id).photos.first, class: "card-img-top" %>
+                    </div>
+                    <% Pet.find(like.liked_id).photos[1..-1].each do |p| %>
+                      <div class="carousel-item">
+                        <%= image_tag p, class: "card-img-top" %>
                       </div>
                     </div>
 
