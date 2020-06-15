@@ -7,7 +7,8 @@ class User < ApplicationRecord
   (?=.*[[:^alnum:]]) # Must contain a symbol
   /x
 
-  #after_create :welcome_send
+  #after_commit :welcome_send
+  #before_action :default_pet
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -38,4 +39,20 @@ class User < ApplicationRecord
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
+
+  def current_pet
+    return Pet.find(self.default_pet_id)
+  end
+
+  def default_pet?
+    return self.default_pet_id.nil?
+  end
+
+  def default_pet!
+    if self.default_pet_id.nil?
+      last_pet = self.pets.last
+      self.update(default_pet_id: last_pet.id)
+    end
+  end
+
 end

@@ -1,4 +1,8 @@
 class Like < ApplicationRecord
+  after_commit :match, on: :create
+#  after_commit :new_match_send, on :create
+  before_destroy :unmatch, on: :destroy
+
   belongs_to :liker, class_name: "Pet"
   belongs_to :liked, class_name: "Pet"
   validates :liked, uniqueness: { scope: [:liker]}
@@ -18,31 +22,30 @@ class Like < ApplicationRecord
   def already_liked?
     liker_pet = Pet.find(self.liked_id)
     liked_pet = Pet.find(self.liker_id)
-    return liker_pet.likes_as_liker.where(liked_id: liked_pet).exists?
+    return Like.where(liked_id: liked_pet.id, liker_id: liker_pet.id).exists?
   end
 
-  def matches_back
-    liker_pet = Pet.find(self.liked_id)
-    liked_pet = Pet.find(self.liker_id)
-    if already_liked?
+  def match
+    if already_liked? == true
       self.match = true
-      back_like = liked_pet.likes_as_liked.where(liker_id: liker_pet)
-      back_like.update(match: true)
+      match_back = Like.where(liker_id: self.liked_id,liked_id: self.liker_id)
+      match_back.first.update(match: true)
+    else
+      self.match = false
     end
   end
 
   def unmatch
-    liker_pet = Pet.find(self.liked_id)
-    liked_pet = Pet.find(self.liker_id)
-    if already_liked?
-      self.match = true
-      back_like = liked_pet.likes_as_liked.where(liker_id: liker_pet)
-      back_like.update(match: true)
+    if self.match == true
+      unmatched = Like.where(liker_id: self.liked_id,liked_id: self.liker_id)
+      unmatched.first.update(match: false)
     end
-    
-    iam_liked_ids = current_pet.likes_as_liked.all
-    unmatched = iam_liked_ids.where(liker: other_pet)
-    unmatched.update(match: false)
+  end
+
+  def new_match_send
+    if already_liked?
+      UserMailer.new_match_email(self).deliver_now
+    end
   end
 
 end

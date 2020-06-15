@@ -1,6 +1,5 @@
 class Pet < ApplicationRecord
-  #after_create :new_pet_send
-  #after_update :new_match_send
+  #after_commit :new_pet_send
 
   belongs_to :user
   has_many :likes_as_liker, foreign_key: "liker", class_name: "Like", dependent: :destroy
@@ -19,14 +18,10 @@ class Pet < ApplicationRecord
     UserMailer.new_pet_email(self).deliver_now
   end
 
-  def new_match_send
-    UserMailer.new_match_email(self).deliver_now
-  end
-
   def short_description
     unless self.description.nil?
       short = self.description.split(" ").slice(0,13).join(" ")
-      if short.slice(-1) != "."
+      if short.last != "."
         short = short + " ..."
       end
       return short

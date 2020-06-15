@@ -54,14 +54,7 @@ puts "#{Pet.all.size} animaux crées"
   elsif my_like.liker.chien?
     my_like.liked = Pet.all.chien.sample
   end
-  back_like = my_like.liker.likes_as_liked.where(liker_id: my_like.liked)
-  if back_like.exists?
-    my_like.match = true
-    back_like.update(match: true)
-    my_like.save
-  else
-    my_like.save
-  end
+  my_like.save
 end
 
 puts "#{Like.all.size} likes crées"
