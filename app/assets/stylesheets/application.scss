@@ -97,24 +97,9 @@ html {
 
 body {
   background-color: #f8f9fa;
-  position: absolute;
-  top:0;
-  right:0;
-  left:0;
-}
-
-    // Footer
-
-#footer{
-  position: static;
-  bottom: 0;
-  max-height: auto;
-  background-color: $gray-800;
-}
-
-.footer-icon:hover{
-  text-decoration: none;
-  color: $warning;
+  position: relative;
+  min-height: 100%;
+  min-height: 100vh;
 }
 
     // Searchbar
