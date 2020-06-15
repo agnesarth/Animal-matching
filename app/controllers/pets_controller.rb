@@ -2,15 +2,13 @@ class PetsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create,:edit,:destroy, :delete_photo]
 
   def index
-    if current_user.default_pet_id.nil?
-      p current_user.default_pet_id.nil?
+    if current_user.default_pet?
       flash[:error] = "Vous devez ajouter un animal pour accéder à cette partie du site !"
       redirect_to root_path
     else
       @current_pet = Pet.find(current_user.default_pet_id)
       @pets_list = Pet.all.where.not(user_id: current_user.id).where(animal: @current_pet.animal)
-      #@pets_list.each.select do |p| p.likes_as_liked.where.not(liker_id: @current_pet.id) end
-      #return @pets_list
+
     end
   end
 
