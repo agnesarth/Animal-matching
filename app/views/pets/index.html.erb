@@ -23,7 +23,7 @@
 
   <%=@pets.each do | pet | %>
   <ul>
-    <li><%= link_to pet.name, pet_path(@pet)%></li><br>
+    <li><%= link_to pet.name, pet_path(pet)%></li><br>
   </ul>
   <% end %>
    <!-- Search bar in progress -->
