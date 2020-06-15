@@ -1,17 +1,17 @@
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <%=image_tag("doggo_home.jpg", class: "d-block w-100", alt: "")%>
+<div id="carousel-fade" class="carousel carousel-fade" data-ride="carousel" data-interval="7000">
+  <div class="carousel-inner embed-responsive embed-responsive-16by9" role="listbox"">
+    <div class="carousel-item carousel-item-home-page embed-responsive-item active">
+      <%=image_tag("doggo_home.jpg", class: "d-block", alt: "")%>
     </div>
-    <div class="carousel-item">
-      <%=image_tag("cat_home.jpg", class: "d-block w-100", alt: "...")%>
+    <div class="carousel-item carousel-item-home-page embed-responsive-item">
+      <%=image_tag("cat_home.jpg", class: "d-block", alt: "...")%>
     </div>
-    <div class="carousel-item">
-      <%=image_tag("doggo_hug_home.jpg", class: "d-block w-100", alt: "...")%>
+    <div class="carousel-item carousel-item-home-page embed-responsive-item">
+      <%=image_tag("doggo_hug_home.jpg", class: "d-block", alt: "...")%>
     </div>
 
     <div class="item">
-      <div class="content">
+      <div class="content content-home-page">
         <div class= "text-center carousel-caption">
           <h1 class="title-jumbotron">Matchez. Rencontrez. Jouez.</h1>
           <% unless user_signed_in? %>
@@ -25,8 +25,9 @@
     </div>
   </div>
 </div>
+
 <div class="container text-center my-4 pt-4 rounded">
-  <h1 class="py-3"><span class="alert alert-primary rounded"> <i class="fa fa-paw"></i> Whispaw</span> le réseau social des animaux de compagnie</h1>
+  <h1 class="py-3"><span class="alert alert-primary rounded alert-whispaw"> <i class="fa fa-paw"></i> Whispaw</span> le réseau social des animaux de compagnie</h1>
   <h2 class="pb-3"><blockquote>Une app qui a du chien, ils sont félins pour l'autre.</blockquote></h2>
 </div>
 <div class="container">

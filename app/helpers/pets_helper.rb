@@ -8,4 +8,8 @@ module PetsHelper
     return current_pet.likes_as_liker.where(liked_id: pet)
   end
 
+  def liked?(pet)
+    return Like.where(liker_id: @current_pet.id, liked_id: pet.id).exists?
+  end
+
 end
