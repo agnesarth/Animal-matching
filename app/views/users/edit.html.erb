@@ -15,7 +15,7 @@
         <%if @user.default_pet_id != nil %> 
           <h6 class="card-text mt-2">Animal favori :</h6>
           <div class="input-group mb-4">
-            <%= f.select :default_pet_id, Pet.where(user_id: current_user.id).collect { |p| [ p.name, p.id ] }, class:"form-control" %>
+            <%= f.select :default_pet_id, current_user.pets.collect { |p| [ p.name, p.id ] }, include_blank: true, class:"form-control" %>
           </div>
         <% end %>
         <div class="actions">
