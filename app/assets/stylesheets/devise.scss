@@ -23,6 +23,8 @@
 .button-back {
   color: white;
   font-size: 1.2rem;
+  align-self: flex-end;
+  flex: 1 0 80%;
 }
 
 .button-back:hover {
