@@ -42,15 +42,19 @@ class User < ApplicationRecord
     return Pet.find(self.default_pet_id)
   end
 
-  def default_pet?
-    return self.default_pet_id.nil?
-  end
-
-  def default_pet!
-    if self.default_pet_id.nil?
-      last_pet = self.pets.last
-      self.update(default_pet_id: last_pet.id)
+  def default_pet
+    if self.pets.empty?
+      return false
+    elsif self.default_pet_id.nil?
+      current_pet = self.pets.last
+      self.default_pet_id.update(current_pet.id)
+      redirect_to users_path
+      return true
+    else
+      redirect_to users_path
+      return true 
     end
+    
   end
 
 end
