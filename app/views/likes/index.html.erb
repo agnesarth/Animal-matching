@@ -2,7 +2,7 @@
   <div class="container text-center">
     <h1 class="m-5">Mes Matches</h1>
   </div>
-  <% if @my_matches.nil? %>
+  <% if @my_matches.empty? %>
     <div class="text-center">
       <h3>Oh you can't hurry love, oh you just have to wait...</h3>
       <h6>On est pas totalement d'accord<br>
@@ -60,7 +60,7 @@
   <div class="container text-center">
     <h1 class="m-5">Mes Likes</h1>
   </div>
-  <% if @my_likes.nil? %>
+  <% if @my_likes.empty? %>
     <div class="text-center">
       <h4>Dépèche-toi, <a href="/pets">vas liker les animaux plus cool<i class="fa fa-paw"></i></a> du web</h4>
     </div>

@@ -3,6 +3,7 @@ class LikesController < ApplicationController
 
   def index
     @my_likes = Like.where(match: false,liker_id: current_pet.id)
+    @my_matches = Like.where(match: true,liker_id: current_pet.id)
   end
 
   def show
