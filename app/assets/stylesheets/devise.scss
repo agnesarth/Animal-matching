@@ -1,17 +1,23 @@
  // Devise
 
- .container-devise {
+ .devise-container {
+   width: 100vw;
   background-image: linear-gradient(
     rgba(0, 0, 0, 0.45),
     rgba(0, 0, 0, 0.45)
   ),url(asset_path( 'background_signup.jpeg' ));
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
   min-height: 100vh;
-  position: inherit;
-  top: 0;
-  right: 0;
-  left: 0;
+  position: relative;
+  align-items: center;
+  margin-bottom: 0;
+  bottom: 0;
+
 }
 
 .button-back {

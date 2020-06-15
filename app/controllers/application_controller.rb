@@ -1,4 +1,4 @@
 class ApplicationController < ActionController::Base
-  include UsersHelper
-  include PetsHelper
+  #include UsersHelper
+  #include PetsHelper
 end
