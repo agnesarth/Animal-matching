@@ -29,9 +29,7 @@ class User < ApplicationRecord
     on: :update
 
   validates :email,
-    presence: true,
-    uniqueness: true,
-    format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "Votre adresse email est erronée" }
+    uniqueness: true
 
   has_many :pets, dependent: :destroy
 
