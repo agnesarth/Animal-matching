@@ -15,9 +15,9 @@
         </div>
         <h6 class="card-text mt-2">Race :</h6>
         <div class="input-group mb-4">
-          <%if @pet.animal == 'Chat' %> 
+          <%if @pet.chat? %> 
             <%= f.select :breed, options_for_select(Pet::CATBREED), include_blank: @pet.breed, autofocus: true, class:"form-control" %>
-          <% elsif @pet.animal == 'Chien' %>
+          <% elsif @pet.chien? %>
            <%= f.select :breed, options_for_select(Pet::DOGBREED), include_blank: @pet.breed, autofocus: true, class:"form-control" %>
           <% end %>
         </div>
@@ -43,8 +43,9 @@
           <%= f.file_field :photos, multiple: true, value: "", class: "uploadPreview ml-5 mt-0 mb-2" %>
         </div>
         <div id="showPreview"></div>
-        <div class="actions my-3">
-          <%= f.submit "Editer le profil", class:"btn btn-primary" %>
+          <div class="actions my-3">
+            <%= f.submit "Editer le profil", class:"btn btn-primary" %>
+          </div>
         </div>
       <% end %>
     </div>
