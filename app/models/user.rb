@@ -29,7 +29,7 @@ class User < ApplicationRecord
     on: :update
 
   validates :email,
-    uniqueness: true,
+    uniqueness: true
 
   has_many :pets, dependent: :destroy
 
