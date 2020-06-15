@@ -2,7 +2,11 @@ class PetsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create,:edit,:destroy, :delete_photo]
 
   def index
-    if current_user.default_pet?
+    #For search in index
+    @pets = Pet.search(params[:search])
+
+    if current_user.default_pet_id.nil?
+      p current_user.default_pet_id.nil?
       flash[:error] = "Vous devez ajouter un animal pour accéder à cette partie du site !"
       redirect_to root_path
     else
@@ -85,7 +89,7 @@ class PetsController < ApplicationController
 
   private
     def pet_params
-      params.require(:pet).permit(:name, :animal, :breed, :sex, :age, :user, :description, photos: [], tag_ids: [])
+      params.require(:pet).permit(:name, :animal, :breed, :sex, :age, :user, :description, :search, photos: [], tag_ids: [])
     end
 
 end

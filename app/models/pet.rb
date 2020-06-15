@@ -14,6 +14,21 @@ class Pet < ApplicationRecord
   CATBREED=['Manx','Birman','Persan','Siamois','Somali','Sibérien','Ragdoll', "Sphinx", "Européen"].sort
   DOGBREED=['Terrier','Dalmatien','Boxer','Berger Allemand','Labrador','Bouledogue','Chihuahua','Beagle','Setter','Cocker','Husky','Teckel'].sort
 
+  def self.search(search)
+    if search 
+      tag = Tag.where(value: search)
+      if tag
+        self.joins(:tags).where(tags: tag)
+      else
+        Pet.all
+      end
+    else
+      Pet.all
+    end
+  end
+  
+  
+
   def new_pet_send
     UserMailer.new_pet_email(self).deliver_now
   end
