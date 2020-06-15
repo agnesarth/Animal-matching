@@ -30,7 +30,7 @@
   <dd>Chat with other users when there's a match</dd>
   
    <dt>Premium users can:</dt>
-   <dd>Coming soon...</dd>
+   <dd>Coming soon in version 2.0</dd>
 </dl>
 
 ## Instructions
