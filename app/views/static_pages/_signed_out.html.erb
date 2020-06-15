@@ -1,17 +1,17 @@
 <div id="carousel-fade" class="carousel carousel-fade" data-ride="carousel" data-interval="7000">
   <div class="carousel-inner embed-responsive embed-responsive-16by9" role="listbox"">
-    <div class="carousel-item embed-responsive-item active">
+    <div class="carousel-item carousel-item-home-page embed-responsive-item active">
       <%=image_tag("doggo_home.jpg", class: "d-block", alt: "")%>
     </div>
-    <div class="carousel-item embed-responsive-item">
+    <div class="carousel-item carousel-item-home-page embed-responsive-item">
       <%=image_tag("cat_home.jpg", class: "d-block", alt: "...")%>
     </div>
-    <div class="carousel-item embed-responsive-item">
+    <div class="carousel-item carousel-item-home-page embed-responsive-item">
       <%=image_tag("doggo_hug_home.jpg", class: "d-block", alt: "...")%>
     </div>
 
     <div class="item">
-      <div class="content">
+      <div class="content content-home-page">
         <div class= "text-center carousel-caption">
           <h1 class="title-jumbotron">Matchez. Rencontrez. Jouez.</h1>
           <% unless user_signed_in? %>
