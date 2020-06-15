@@ -1,7 +1,7 @@
 class Like < ApplicationRecord
-  after_commit :new_match_user1, on: :create
-  after_commit :new_match_user2, on: :create
-  after_commit :match, on: :create
+#  after_commit :new_match_user1, on: :create
+#  after_commit :new_match_user2, on: :create
+  after_create :match_pet
   before_destroy :unmatch, on: :destroy
 
   belongs_to :liker, class_name: "Pet"
@@ -38,9 +38,9 @@ class Like < ApplicationRecord
     return Like.where(liked_id: liked_pet.id, liker_id: liker_pet.id).exists?
   end
 
-  def match
+  def match_pet
     if already_liked? == true
-      self.match = true
+      self.update(match: true)
       match_back = Like.where(liker_id: self.liked_id,liked_id: self.liker_id)
       match_back.first.update(match: true)
     else
