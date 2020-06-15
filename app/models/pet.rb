@@ -14,12 +14,11 @@ class Pet < ApplicationRecord
   CATBREED=['Manx','Birman','Persan','Siamois','Somali','Sibérien','Ragdoll', "Sphinx", "Européen"].sort
   DOGBREED=['Terrier','Dalmatien','Boxer','Berger Allemand','Labrador','Bouledogue','Chihuahua','Beagle','Setter','Cocker','Husky','Teckel'].sort
 
-   #For search in index
-   def self.search(search)
+  def self.search(search)
     if search 
-      tag = Tag.find_by(value: search)
+      tag = Tag.where(value: search)
       if tag
-        self.where(name: tag)
+        self.joins(:tags).where(tags: tag)
       else
         Pet.all
       end
@@ -27,7 +26,6 @@ class Pet < ApplicationRecord
       Pet.all
     end
   end
-
   
   
 
