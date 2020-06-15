@@ -21,12 +21,22 @@
     <%= submit_tag ("Search") %>
   <% end %>
 
-  <%=@pets.each do | pet | %>
+  <!--<%=@pets.each do | pet | %>
   <ul>
     <li><%= link_to pet.name, pet_path(pet)%></li><br>
   </ul>
-  <% end %>
-   <!-- Search bar in progress -->
+  <% end %> -->
+
+   <!-- 3rd Search bar, this is responsive -->
+    <div class="d-flex justify-content-center h-100">
+        <div class="searchbar">
+          <input class="search_input" type="text" name="" placeholder="Rechercher">
+          <a href="#" class="search_icon"><i class="fa fa-paw"></i></a>
+        </div>
+      </div>
+
+
+      
 
 <div class="container justify-content-around">
   <div class="row justify-content-around ml-3 mr-3">
