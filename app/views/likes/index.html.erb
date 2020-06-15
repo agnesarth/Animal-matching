@@ -6,7 +6,7 @@
     <div class="text-center">
       <h3>Oh you can't hurry love, oh you just have to wait...</h3>
       <h6>On est pas totalement d'accord<br> L'internet est plein d'animaux qui cherchent des amis, 
-      <a href="/pets">vas les liker <i class="fa fa-paw"></i></a>
+      <%= link_to "vas les liker", pets_path%> <i class="fa fa-paw"></i>
       </h6>
     </div>
   <% else %>
@@ -63,7 +63,7 @@
   </div>
   <% if @my_likes.empty? %>
     <div class="text-center">
-      <h4>Dépèche-toi, <a href="/pets">vas liker les animaux plus cool<i class="fa fa-paw"></i></a> du web</h4>
+      <h4>Dépèche-toi, <%=link_to "vas liker les animaux plus cool", pets_path%> <i class="fa fa-paw"></i> du web</h4>
     </div>
   <% else %>
     <div class="row justify-content-around ml-3 mr-3">
