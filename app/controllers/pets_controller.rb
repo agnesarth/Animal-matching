@@ -25,7 +25,7 @@ class PetsController < ApplicationController
       current_user.update(default_pet_id: @pet.id)
     end
     respond_to do |format|
-      if @pet.save!
+      if @pet.save
         user_default_pet(current_user, @pet)
         flash[:success] = "Le profil de l'animal a bien été créé."
         format.html { redirect_to pets_path }
