@@ -72,6 +72,9 @@
           <div id="likeCard<%= like.liked_id %>" class="card bg-light mb-3" ">
             <div id="likeHeader<%= like.liked_id %>" class="card-header">
               <h5 class="card-title float-left"><%= Pet.find(like.liked_id).name%></h5>
+              <% Pet.find(like.liked_id).tags.each do |tag|%>
+                <span class='badge badge-secondary mr-2 mb-1 float-right'><%=tag.value%></span>
+              <%end%>
             </div>
             <div id="likeBody<%= like.liked_id %>" class="card-body">
               <div id="demo" class="carousel slide" data-ride="carousel">

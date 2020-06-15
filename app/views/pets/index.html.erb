@@ -14,6 +14,7 @@
     </div>
   </form>
   <hr>
+  <a tabindex="0" class="btn btn-sm btn-outline-primary" role="button" data-toggle="popover" data-trigger="focus" title="C'est quoi un match?" data-content="Rien n'est plus simple : si un animal vous plaît, cliquez sur le <3 sur son profil. Lorsque quelqu'un like aussi votre profil, c'est un Match !"> Match? </a>
 </div>
 
 <div class="container justify-content-around">
@@ -24,6 +25,9 @@
           <div id="likeCard<%= pet.id %>" class="card bg-light mb-3">
             <div id="likeHeader<%= pet.id %>" class="card-header">
               <h5 class="card-title float-left"><%= pet.name%></h5>
+                <% pet.tags.each do |tag|%>
+                  <span class='badge badge-secondary mr-2 mb-1 float-right'><%=tag.value%></span>
+                <%end%>
             </div>
             <div id="likeBody<%= pet.id %>" class="card-body">
               <div id="demo" class="carousel slide" data-ride="carousel" data-interval="7000">
