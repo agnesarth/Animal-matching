@@ -1,4 +1,4 @@
-<div class="container-devise sticky-top">
+<div class="devise-container">
   <div class="container text-center">
     <div class="mt-5 col-md-6 offset-md-3 shadow p-3 mb-5 rounded bg-devise">
       <i class="fa fa-paw mt-2 fa-5x"></i>
@@ -7,7 +7,7 @@
       <div class="text-center my-2">
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
-        <div class="input-group mb-4">
+        <div class="input-group my-3">
           <div class="input-group-prepend">
             <span class="input-group-text">@</span>
           </div>
@@ -22,8 +22,8 @@
         <%= render "devise/shared/links" %>
       </div>
     </div>
+    <div class="font-weight-bold text-left m-5">
+      <%= link_to "< Retour", :back , class: "button-back"%>
+    </div>
   </div>
-  <div class="container font-weight-bold">
-    <p><%= link_to "Accueil", root_path , class:"button-back" %></p>
   </div>
-</div>
