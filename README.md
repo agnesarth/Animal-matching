@@ -28,9 +28,6 @@
   <dd>See other pets</dd>
   <dd>Like othe pets</dd>
   <dd>Chat with other users when there's a match</dd>
-  
-   <dt>Premium users can:</dt>
-   <dd>Coming soon in version 2.0</dd>
 </dl>
 
 ## Instructions
