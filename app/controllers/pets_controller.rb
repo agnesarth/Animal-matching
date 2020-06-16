@@ -5,7 +5,10 @@ class PetsController < ApplicationController
 
   def index
     @current_pet = Pet.find(current_user.default_pet_id)
-    @pets_list = Pet.all.where.not(user_id: current_user.id).where(animal: @current_pet.animal)
+    @pets_list = Pet.search(params[:search]) & Pet.where.not(user_id: current_user.id)
+    if every_pet?(@pets_list)
+      flash[:error] = "Aucun tag de correspond à la recherche"
+    end
   end
 
   def new
@@ -62,9 +65,13 @@ class PetsController < ApplicationController
     redirect_back(fallback_location: request.referrer)
   end
 
+  def every_pet?(pets)
+    return pets == Pet.where.not(user_id: current_user.id)
+  end
+
   private
     def pet_params
-      params.require(:pet).permit(:name, :animal, :breed, :sex, :age, :user, :description, photos: [], tag_ids: [])
+      params.require(:pet).permit(:name, :animal, :breed, :sex, :age, :user, :description, :search, photos: [], tag_ids: [])
     end
 
     def is_current_user?
@@ -80,6 +87,5 @@ class PetsController < ApplicationController
         redirect_to new_pet_path
       end
     end
-
 
 end

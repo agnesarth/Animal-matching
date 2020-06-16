@@ -16,6 +16,33 @@ class Pet < ApplicationRecord
   CATBREED=['Manx','Birman','Persan','Siamois','Somali','Sibérien','Ragdoll', "Sphinx", "Européen"].sort
   DOGBREED=['Terrier','Dalmatien','Boxer','Berger Allemand','Labrador','Bouledogue','Chihuahua','Beagle','Setter','Cocker','Husky','Teckel'].sort
 
+  def self.search(search)
+    if search
+      search_list = search.downcase.split(" ")
+      list_compare = Pet.all
+      search_list.each do |value|
+        tag = Tag.find_by(value: value)
+        if value == "chat" || value == "chien"
+          list = Pet.where(animal: value)
+        elsif value == "femelle" || value == "mâle"
+          list = Pet.where(sex: value.capitalize)
+        elsif value.to_i != 0
+          list = Pet.where(age: value)                
+        elsif !tag.nil?
+          list = tag.pets
+        else
+          list = Pet.all
+        end
+        list_compare = list & list_compare
+      end
+      return list_compare
+    else
+      return Pet.all
+    end
+
+	end
+  
+
   def new_pet_send
     UserMailer.new_pet_email(self).deliver_now
   end

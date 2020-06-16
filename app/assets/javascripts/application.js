@@ -19,6 +19,7 @@
 //= require bootstrap-sprockets
 //= require previewer
 //= require popover
+//= require cable
 
 
 
