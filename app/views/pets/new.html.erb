@@ -3,7 +3,7 @@
     <i class="fa fa-paw mt-2 fa-5x"></i>
     <h3 class="mt-3 mb-5">Ajoute ton bourreau des cœurs à quatre pattes</h3>
 
-    <div class="text-center my-2">
+    <div class="text-center my-2" >
       <%= form_for @pet, :url => pets_path, multipart: true do |f| %>
 
         <h6 class="card-text mt-2">Nom :</h6>
@@ -14,26 +14,26 @@
         <h6 class="card-text mt-2">Genre :</h6>
         <div class="input-group mb-4 input-checkbox">
           <label class="form-control mr-0 form-border lined-thick one-line pet-radio-button">
-            <%= f.radio_button :sex, 'Femelle', class:"radio-button", checked: true %><span class="checkmark">Femelle</span>
+            <%= f.radio_button :sex, 'Femelle', class:"radio-button", checked: true %><span class="checkmark pet-font-size">Femelle</span>
          </label>
          <label class="form-control ml-0 border-left-0 form-border lined-thick one-line pet-radio-button">
-           <%= f.radio_button :sex, 'Mâle', class:"radio-button" %><span class="checkmark">Mâle</span>
+           <%= f.radio_button :sex, 'Mâle', class:"radio-button" %><span class="checkmark pet-font-size">Mâle</span>
         </label>
         </div>
 
         <h6 class="card-text mt-2">Espèce :</h6>
         <div class="input-group mb-4 input-checkbox">
           <label class="form-control mr-0 form-border lined-thick one-line pet-radio-button">
-          <%= f.radio_button :animal, 'chien', class:"radio-button", checked: true %><span class="checkmark">Chien</span>
+          <%= f.radio_button :animal, 'chien', class:"radio-button", checked: true %><span class="checkmark pet-font-size">Chien</span>
          </label>
          <label class="form-control ml-0 border-left-0 form-border lined-thick one-line pet-radio-button">
-         <%= f.radio_button :animal, 'chat', class:"radio-button" %><span class="checkmark">Chat</span>
+         <%= f.radio_button :animal, 'chat', class:"radio-button" %><span class="checkmark pet-font-size">Chat</span>
         </label>
         </div>
 
         <h6 class="card-text mt-2">Âge :</h6>
         <div class="input-group mb-3">
-          <%= f.number_field :age, autofocus: true, class:"form-control form-border lined-thick one-line", type: "number", id: "number-field", :max => 30, :min => 0  %>
+          <%= f.number_field :age, autofocus: true, class:"form-control form-border lined-thick one-line pet-font-size", type: "number", id: "number-field", :max => 30, :min => 0  %>
         </div>
 
         <h6 class="card-text mt-2">Tags :</h6>
@@ -43,7 +43,7 @@
 
         <h6 class="card-text mt-2">En quelques mots :</h6>
         <div class="input-group mb-4">
-          <%= f.text_field :description, autofocus: true, class:"form-control form-border lined-thick one-line" %>
+          <%= f.text_area :description, autofocus: true, rows: 1, class:"form-control form-border lined-thick pet-font-size" %>
         </div>
 
         <p class="card-text mb-0">Mise en ligne le : <%= Time.now.strftime("%d/%m/%Y") %> </p><br>
