@@ -18,17 +18,29 @@ class Pet < ApplicationRecord
 
   def self.search(search)
     if search
-      tag = Tag.where(value: search)
-      #"tag LIKE ?","%#{search}%"
-      if tag.exists?
-        Tag.find_by(value: search).pets
-      else
-        Pet.all
+      search_list = search.downcase.split(" ")
+      list_compare = Pet.all
+      search_list.each do |value|
+        tag = Tag.find_by(value: value)
+        if value == "chat" || value == "chien"
+          list = Pet.where(animal: value)
+        elsif value == "femelle" || value == "mâle"
+          list = Pet.where(sex: value.capitalize)
+        elsif value.to_i != 0
+          list = Pet.where(age: value)                
+        elsif !tag.nil?
+          list = tag.pets
+        else
+          list = Pet.all
+        end
+        list_compare = list & list_compare
       end
+      return list_compare
     else
-      Pet.all
+      return Pet.all
     end
-  end
+
+	end
   
 
   def new_pet_send
