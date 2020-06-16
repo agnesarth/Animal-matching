@@ -12,9 +12,9 @@ Rails.application.routes.draw do
       delete :delete_photo
     end
   end
-
-  resources :messages, only: [:index]
-  resources :chat_rooms, only: [:new, :create, :show, :index]
-  mount ActionCable.server => '/cable'
   
+  resources :messages, :only => [:index]
+
+
+
 end
