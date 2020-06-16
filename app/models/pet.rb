@@ -17,10 +17,11 @@ class Pet < ApplicationRecord
   DOGBREED=['Terrier','Dalmatien','Boxer','Berger Allemand','Labrador','Bouledogue','Chihuahua','Beagle','Setter','Cocker','Husky','Teckel'].sort
 
   def self.search(search)
-    if search 
+    if search
       tag = Tag.where(value: search)
-      if tag
-        self.joins(:tags).where(tags: tag)
+      #"tag LIKE ?","%#{search}%"
+      if tag.exists?
+        Tag.find_by(value: search).pets
       else
         Pet.all
       end
@@ -28,7 +29,6 @@ class Pet < ApplicationRecord
       Pet.all
     end
   end
-  
   
 
   def new_pet_send

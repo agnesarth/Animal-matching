@@ -5,9 +5,9 @@ class PetsController < ApplicationController
 
   def index
     @current_pet = Pet.find(current_user.default_pet_id)
-    @pets_list = Pet.all.where.not(user_id: current_user.id).where(animal: @current_pet.animal)
+    @pets_list = Pet.search(params[:search]).where.not(user_id: current_user.id)
     #For search in index
-    @pets = Pet.search(params[:search])
+    @pets_species = Pet.search(params[:search]).where.not(user_id: current_user.id).where(animal: @current_pet.animal)
   end
 
   def new
