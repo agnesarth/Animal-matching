@@ -49,10 +49,8 @@ class User < ApplicationRecord
     elsif self.default_pet_id.nil?
       current_pet = self.pets.last
       self.default_pet_id.update(current_pet.id)
-      redirect_to users_path
       return true
     else
-      redirect_to users_path
       return true 
     end
     
