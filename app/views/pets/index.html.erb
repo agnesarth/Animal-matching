@@ -4,10 +4,10 @@
 
 
  <!-- Search bar in progress -->
-  <h4>Search</h4>
+  <h4>Rechercher par tag</h4>
   <%= form_tag(pets_path, method: :get) do%>
     <%= text_field_tag(:search, params[:search])%>
-    <%= submit_tag ("Search") %>
+    <%= submit_tag ("Rechercher") %>
   <% end %>
 
       <!-- Responsive search bar-->
@@ -17,6 +17,14 @@
          <a href="#" class="search_icon"><i class="fa fa-paw"></i></a>
        </div>
   </div>
+
+<h4>Search</h4>
+<div class="d-flex justify-content-center h-100">
+  <%= form_tag(pets_path, method: :get) do%>
+    <%= text_field_tag(:search, params[:search])%>
+    <%= submit_tag ("Search") %>
+  <% end %>
+ </div>
 
 
   <hr>
