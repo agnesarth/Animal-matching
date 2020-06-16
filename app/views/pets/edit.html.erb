@@ -9,9 +9,9 @@
         <div class="input-group mb-4">
           <%= f.text_field :name, autofocus: true, placeholder: @pet.name, class:"form-control" %>
         </div>
-        <h6 class="card-text mt-2">Âge :</h6>
+        <h6 class="card-text mt-2">Date de naissance :</h6>
         <div class="input-group mb-4">
-          <%= f.number_field :age, autofocus: true, placeholder: @pet.age, class:"form-control",:max => 30, :min => 0 %>
+          <%= f.date_field :birthdate, autofocus: true, placeholder: @pet.birthdate, class:"form-control" %>
         </div>
         <h6 class="card-text mt-2">Race :</h6>
         <div class="input-group mb-4">
