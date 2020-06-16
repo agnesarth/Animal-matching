@@ -16,6 +16,10 @@ class Pet < ApplicationRecord
   CATBREED=['Manx','Birman','Persan','Siamois','Somali','Sibérien','Ragdoll', "Sphinx", "Européen"].sort
   DOGBREED=['Terrier','Dalmatien','Boxer','Berger Allemand','Labrador','Bouledogue','Chihuahua','Beagle','Setter','Cocker','Husky','Teckel'].sort
 
+  def age
+    return ((Time.zone.now - self.birthdate.to_time) / 1.year.seconds).floor
+  end
+  
   def self.search(search)
     if search
       search_list = search.downcase.split(" ")
@@ -27,7 +31,7 @@ class Pet < ApplicationRecord
         elsif value == "femelle" || value == "mâle"
           list = Pet.where(sex: value.capitalize)
         elsif value.to_i != 0
-          list = Pet.where(age: value)                
+          list = Pet.where(self.age, value)                
         elsif !tag.nil?
           list = tag.pets
         else
