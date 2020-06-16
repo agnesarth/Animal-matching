@@ -1,6 +1,7 @@
 <% if user_signed_in? %>
   <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
-    <a class="navbar-brand" href="/"><i class="fa fa-paw mr-1"></i>Whispaw</a>
+    
+    <%= link_to "Whispaw", root_path, class:"navbar-brand  mr-1 " %><i class= "fa fa-paw  float-right" ></i>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
