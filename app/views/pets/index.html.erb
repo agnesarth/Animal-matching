@@ -37,18 +37,13 @@
 <!-- Responsive search bar with form_tag testing mode -->
 <div class="d-flex justify-content-center h-100">
   <div class="searchbar">
-    <%= form_tag(pets_path, method: :get) do%>
-    <div class="search_input">
-      <%= text_field_tag(:search, params[:search])%>
-    </div>
-  <%= submit_tag ("Search") %>
-  <a href="#" class="search_icon"><i class="fa fa-paw"></i></a>
-  <% end %>
+    <form action="pets_path" method="get">
+      <input class="search_input" name="params/search" type="text" value="search" placeholder="Search" /> 
+      <input class="search_icon" type="submit" name="commit" value="Search" />
+    </form>
   </div>
 </div>
-<!-- Responsive search bar with form_tag testing mode -->
-
-
+<!--id="search"-->
 
 <div class="container justify-content-around">
   <div class="row justify-content-around ml-3 mr-3">
