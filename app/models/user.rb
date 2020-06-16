@@ -52,8 +52,7 @@ class User < ApplicationRecord
       return true
     else
       return true 
-    end
-    
+    end  
   end
 
   def name
