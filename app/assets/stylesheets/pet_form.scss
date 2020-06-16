@@ -13,8 +13,8 @@
       &:hover{
          box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
       }
-      &.lined.thick{
-         border:solid 7px #41403E;
+      &.lined-thick{
+         border:solid 2px #41403E;
       }
     }
 
@@ -24,3 +24,7 @@
         margin-bottom:2rem;
       }
   }
+
+.one-line {
+  max-height: 20px;
+}
