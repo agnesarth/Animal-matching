@@ -68,7 +68,7 @@ class Pet < ApplicationRecord
   def reset_default_pet
     my_user = self.user
     if my_user.pets.size > 1
-      last_other_pet = my_user.pets.where.not(id: 25).last
+      last_other_pet = my_user.pets.where.not(id: self.id).last
       my_user.update(default_pet_id: last_other_pet.id)
     else
       my_user.update(default_pet_id: nil)

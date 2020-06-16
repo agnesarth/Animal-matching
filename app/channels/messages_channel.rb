@@ -8,8 +8,11 @@ class MessagesChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    message = ApplicationController.render(partial: 'messages/message', locals: {message: data['message']} )
-    ActionCable.server.broadcast 'messages', message: message
+    message = Message.create(content: data['message'], user_id: current_user.id)
+    html = ApplicationController.render(partial: 'messages/message', locals: {
+      message: message
+    })
+    ActionCable.server.broadcast 'messages', message: html
   end
 
 end

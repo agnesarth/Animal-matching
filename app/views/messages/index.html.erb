@@ -1,12 +1,13 @@
 <div class="container">
   <h1>Bienvenue dans le chat</h1>
-  <div id="messages">
-
-  </div>
-
-    <div class="form-controller">
-      <textarea id="message" placeholder="votre message ici">
-      </textarea>
+  <div class="container mt-4">  
+    <div id="messages" class="mb-3">
+      <%= render @messages %>
     </div>
 
+    <div class="container mb-4">
+      <textarea id="message" placeholder="votre message ici" class="form-control">
+      </textarea>
+    </div>
+  </div>
 </div>

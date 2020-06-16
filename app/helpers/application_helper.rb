@@ -7,4 +7,9 @@ module ApplicationHelper
       when 'alert' then "alert-warning"
     end
   end
+
+  def current_pet
+    return Pet.find(current_user.default_pet_id)
+  end
+
 end
