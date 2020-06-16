@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_202243) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
-    t.datetime "birthdate"
+    t.date "birthdate"
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
