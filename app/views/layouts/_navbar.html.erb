@@ -1,7 +1,8 @@
 <% if user_signed_in? %>
   <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
-    
-    <%= link_to "Whispaw", root_path, class:"navbar-brand  mr-1 " %><i class= "fa fa-paw  float-right" ></i>
+    <%= link_to root_path, class:"navbar-brand mr-2 ml-1" do %>
+      <i class="fa fa-paw"></i> Whispaw
+    <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -34,11 +35,11 @@
           </div>
         </li>
         <li class="nav-item">
-          <%= link_to "Mes messages", chat_rooms_path, :class => "nav-link" %>
+          <%= link_to "Mes messages", root_path, :class => "nav-link" %>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-        <% if !current_user.default_pet_id.nil?%>
+        <% if !current_user.default_pet_id.nil? %>
           <li class="nav-item">
             <em><%= link_to "#{Pet.find(current_user.default_pet_id).name} en ligne", users_path, :class => "nav-link" %></em>
           </li>

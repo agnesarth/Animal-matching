@@ -21,7 +21,7 @@
   <div class="btns-pet-show">
     <%if current_user == @pet.user%>
       <%= link_to 'Editer son profil', edit_pet_path(@pet), class: "btn btn-primary btn-edit-pet-profile" %>
-      <%= link_to 'Supprimer', pet_path(@pet), method: :delete, class: "btn btn-outline-primary" %>
+      <%= link_to 'Supprimer', pet_path(@pet), data: { confirm: "Etes-vous certain(e)?" }, method: :delete, class: "btn btn-outline-primary" %>
     <%end%>
   </div>
 </div>
