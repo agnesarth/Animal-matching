@@ -38,10 +38,14 @@
 <!-- Responsive search bar with form_tag testing mode -->
 <div class="d-flex justify-content-center h-100">
   <div class="searchbar">
-    <form action="pets_path" method="get">
-      <input class="search_input" name="params/search" type="text" value="search" placeholder="Search" /> 
-      <input class="search_icon" type="submit" name="commit" value="Search" />
-    </form>
+    <%= form_tag(pets_path, method: :get) do%>
+      <div class="search_input" >
+        <%= text_field_tag(:search, params[:search])%> </div>
+        <div class class="search_icon" > 
+          <%= submit_tag ("Search") %>
+          <i class="fa fa-paw"></i>
+      </div>
+    <% end %>
   </div>
 </div>
 <!--id="search"-->
