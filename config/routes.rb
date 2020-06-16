@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root to: 'static_pages#home'
+  get '/whispaw', to: 'static_pages#about'
+  get '/contact', to: 'static_pages#contact'
+  
   devise_for :users, path: "mon_compte"
   resource :users, :except => [:new, :create, :index, :destroy], path: "mon_profil"
   resources :tags, :except => [:edit, :update]
@@ -9,6 +12,8 @@ Rails.application.routes.draw do
       delete :delete_photo
     end
   end
-  get '/whispaw', to: 'static_pages#about'
-  get '/contact', to: 'static_pages#contact'
+
+  resources :chat_rooms, only: [:new, :create, :show, :index]
+  mount ActionCable.server => '/cable'
+  
 end
