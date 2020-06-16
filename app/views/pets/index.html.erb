@@ -4,11 +4,13 @@
 
 
  <!-- Search bar in progress -->
-  <h4>Rechercher par tag</h4>
-  <%= form_tag(pets_path, method: :get) do%>
-    <%= text_field_tag(:search, params[:search])%>
-    <%= submit_tag ("Rechercher") %>
-  <% end %>
+ <h4>Rechercher par tag</h4>
+ <div class="d-flex justify-content-center h-100">
+    <%= form_tag(pets_path, method: :get) do%>
+      <%= text_field_tag(:search, params[:search])%>
+      <%= submit_tag ("Rechercher") %>
+    <% end %>
+  </div>
 
       <!-- Responsive search bar-->
   <div class="d-flex justify-content-center h-100">
