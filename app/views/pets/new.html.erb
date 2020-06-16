@@ -8,26 +8,26 @@
 
         <h6 class="card-text mt-2">Nom :</h6>
         <div class="input-group mb-4">
-          <%= f.text_field :name, autofocus: true, class:"form-control form-border lined-thick one-line" %>
+          <%= f.text_field :name, autofocus: true, class:"form-control form-border lined-thick one-line pet-font-size" %>
         </div>
 
         <h6 class="card-text mt-2">Genre :</h6>
         <div class="input-group mb-4 input-checkbox">
-          <label class="form-control mr-0 form-border lined-thick one-line pet-radio-button">
-            <%= f.radio_button :sex, 'Femelle', class:"radio-button", checked: true %><span class="checkmark pet-font-size">Femelle</span>
+          <label class="form-control mr-0 form-border lined-thick one-line pet-radio-button"  onlcick="toggleRadioButton()">
+            <%= f.radio_button :sex, 'Femelle', class:"radio-button", type: "radio" %><span class="pet-radio-text pet-font-size">Femelle</span>
          </label>
-         <label class="form-control ml-0 border-left-0 form-border lined-thick one-line pet-radio-button">
-           <%= f.radio_button :sex, 'Mâle', class:"radio-button" %><span class="checkmark pet-font-size">Mâle</span>
+         <label class="form-control ml-0 border-left-0 form-border lined-thick one-line pet-radio-button" onlcick="toggleRadioButton()">
+           <%= f.radio_button :sex, 'Mâle', class:"radio-button", id: "pet-radio", type: "radio" %><span class="pet-radio-text pet-font-size">Mâle</span>
         </label>
         </div>
 
         <h6 class="card-text mt-2">Espèce :</h6>
         <div class="input-group mb-4 input-checkbox">
           <label class="form-control mr-0 form-border lined-thick one-line pet-radio-button">
-          <%= f.radio_button :animal, 'chien', class:"radio-button", checked: true %><span class="checkmark pet-font-size">Chien</span>
+          <%= f.radio_button :animal, 'chien', class:"radio-button", id: "pet-radio", type: "radio", checked: true %><span class="pet-radio-text pet-font-size">Chien</span>
          </label>
          <label class="form-control ml-0 border-left-0 form-border lined-thick one-line pet-radio-button">
-         <%= f.radio_button :animal, 'chat', class:"radio-button" %><span class="checkmark pet-font-size">Chat</span>
+         <%= f.radio_button :animal, 'chat', class:"radio-button", id: "pet-radio", type: "radio"  %><span class="pet-radio-text pet-font-size">Chat</span>
         </label>
         </div>
 
@@ -38,7 +38,7 @@
 
         <h6 class="card-text mt-2">Tags :</h6>
         <div class="input-group mb-4">
-          <%= f.select :tag_ids, Tag.all.collect {|p| [ p.value, p.id ]}, {}, include_blank: true, multiple: true, class:"form-control form-border lined-thick" %>
+          <%= f.select :tag_ids, Tag.all.collect {|p| [ p.value, p.id ]}, {}, type: "select", include_blank: true, multiple: true, class:"form-control form-border lined-thick" %>
         </div>
 
         <h6 class="card-text mt-2">En quelques mots :</h6>

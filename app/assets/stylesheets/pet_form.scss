@@ -19,6 +19,26 @@
     }
 
 
+.checked-form-border {
+    align-self:center;
+    background: #778899;
+    padding:1rem 1rem;
+    margin:0 1rem;
+    transition:all .5s ease;
+    color:#41403E;
+    font-size:2rem;
+    letter-spacing:1px;
+    outline:none;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    &:hover{
+        box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
+      }
+    &.lined-thick{
+        border:solid 2px #41403E;
+    }
+  }
+
 .one-line {
     max-height: 20px;
 }
@@ -48,15 +68,18 @@
   cursor: pointer;
   height: 0;
   width: 0;
-  &:checked {
-    color: green;
-    border-color: green;
-    background: green;
-  }
+
 }
 
-  form input[type=number]::-webkit-inner-spin-button,
-  form input[type=number]::-webkit-outer-spin-button {
+.pet-radio-text {
+  top: 0.1%;
+  margin-left: -50%;
+  position: absolute;
+  padding: 1%;
+}
+
+form input[type=number]::-webkit-inner-spin-button,
+form input[type=number]::-webkit-outer-spin-button {
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
@@ -65,8 +88,26 @@
 
 input[type=number]{
       -moz-appearance: textfield;
+      -webkit-appearance: textfield;
   }
 
+form input[type=select]::-webkit-inner-spin-button,
+form input[type=select]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        margin: 0;
+    }
+
+
+input[type=radio]:checked + label {
+
+      color: green;
+      border-color: green;
+      background-color: green;
+      z-index: 100;
+
+}
 
 @media (max-width:620px){
   .form-border {
