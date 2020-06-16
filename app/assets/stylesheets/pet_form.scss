@@ -45,6 +45,16 @@
   }
 }
 
+  form input[type=number]::-webkit-inner-spin-button,
+  form input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      margin: 0;
+      -moz-appearance: textfield;
+  }
+
+
 @media (max-width:620px){
   .form-border {
         align-self:center;
