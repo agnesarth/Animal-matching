@@ -13,20 +13,22 @@
 
         <h6 class="card-text mt-2">Genre :</h6>
         <div class="input-group mb-4 input-checkbox">
-          <label class="form-control form-border lined-thick one-line">
-          <%= f.radio_button :sex, 'Femelle', class:"radio-button", checked: true %>Femelle
-          <%= f.radio_button :sex, 'Mâle', class:"radio-button" %>Mâle
-           <span class="checkmark"></span>
-          </label>
+          <label class="form-control mr-0 form-border lined-thick one-line pet-radio-button">
+            <%= f.radio_button :sex, 'Femelle', class:"radio-button", checked: true %><span class="checkmark">Femelle</span>
+         </label>
+         <label class="form-control ml-0 border-left-0 form-border lined-thick one-line pet-radio-button">
+           <%= f.radio_button :sex, 'Mâle', class:"radio-button" %><span class="checkmark">Mâle</span>
+        </label>
         </div>
 
         <h6 class="card-text mt-2">Espèce :</h6>
         <div class="input-group mb-4 input-checkbox">
-          <label class="form-control form-border lined-thick one-line">
-          <%= f.radio_button :animal, 'chien', class:"radio-button", checked: true %>Chien
-          <%= f.radio_button :animal, 'chat', class:"radio-button" %>Chat
-          <span class="checkmark"></span>
+          <label class="form-control mr-0 form-border lined-thick one-line pet-radio-button">
+          <%= f.radio_button :animal, 'chien', class:"radio-button", checked: true %><span class="checkmark">Chien</span>
          </label>
+         <label class="form-control ml-0 border-left-0 form-border lined-thick one-line pet-radio-button">
+         <%= f.radio_button :animal, 'chat', class:"radio-button" %><span class="checkmark">Chat</span>
+        </label>
         </div>
 
         <h6 class="card-text mt-2">Âge :</h6>

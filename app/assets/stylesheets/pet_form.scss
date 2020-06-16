@@ -18,6 +18,33 @@
       }
     }
 
+.pet-radio-button {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+  /* Hide the browser's default checkbox */
+.pet-radio-button input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  &:checked {
+    color: green;
+    border-color: green;
+    background: green;
+  }
+}
+
 @media (max-width:620px){
   .form-border {
         align-self:center;
