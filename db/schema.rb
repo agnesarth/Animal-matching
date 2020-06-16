@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_191146) do
+ActiveRecord::Schema.define(version: 2020_06_13_170205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,14 +36,6 @@ ActiveRecord::Schema.define(version: 2020_06_15_191146) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "chat_rooms", force: :cascade do |t|
-    t.string "title"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_chat_rooms_on_user_id"
-  end
-
   create_table "likes", force: :cascade do |t|
     t.bigint "liker_id"
     t.bigint "liked_id"
@@ -52,16 +44,6 @@ ActiveRecord::Schema.define(version: 2020_06_15_191146) do
     t.datetime "updated_at", null: false
     t.index ["liked_id"], name: "index_likes_on_liked_id"
     t.index ["liker_id"], name: "index_likes_on_liker_id"
-  end
-
-  create_table "messages", force: :cascade do |t|
-    t.text "body"
-    t.bigint "user_id"
-    t.bigint "chat_room_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "pets", force: :cascade do |t|
@@ -110,9 +92,6 @@ ActiveRecord::Schema.define(version: 2020_06_15_191146) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "chat_rooms", "users"
-  add_foreign_key "messages", "chat_rooms"
-  add_foreign_key "messages", "users"
   add_foreign_key "tag_pets", "pets"
   add_foreign_key "tag_pets", "tags"
 end
