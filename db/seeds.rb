@@ -9,7 +9,6 @@
 
 require 'faker'
 
-
 # Seed User
 12.times do
   new_user = User.new(
@@ -32,7 +31,7 @@ puts "#{User.all.size} humains crées"
     animal: [0,1].sample,
     sex: Faker::Creature::Cat.gender,
     user_id: User.all.sample.id,
-    age: rand(0..17),
+    birthdate: Faker::Date.birthday($format = 'Y-m-d', min_age: 0, max_age: 20),
     description: Faker::GreekPhilosophers.quote,
   )
   if my_pet.chat?

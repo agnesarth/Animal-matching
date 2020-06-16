@@ -88,7 +88,7 @@
                 <% end %>
                 <h6 class="card-subtitle mt-2 float-left">
                 <%= pet.animal.capitalize %>, 
-                <%= age = pet.age.to_i %> an<%if age > 1 %>s<%end%>, 
+                <%= age = ((Time.zone.now - pet.birthdate.to_time) / 1.year.seconds).floor %> an<%if age > 1 %>s<%end%>, 
                 <%= pet.sex %>
                 </h6>
                 <%= link_to pet_likes_path(pet.id), method: :post, remote: true do %>
