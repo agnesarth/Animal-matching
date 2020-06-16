@@ -6,6 +6,8 @@ class PetsController < ApplicationController
   def index
     @current_pet = Pet.find(current_user.default_pet_id)
     @pets_list = Pet.all.where.not(user_id: current_user.id).where(animal: @current_pet.animal)
+    #For search in index
+    @pets = Pet.search(params[:search])
   end
 
   def new
@@ -64,7 +66,7 @@ class PetsController < ApplicationController
 
   private
     def pet_params
-      params.require(:pet).permit(:name, :animal, :breed, :sex, :age, :user, :description, photos: [], tag_ids: [])
+      params.require(:pet).permit(:name, :animal, :breed, :sex, :age, :user, :description, :search, photos: [], tag_ids: [])
     end
 
     def is_current_user?

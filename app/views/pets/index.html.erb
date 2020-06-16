@@ -1,6 +1,7 @@
 <div class="small-jumbotron text-center ">
 </div>
 
+
 <div class="container">
   <!-- Search bar disabled for now, need to implement post-MVP -->
   <form class="form-inline form-inline-search">
@@ -13,9 +14,38 @@
       </div>
     </div>
   </form>
+
+    <%= form_tag(pets_path, :method => 'get') do%>
+    <%= text_field_tag(:search, params[:search])%>
+    <%= submit_tag ("Search") %>
+  <% end %>
+
   <hr>
   <a tabindex="0" class="btn btn-sm btn-outline-primary btn-info-match" role="button" data-toggle="popover" data-trigger="focus" title="C'est quoi un match ?" data-content="Rien n'est plus simple : si un animal vous plaît, cliquez sur le cœur sur son profil. Lorsque cet animal like aussi votre profil, c'est un Match !"> Match ? </a>
 </div>
+
+    <!-- Responsive search bar-->
+    <div class="d-flex justify-content-center h-100">
+        <div class="searchbar">
+          <input class="search_input" type="text" name="" placeholder="Rechercher">
+          <a href="#" class="search_icon"><i class="fa fa-paw"></i></a>
+        </div>
+      </div>
+
+<!-- Search bar in progress -->
+  <h4>Search</h4>
+  <%= form_tag(pets_path, method: :get) do%>
+    <%= text_field_tag(:search, params[:search])%>
+    <%= submit_tag ("Search") %>
+  <% end %>
+
+  <%=@pets.each do | pet | %>
+  <ul>
+    <li><%= link_to pet.name, pet_path(pet)%></li><br>
+  </ul>
+  <% end %>
+
+
 <div class="container justify-content-around">
   <div class="row justify-content-around ml-3 mr-3">
     <% @pets_list.each do |pet| %>
