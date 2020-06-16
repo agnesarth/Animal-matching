@@ -39,10 +39,12 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-        <% if !current_user.default_pet_id.nil?%>
-          <li class="nav-item">
-            <em><%= link_to "#{Pet.find(current_user.default_pet_id).name} en ligne", users_path, :class => "nav-link" %></em>
-          </li>
+        <% if Pet.where(id: current_user.default_pet_id).exists? %>
+          <% if !current_user.default_pet_id.nil? %>
+            <li class="nav-item">
+              <em><%= link_to "#{Pet.find(current_user.default_pet_id).name} en ligne", users_path, :class => "nav-link" %></em>
+            </li>
+          <% end %>
         <% end %>
         <li class="nav-item">
             <%= link_to "Se déconnecter", destroy_user_session_path, {:method => :delete, :class => "nav-link"} %>

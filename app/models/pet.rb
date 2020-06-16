@@ -59,7 +59,7 @@ class Pet < ApplicationRecord
 
   def default_pet
     my_user = self.user
-    if my_user.default_pet_id.nil?
+    if my_user.default_pet_id.nil? || !Pet.where(id: my_user.default_pet_id).exists?
       current_pet = my_user.pets.last
       my_user.update(default_pet_id: current_pet.id)
     end    
@@ -67,11 +67,13 @@ class Pet < ApplicationRecord
 
   def reset_default_pet
     my_user = self.user
-    if my_user.pets.size > 1
-      last_other_pet = my_user.pets.where.not(id: 25).last
-      my_user.update(default_pet_id: last_other_pet.id)
-    else
+    if (my_user.default_pet_id.nil? || !Pet.where(id: my_user.default_pet_id).exists?) && my_user.pets.size > 1
+      current_pet = my_user.pets.last
+      my_user.update(default_pet_id: current_pet.id)
+    elsif my_user.pets.size < 2
       my_user.update(default_pet_id: nil)
+    else
+      current_pet = my_user.pets.last
     end
 
   end
