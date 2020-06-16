@@ -8,7 +8,7 @@
 
         <h6 class="card-text mt-2">Nom :</h6>
         <div class="input-group mb-4">
-          <%= f.text_field :name, autofocus: true, class:"form-control" %>
+          <%= f.text_field :name, autofocus: true, class:"form-control " %>
         </div>
 
         <h6 class="card-text mt-2">Espèce :</h6>
@@ -32,7 +32,7 @@
         <div class="input-group mb-4">
           <%= f.select :tag_ids, Tag.all.collect {|p| [ p.value, p.id ]}, {}, include_blank: true, multiple: true, class:"form-control"%>
         </div>
-        
+
         <h6 class="card-text mt-2">En quelques mots :</h6>
         <div class="input-group mb-4">
           <%= f.text_field :description, autofocus: true, class:"form-control" %>
@@ -58,4 +58,3 @@
     <%= link_to "Retour", :back %>
   </div>
 </div>
- 
