@@ -12,7 +12,7 @@
   <p><strong>Race :</strong> <%= @pet.breed %></p>
   <p><strong>Genre :</strong> <%= @pet.sex %></p>
   <p><strong>Date de naissance :</strong> <%= @pet.birthdate.strftime("%d/%m/%Y") %></p>
-  <p><strong>Âge :</strong> <%= age = ((Time.zone.now - @pet.birthdate.to_time) / 1.year.seconds).floor %> an<%if age > 1 %>s<%end%></p>
+  <p><strong>Âge :</strong> <%= year = @pet.age %> an<%if year > 1 %>s<%end%></p>
   <p><strong>À propos :</strong> <%= @pet.description %></p>
   <p><strong>Tags :</strong> 
     <% @pet.tags.each do |tag|%>

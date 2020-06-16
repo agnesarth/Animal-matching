@@ -19,7 +19,6 @@ class Pet < ApplicationRecord
   def age
     return ((Time.zone.now - self.birthdate.to_time) / 1.year.seconds).floor
   end
-  
   def self.search(search)
     if search
       search_list = search.downcase.split(" ")
@@ -30,8 +29,8 @@ class Pet < ApplicationRecord
           list = Pet.where(animal: value)
         elsif value == "femelle" || value == "mâle"
           list = Pet.where(sex: value.capitalize)
-        elsif value.to_i != 0
-          list = Pet.where(self.age, value)                
+        elsif value.to_i >= 0
+          list = Pet.where(birthdate: (Date.today - (value.to_i + 1).to_i.years)..(Date.today - value.to_i.years))       
         elsif !tag.nil?
           list = tag.pets
         else
@@ -45,7 +44,6 @@ class Pet < ApplicationRecord
     end
 
 	end
-  
 
   def new_pet_send
     UserMailer.new_pet_email(self).deliver_now
