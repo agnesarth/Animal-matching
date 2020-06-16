@@ -6,9 +6,6 @@ class PetsController < ApplicationController
   def index
     @current_pet = Pet.find(current_user.default_pet_id)
     @pets_list = Pet.search(params[:search]) & Pet.where.not(user_id: current_user.id)
-    if every_pet?(@pets_list)
-      flash[:error] = "Aucun tag de correspond à la recherche"
-    end
   end
 
   def new
