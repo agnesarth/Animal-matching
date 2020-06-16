@@ -133,26 +133,20 @@
     bottom: auto;
 }
 
+.alert-whispaw:hover {
+  text-decoration: none;
+  color: #FFF;
+}
+
+.alert-whispaw:active {
+  text-decoration: none;
+  color: #FFF;
+}
+
  // About
 
 .king-cat {
   width: 100%;
-}
-
-.timeline-card {
-  padding-bottom :10px !important;
-}
-
-.timeline-card p {
-  padding: 0 30px;
-}
-
-.timeline-img-header h2 {
-  left: 30px;
-}
-
-.timeline {
-  padding-bottom: 10px;
 }
 
 .img-card-about {
@@ -160,3 +154,4 @@
   height: 100%;
   object-fit: cover;
 }
+
