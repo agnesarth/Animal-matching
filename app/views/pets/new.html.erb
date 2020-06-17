@@ -12,9 +12,9 @@
         </div>
 
         <h6 class="card-text mt-2">Genre :</h6>
-        <div class="input-group mb-4 input-checkbox" onlcick="toggleRadioButton()">
+        <div class="input-group mb-4 input-checkbox">
           <label class="form-control mr-0 form-border lined-thick one-line pet-radio-button"  >
-            <%= f.radio_button :sex, 'Femelle', class:"radio-button", type: "radio" %><span class="pet-radio-text pet-font-size">Femelle</span>
+            <%= f.radio_button :sex, 'Femelle', class:"radio-button", type: "radio", checked: true %><span class="pet-radio-text pet-font-size">Femelle</span>
          </label>
          <label class="form-control ml-0 border-left-0 form-border lined-thick one-line pet-radio-button" onlcick="toggleRadioButton()">
            <%= f.radio_button :sex, 'Mâle', class:"radio-button", type: "radio" %><span class="pet-radio-text pet-font-size">Mâle</span>

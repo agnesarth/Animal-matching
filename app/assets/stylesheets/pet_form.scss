@@ -75,7 +75,7 @@
   top: 0.1%;
   margin-left: -50%;
   position: absolute;
-  padding: 1%;
+  padding: 1.8% 1% 1% 1%;
 }
 
 form input[type=number]::-webkit-inner-spin-button,
@@ -99,11 +99,9 @@ form input[type=select]::-webkit-outer-spin-button {
         margin: 0;
     }
 
-
 input[type=radio]:checked + span::after {
       content: "\f1b0";
-      font: normal normal normal 20px/1 FontAwesome;
-      transform: rotate(20deg);
+      font: normal normal normal 23px/1 FontAwesome;
       color: #778899;
       padding: 10%;
 }
