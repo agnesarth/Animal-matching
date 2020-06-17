@@ -17,10 +17,12 @@ class Pet < ApplicationRecord
   accepts_nested_attributes_for :tags
   CATBREED=['Manx','Birman','Persan','Siamois','Somali','Sibérien','Ragdoll', "Sphinx", "Européen","Autre"].sort
   DOGBREED=['Terrier','Dalmatien','Boxer','Berger Allemand','Labrador','Bouledogue','Chihuahua','Beagle','Setter','Cocker','Husky','Teckel', "Autre"].sort
+  DISTANCEOTHERS=['< 5km','< 20km', '< 100km']
 
   def age
     return ((Time.zone.now - self.birthdate.to_time) / 1.year.seconds).floor
   end
+
   def self.search(search)
     if search
       search_list = search.downcase.split(" ")
@@ -38,14 +40,42 @@ class Pet < ApplicationRecord
         else
           list = Pet.all
         end
-        tp list_compare = list & list_compare
+        list_compare = list & list_compare
       end
+      puts "--------------list compare-------------"
+      puts list_compare
+      tp list_compare
       return list_compare
     else
       return Pet.all
     end
-
-	end
+  end
+  
+  def self.distance_to_others(distance_to_others, user)
+    if distance_to_others == "< 5km"
+      puts "------------5km-----------"
+      list = []
+      User.near(user, 5, units: :km).each do |user|
+        list << user.pets
+      end
+      puts list
+      return list
+    elsif distance_to_others == "< 20km"
+      list = []
+      User.near(user, 20, units: :km).each do |user|
+        list << user.pets
+      end
+      return list
+    elsif distance_to_others == "< 100km"
+      list = []
+      User.near(user, 100, units: :km).each do |user|
+        list << user.pets
+      end
+      return list
+    else
+      return Pet.all
+    end
+  end
 
   def new_pet_send
     UserMailer.new_pet_email(self).deliver_now

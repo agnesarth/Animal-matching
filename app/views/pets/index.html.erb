@@ -12,11 +12,22 @@
 
   <div class="form-inline form-inline-search my-4">
       <%= form_tag(pets_path, method: :get, class:"form-group form-control alert-light") do%>
-        <%= text_field_tag(:search, params[:search], class:"form-control col-sm-10 col-xs-10", placeholder: "tags, age, espèce, sexe...")%>
+        <%= text_field_tag(:search, params[:search], class:"form-control col-sm-8 col-xs-8", placeholder: "tags, age, espèce, sexe...")%>
+        <%= hidden_field_tag :user_id , @current_user.id %>
+        <%= select_tag :distance_to_others, options_for_select(Pet::DISTANCEOTHERS), prompt: "Distance", autofocus: true, class:"form-control col-sm-2 col-xs-2" %>
         <%= submit_tag "Rechercher", class:"btn btn-outline-primary btn-main-page" %>
       <% end %>
   </div>
 
+  <%= form_tag(pets_path, method: :get) do%>
+    <%= submit_tag '< 10km', class:"btn btn-outline-secondary" %>
+  <% end %>
+
+  <% User.near(current_user, 10).each do |user| %>
+    <% user.pets.each do |pet| %>
+    <p><%= pet.name %> est à <%= user.distance %> km de vous.</p>
+    <% end %>
+  <% end %>
 
 </div>
 
@@ -74,7 +85,9 @@
                 <% end %>
                 <h6 class="card-subtitle mt-2 float-left">
                 <%= pet.animal.capitalize %>, 
-                <%= year = pet.age %> an<%if year > 1 %>s<%end%>, 
+                <% if pet.birthdate !=nil %>
+                  <%= year = pet.age %> an<%if year > 1 %>s<%end%>, 
+                <% end %>
                 <%= pet.sex %>
                 </h6>
                 <%= link_to pet_likes_path(pet.id), method: :post, remote: true do %>

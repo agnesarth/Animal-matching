@@ -5,7 +5,8 @@ class PetsController < ApplicationController
 
   def index
     @current_pet = Pet.find(current_user.default_pet_id)
-    @pets_list = Pet.search(params[:search]) & Pet.where.not(user_id: current_user.id)
+    @pets_list = Pet.search(params[:search]) & Pet.where.not(user_id: current_user.id) & Pet.distance_to_others(params[:distance_to_others], current_user)
+    @your_user = current_user
   end
 
   def new
