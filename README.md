@@ -17,7 +17,7 @@
   <dt>Non-registered users can:</dt>
   <dd>Sign up</dd>
   <dd>Receive a welcome email</dd>
-  <dd>See general info about the app</dd>
+  <dd>See general info about the app (about us, contact us, social media) </dd>
 
   <dt>Registered users can:</dt>
   <dd>Login & log out</dd>
@@ -27,6 +27,7 @@
   <dd>Receive email when add a new pet</dd>
   <dd>Modify my pet profile</dd>
   <dd>See other pets</dd>
+  <dd>Search pets by tags, sex & age</dd>
   <dd>Like othe pets</dd>
   <dd>Receive email when there's a match</dd>
   <dd>Chat with other users when there's a match</dd>
