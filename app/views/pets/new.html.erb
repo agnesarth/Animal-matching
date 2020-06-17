@@ -12,12 +12,12 @@
         </div>
 
         <h6 class="card-text mt-2">Genre :</h6>
-        <div class="input-group mb-4 input-checkbox">
-          <label class="form-control mr-0 form-border lined-thick one-line pet-radio-button"  onlcick="toggleRadioButton()">
+        <div class="input-group mb-4 input-checkbox" onlcick="toggleRadioButton()">
+          <label class="form-control mr-0 form-border lined-thick one-line pet-radio-button"  >
             <%= f.radio_button :sex, 'Femelle', class:"radio-button", type: "radio" %><span class="pet-radio-text pet-font-size">Femelle</span>
          </label>
          <label class="form-control ml-0 border-left-0 form-border lined-thick one-line pet-radio-button" onlcick="toggleRadioButton()">
-           <%= f.radio_button :sex, 'Mâle', class:"radio-button", id: "pet-radio", type: "radio" %><span class="pet-radio-text pet-font-size">Mâle</span>
+           <%= f.radio_button :sex, 'Mâle', class:"radio-button", type: "radio" %><span class="pet-radio-text pet-font-size">Mâle</span>
         </label>
         </div>
 
@@ -50,9 +50,13 @@
 
         <h6 class="card-text">Photos :</h6>
         <div class="input-group mb-4 input-checkbox">
-          <%= f.file_field :photos, multiple: true, value: "", class: "uploadPreview ml-5 mt-0 mb-2" %>
-        </div>
+          <div class="image-upload">
+    <label for="file-input">
+        <img src=""/>
 
+          <%= f.file_field :photos, multiple: true, value: "", class: "uploadPreview ml-5 mt-0 mb-2 preview-button" %>
+</label>
+</div>
         <div id="showPreview"></div>
 
         <div class="actions my-3">
