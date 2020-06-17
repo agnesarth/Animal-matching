@@ -1,0 +1,58 @@
+ // Devise
+
+.jumbotron-devise {
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.45),
+    rgba(0, 0, 0, 0.45)
+  ),url(asset_path( 'background_signup.jpeg' ));
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  align-items: center;
+  padding-top: 2em;
+  margin-bottom: 0;
+  bottom: 0;
+}
+
+.button-back {
+  color: white;
+  font-size: 1.2rem;
+  align-self: flex-end;
+  flex: 1 0 80%;
+}
+
+.button-back:hover {
+  color: white;
+}
+
+.button-back:focus {
+  color: white;
+}
+
+.bg-devise {
+  background-color: #f8f9fa;
+  font-family: "Ubuntu", "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.input-group-text {
+  min-width: 42px;
+}
+
+.form-control:focus {
+  border-color: #9d112a;
+}
+
+.btn-outline-light:hover {
+  color: $gray-800;
+}
+
+ul {
+  text-align: center;
+  list-style-position: inside;
+  padding-inline-start: 0;
+}

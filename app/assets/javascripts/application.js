@@ -15,5 +15,9 @@
 //= require jquery3
 //= require activestorage
 //= require popper
+//= require popper.min
 //= require bootstrap-sprockets
 //= require previewer
+//= require pet-form
+//= require popover
+//= require cable

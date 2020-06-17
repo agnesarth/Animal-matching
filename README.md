@@ -23,11 +23,11 @@
   <dd>Retrieve password</dd>
   <dd>Update user info</dd>
   <dd>Add & remove pet</dd>
-  <dd>Receive an email when add pet</dd>
+  <dd>Receive email when add pet</dd>
   <dd>Modify my pet profile</dd>
   <dd>See other pets</dd>
   <dd>Like othe pets</dd>
-  <dd>Like othe pets</dd>
+  <dd>Receive email when there's a match</dd>
   <dd>Chat with other users when there's a match</dd>
 </dl>
 
@@ -51,8 +51,7 @@
     - 👯 Visit us online :arrow_right: https://whispaw.herokuapp.com/
     
  - **Want to try admin mode?**
-    - email: animalmatching2020@gmail.com
-    - password: 
+    - Coming soon
 
 ## Versioning
 

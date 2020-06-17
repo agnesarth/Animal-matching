@@ -108,17 +108,12 @@ section {
 
 .timeline-item {
   .timeline-img-header {
-			background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0, .4)), url('https://images.pexels.com/photos/1981111/pexels-photo-1981111.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500') center center no-repeat;
+			background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0, .4)), center center no-repeat;
 			background-size: cover;
+			height: 100%;
 		}
 }
 
-.timeline-item2 {
-  .timeline-img-header {
-			background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0, .4)), url('https://images.pexels.com/photos/141496/pexels-photo-141496.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500') center center no-repeat;
-			background-size: cover;
-		}
-}
 
 .timeline-img-header {
 
@@ -200,4 +195,20 @@ blockquote {
 		}
 	}
 	
+}
+
+.timeline-card {
+  padding-bottom :10px !important;
+}
+
+.timeline-card p {
+  padding: 0 30px;
+}
+
+.timeline-img-header h2 {
+  left: 30px;
+}
+
+.timeline {
+  padding-bottom: 10px;
 }

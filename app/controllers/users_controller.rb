@@ -13,18 +13,14 @@ class UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       flash[:success]="Bravo ! Ton profil à correctement été mis à jour."
-      redirect_to users_path
     else
       flash[:error]="Mince, il y a eu une erreur"
-      redirect_to users_path
     end
+    redirect_to users_path
   end
 
- 
   private
-
-  def user_params
-    params.require(:user).permit(:id, :first_name, :last_name, :default_pet_id)
-  end
-
+    def user_params
+      params.require(:user).permit(:id, :first_name, :last_name, :default_pet_id)
+    end
 end
