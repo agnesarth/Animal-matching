@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :messages, only: [:index]
+  resources :messages
   resources :chatrooms, only: [:new, :create, :show, :index], path: "mes_conversations"
   mount ActionCable.server => '/cable'
   

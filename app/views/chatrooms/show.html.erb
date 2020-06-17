@@ -7,13 +7,14 @@
 
 <hr />
 
-  <%= form_for @message, url: '#' do |f| %>
+  <%= form_for @message, remote: true, html: {id: "new_message"} do |f| %>
     <div class="form-group">
       <%= f.label "Message" %>
-      <%= f.text_area :body, class: 'form-control' %>
+      <%= f.text_area :body, class: 'form-control', html: {id: "message_body"} %>
       <small class="text-muted">Entre 2 et 1000 caractères</small>
     </div>
-
+    <%= f.hidden_field :chatroom_id, :value => @chatroom.id %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.submit "Envoyer", class: 'btn btn-primary btn-lg' %>
   <% end %>
 </div>

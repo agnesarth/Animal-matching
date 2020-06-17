@@ -6,6 +6,6 @@ class Message < ApplicationRecord
 
 
   def timestamp
-    created_at.strftime('%H:%M:%S %d %B %Y')
+    created_at.strftime('%d/%m/%Y %H:%M ')
   end
 end
