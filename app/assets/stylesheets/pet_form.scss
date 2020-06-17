@@ -91,6 +91,17 @@ input[type=radio]:checked + span::after {
     cursor: pointer;
 }
 
+.file-input::after {
+  content: "\f196";
+  font: normal normal normal 100px/1 FontAwesome;
+  color: #778899;
+  padding: 10%;
+}
+
+.preview-button{
+  display: none;
+}
+
 @media (max-width:620px){
   .form-border {
         align-self:center;

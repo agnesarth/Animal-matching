@@ -51,16 +51,14 @@
         <h6 class="card-text">Photos :</h6>
         <div class="input-group mb-4 input-checkbox">
           <div class="image-upload">
-    <label for="file-input">
-        <img src=""/>
-
+    <label class="file-input">
           <%= f.file_field :photos, multiple: true, value: "", class: "uploadPreview ml-5 mt-0 mb-2 preview-button" %>
 </label>
 </div>
         <div id="showPreview"></div>
 
         <div class="actions my-3">
-          <%= f.submit "Créer le profil", class:"btn btn-primary" %>
+          <%= f.submit "Créer le profil", class:"btn btn-primary m-5" %>
         </div>
       <% end %>
     </div>
