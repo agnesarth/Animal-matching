@@ -1,8 +1,9 @@
 class User < ApplicationRecord
-  geocoded_by :full_street_address   
-  after_validation :geocode          # auto-fetch coordinates
-  reverse_geocoded_by :latitude, :longitude
-  after_validation :reverse_geocode  # auto-fetch address
+  attr_accessor :address, :latitude, :longitude
+  geocoded_by :address   
+  #after_validation :geocode          # auto-fetch coordinates
+  #reverse_geocoded_by :latitude, :longitude
+  #after_validation :reverse_geocode  # auto-fetch address
   after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
   PASSWORD_FORMAT = /\A
@@ -46,8 +47,6 @@ class User < ApplicationRecord
     UserMailer.welcome_email(self).deliver_now
   end
 
-  def full_street_address  
-  end
   def current_pet
     return Pet.find(self.default_pet_id)
   end
