@@ -10,7 +10,7 @@ class TagsController < ApplicationController
     respond_to do |format|
       if @tag.save!
         flash[:success] = "Le tag a bien été créé."
-        format.html { redirect_to pets_path }
+        format.html { redirect_to tags_path }
         format.json { }
       else
         flash[:error] = "Erreur : Le tag n'a pas été créé."
