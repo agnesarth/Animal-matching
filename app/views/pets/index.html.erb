@@ -3,14 +3,23 @@
 </div>
 
 
+<div class="container">
+  <a tabindex="0" class="btn btn btn-outline-primary btn-info-match" role="button" data-toggle="popover" data-trigger="focus" title="C'est quoi un match ?" data-content="Rien n'est plus simple : si un animal vous plaît, cliquez sur le cœur sur son profil. Lorsque cet animal like aussi votre profil, c'est un Match !"> Match ? </a>
+  <a tabindex="0" class="btn btn btn-outline-secondary btn-info-match mx-3" role="button" data-toggle="popover" data-trigger="focus" title="Comment chercher de nouveaux amis ?" data-content="Rien n'est plus simple : dans la barre de recherche ajoutez les critères que vous recherchez, séparés par un espace. Vous pouvez chercher une valeur spécifique d'age, de sexe et d'espèce, mais aussi ajouter plusieurs tags différents. Exemple : 'chien femelle 4 ans doux calme actif's."> Recherche ? </a>
+
+  <h4 class="mb-4">Rechercher par espèce, age, sexe ou tags</h4>
+
  <!-- Search bar in progress -->
- <h4>Rechercher par tag</h4>
- <div class="d-flex justify-content-center h-100">
-    <%= form_tag(pets_path, method: :get) do%>
-      <%= text_field_tag(:search, params[:search])%>
-      <%= submit_tag ("Rechercher") %>
-    <% end %>
+
+  <div class="form-inline form-inline-search my-4">
+      <%= form_tag(pets_path, method: :get, class:"form-group form-control alert-light") do%>
+        <%= text_field_tag(:search, params[:search], class:"form-control col-sm-10 col-xs-10", placeholder: "tags, age, espèce, sexe...")%>
+        <%= submit_tag "Rechercher", class:"btn btn-outline-primary btn-main-page" %>
+      <% end %>
   </div>
+
+
+</div>
 
       <!-- Responsive search bar-->
   <div class="d-flex justify-content-center h-100">
