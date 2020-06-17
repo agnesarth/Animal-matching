@@ -27,12 +27,8 @@
             <% end %>
           </div>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tags</a>
-          <div class="dropdown-menu">
-            <%= link_to "Créer un tag", new_tag_path, :class => "dropdown-item" %>
-            <%= link_to "Liste des tags", tags_path, :class => "dropdown-item" %>
-          </div>
+        <li class="nav-item">
+          <%= link_to "Tags", tags_path, :class => "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "Mes messages", root_path, :class => "nav-link" %>
