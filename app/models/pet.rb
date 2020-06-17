@@ -9,17 +9,18 @@ class Pet < ApplicationRecord
   has_many_attached :photos, dependent: :destroy
   has_many :tag_pets, dependent: :destroy
   has_many :tags, through: :tag_pets
+  validates :name, presence: true
+  validates :birthdate, presence: true
   validates :animal, presence: true
   enum animal: [ :chat, :chien ]
 #  validates :age, :numericality => {:greater_than => 0, message: "L'âge doit être supérieur à 0."}
   accepts_nested_attributes_for :tags
-  CATBREED=['Manx','Birman','Persan','Siamois','Somali','Sibérien','Ragdoll', "Sphinx", "Européen"].sort
-  DOGBREED=['Terrier','Dalmatien','Boxer','Berger Allemand','Labrador','Bouledogue','Chihuahua','Beagle','Setter','Cocker','Husky','Teckel'].sort
+  CATBREED=['Manx','Birman','Persan','Siamois','Somali','Sibérien','Ragdoll', "Sphinx", "Européen","Autre"].sort
+  DOGBREED=['Terrier','Dalmatien','Boxer','Berger Allemand','Labrador','Bouledogue','Chihuahua','Beagle','Setter','Cocker','Husky','Teckel', "Autre"].sort
 
   def age
     return ((Time.zone.now - self.birthdate.to_time) / 1.year.seconds).floor
   end
-
   def self.search(search)
     if search
       search_list = search.downcase.split(" ")
@@ -30,14 +31,14 @@ class Pet < ApplicationRecord
           list = Pet.where(animal: value)
         elsif value == "femelle" || value == "mâle"
           list = Pet.where(sex: value.capitalize)
-        elsif value.to_i >= 0
+        elsif value.to_f > 0 || value == "0"
           list = Pet.where(birthdate: (Date.today - (value.to_i + 1).to_i.years)..(Date.today - value.to_i.years))       
         elsif !tag.nil?
           list = tag.pets
         else
           list = Pet.all
         end
-        list_compare = list & list_compare
+        tp list_compare = list & list_compare
       end
       return list_compare
     else
