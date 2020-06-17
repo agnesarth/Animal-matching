@@ -18,8 +18,6 @@
 //= require popper.min
 //= require bootstrap-sprockets
 //= require previewer
+//= require pet-form
 //= require popover
 //= require cable
-
-
-
