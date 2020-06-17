@@ -1,39 +1,7 @@
-.form-border {
-      align-self:center;
-      background:transparent;
-      padding:1rem 1rem;
-      margin:0 1rem;
-      transition:all .5s ease;
-      color:#41403E;
-      font-size:2rem;
-      letter-spacing:1px;
-      outline:none;
-      box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
-      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-      &:hover{
-         box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
-      }
-      &.lined-thick{
-         border:solid 2px #41403E;
-      }
-    }
-
-.one-line {
-    max-height: 20px;
-}
-
-.pet-font-size {
-  font-size: 1rem;
-}
-
-
 .pet-radio-button {
   display: block;
   position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
   cursor: pointer;
-  font-size: 22px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -48,13 +16,6 @@
   height: 0;
   width: 0;
 
-}
-
-.pet-radio-text {
-  top: 0.1%;
-  margin-left: -50%;
-  position: absolute;
-  padding: 1.8% 1% 1% 1%;
 }
 
 form input[type=number]::-webkit-inner-spin-button,
@@ -79,9 +40,9 @@ input[type=select]{
 
 input[type=radio]:checked + span::after {
       content: "\f1b0";
-      font: normal normal normal 23px/1 FontAwesome;
+      font: normal normal normal 20px/1 FontAwesome;
       color: #778899;
-      padding: 10%;
+      padding-left: 5%;
 }
 
 
