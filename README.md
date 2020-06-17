@@ -23,8 +23,8 @@
   <dd>Login & log out</dd>
   <dd>Retrieve password</dd>
   <dd>Update user info</dd>
-  <dd>Add & remove pet</dd>
-  <dd>Receive email when add pet</dd>
+  <dd>Add & remove more than 1 pet</dd>
+  <dd>Receive email when add a new pet</dd>
   <dd>Modify my pet profile</dd>
   <dd>See other pets</dd>
   <dd>Like othe pets</dd>
@@ -50,9 +50,6 @@
 
 - **Option 3**
     - 👯 Visit us online :arrow_right: https://whispaw.herokuapp.com/
-    
- - **Want to try admin mode?**
-    - Coming soon
 
 ## Versioning
 
