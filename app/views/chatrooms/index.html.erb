@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Mes Chatrooms</h1>
+
+  <p class="lead"><%= link_to 'Nouveau chat', new_chatroom_path, class: 'btn btn-primary' %></p>
+
+  <ul>
+    <%= render @chatrooms %>
+  </ul>
+</div>

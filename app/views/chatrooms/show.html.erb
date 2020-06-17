@@ -1,0 +1,19 @@
+<div class="container">
+  <h1 class ="my-3"><%= @chatroom.title %></h1>
+
+  <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+    <%= render @chatroom.messages %>
+  </div>
+
+<hr />
+
+  <%= form_for @message, url: '#' do |f| %>
+    <div class="form-group">
+      <%= f.label "Message" %>
+      <%= f.text_area :body, class: 'form-control' %>
+      <small class="text-muted">Entre 2 et 1000 caractères</small>
+    </div>
+
+    <%= f.submit "Envoyer", class: 'btn btn-primary btn-lg' %>
+  <% end %>
+</div>

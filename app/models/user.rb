@@ -33,7 +33,8 @@ class User < ApplicationRecord
     uniqueness: true
 
   has_many :pets, dependent: :destroy
-  has_many :chat_rooms, dependent: :destroy
+  has_many :chatroom_users, dependent: :destroy
+  has_many :chatrooms, through: :chatroom_users, dependent: :destroy
   has_many :messages, dependent: :destroy
 
   def welcome_send
