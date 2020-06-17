@@ -1,9 +1,5 @@
 class User < ApplicationRecord
-  attr_accessor :address, :latitude, :longitude
-  geocoded_by :address   
-  #after_validation :geocode          # auto-fetch coordinates
-  #reverse_geocoded_by :latitude, :longitude
-  #after_validation :reverse_geocode  # auto-fetch address
+  geocoded_by :full_address 
   after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
   PASSWORD_FORMAT = /\A
@@ -42,6 +38,10 @@ class User < ApplicationRecord
   has_many :pets, dependent: :destroy
   has_many :chat_rooms, dependent: :destroy
   has_many :messages, dependent: :destroy
+
+  def full_address
+    [address, city, country].compact.join(', ')
+  end  
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
