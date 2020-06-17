@@ -1,3 +1,5 @@
+
+
 .pet-radio-button {
   display: block;
   position: relative;
@@ -6,37 +8,37 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
+      }
 
-  /* Hide the browser's default checkbox */
+        /* Hide the browser's default checkbox */
 .pet-radio-button input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
 
-}
+  }
 
 form input[type=number]::-webkit-inner-spin-button,
 form input[type=number]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      margin: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
   }
 
 input[type=number]{
-      -moz-appearance: textfield;
-      -webkit-appearance: textfield;
-  }
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+}
 
 input[type=select]{
-  outline: 0;
-  -webkit-appearance: textfield;
-  -moz-appearance: textfield;
-  appearance: textfield;
-      }
+    outline: 0;
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
 
 input[type=radio]:checked + span::after {
       content: "\f1b0";
@@ -45,29 +47,27 @@ input[type=radio]:checked + span::after {
       padding-left: 5%;
 }
 
-
-.image-upload img
-{
-    width: 80px;
-    cursor: pointer;
+.image-upload img{
+      width: 80px;
+      cursor: pointer;
 }
 
 .file-input::after {
-  content: "\f196";
-  font: normal normal normal 100px/1 FontAwesome;
-  color: #778899;
-  padding: 10%;
-  right: 10%;
-  position: relative;
+    content: "\f196";
+    font: normal normal normal 100px/1 FontAwesome;
+    color: #778899;
+    padding: 10%;
+    right: 10%;
+    position: relative;
 }
 
 .preview-button{
-  display: none;
+    display: none;
 }
 
 @media (max-width:620px){
-  .form-border {
+    .form-border {
         align-self:center;
         margin-bottom:2rem;
-      }
-  }
+    }
+}
