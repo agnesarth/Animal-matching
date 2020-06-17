@@ -20,3 +20,4 @@
 //= require previewer
 //= require pet-form
 //= require popover
+//= require cable

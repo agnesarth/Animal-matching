@@ -1,5 +1,7 @@
+
 <div class="small-jumbotron text-center ">
 </div>
+
 
 <div class="container">
   <!-- Search bar disabled for now, need to implement post-MVP -->
@@ -13,9 +15,30 @@
       </div>
     </div>
   </form>
+
+ <!-- Search bar in progress -->
+  <h4>Rechercher par tags</h4>
+  <div class="d-flex justify-content-center h-100">
+      <%= form_tag(pets_path, method: :get) do%>
+        <%= text_field_tag(:search, params[:search])%>
+        <%= submit_tag ("Rechercher") %>
+      <% end %>
+  </div>
+
   <hr>
   <a tabindex="0" class="btn btn-sm btn-outline-primary btn-info-match" role="button" data-toggle="popover" data-trigger="focus" title="C'est quoi un match ?" data-content="Rien n'est plus simple : si un animal vous plaît, cliquez sur le cœur sur son profil. Lorsque cet animal like aussi votre profil, c'est un Match !"> Match ? </a>
 </div>
+
+    <!-- Responsive search bar-->
+    <div class="d-flex justify-content-center h-100">
+        <div class="searchbar">
+          <input class="search_input" type="text" placeholder="Rechercher">
+          <a href="#" class="search_icon"><i class="fa fa-paw"></i></a>
+        </div>
+      </div>
+
+
+
 <div class="container justify-content-around">
   <div class="row justify-content-around ml-3 mr-3">
     <% @pets_list.each do |pet| %>
@@ -56,7 +79,11 @@
                 <% if pet.short_description != nil %>
                   <h6 class="card-subtitle my-3 text-primary"><em>"<%= pet.short_description%>"</em></h6>
                 <% end %>
-                <h6 class="card-subtitle mt-2 float-left"><%= pet.age.to_i %>, <%= pet.sex %></h6><span>
+                <h6 class="card-subtitle mt-2 float-left">
+                <%= pet.animal.capitalize %>, 
+                <%= year = pet.age %> an<%if year > 1 %>s<%end%>, 
+                <%= pet.sex %>
+                </h6>
                 <%= link_to pet_likes_path(pet.id), method: :post, remote: true do %>
                   <i id="likeButton<%= pet.id %>" class="btn btn-outline-primary btn-sm fa fa-heart float-right"></i>
                 <% end %>

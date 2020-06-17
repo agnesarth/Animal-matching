@@ -31,9 +31,10 @@
         </label>
         </div>
 
-        <h6 class="card-text mt-2">Âge :</h6>
+        <h6 class="card-text mt-2">Date de naissance :</h6>
         <div class="input-group mb-3">
-          <%= f.number_field :age, autofocus: true, class:"form-control form-border lined-thick one-line pet-font-size", type: "number", id: "number-field", :max => 30, :min => 0  %>
+          <%= f.date_field :birthdate, autofocus: true, class:"form-control form-border lined-thick pet-font-size"%>
+          <!--class:"form-control form-border lined-thick one-line pet-font-size", :max => 30, :min => 0  -->
         </div>
 
         <h6 class="card-text mt-2">Tags :</h6>

@@ -33,6 +33,8 @@ class User < ApplicationRecord
     uniqueness: true
 
   has_many :pets, dependent: :destroy
+  has_many :chat_rooms, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
@@ -55,6 +57,10 @@ class User < ApplicationRecord
       return true 
     end
     
+  end
+
+  def name
+    email.split('@')[0]
   end
 
 end
