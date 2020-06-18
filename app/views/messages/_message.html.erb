@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2 lead" >
+      <%if Pet.find(message.user.default_pet_id).photos.present? %>               
+          <%= image_tag Pet.find(message.user.default_pet_id).photos.last, class: "avatar-pet avatar-xlg mb-3 rounded-circle", style: "height: 60px; width: 60px" %>
+      <%else%>
+          <%= image_tag "michat.jpg", class: "avatar-pet avatar-xlg mb-3 rounded-circle", style: "height: 40px; width: 40px"  %>
+      <%end%> 
+      <%= Pet.find(message.user.default_pet_id).name%>
+    </div>
+    <div class="col-sm-8 content alert alert-light mb-3">
+      <span class="lead"><%= message.body %></span>
+      <small class="text-muted"><%= message.timestamp %></small>
+    </div>
+  </div> 
+</div>
