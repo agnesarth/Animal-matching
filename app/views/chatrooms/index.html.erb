@@ -8,7 +8,9 @@
         <% my_pets_matches.each do |match|%>
           <tr>
           <td><h4 class="mx-2"><%= match.name%> </h4></td>
-          <td><p class="lead mx-2"><%= link_to 'Commencer à discuter', new_chatroom_path, class: 'btn btn-sm btn-primary' %></p></td>
+          <td><p class="lead mx-2">
+          <%= link_to 'Commencer à discuter', chatrooms_path, class: 'btn btn-sm btn-primary' %>
+          </p></td>
           <tr>
         <%end%>
       </table>
