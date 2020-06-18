@@ -30,11 +30,11 @@
         <li class="nav-item">
           <%= link_to "Tags", tags_path, :class => "nav-link" %>
         </li>
-        <% if any_match?%>
+        <% if current_user.default_pet_id && any_match? %>
         <li class="nav-item">
           <%= link_to "Contacter mes matchs", chatrooms_path, :class => "nav-link" %>
         </li>
-        <% end %>
+       <%end%>
       </ul>
       <ul class="navbar-nav ml-auto">
         <% if !current_user.default_pet_id.nil? %>
