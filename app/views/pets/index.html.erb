@@ -6,7 +6,7 @@
   <a tabindex="0" class="btn btn btn-outline-primary btn-info-match" role="button" data-toggle="popover" data-trigger="focus" title="C'est quoi un match ?" data-content="Rien n'est plus simple : si un animal vous plaît, cliquez sur le cœur sur son profil. Lorsque cet animal like aussi votre profil, c'est un Match !"> Match ? </a>
   <a tabindex="0" class="btn btn btn-outline-secondary btn-info-match mx-3" role="button" data-toggle="popover" data-trigger="focus" title="Comment chercher de nouveaux amis ?" data-content="Dans la barre de recherche ajoutez les critères que vous recherchez chez vos 'amimaux'. Séparez chaque critère par un espace. Vous pouvez filtrer les résultats selon l'âge, le sexe, l'espèce et les tags attribués à chaque profil. Vous pouvez également rechercher les profils selon leur proximité géographique. Exemple : 'chien femelle 4 ans doux calme actif. Distance : < 20km'."> Recherche ? </a>
 
-  <h4 class="mb-4">Rechercher par espèce, âge, sexe ou tags</h4>
+  <h4 class="mb-4">Rechercher par espèce, âge, sexe ou tags... et proximité</h4>
 
  <!-- Search bar -->
 
@@ -21,20 +21,8 @@
 
 </div>
 
-<!-- Responsive search bar-->
-<div class="d-flex justify-content-center h-100 my-4">
-   <%= form_tag(pets_path, method: :get, class:"searchbar") do%>
-        <%= text_field_tag(:search, params[:search], class:"search_input", placeholder: "tags, age, espèce, sexe...")%>
-        <%= button_tag(type: "submit", class: "search_icon") do %>
-          <i class="fa fa-paw"></i>
-        <% end %>
-      <% end %>
-</div>
-
-
-
 <div class="container justify-content-around">
-  <div class="row justify-content-around ml-3 mr-3">
+  <div class="row justify-content-around ml-2 mr-2">
     <% @pets_list.each do |pet| %>
       <% unless liked?(pet)%>
         <div class="col-sm-4">
