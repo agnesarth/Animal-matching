@@ -73,7 +73,7 @@
   <% else %>
     <div class="row justify-content-around ml-3 mr-3">
       <% @my_likes.each do |like| %>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
           <div id="likeCard<%= like.liked_id %>" class="card bg-light mb-3" ">
             <div id="likeHeader<%= like.liked_id %>" class="card-header">
               <h5 class="card-title float-left"><%= like.liked.name%></h5>

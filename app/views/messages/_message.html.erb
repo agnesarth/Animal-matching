@@ -1,23 +1,11 @@
 <div class="container-fluid">
-  <%if current_user == message.user%>
-    <div class="row mb-3">
-      <div class="col-sm-2 text-center alert alert-secondary rounded mr-2" >
-        <p class= "date-message"><%= Pet.find(message.user.default_pet_id).name%></p>
-        <small><%= message.timestamp %></small>
-      </div>
-      <div class="col-sm-8 content alert alert-secondary rounded">
-        <span class="lead"><%= message.body %></span>
-      </div>
-    </div> 
-  <%else%>
-     <div class="row mb-3">
-     <div class="col-sm-8 content alert alert-light rounded mr-2">
-        <span class="lead"><%= message.body %></span>
-      </div>
-      <div class="col-sm-2 text-center alert alert-light rounded" >
-        <p class= "date-message"><%= Pet.find(message.user.default_pet_id).name%></p>
-        <small><%= message.timestamp %></small>
-      </div>
+  <div class="d-flex row mb-3 justify-content-center">
+    <div class="col-sm-8 content alert alert-light rounded mx-1">
+      <span class="lead"><%= message.body %></span>
     </div>
-  <%end%> 
+    <div class="col-sm-2 text-center alert alert-success rounded mx-1" >
+      <p class= "date-message"><%= Pet.find(message.user.default_pet_id).name%></p>
+      <small><%= message.timestamp %></small>
+    </div>
+  </div>
 </div>

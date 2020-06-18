@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container fluid">
   <h1 class ="my-3"><%= @chatroom.title %></h1>
 
   <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
@@ -15,6 +15,6 @@
     </div>
     <%= f.hidden_field :chatroom_id, :value => @chatroom.id %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.submit "Envoyer", class: 'btn btn-primary btn-lg' %>
+    <%= f.submit "Envoyer", class: 'btn btn-primary btn-lg mb-3' %>
   <% end %>
 </div>
