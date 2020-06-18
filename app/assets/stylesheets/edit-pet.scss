@@ -45,6 +45,14 @@
   border: 1px solid #ced4da;
 }
 
+.trash-icon {
+  font: normal normal normal 25px/1 FontAwesome;
+  position: relative;
+  color: gray;
+  top: -5%;
+  
+}
+
 #showPreview img {
   object-fit: cover;
   border: 1px solid #ced4da;

@@ -31,11 +31,11 @@
         </div>
         <h6 class="card-text">Photos actuelles :</h6>
         <% if @pet.photos.attached? %>
-        <div class="d-flex flex-row justify-content-center mb-4">
+        <div class="input-group mb-4 input-checkbox">
           <% @pet.photos.each do |p| %>
             <%= image_tag p, class: "img-pet-new-edit" %>
             <div class="maintext">
-              <%= link_to delete_photo_pet_url(p.id), method: :delete do %><i class="fa fa-trash"></i><% end %>
+              <%= link_to delete_photo_pet_url(p.id), method: :delete do %><i class="trash-icon fa fa-trash"></i><% end %>
             </div>
           <% end %>
           <% else %>
