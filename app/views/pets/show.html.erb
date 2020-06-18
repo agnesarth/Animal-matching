@@ -36,12 +36,12 @@
     </p>
     <div class="btns-pet-show">
       <%if current_user == @pet.user%>
-        <%= link_to 'Editer son profil', edit_pet_path(@pet), class: "btn btn-primary btn-edit-pet-profile" %>
+        <%= link_to 'Editer son profil', edit_pet_path(@pet), "data-turbolinks" => "false", class: "btn btn-primary btn-edit-pet-profile" %>
         <%= link_to 'Supprimer', pet_path(@pet), data: { confirm: "Etes-vous certain(e)?" }, method: :delete, class: "btn btn-outline-primary" %>
       <%end%>
     </div>
   </div>
   <div class="container font-weight-bold mb-5">
-    <%= link_to "Retour", :back %>
+    <%= link_to "Retour", :back, "data-turbolinks" => "false" %>
   </div>
 </div>
