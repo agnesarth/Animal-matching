@@ -23,7 +23,7 @@ class PetsController < ApplicationController
         format.html { redirect_to pets_path }
         format.json { }
       else
-        flash[:error] = "Le profil de l'animal n'a pas été créé."
+        flash[:error] = "N'oubliez pas le nom de votre petit aniaml et la data de naissance!"
         format.html { render :new }
         format.json { }
       end

@@ -20,7 +20,7 @@ class Pet < ApplicationRecord
   DISTANCEOTHERS=['< 5km','< 20km', '< 100km']
 
   def age
-    return ((Time.zone.now - self.birthdate.to_time) / 1.year.seconds).floor
+    return Time.current.year - self.birthdate.year
   end
 
   def self.search(search)
@@ -34,7 +34,7 @@ class Pet < ApplicationRecord
         elsif value == "femelle" || value == "mâle"
           list = Pet.where(sex: value.capitalize)
         elsif value.to_f > 0 || value == "0"
-          list = Pet.where(birthdate: (Date.today - (value.to_i + 1).to_i.years)..(Date.today - value.to_i.years))       
+          list = Pet.where(birthdate: (Date.today - (value.to_i + 1).to_i.years)..(Date.today - value.to_i.years))
         elsif !tag.nil?
           list = tag.pets
         else
@@ -96,7 +96,7 @@ class Pet < ApplicationRecord
     if my_user.default_pet_id.nil?
       current_pet = my_user.pets.last
       my_user.update(default_pet_id: current_pet.id)
-    end    
+    end
   end
 
   def reset_default_pet
