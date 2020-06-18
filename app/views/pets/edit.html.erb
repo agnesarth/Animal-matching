@@ -29,11 +29,11 @@
         <div class="input-group mb-4">
           <%= f.text_field :description, autofocus: true, placeholder: @pet.description, class:"form-control" %>
         </div>
-        <h6 class="card-text">Photos actuelles :</h6>
+        <h6 class="card-text mb-2">Photos actuelles :</h6>
         <% if @pet.photos.attached? %>
         <div class="input-group mb-4 input-checkbox">
           <% @pet.photos.each do |p| %>
-            <%= image_tag p, class: "img-pet-new-edit" %>
+            <%= image_tag p, class: "img-pet-new-edit form-border thick-lined mb-2" %>
             <div class="maintext">
               <%= link_to delete_photo_pet_url(p.id), method: :delete do %><i class="trash-icon fa fa-trash"></i><% end %>
             </div>
