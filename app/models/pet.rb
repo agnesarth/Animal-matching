@@ -56,20 +56,27 @@ class Pet < ApplicationRecord
       puts "------------5km-----------"
       list = []
       User.near(user, 5, units: :km).each do |user|
-        list << user.pets
+        user.pets.each do |pet|
+          list << pet
+        end
       end
-      puts list
       return list
     elsif distance_to_others == "< 20km"
       list = []
+      list = []
       User.near(user, 20, units: :km).each do |user|
-        list << user.pets
+        user.pets.each do |pet|
+          list << pet
+        end
       end
       return list
     elsif distance_to_others == "< 100km"
       list = []
+      list = []
       User.near(user, 100, units: :km).each do |user|
-        list << user.pets
+        user.pets.each do |pet|
+          list << pet
+        end
       end
       return list
     else
