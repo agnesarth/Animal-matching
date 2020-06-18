@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: https://whispaw.herokuapp.com/
+  url: <%= ENV["REDISCLOUD_URL"] %>
   channel_prefix: animal_matching_production

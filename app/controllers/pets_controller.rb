@@ -1,6 +1,6 @@
 class PetsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create, :edit, :destroy, :delete_photo]
-  before_action :is_current_user?, only: [ :edit, :destroy, :delete_photo]
+  before_action :is_current_user?, only: [ :edit ]
   before_action :is_default_pet, only: [:index, :show]
 
   def index
@@ -59,8 +59,13 @@ class PetsController < ApplicationController
 
   def delete_photo
     @photo = ActiveStorage::Attachment.find(params[:id])
-    @photo.purge
-    redirect_back(fallback_location: request.referrer)
+
+    respond_to do |format|
+      if @photo.purge
+        format.html { redirect_to request.referrer }
+        format.json { }
+      end
+    end
   end
 
   def every_pet?(pets)

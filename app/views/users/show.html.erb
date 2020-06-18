@@ -38,24 +38,16 @@
         <% @user.pets.each do |pet| %>
           <div class='col-3 d-flex alert' style="margin: 20px;">
             <div class='card card-lg card-body align-items-center bg-primary'>
-              <div id="demo" class="carousel slide" data-ride="carousel" data-interval="7000">
-                <div class="carousel-inner" >
-                  <% unless pet.photos.empty? %>
-                    <div class="carousel-item active">
-                      <%= image_tag pet.photos.first, class: "avatar-pet avatar-xlg mb-3 rounded-circle" %>
-                    </div>
-                    <% pet.photos[1..-1].each do |p| %>
-                      <div class="carousel-item">
-                        <%= image_tag p, class: "avatar-pet avatar-xlg mb-3 rounded-circle" %>
-                      </div>
-                    <% end %>
-                  <% else %>
-                    <%= image_tag "michat.jpg", class: "avatar-pet avatar-xlg mb-3 rounded-circle"  %>
-                  <%end%>
-                </div>
-              </div>    
+              <% unless pet.photos.empty? %>
+                <%= image_tag pet.photos.first, class: "avatar-pet avatar-xlg mb-3 rounded-circle" %>
+              <% else %>
+                <%= image_tag "michat.jpg", class: "avatar-pet avatar-xlg mb-3 rounded-circle"  %>
+              <%end%>
+              <h6 class='mb-0'>
+                <%= pet.name%> 
+                le <%=pet.animal %>  
               </h6>
-              <span><%= pet.animal%></span>
+              <span><%= pet.breed %></span>
               <div class='float-right' style='margin-top: 10px;'>
                 <div class='text-center' style='margin-top: 10px;'>
                   <%=link_to "Voir son profil", pet_path(pet), class:'btn btn-sm btn-warning' %>
@@ -81,7 +73,7 @@
     <% end %>
     <div class="col text-center">
       <div class="actions my-3 mt-4">          
-        <%= link_to "Créer un animal", new_pet_path, class:"btn btn-primary" %>
+        <%= link_to "Créer un animal", new_pet_path, "data-turbolinks" => "false", class:"btn btn-primary" %>
       </div>
     </div>
   </div>

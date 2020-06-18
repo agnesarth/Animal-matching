@@ -73,7 +73,7 @@
  @import "custom";
  @import "devise";
  @import "custom";
-@import "petsindex";
+
 
  // Flash
 @import "flash";
@@ -82,13 +82,17 @@
 @import "footer";
 
  // Pets view
+@import "pet_form";
 @import "pets_new_edit";
+@import "petsindex";
 @import "pets";
 
 // Static pages
-
 @import "static_pages";
-@import "pet_form";
+
+// Chatroom
+@import "chatrooms";
+
 
  // All site
 
@@ -131,7 +135,7 @@ textarea {
 .searchbar:hover > .search_input{
   padding: 0 10px;
   width: 450px;
-  caret-color:white;
+  caret-color: white;
   transition: width 0.4s linear;
 }
 
@@ -148,7 +152,7 @@ textarea {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  color:white;
+  color:red;
 }
 
  // Navbar
