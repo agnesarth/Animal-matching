@@ -5,14 +5,12 @@
 // CSS changes
 
 .small-jumbotron {
- background-image: url(doggo_home.jpg);
- background-position: center center;
- background-repeat: no-repeat;
- background-size: cover;
- min-height: 45vh;
- position: relative;
- align-items: center;
- margin-bottom: 4em;
+ 	position: center center;
+ 	object-fit: cover;
+	height: 300px;
+	width: 100%;
+	position: relative;
+ 	margin-bottom: 4em;
 }
 
  .bubbling-heart {

@@ -1,8 +1,9 @@
-<div class="small-jumbotron text-center ">
+<div class="text-center ">
+  <%=image_tag("doggo_home.jpg", class: "small-jumbotron", alt: "")%>
 </div>
 
 <div class="container text-center">
-  <h1 class="m-5">Mes Matches</h1>
+  <h1>Mes Matches</h1>
   <% if @my_matches.empty? %>
     <div class="text-center">
       <h3>Oh you can't hurry love, oh you just have to wait...</h3>
