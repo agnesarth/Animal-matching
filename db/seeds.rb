@@ -54,9 +54,20 @@ puts "#{Pet.all.size} animaux crées"
     my_like.liked = Pet.all.chien.sample
   end
   my_like.save
+  reverse_liker_pet = Pet.find(my_like.liked_id)
+  reverse_liked_pet = Pet.find(my_like.liker_id)
+  if Like.where(liked_id: reverse_liked_pet.id, liker_id: reverse_liker_pet.id).exists?
+    @title = "#{reverse_liker_pet.name} et #{reverse_liked_pet.name}"
+    @chatroom = Chatroom.new
+    @chatroom = reverse_liker_pet.user.chatrooms.build(title: @title)
+    @chatroom.users << reverse_liker_pet.user
+    @chatroom.users << reverse_liked_pet.user
+    @chatroom.save
+  end
 end
 
 puts "#{Like.all.size} likes crées"
+puts "#{Chatroom.all.size} chatrooms crées"
 
 #Tag seed
 10.times do
