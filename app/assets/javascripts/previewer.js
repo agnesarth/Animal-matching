@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() {
   $('.uploadPreview').on('change', function(event) {
     console.log("ok");
     var files = event.target.files;
