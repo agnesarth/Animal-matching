@@ -3,6 +3,7 @@ class LikesController < ApplicationController
 
   def index
     @my_likes = Like.where(match: false,liker_id: current_pet.id)
+    @my_search = get_pets(@my_likes) & Pet.search(params[:search]) & Pet.where.not(user_id: current_user.id)
     @my_matches = Like.where(match: true,liker_id: current_pet.id)
   end
 
@@ -54,5 +55,13 @@ class LikesController < ApplicationController
       @chatroom.save
   end
 
+  def get_pets(likes)
+    search_likes = []
+    likes.each do |like|
+      search_likes << Pet.find(like.liked_id)
+    end
+    return search_likes
+
+  end
 
 end
