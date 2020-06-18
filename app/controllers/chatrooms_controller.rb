@@ -8,9 +8,10 @@ class ChatroomsController < ApplicationController
   end
 
   def create
-    @chatroom = current_user.chatrooms.build(title: chatroom_params[:title])
+    @new_chatroom = Chatroom.new
+    @chatroom = current_user.chatrooms.build(title: params[:title])
     @chatroom.users << current_user
-    @chatroom.users << chatroom_params[:user]
+    @chatroom.users << User.find(params[:chatroom_users])
 
     if @chatroom.save
       flash[:success] = 'Chat (ou chien) roulette ajoutée!'
@@ -25,8 +26,5 @@ class ChatroomsController < ApplicationController
     @message = Message.new
   end
 
-  private
-    def chatroom_params
-      params.require(:chatroom).permit(:title, :user)
-    end
 end
+ 

@@ -87,8 +87,14 @@
 @import "petsindex";
 @import "pets";
 
-// Static pages
+ // Static pages
 @import "static_pages";
+
+ // Chatroom
+@import "chatrooms";
+
+ // Likes
+@import "likes";
 
 
  // All site
@@ -107,6 +113,11 @@ body {
 textarea {
   resize: none;
 }
+
+.animal-friend {
+  font-style: italic;
+}
+
     // Searchbar
 
 .searchbar{
