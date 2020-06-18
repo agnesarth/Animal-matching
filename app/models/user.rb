@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   geocoded_by :full_address 
   after_validation :geocode
-  #after_validation :geocode, if: ->(obj){ obj.full_address_change.present? and obj.full_address_changed? }
+  #after_validation :geocode, if: ->(obj){ obj.full_address.present? and obj.full_address_changed? }
 
   PASSWORD_FORMAT = /\A
   (?=.{8,})          # Must contain 8 or more characters
