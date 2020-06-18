@@ -34,7 +34,7 @@
   <hr />
 
   <div class="mt-5 text-center col shadow p-3 mb-5 bg-white rounded my-pets">
-    <h3 class="mt-3">Mes Amimaux</h3>
+    <h3 class="mt-3">Mes <span class="animal-friend">Amimaux</span></h3>
     <% if @user.pets.count != 0 %>
       <div class="row mt-5 d-flex justify-content-center" >
         <% @user.pets.each do |pet| %>

@@ -7,8 +7,8 @@
     <div class="text-center">
       <h3>Oh you can't hurry love, oh you just have to wait...</h3>
       <h6>On n'est pas totalement d'accord<br>
-        Le monde est pleins d'amimaux,
-        <%=link_to pets_path do%>
+        Le monde est plein <span class="animal-friend">d'amimaux</span>,
+        <%=link_to pets_path, class:"go-like" do%>
           va les liker<i class="fa fa-paw ml-1"></i>
         <%end%>
       </h6>
@@ -64,11 +64,11 @@
   <h1 class="m-5">Mes Likes</h1>
   <% if @my_likes.empty? %>
     <div class="text-center">
-      <h4>Dépèche-toi, 
-        <%=link_to pets_path do%>
-          va liker les animaux les plus cool <i class="fa fa-paw"></i>
+      <h3>Dépèche-toi, 
+        <%=link_to pets_path, class:"go-like" do%>
+          va liker les animaux les plus cools <i class="fa fa-paw"></i>
         <%end%>
-      du web</h4>
+      du web</h3>
     </div>
   <% else %>
     <div class="row justify-content-around ml-3 mr-3">
