@@ -33,9 +33,13 @@
   
    <%= form_tag(pets_path, method: :get, class:"searchbar") do%>
         <%= text_field_tag(:search, params[:search], class:"search_input", placeholder: "tags, age, espèce, sexe...")%>
-        <%= submit_tag "Rechercher", class:"btn btn-outline-primary btn-main-page" %>
+        <%= button_tag(type: "submit", class: "search_icon") do %>
+          <i class="fa fa-paw"></i>
+        <% end %>
+        
       <% end %>
 </div>
+
 
 
 <div class="container justify-content-around">
