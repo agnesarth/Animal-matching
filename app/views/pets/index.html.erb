@@ -19,16 +19,6 @@
       <% end %>
   </div>
 
-  <%= form_tag(pets_path, method: :get) do%>
-    <%= submit_tag '< 10km', class:"btn btn-outline-secondary" %>
-  <% end %>
-
-  <% User.near(current_user, 10).each do |user| %>
-    <% user.pets.each do |pet| %>
-    <p><%= pet.name %> est à <%= user.distance %> km de vous.</p>
-    <% end %>
-  <% end %>
-
 </div>
 
 <!-- Responsive search bar-->
