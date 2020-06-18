@@ -61,6 +61,16 @@ input[type=radio]:checked + span::after {
     position: relative;
 }
 
+.file-input:hover::after {
+    color: #5a5a5a;
+    cursor: pointer;
+}
+
+.file-input:active::after {
+    color: #5a5a5a;
+    cursor: pointer;
+}
+
 .preview-button{
     display: none;
 }
