@@ -82,13 +82,12 @@
 @import "footer";
 
  // Pets view
-@import "new-pet";
-@import "edit-pet";
-@import "pet-index";
+@import "pet_form";
+@import "pets_new_edit";
+@import "petsindex";
 @import "pets";
 
 // Static pages
-
 @import "static_pages";
 
 
