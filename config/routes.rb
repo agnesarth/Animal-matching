@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   root to: 'static_pages#home'
   get '/whispaw', to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'
@@ -13,8 +14,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :messages, only: [:index]
-  resources :chat_rooms, only: [:new, :create, :show, :index]
+  resources :messages
+  resources :chatrooms, only: [:new, :create, :show, :index], path: "mes_conversations"
   mount ActionCable.server => '/cable'
   
+  resources :messages, :only => [:index]
+
+
+
 end

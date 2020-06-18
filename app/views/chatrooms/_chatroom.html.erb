@@ -1,0 +1,4 @@
+<td>
+  <% respond_to_u = chatroom.other_user(current_user) %>
+  <h5><i class="fa fa-paw"></i> <%= link_to "Conversation avec #{respond_to_u.name}", chatroom_path(chatroom) %>, propriétaire de <%=other_user_match(respond_to_u).join(" ")%></h5>
+</td>

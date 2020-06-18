@@ -4,17 +4,17 @@
 
 <div class="container">
   <a tabindex="0" class="btn btn btn-outline-primary btn-info-match" role="button" data-toggle="popover" data-trigger="focus" title="C'est quoi un match ?" data-content="Rien n'est plus simple : si un animal vous plaît, cliquez sur le cœur sur son profil. Lorsque cet animal like aussi votre profil, c'est un Match !"> Match ? </a>
-  <a tabindex="0" class="btn btn btn-outline-secondary btn-info-match mx-3" role="button" data-toggle="popover" data-trigger="focus" title="Comment chercher de nouveaux amis ?" data-content="Dans la barre de recherche ajoutez les critères que vous recherchez chez vos 'amimaux'. Séparez chaque critère par un espace. Vous pouvez filtrer les résultats selon l'âge, le sexe, l'espèce et les tags attribués à chaque profil. Exemple : 'chien femelle 4 ans doux calme actif'."> Recherche ? </a>
+  <a tabindex="0" class="btn btn btn-outline-secondary btn-info-match mx-3" role="button" data-toggle="popover" data-trigger="focus" title="Comment chercher de nouveaux amis ?" data-content="Dans la barre de recherche ajoutez les critères que vous recherchez chez vos 'amimaux'. Séparez chaque critère par un espace. Vous pouvez filtrer les résultats selon l'âge, le sexe, l'espèce et les tags attribués à chaque profil. Vous pouvez également rechercher les profils selon leur proximité géographique. Exemple : 'chien femelle 4 ans doux calme actif. Distance : < 20km'."> Recherche ? </a>
 
-  <h4 class="mb-4">Rechercher par espèce, age, sexe ou tags</h4>
+  <h4 class="mb-4">Rechercher par espèce, âge, sexe ou tags</h4>
 
- <!-- Search bar in progress -->
+ <!-- Search bar -->
 
-  <div class="form-inline form-inline-search my-4">
+  <div class="form-inline form-inline-search my-4 mb-5">
       <%= form_tag(pets_path, method: :get, class:"form-group form-control alert-light") do%>
         <%= text_field_tag(:search, params[:search], class:"form-control col-sm-8 col-xs-8", placeholder: "tags, age, espèce, sexe...")%>
         <%= hidden_field_tag :user_id , @current_user.id %>
-        <%= select_tag :distance_to_others, options_for_select(Pet::DISTANCEOTHERS), prompt: "Distance", autofocus: true, class:"form-control col-sm-2 col-xs-2" %>
+        <%= select_tag :distance_to_others, options_for_select(Pet::DISTANCEOTHERS), prompt: "Distance", class:"form-control col-sm-2 col-xs-2" %>
         <%= submit_tag "Rechercher", class:"btn btn-outline-primary btn-main-page" %>
       <% end %>
   </div>
@@ -23,11 +23,15 @@
 
 <!-- Responsive search bar-->
 <div class="d-flex justify-content-center h-100 my-4">
-  <div class="searchbar">
-    <input class="search_input" type="text" placeholder="Rechercher">
-    <a href="#" class="search_icon"><i class="fa fa-paw"></i></a>
-  </div>
+   <%= form_tag(pets_path, method: :get, class:"searchbar") do%>
+        <%= text_field_tag(:search, params[:search], class:"search_input", placeholder: "tags, age, espèce, sexe...")%>
+        <%= button_tag(type: "submit", class: "search_icon") do %>
+          <i class="fa fa-paw"></i>
+        <% end %>
+      <% end %>
 </div>
+
+
 
 <div class="container justify-content-around">
   <div class="row justify-content-around ml-3 mr-3">
