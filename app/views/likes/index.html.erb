@@ -21,9 +21,10 @@
         <div class="col-sm-3">
           <div id="likeCard<%= like.liked_id %>" class="card scale-down bg-custom text-white mb-3">
             <div id="likeHeader<%= like.liked_id %>" class="card-header">
-                <h5 class="card-title float-left"><%= like.liked.name%></h5>
-                <span class="badge badge-warning float-right">C'est un match</span><br>
-                <h5><%=link_to "Ecris-lui!", chatrooms_path, class:"btn btn-secondary mt-2 float-right mb-3" %></h5>
+              <h5 class="card-title float-left"><%= like.liked.name%></h5>
+              <span class="badge badge-warning float-right">C'est un match</span><br>
+              <h5><%=link_to "Ecris-lui!", chatrooms_path, class:"btn btn-secondary mt-2 float-right mb-3" %></h5>
+            </div>
             <div id="likeBody<%= like.liked_id %>" class="card-body">
               <div id="demo" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner" >
