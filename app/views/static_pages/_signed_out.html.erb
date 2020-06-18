@@ -18,7 +18,7 @@
             <%= link_to "Se connecter", new_user_session_path, class: "btn btn-outline-primary btn-lg btn-main-page" %>
             <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-primary btn-lg" %>
           <% else %>
-            <%= link_to "Rechercher des amimaux", pets_path, class: "btn btn-outline-primary btn-lg btn-main-page" %>
+            <%= link_to "Rechercher des <i>amimaux</i>".html_safe, pets_path, class: "btn btn-outline-primary btn-lg btn-main-page" %>
             <%= link_to "Voir mon profil", users_path, class: "btn btn-primary btn-lg" %>
           <% end %>
         </div>
@@ -64,5 +64,8 @@
       <p class='lead'>Mais parfois tu ne comprends vraiment rien... Et j'apprécierais de pouvoir converser avec des « ami »maux qui me comprennent.</p>
       <p class='lead'>Alors inscris-moi sur Whispaw. Je t'offrirai un miaulement comme présent, en gage de ma gratitude.</p>
     </div>
+  </div>
+  <div class="container font-weight-bold mb-5">
+    <%= link_to "Retour", :back %>
   </div>
 </div>

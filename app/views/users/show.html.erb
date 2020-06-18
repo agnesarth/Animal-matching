@@ -18,11 +18,23 @@
             <% if @user.address != nil || @user.city != nil || @user.country != nil %>
               <div class="input-group info-user mb-3">
                 <span class="input-group-text info-user"><i class="fa fa-map-marker" aria-hidden="true" ></i></span>
-                <span class="user-email ml-2"><h6 class="info-user-text"><%= @user.full_address %></h6></span>
+                <span class="user-email ml-2">
+                  <h6 class="info-user-text">
+                    <% if @user.address.present?  %>
+                      <%= @user.address %>, 
+                    <% end %>
+                    <% if @user.city.present? %>
+                      <%= @user.city %>,
+                    <% end %>
+                    <% if @user.country.present? %>
+                      <%= @user.country %>
+                    <% end %>
+                  </h6>
+                </span>
               </div>
             <% end %>
             <div class="actions my-3">
-              <%= link_to "Editer mon profil", edit_users_path, class:"btn btn-primary" %>
+              <%= link_to "Editer mon profil", edit_users_path, "data-turbolinks" => "false", class:"btn btn-primary" %>
               <%= link_to "Editer mon log in", edit_user_registration_path, class:"btn btn-outline-primary" %>
             </div>
           </div>
@@ -34,7 +46,7 @@
   <hr />
 
   <div class="mt-5 text-center col shadow p-3 mb-5 bg-white rounded my-pets">
-    <h3 class="mt-3">Mes Amimaux</h3>
+    <h3 class="mt-3">Mes <span class="animal-friend">Amimaux</span></h3>
     <% if @user.pets.count != 0 %>
       <div class="row mt-5 d-flex justify-content-center" >
         <% @user.pets.each do |pet| %>
