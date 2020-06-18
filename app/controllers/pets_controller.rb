@@ -1,6 +1,6 @@
 class PetsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create, :edit, :destroy, :delete_photo]
-  before_action :is_current_user?, only: [ :edit, :destroy, :delete_photo]
+  before_action :is_current_user?, only: [ :edit ]
   before_action :is_default_pet, only: [:index, :show]
 
   def index

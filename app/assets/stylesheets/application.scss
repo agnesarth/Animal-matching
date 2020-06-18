@@ -73,7 +73,7 @@
  @import "custom";
  @import "devise";
  @import "custom";
-@import "petsindex";
+
 
  // Flash
 @import "flash";
@@ -82,13 +82,15 @@
 @import "footer";
 
  // Pets view
-@import "pets_new_edit";
+@import "new-pet";
+@import "edit-pet";
+@import "pet-index";
 @import "pets";
 
 // Static pages
 
 @import "static_pages";
-@import "pet_form";
+
 
  // All site
 
