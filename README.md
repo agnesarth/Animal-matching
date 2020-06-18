@@ -27,7 +27,7 @@
   <dd>Receive email when add a new pet</dd>
   <dd>Modify my pet profile</dd>
   <dd>See other pets</dd>
-  <dd>Search pets by tags, sex & age</dd>
+  <dd>Search pets by tags, sex, age & location</dd>
   <dd>Like othe pets</dd>
   <dd>Receive email when there's a match</dd>
   <dd>Chat with other users when there's a match</dd>
