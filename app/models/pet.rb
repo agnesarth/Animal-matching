@@ -42,9 +42,6 @@ class Pet < ApplicationRecord
         end
         list_compare = list & list_compare
       end
-      puts "--------------list compare-------------"
-      puts list_compare
-      tp list_compare
       return list_compare
     else
       return Pet.all
@@ -53,7 +50,6 @@ class Pet < ApplicationRecord
   
   def self.distance_to_others(distance_to_others, user)
     if distance_to_others == "< 5km"
-      puts "------------5km-----------"
       list = []
       User.near(user, 5, units: :km).each do |user|
         user.pets.each do |pet|
