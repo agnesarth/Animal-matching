@@ -19,8 +19,9 @@ class Pet < ApplicationRecord
   DOGBREED=['Terrier','Dalmatien','Boxer','Berger Allemand','Labrador','Bouledogue','Chihuahua','Beagle','Setter','Cocker','Husky','Teckel', "Autre"].sort
 
   def age
-    return ((Time.zone.now - self.birthdate.to_time) / 1.year.seconds).floor
+    return Time.current.year - self.birthdate.year
   end
+
   def self.search(search)
     if search
       search_list = search.downcase.split(" ")
@@ -32,7 +33,7 @@ class Pet < ApplicationRecord
         elsif value == "femelle" || value == "mâle"
           list = Pet.where(sex: value.capitalize)
         elsif value.to_f > 0 || value == "0"
-          list = Pet.where(birthdate: (Date.today - (value.to_i + 1).to_i.years)..(Date.today - value.to_i.years))       
+          list = Pet.where(birthdate: (Date.today - (value.to_i + 1).to_i.years)..(Date.today - value.to_i.years))
         elsif !tag.nil?
           list = tag.pets
         else
@@ -66,7 +67,7 @@ class Pet < ApplicationRecord
     if my_user.default_pet_id.nil?
       current_pet = my_user.pets.last
       my_user.update(default_pet_id: current_pet.id)
-    end    
+    end
   end
 
   def reset_default_pet

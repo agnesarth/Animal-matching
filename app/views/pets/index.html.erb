@@ -71,8 +71,12 @@
                   <h6 class="card-subtitle my-3 text-primary"><em>"<%= pet.short_description%>"</em></h6>
                 <% end %>
                 <h6 class="card-subtitle mt-2 float-left">
-                <%= pet.animal.capitalize %>, 
-                <%= year = pet.age %> an<%if year > 1 %>s<%end%>, 
+                <%= pet.animal.capitalize %>,
+                <% if pet.age > 1 %>
+                <%= pet.age %> ans,
+                <% else %>
+                <%= pet.age %> an,
+                <% end %>
                 <%= pet.sex %>
                 </h6>
                 <%= link_to pet_likes_path(pet.id), method: :post, remote: true do %>
