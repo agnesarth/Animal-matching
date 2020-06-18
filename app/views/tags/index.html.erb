@@ -1,17 +1,28 @@
-<div class="container mt-2 ">
+<div class="container">
+  <div class="text-center mt-5">
+    <h2>Liste des tags</h2>
+  </div>
+  <a tabindex="0" class="btn btn-sm btn-outline-primary btn-info-match mt-3" role="button" data-toggle="popover" data-trigger="focus" title="C'est quoi un tag ?" data-content="Rien n'est plus simple : un tag, ou une étiquette, est un mot-clé associé à votre animal. Ce mot-clé décrit l'une des  caractéristiques de votre animal, ce qui permettra à d'autres utilisateurs de trouver rapidement le profil de votre chien ou chat lors de leur recherche. L'utilisation de tag vous permet donc de trouver des 'amimaux' possèdant les caractéristiques que vous recherchez."> Tag ? </a>
   <table class="table table-striped rounded">
-  <thead>
-    <tr class= "bg-primary text-white text-center">
-      <th scope="col">#</th>
-      <th scope="col">Tag</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @tags.each do |tag| %>
-    <tr>
-      <th scope="row" class="text-center"><%=tag.id%></th>
-      <td class="text-center"><%=tag.value%></td>
-    </tr>
-  <%end%>
-  </tbody>
-</table>
+    <thead>
+      <tr class= "bg-primary text-white text-center">
+        <th scope="col">#</th>
+        <th scope="col">Tag</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <th scope="row" class="text-center"><%=tag.id%></th>
+        <td class="text-center"><%=tag.value%></td>
+      </tr>
+    <%end%>
+    </tbody>
+  </table> 
+  <div class="text-center mt-5">
+    <%= link_to "Créer un tag", new_tag_path, class: "btn btn-primary" %>
+  </div>
+  <div class="container font-weight-bold mb-5 mt-5">
+    <%= link_to "Retour", :back %>
+  </div>
+</div>

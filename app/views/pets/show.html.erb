@@ -1,30 +1,47 @@
-<div class="container text-center">
-  <div class="mt-5 col-md-6 offset-md-3 shadow p-3 mb-5 rounded bg-devise container-pet shadow container-pet-show">
-    <%if @pet.photos.present? %>
-      <% @pet.photos.each do |p| %>
-        <%= image_tag p, class: "avatar avatar-xlg mb-3 rounded-circle"  %>
-      <% end %>
-    <%else%>
-      <%= image_tag "michat.jpg", class: "avatar avatar-xlg mb-3 rounded-circle"  %>
-    <%end%>
+<div class="container">
+  <div class="mt-5 col-md-6 offset-md-3 shadow p-3 mb-5 rounded bg-devise container-pet shadow container-pet-show text-center">
+  
+    <div id="demo" class="carousel slide" data-ride="carousel" data-interval="7000">
+      <div class="carousel-inner" >
+        <% unless @pet.photos.empty? %>
+          <div class="carousel-item active">
+            <%= image_tag @pet.photos.first, class: "avatar avatar-xlg mb-3 rounded-circle" %>
+          </div>
+          <% @pet.photos[1..-1].each do |p| %>
+            <div class="carousel-item">
+              <%= image_tag p, class: "avatar avatar-xlg mb-3 rounded-circle" %>
+            </div>
+          <% end %>
+        <% else %>
+          <%= image_tag "michat.jpg", class: "avatar avatar-xlg mb-3 rounded-circle"  %>
+        <%end%>
+      </div>
+    </div>
+  
+    <h4><%= @pet.name %> · <%= @pet.animal %></h4>
+    <p><strong>Race :</strong> <%= @pet.breed %></p>
+    <p><strong>Genre :</strong> <%= @pet.sex %></p>
+    <p><strong>Date de naissance :</strong> <%= @pet.birthdate.strftime("%d/%m/%Y") %></p>
+    <% if @pet.age > 1 %>
+      <p><strong>Âge :</strong> <%= @pet.age %> ans</p>
+    <% else %>
+      <p><strong>Âge :</strong> <%= @pet.age %> an</p>
+    <% end %>
+
+    <p><strong>À propos :</strong> <%= @pet.description %></p>
+    <p><strong>Tags :</strong>
+      <% @pet.tags.each do |tag|%>
+        <span class='badge badge-secondary mr-2 mb-1'><%=tag.value%></span>
+      <%end%>
+    </p>
+    <div class="btns-pet-show">
+      <%if current_user == @pet.user%>
+        <%= link_to 'Editer son profil', edit_pet_path(@pet), class: "btn btn-primary btn-edit-pet-profile" %>
+        <%= link_to 'Supprimer', pet_path(@pet), data: { confirm: "Etes-vous certain(e)?" }, method: :delete, class: "btn btn-outline-primary" %>
+      <%end%>
+    </div>
   </div>
-  <h4><%= @pet.name %> · <%= @pet.animal %></h4>
-  <p><strong>Race :</strong> <%= @pet.breed %></p>
-  <p><strong>Genre :</strong> <%= @pet.sex %></p>
-  <p><strong>Âge :</strong> <%= @pet.age %> ans</p>
-  <p><strong>À propos :</strong> <%= @pet.description %></p>
-  <p><strong>Tags :</strong> 
-    <% @pet.tags.each do |tag|%>
-      <span class='badge badge-secondary mr-2 mb-1'><%=tag.value%></span>
-    <%end%>
-  </p>
-  <div class="btns-pet-show">
-    <%if current_user == @pet.user%>
-      <%= link_to 'Editer son profil', edit_pet_path(@pet), class: "btn btn-primary btn-edit-pet-profile" %>
-      <%= link_to 'Supprimer', pet_path(@pet), method: :delete, class: "btn btn-outline-primary" %>
-    <%end%>
+  <div class="container font-weight-bold mb-5">
+    <%= link_to "Retour", :back %>
   </div>
-</div>
-<div class="container font-weight-bold">
-  <%= link_to "Retour", :back %>
 </div>

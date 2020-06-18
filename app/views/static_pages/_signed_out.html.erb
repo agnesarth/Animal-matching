@@ -18,7 +18,8 @@
             <%= link_to "Se connecter", new_user_session_path, class: "btn btn-outline-primary btn-lg btn-main-page" %>
             <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-primary btn-lg" %>
           <% else %>
-            <%= link_to "Se deconnecter", destroy_user_session_path, method: :delete, class: "btn btn-outline-primary btn-lg btn-main-page" %>
+            <%= link_to "Rechercher des amimaux", pets_path, class: "btn btn-outline-primary btn-lg btn-main-page" %>
+            <%= link_to "Voir mon profil", users_path, class: "btn btn-primary btn-lg" %>
           <% end %>
         </div>
       </div>
@@ -27,7 +28,9 @@
 </div>
 
 <div class="container text-center my-4 pt-4 rounded">
-  <h1 class="py-3"><span class="alert alert-primary rounded alert-whispaw"> <i class="fa fa-paw"></i> Whispaw</span> le réseau social des animaux de compagnie</h1>
+  <h1 class="py-3"><%=link_to whispaw_path, class:"alert alert-primary rounded alert-whispaw mr-2" do %>
+    <i class="fa fa-paw mr-1"></i>Whispaw <%end%> le réseau social des animaux de compagnie
+  </h1>
   <h2 class="pb-3"><blockquote>Une app qui a du chien, ils sont félins pour l'autre.</blockquote></h2>
 </div>
 <div class="container">

@@ -20,6 +20,3 @@
 //= require previewer
 //= require popover
 //= require cable
-
-
-

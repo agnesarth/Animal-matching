@@ -5,10 +5,8 @@ class PetsController < ApplicationController
 
   def index
     @current_pet = Pet.find(current_user.default_pet_id)
-    @pets_list = Pet.search(params[:search]) & Pet.where.not(user_id: current_user.id)
-    if every_pet?(@pets_list)
-      flash[:error] = "Aucun tag de correspond à la recherche"
-    end
+    @pets_list = Pet.search(params[:search]) & Pet.where.not(user_id: current_user.id) & Pet.distance_to_others(params[:distance_to_others], current_user)
+    @your_user = current_user
   end
 
   def new
@@ -25,7 +23,7 @@ class PetsController < ApplicationController
         format.html { redirect_to pets_path }
         format.json { }
       else
-        flash[:error] = "Le profil de l'animal n'a pas été créé."
+        flash[:error] = "N'oubliez pas d'ajouter le nom et la date de naissance de votre animal !"
         format.html { render :new }
         format.json { }
       end
@@ -71,7 +69,7 @@ class PetsController < ApplicationController
 
   private
     def pet_params
-      params.require(:pet).permit(:name, :animal, :breed, :sex, :age, :user, :description, :search, photos: [], tag_ids: [])
+      params.require(:pet).permit(:name, :animal, :breed, :sex, :age, :birthdate, :user, :description, :search, photos: [], tag_ids: [])
     end
 
     def is_current_user?

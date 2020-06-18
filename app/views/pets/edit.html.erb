@@ -9,13 +9,13 @@
         <div class="input-group mb-4">
           <%= f.text_field :name, autofocus: true, placeholder: @pet.name, class:"form-control" %>
         </div>
-        <h6 class="card-text mt-2">Âge :</h6>
+        <h6 class="card-text mt-2">Date de naissance :</h6>
         <div class="input-group mb-4">
-          <%= f.number_field :age, autofocus: true, placeholder: @pet.age, class:"form-control",:max => 30, :min => 0 %>
+          <%= f.date_field :birthdate, max: Date.today, autofocus: true, placeholder: @pet.birthdate, class:"form-control" %>
         </div>
         <h6 class="card-text mt-2">Race :</h6>
         <div class="input-group mb-4">
-          <%if @pet.chat? %> 
+          <%if @pet.chat? %>
             <%= f.select :breed, options_for_select(Pet::CATBREED), include_blank: @pet.breed, autofocus: true, class:"form-control" %>
           <% elsif @pet.chien? %>
            <%= f.select :breed, options_for_select(Pet::DOGBREED), include_blank: @pet.breed, autofocus: true, class:"form-control" %>
@@ -32,7 +32,7 @@
         <h6 class="card-text">Photos actuelles :</h6>
         <div class="d-flex flex-row justify-content-center mb-4">
           <% @pet.photos.each do |p| %>
-            <%= image_tag p, class: "p-1 img-pet-new-edit" %>
+            <%= image_tag p, class: "img-pet-new-edit" %>
             <div class="maintext">
               <%= link_to delete_photo_pet_url(p.id), method: :delete do %><i class="fa fa-trash"></i><% end %>
             </div>
@@ -50,7 +50,7 @@
       <% end %>
     </div>
   </div>
-  <div class="container font-weight-bold">
+  <div class="container font-weight-bold mb-5">
     <%= link_to "Retour", :back %>
   </div>
 </div>

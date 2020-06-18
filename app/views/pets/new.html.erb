@@ -1,50 +1,62 @@
 <div class="container">
   <div class="mt-5 col-md-6 offset-md-3 shadow p-3 mb-5 rounded bg-devise container-pet shadow text-center">
     <i class="fa fa-paw mt-2 fa-5x"></i>
-    <h3 class="mt-3 mb-5">Ajoute ton bourreau des cœurs à quatre pattes</h3>
+    <h3 class="mt-3 ">Ajoute ton bourreau des cœurs à quatre pattes</h3>
+    <p class="text-red mb-5">* champs obligatoires</p>
 
-    <div class="text-center my-2">
+    <div class="text-center my-2" >
       <%= form_for @pet, :url => pets_path, multipart: true do |f| %>
 
-        <h6 class="card-text mt-2">Nom :</h6>
+        <h6 class="card-text mt-2">Nom :<span class="text-red"> *</span></h6>
         <div class="input-group mb-4">
           <%= f.text_field :name, autofocus: true, class:"form-control" %>
         </div>
 
-        <h6 class="card-text mt-2">Espèce :</h6>
+        <h6 class="card-text mt-2">Genre :<span class="text-red"> *</span></h6>
         <div class="input-group mb-4 input-checkbox">
-          <%= f.radio_button :animal, 'chien', class:"radio-button" %><span>Chien</span>
-          <%= f.radio_button :animal, 'chat', class:"radio-button" %><span>Chat</span>
+          <label class="form-control mr-0 pet-radio-button">
+            <%= f.radio_button :sex, 'Femelle', class:"radio-button", type: "radio", checked: true %><span class="">Femelle</span>
+         </label>
+         <label class="form-control ml-0 border-left-0 pet-radio-button">
+           <%= f.radio_button :sex, 'Mâle', class:"radio-button", type: "radio" %><span class="">Mâle</span>
+        </label>
         </div>
 
-        <h6 class="card-text mt-2">Âge :</h6>
+        <h6 class="card-text mt-2">Espèce :<span class="text-red"> *</span></h6>
+        <div class="input-group mb-4 input-checkbox">
+          <label class="form-control mr-0 pet-radio-button">
+          <%= f.radio_button :animal, 'chien', class:"radio-button", id: "pet-radio", type: "radio", checked: true %><span class="">Chien</span>
+         </label>
+         <label class="form-control ml-0 border-left-0 pet-radio-button">
+         <%= f.radio_button :animal, 'chat', class:"radio-button", id: "pet-radio", type: "radio" %><span>Chat</span>
+        </label>
+        </div>
+
+        <h6 class="card-text mt-2">Date de naissance :<span class="text-red"> *</span></h6>
         <div class="input-group mb-3">
-          <%= f.number_field :age, autofocus: true, class:"form-control", :max => 30, :min => 0  %>
-        </div>
-
-        <h6 class="card-text mt-2">Genre :</h6>
-        <div class="input-group mb-4 input-checkbox">
-          <%= f.radio_button :sex, 'Femelle', class:"radio-button" %><span>Femelle</span>
-          <%= f.radio_button :sex, 'Mâle', class:"radio-button" %><span>Mâle</span>
+          <%= f.date_field :birthdate, max: Date.today, autofocus: true, class:"form-control p-2"%>
         </div>
 
         <h6 class="card-text mt-2">Tags :</h6>
         <div class="input-group mb-4">
-          <%= f.select :tag_ids, Tag.all.collect {|p| [ p.value, p.id ]}, {}, include_blank: true, multiple: true, class:"form-control"%>
+          <%= f.select :tag_ids, Tag.all.collect {|p| [ p.value, p.id ]}, {}, type: "select", include_blank: true, multiple: true, class:"form-control" %>
         </div>
-        
+
         <h6 class="card-text mt-2">En quelques mots :</h6>
         <div class="input-group mb-4">
-          <%= f.text_field :description, autofocus: true, class:"form-control" %>
+          <%= f.text_area :description, autofocus: true, rows: 1, class:"form-control" %>
         </div>
 
         <p class="card-text mb-0">Mise en ligne le : <%= Time.now.strftime("%d/%m/%Y") %> </p><br>
 
         <h6 class="card-text">Photos :</h6>
         <div class="input-group mb-4 input-checkbox">
-          <%= f.file_field :photos, multiple: true, value: "", class: "uploadPreview ml-5 mt-0 mb-2" %>
+          <div class="image-upload">
+            <label class="file-input">
+              <%= f.file_field :photos, multiple: true, value: "", class: "uploadPreview ml-5 mt-0 mb-2 preview-button" %>
+            </label>
+          </div>
         </div>
-
         <div id="showPreview"></div>
 
         <div class="actions my-3">
@@ -54,8 +66,7 @@
     </div>
   </div>
 
-  <div class="container font-weight-bold">
-    <%= link_to "Retour", :back %>
+  <div class="container font-weight-bold mb-5">
+    <%= link_to "< Mon profile", :back %>
   </div>
 </div>
- 

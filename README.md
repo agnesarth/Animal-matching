@@ -8,6 +8,7 @@
 - [Features](#features)
 - [Instructions](#instructions)
 - [Versioning](#versioning)
+- [APIs](#APIs)
 - [Team](#team)
 
 
@@ -16,17 +17,19 @@
   <dt>Non-registered users can:</dt>
   <dd>Sign up</dd>
   <dd>Receive a welcome email</dd>
-  <dd>See general info about the app</dd>
+  <dd>See general info about the app (about us, contact us, social media) </dd>
 
   <dt>Registered users can:</dt>
   <dd>Login & log out</dd>
   <dd>Retrieve password</dd>
   <dd>Update user info</dd>
-  <dd>Add & remove pet</dd>
-  <dd>Receive an email when add pet</dd>
+  <dd>Add & remove more than 1 pet</dd>
+  <dd>Receive email when add a new pet</dd>
   <dd>Modify my pet profile</dd>
   <dd>See other pets</dd>
+  <dd>Search pets by tags, sex, age & location</dd>
   <dd>Like othe pets</dd>
+  <dd>Receive email when there's a match</dd>
   <dd>Chat with other users when there's a match</dd>
 </dl>
 
@@ -48,9 +51,6 @@
 
 - **Option 3**
     - 👯 Visit us online :arrow_right: https://whispaw.herokuapp.com/
-    
- - **Want to try admin mode?**
-    - Coming soon
 
 ## Versioning
 
@@ -61,6 +61,11 @@
 - PostGreSQL ``9.5.21``
 
 - Bundler ``2.1.4``
+
+## APIs
+- AS3
+- SendGrid
+- Mapbox
 
 ## Team
 

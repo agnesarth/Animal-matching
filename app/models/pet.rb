@@ -9,12 +9,19 @@ class Pet < ApplicationRecord
   has_many_attached :photos, dependent: :destroy
   has_many :tag_pets, dependent: :destroy
   has_many :tags, through: :tag_pets
+  validates :name, presence: true
+  validates :birthdate, presence: true
   validates :animal, presence: true
   enum animal: [ :chat, :chien ]
 #  validates :age, :numericality => {:greater_than => 0, message: "L'âge doit être supérieur à 0."}
   accepts_nested_attributes_for :tags
-  CATBREED=['Manx','Birman','Persan','Siamois','Somali','Sibérien','Ragdoll', "Sphinx", "Européen"].sort
-  DOGBREED=['Terrier','Dalmatien','Boxer','Berger Allemand','Labrador','Bouledogue','Chihuahua','Beagle','Setter','Cocker','Husky','Teckel'].sort
+  CATBREED=['Manx','Birman','Persan','Siamois','Somali','Sibérien','Ragdoll', "Sphinx", "Européen","Autre"].sort
+  DOGBREED=['Terrier','Dalmatien','Boxer','Berger Allemand','Labrador','Bouledogue','Chihuahua','Beagle','Setter','Cocker','Husky','Teckel', "Autre"].sort
+  DISTANCEOTHERS=['< 5km','< 20km', '< 100km']
+
+  def age
+    return Time.current.year - self.birthdate.year
+  end
 
   def self.search(search)
     if search
@@ -26,8 +33,8 @@ class Pet < ApplicationRecord
           list = Pet.where(animal: value)
         elsif value == "femelle" || value == "mâle"
           list = Pet.where(sex: value.capitalize)
-        elsif value.to_i != 0
-          list = Pet.where(age: value)                
+        elsif value.to_f > 0 || value == "0"
+          list = Pet.where(birthdate: (Date.today - (value.to_i + 1).to_i.years)..(Date.today - value.to_i.years))
         elsif !tag.nil?
           list = tag.pets
         else
@@ -39,9 +46,39 @@ class Pet < ApplicationRecord
     else
       return Pet.all
     end
-
-	end
+  end
   
+  def self.distance_to_others(distance_to_others, user)
+    if distance_to_others == "< 5km"
+      list = []
+      User.near(user, 5, units: :km).each do |user|
+        user.pets.each do |pet|
+          list << pet
+        end
+      end
+      return list
+    elsif distance_to_others == "< 20km"
+      list = []
+      list = []
+      User.near(user, 20, units: :km).each do |user|
+        user.pets.each do |pet|
+          list << pet
+        end
+      end
+      return list
+    elsif distance_to_others == "< 100km"
+      list = []
+      list = []
+      User.near(user, 100, units: :km).each do |user|
+        user.pets.each do |pet|
+          list << pet
+        end
+      end
+      return list
+    else
+      return Pet.all
+    end
+  end
 
   def new_pet_send
     UserMailer.new_pet_email(self).deliver_now
@@ -62,13 +99,13 @@ class Pet < ApplicationRecord
     if my_user.default_pet_id.nil?
       current_pet = my_user.pets.last
       my_user.update(default_pet_id: current_pet.id)
-    end    
+    end
   end
 
   def reset_default_pet
     my_user = self.user
     if my_user.pets.size > 1
-      last_other_pet = my_user.pets.where.not(id: 25).last
+      last_other_pet = my_user.pets.where.not(id: self.id).last
       my_user.update(default_pet_id: last_other_pet.id)
     else
       my_user.update(default_pet_id: nil)

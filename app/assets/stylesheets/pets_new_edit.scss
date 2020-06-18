@@ -39,6 +39,21 @@
 }
 
 .img-pet-new-edit {
-  max-width: 400px;
-  height: auto;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 1px solid #ced4da;
+}
+
+#showPreview img {
+  object-fit: cover;
+  border: 1px solid #ced4da;
+}
+
+.text-red {
+  color: #dd3019;
+}
+
+p.text-red {
+  font-style: italic;
 }

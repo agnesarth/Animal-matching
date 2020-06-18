@@ -88,10 +88,7 @@
 // Static pages
 
 @import "static_pages";
-
-//Chat rooms
-
-@import "chat_rooms";
+@import "pet_form";
 
  // All site
 
@@ -115,9 +112,9 @@ body {
   background-color: #00916e;
   border-radius: 30px;
   padding: 10px;
-  }
+}
 
-  .search_input{
+.search_input{
   color: white;
   border: 0;
   outline: 0;
@@ -126,25 +123,21 @@ body {
   caret-color:transparent;
   line-height: 40px;
   transition: width 0.4s linear;
-  }
+}
 
-  ::placeholder{
-    color: white
-  }
-  
-  .searchbar:hover > .search_input{
+.searchbar:hover > .search_input{
   padding: 0 10px;
   width: 450px;
   caret-color:white;
   transition: width 0.4s linear;
-  }
+}
 
-  .searchbar:hover > .search_icon{
+.searchbar:hover > .search_icon{
   background: white;
   color:#e74c3c;
   }
 
-  .search_icon{
+.search_icon{
   height: 40px;
   width: 40px;
   float: right;
@@ -153,7 +146,7 @@ body {
   align-items: center;
   border-radius: 50%;
   color:white;
-  }
+}
 
  // Navbar
 
@@ -168,4 +161,3 @@ body {
 .dropdown-item:focus {
   background-color: #6f0c1e;
 }
-
