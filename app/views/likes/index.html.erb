@@ -1,11 +1,12 @@
-<div class="small-jumbotron text-center ">
+<div class="text-center ">
+  <%=image_tag("doggo_home.jpg", class: "small-jumbotron", alt: "")%>
 </div>
 
 <div class="container text-center">
-  <h1 class="m-5">Mes Matches</h1>
   <% if @my_matches.empty? %>
+    <h2>Mes Matchs</h2>
     <div class="text-center">
-      <h3>Oh you can't hurry love, oh you just have to wait...</h3>
+      <h4>Oh you can't hurry love, oh you just have to wait...</h4>
       <h6>On n'est pas totalement d'accord<br>
         Le monde est plein <span class="animal-friend">d'amimaux</span>,
         <%=link_to pets_path, class:"go-like" do%>
@@ -14,21 +15,21 @@
       </h6>
     </div>
   <% else %>
-    <div class="container text-center">
-      <h3 class="m-5">Ces chanceux ont <i>match</i> avec toi !</h3>
-    </div>
-    <div class="row justify-content-around ml-3 mr-3 mb-5">
+    <h2>Mes Matchs <small><em> ...les petits chanceux !</em></small></h2>
+    <div class="row justify-content-around ml-2 mr-2 mt-4">
       <% @my_matches.each do |like| %>
         <div class="col-sm-4">
           <div id="likeCard<%= like.liked_id %>" class="card scale-down bg-custom text-white mb-3">
             <div id="likeHeader<%= like.liked_id %>" class="card-header">
-              <div class="row mr-0 ml-0">
-                <% name = like.liked.name %>
-                <%= link_to name, pet_path(like.liked.id), class: "h4 card-title float-left pet-card-title text-white mr-auto" %>
-                <%=link_to "Écris-lui !", chatrooms_path, class:"btn btn-dark align-self-center" %>
-              </div>
+              <% name = like.liked.name%>
+              <%= link_to name, pet_path(like.liked_id), class: "h4 card-title float-left text-light pet-card-title" %>
+              <span class="badge badge-warning float-right mr-2">C'est un match</span><br>
+              <% like.liked.tags.each do |tag|%>
+                <span class='badge badge-secondary mr-2 mb-1 float-right'><%=tag.value%></span>
+              <%end%>
             </div>
             <div id="likeBody<%= like.liked_id %>" class="card-body">
+              <!---------------------IMAGE CAROUSEL--------------------->
               <div id="demo" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner" >
                   <% unless like.liked.photos.empty? %>
@@ -47,7 +48,7 @@
                   <% end %>
                 </div>
               </div>
-            <!---------------------CARD BODY END--------------------->
+              <!---------------------CARD BODY END--------------------->
               <div class="mt-3">
                 <% if like.liked.user.distance_to(current_user) < 1 %>
                   <h6 class="card-subtitle my-3 text-white">À moins de 1 km</h6>
@@ -65,9 +66,12 @@
                   <% end %>
                   <%= like.liked.sex %>
                 </h6>
-                <%= link_to pet_like_path(like.liked_id, like.id), method: :delete, remote: true do %>
-                  <i id="dislikeButton<%= like.liked_id %>" class="btn btn-primary btn-sm fa fa-heart float-right"></i>
-                <% end %>
+                <h5 class="float-right">
+                  <%=link_to "Écris-lui!", chatrooms_path, class:"btn btn-dark btn-sm mr-1" %>
+                  <%= link_to pet_like_path(like.liked_id, like.id), method: :delete, remote: true do %>
+                    <i id="dislikeButton<%= like.liked_id %>" class="btn btn-primary btn-sm fa fa-heart"></i>
+                  <% end %>
+                </h5>
               </div>            
             </div>
           </div>
@@ -77,8 +81,20 @@
   <% end %>
 </div>
 
+
+
 <div class="container text-center mb-5">
-  <h1 class="m-5">Mes Likes</h1>
+  <h1>Mes Likes</h1>
+<!-- Responsive search bar-->
+  <div class="d-flex justify-content-center h-100 my-4">
+    <h5 class="mr-4 pt-3">Rechercher dans mes likes : </h5>
+    <%= form_tag(pet_likes_path, method: :get, class:"searchbar") do%>
+      <%= text_field_tag(:search, params[:search], class:"search_input", placeholder: "tags, age, espèce, sexe...")%>
+      <%= button_tag(type: "submit", class: "search_icon") do %>
+        <i class="fa fa-paw"></i>
+      <% end %>
+    <% end %>
+  </div>
   <% if @my_likes.empty? %>
     <div class="text-center">
       <h3>Dépèche-toi, 
@@ -88,25 +104,25 @@
       du web</h3>
     </div>
   <% else %>
-    <div class="row justify-content-around ml-3 mr-3">
-      <% @my_likes.each do |like| %>
+    <div class="row justify-content-around ml-2 mr-2 mt-4">
+      <% @my_search.each do |pet| %>
         <div class="col-sm-4">
-          <div id="likeCard<%= like.liked_id %>" class="card bg-light mb-3" ">
-            <div id="likeHeader<%= like.liked_id %>" class="card-header">
-              <% name = like.liked.name%>
-              <%= link_to name, pet_path(like.liked.id), class: "h4 card-title float-left pet-card-title" %>
-              <% like.liked.tags.each do |tag|%>
+          <div id="likeCard<%= pet.id %>" class="card bg-light mb-3" ">
+            <div id="likeHeader<%= pet.id %>" class="card-header">
+              <% name = pet.name %>
+              <%= link_to name, pet_path(pet.id), class: "h4 card-title float-left" %>
+              <% pet.tags.each do |tag|%>
                 <span class='badge badge-secondary mr-2 mb-1 float-right'><%=tag.value%></span>
               <%end%>
             </div>
-            <div id="likeBody<%= like.liked_id %>" class="card-body">
+            <div id="likeBody<%= pet.id %>" class="card-body">
               <div id="demo" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner" >
-                  <% unless like.liked.photos.empty? %>
+                  <% unless pet.photos.empty? %>
                     <div class="carousel-item active">
-                      <%= image_tag like.liked.photos.first, class: "card-img-top" %>
+                      <%= image_tag pet.photos.first, class: "card-img-top" %>
                     </div>
-                    <% like.liked.photos[1..-1].each do |p| %>
+                    <% pet.photos[1..-1].each do |p| %>
                       <div class="carousel-item">
                         <%= image_tag p, class: "card-img-top" %>
                       </div>
@@ -122,22 +138,22 @@
                 </div>
                       <!---------------------CARD BODY END--------------------->
                 <div class="mt-3">
-                  <% if like.liked.short_description != nil %>
-                    <h6 class="card-subtitle my-3 text-primary"><em>"<%= like.liked.short_description%>"</em></h6>
+                  <% if pet.short_description != nil %>
+                    <h6 class="card-subtitle my-3 text-primary text-truncate"><em>"<%= pet.short_description%>"</em></h6>
                   <% end %>
                   <h6 class="card-subtitle mt-2 float-left">
-                    <%= like.liked.animal.capitalize %>,
-                    <% if like.liked.birthdate != nil %>
-                      <% if like.liked.age > 1 %>
-                        <%= like.liked.age %> ans,
+                    <%= pet.animal.capitalize %>,
+                    <% if pet.birthdate != nil %>
+                      <% if pet.age > 1 %>
+                        <%= pet.age %> ans,
                       <% else %>
-                        <%= like.liked.age %> an,
+                        <%= pet.age %> an,
                       <% end %>
                     <% end %>
-                    <%= like.liked.sex %>
+                    <%= pet.sex %>
                   </h6>
-                  <%= link_to pet_like_path(like.liked_id, like.id), method: :delete, remote: true do %>
-                    <i id="dislikeButton<%= like.liked_id %>" class="btn btn-primary btn-sm fa fa-heart float-right"></i>
+                  <%= link_to pet_like_path(pet.id, pet.likes_as_liked.find_by(liker_id: current_pet).id), method: :delete, remote: true do %>
+                    <i id="dislikeButton<%= pet.id %>" class="btn btn-primary btn-sm fa fa-heart float-right"></i>
                   <% end %>
                 </div>
               </div>

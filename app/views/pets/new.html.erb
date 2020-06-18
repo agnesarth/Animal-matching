@@ -1,3 +1,7 @@
+<% content_for(:body_attributes) do%>
+  data-turbolinks="false"
+<% end %>
+
 <div class="container">
   <div class="mt-5 col-md-6 offset-md-3 shadow p-3 mb-5 rounded bg-devise container-pet shadow text-center">
     <i class="fa fa-paw mt-2 fa-5x"></i>
@@ -51,11 +55,9 @@
 
         <h6 class="card-text">Photos :</h6>
         <div class="input-group mb-4 input-checkbox">
-          <div class="image-upload">
             <label class="file-input">
               <%= f.file_field :photos, multiple: true, value: "", class: "uploadPreview ml-5 mt-0 mb-2 preview-button" %>
             </label>
-          </div>
         </div>
         <div id="showPreview"></div>
 

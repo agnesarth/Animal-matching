@@ -8,7 +8,10 @@
     <%= javascript_include_tag 'application', "data-turbolinks-track": true %>
   </head>
 
-  <body>
+  <body
+    <% if content_for?(:body_attributes) %>
+    <%= yield(:body_attributes) %>
+    <% end %>>
     <div id="content-wrap">
       <%= render 'layouts/navbar'%>
       <%= render 'layouts/flash'%>
