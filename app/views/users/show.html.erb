@@ -53,9 +53,12 @@
                     <%= image_tag "michat.jpg", class: "avatar-pet avatar-xlg mb-3 rounded-circle"  %>
                   <%end%>
                 </div>
-              </div>    
+              </div> 
+              <h6 class='mb-0'>
+                <%= pet.name%> 
+                le <%=pet.animal %>  
               </h6>
-              <span><%= pet.animal%></span>
+              <span><%= pet.breed %></span>
               <div class='float-right' style='margin-top: 10px;'>
                 <div class='text-center' style='margin-top: 10px;'>
                   <%=link_to "Voir son profil", pet_path(pet), class:'btn btn-sm btn-warning' %>
