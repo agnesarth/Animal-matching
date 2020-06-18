@@ -38,18 +38,22 @@
         <% @user.pets.each do |pet| %>
           <div class='col-3 d-flex alert' style="margin: 20px;">
             <div class='card card-lg card-body align-items-center bg-primary'>
-              <%if pet.photos.present? %>               
-                <% pet.photos.each do |p| %>
-                  <%= image_tag p, class: "avatar-pet avatar-xlg mb-3 rounded-circle" %>
-                <% end %>
-              <%else%>
-                <%= image_tag "michat.jpg", class: "avatar-pet avatar-xlg mb-3 rounded-circle"  %>
-              <%end%>         
-              <h6 class='mb-0'>
-                <%= pet.name%> 
-                <%if pet.breed.present?%> 
-                  le <%=pet.breed%>
-                <%end%>
+              <div id="demo" class="carousel slide" data-ride="carousel" data-interval="7000">
+                <div class="carousel-inner" >
+                  <% unless pet.photos.empty? %>
+                    <div class="carousel-item active">
+                      <%= image_tag pet.photos.first, class: "avatar-pet avatar-xlg mb-3 rounded-circle" %>
+                    </div>
+                    <% pet.photos[1..-1].each do |p| %>
+                      <div class="carousel-item">
+                        <%= image_tag p, class: "avatar-pet avatar-xlg mb-3 rounded-circle" %>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <%= image_tag "michat.jpg", class: "avatar-pet avatar-xlg mb-3 rounded-circle"  %>
+                  <%end%>
+                </div>
+              </div>    
               </h6>
               <span><%= pet.animal%></span>
               <div class='float-right' style='margin-top: 10px;'>
