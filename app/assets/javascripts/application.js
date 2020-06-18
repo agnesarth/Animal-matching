@@ -20,4 +20,5 @@
 //= require previewer
 //= require pet-form
 //= require popover
+//= require turbolinks
 //= require cable

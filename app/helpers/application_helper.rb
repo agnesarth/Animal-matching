@@ -12,8 +12,6 @@ module ApplicationHelper
     return Pet.find(current_user.default_pet_id)
   end
 
-<<<<<<< HEAD
-=======
   def current_pet
     return Pet.find(current_user.default_pet_id)
   end
@@ -42,5 +40,4 @@ module ApplicationHelper
     return other_pets
   end
 
->>>>>>> 552335cc13edfa9e8f3d019836c44a24d0b6bb9d
 end

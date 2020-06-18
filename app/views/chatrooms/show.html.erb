@@ -7,10 +7,10 @@
 
 <hr />
 
-  <%= form_for @message, remote: true, html: {id: "new_message"} do |f| %>
+  <%= form_for @message, url: "#" do |f| %>
     <div class="form-group">
       <%= f.label "Message" %>
-      <%= f.text_area :body, class: 'form-control', html: {id: "message_body"} %>
+      <%= f.text_area :body, class: 'form-control' %>
       <small class="text-muted">Entre 2 et 1000 caractères</small>
     </div>
     <%= f.hidden_field :chatroom_id, :value => @chatroom.id %>
