@@ -33,9 +33,10 @@
         <% if @pet.photos.attached? %>
         <div class="input-group mb-4 input-checkbox">
           <% @pet.photos.each do |p| %>
-            <%= image_tag p, class: "img-pet-new-edit form-border thick-lined mb-2" %>
+          <% id = "photo" + p.id.to_s %>
+            <%= image_tag p, class: "img-pet-new-edit form-border thick-lined mb-2", id: id %>
             <div class="maintext">
-              <%= link_to delete_photo_pet_url(p.id), method: :delete do %><i class="trash-icon fa fa-trash"></i><% end %>
+              <%= link_to delete_photo_pet_url(p.id), method: :delete, remote: true do %><i class="trash-icon fa fa-trash"></i><% end %>
             </div>
           <% end %>
           <% else %>

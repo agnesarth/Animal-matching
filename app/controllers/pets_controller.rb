@@ -59,11 +59,13 @@ class PetsController < ApplicationController
 
   def delete_photo
     @photo = ActiveStorage::Attachment.find(params[:id])
-    @photo.purge
+
     respond_to do |format|
-        format.html { render :edit }
+      if @photo.purge
+        format.html { redirect_to request.referrer }
         format.json { }
-    end      #redirect_back(fallback_location: request.referrer)
+      end
+    end
   end
 
   def every_pet?(pets)
