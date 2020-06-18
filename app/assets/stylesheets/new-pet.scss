@@ -1,0 +1,101 @@
+.form-border {
+      align-self:center;
+      background:transparent;
+      padding:1rem 1rem;
+      margin:0 1rem;
+      transition:all .5s ease;
+      color:#41403E;
+      font-size:2rem;
+      letter-spacing:1px;
+      outline:none;
+      box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+      &:hover{
+         box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
+      }
+      &.lined-thick{
+         border:solid 2px #41403E;
+      }
+    }
+
+.pet-radio-button {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+      }
+
+        /* Hide the browser's default checkbox */
+.pet-radio-button input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+
+  }
+
+form input[type=number]::-webkit-inner-spin-button,
+form input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+
+input[type=number]{
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+}
+
+input[type=select]{
+    outline: 0;
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type=radio]:checked + span::after {
+      content: "\f1b0";
+      font: normal normal normal 20px/1 FontAwesome;
+      color: #778899;
+      padding-left: 5%;
+}
+
+.image-upload img{
+      width: 80px;
+      cursor: pointer;
+}
+
+.file-input::after {
+    content: "\f196";
+    font: normal normal normal 100px/1 FontAwesome;
+    color: #778899;
+    padding: 10%;
+    right: 10%;
+    position: relative;
+}
+
+.file-input:hover::after {
+    color: #5a5a5a;
+    cursor: pointer;
+}
+
+.file-input:active::after {
+    color: #5a5a5a;
+    cursor: pointer;
+}
+
+.preview-button{
+    display: none;
+}
+
+@media (max-width:620px){
+    .form-border {
+        align-self:center;
+        margin-bottom:2rem;
+    }
+}
