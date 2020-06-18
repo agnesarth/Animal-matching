@@ -20,6 +20,15 @@ module ApplicationHelper
     return Like.where(match: true,liker_id: current_pet.id).exists?
   end
 
+  def display_chat?(pets)
+    pets.each do |pet|
+      if current_pet.likes_as_liker.where(match: true, liked_id: pet.id).exists?
+        return true
+      end
+    end
+    return false
+  end
+
   def my_pets_matches
     matches = Like.where(match: true,liker_id: current_pet.id)
     matched_pets = []
