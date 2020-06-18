@@ -21,7 +21,17 @@
 
 </div>
 
-<!-- Answer search bar -->
+<!-- Responsive search bar-->
+<div class="d-flex justify-content-center h-100 my-4">
+   <%= form_tag(pets_path, method: :get, class:"searchbar") do%>
+        <%= text_field_tag(:search, params[:search], class:"search_input", placeholder: "tags, age, espèce, sexe...")%>
+        <%= button_tag(type: "submit", class: "search_icon") do %>
+          <i class="fa fa-paw"></i>
+        <% end %>
+      <% end %>
+</div>
+
+
 
 <div class="container justify-content-around">
   <div class="row justify-content-around ml-3 mr-3">

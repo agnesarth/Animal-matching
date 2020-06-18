@@ -17,24 +17,44 @@
   <div class="container text-center">
     <h3 class="m-5">Les chanceux qui ont "match" avec toi</h3>
   </div>
-  <div class="row justify-content-around ml-3 mr-3 mb-5">
-    <% @my_matches.each do |like| %>
-      <div class="col-sm-3">
-        <div id="likeCard<%= like.liked_id %>" class="card scale-down bg-custom text-white mb-3">
-          <div id="likeHeader<%= like.liked_id %>" class="card-header">
-            <h5 class="card-title float-left"><%= like.liked.name%></h5>
-            <span class="badge badge-warning float-right">C'est un match</span>
-            <h6 class="float-left">le <%= like.liked.animal%> de <%= like.liked.user.email%></h6>
-            <h6 class="float-left"> Ecris-lui!</h6>
-          </div>
-          <div id="likeBody<%= like.liked_id %>" class="card-body">
-            <div id="demo" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner" >
-                <% unless like.liked.photos.empty? %>
-                  <div class="carousel-item active">
-                    <%= image_tag like.liked.photos.first, class: "card-img-top" %>
-                  </div>
-                  <% like.liked.photos[1..-1].each do |p| %>
+  <% if @my_matches.empty? %>
+    <div class="text-center">
+      <h3>Oh you can't hurry love, oh you just have to wait...</h3>
+      <h6>On est pas totalement d'accord<br>
+      L'internet est plein d'animaux single,
+      <%=link_to pets_path do%>
+      vas les liker<i class="fa fa-paw"></i>
+      <%end%>
+      </h6>
+    </div>
+  <% else %>
+    <div class="container text-center">
+      <h3 class="m-5">Les chanceux qui ont "match" avec toi</h3>
+    </div>
+    <div class="row justify-content-around ml-3 mr-3 mb-5">
+      <% @my_matches.each do |like| %>
+        <div class="col-sm-3">
+          <div id="likeCard<%= like.liked_id %>" class="card scale-down bg-custom text-white mb-3">
+            <div id="likeHeader<%= like.liked_id %>" class="card-header">
+                <h5 class="card-title float-left"><%= like.liked.name%></h5>
+                <span class="badge badge-warning float-right">C'est un match</span><br>
+                <h5><%=link_to "Ecris-lui!", chatrooms_path, class:"btn btn-secondary mt-2 float-right mb-3" %></h5>
+            <div id="likeBody<%= like.liked_id %>" class="card-body">
+              <div id="demo" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" >
+                  <% unless like.liked.photos.empty? %>
+                    <div class="carousel-item active">
+                      <%= image_tag like.liked.photos.first, class: "card-img-top" %>
+                    </div>
+                    <% like.liked.photos[1..-1].each do |p| %>
+                      <div class="carousel-item">
+                        <%= image_tag p, class: "card-img-top" %>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <div class="carousel-item active">
+                      <%= image_tag("paw.svg", {class: "card-img-top"} ) %>
+                    </div>
                     <div class="carousel-item">
                       <%= image_tag p, class: "card-img-top" %>
                     </div>
