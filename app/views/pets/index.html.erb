@@ -33,9 +33,10 @@
   
    <%= form_tag(pets_path, method: :get, class:"searchbar") do%>
         <%= text_field_tag(:search, params[:search], class:"search_input", placeholder: "tags, age, espèce, sexe...")%>
-        <%= submit_tag "Search", Class:"search_icon"%>
+        <%= submit_tag "Rechercher", class:"btn btn-outline-primary btn-main-page" %>
       <% end %>
 </div>
+
 
 <div class="container justify-content-around">
   <div class="row justify-content-around ml-3 mr-3">
