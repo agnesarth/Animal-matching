@@ -51,19 +51,19 @@
                 <div class="carousel-inner" >
                   <% unless pet.photos.empty? %>
                     <div class="carousel-item active">
-                      <%= image_tag pet.photos.first, class: "card-img-top" %>
+                      <%= image_tag pet.photos.first, class: "custom-img-size" %>
                     </div>
                     <% pet.photos[1..-1].each do |p| %>
                       <div class="carousel-item">
-                        <%= image_tag p, class: "card-img-top" %>
+                        <%= image_tag p, class: "custom-img-size" %>
                       </div>
                     <% end %>
                   <% else %>
                     <div class="carousel-item active">
-                      <%= image_tag("paw.svg", {class: "card-img-top"} ) %>
+                      <%= image_tag("paw.svg", {class: "custom-img-size"} ) %>
                     </div>
                     <div class="carousel-item">
-                      <%= image_tag("paw.svg", {class: "card-img-top"} ) %>
+                      <%= image_tag("paw.svg", {class: "custom-img-size"} ) %>
                     </div>
                   <%end%>
                 </div>
@@ -71,7 +71,7 @@
               <!---------------------CARD BODY END--------------------->
               <div class="mt-3">
                 <% if pet.short_description != nil %>
-                  <h6 class="card-subtitle my-3 text-primary"><em>"<%= pet.short_description%>"</em></h6>
+                  <h6 class="card-subtitle my-3 text-primary text-truncate"><em>"<%= pet.short_description%>"</em></h6>
                 <% end %>
                 <h6 class="card-subtitle mt-2 float-left">
                   <%= pet.animal.capitalize %>,
@@ -94,7 +94,7 @@
       <%end%>
     <%end%>
   </div>
-  <div class="container font-weight-bold mb-5">
-    <%= link_to "Retour", :back %>
+  <div class="container font-weight-bold m-5">
+    <%= link_to "< Retour", :back %>
   </div>
 </div>
