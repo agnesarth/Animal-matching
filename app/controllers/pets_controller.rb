@@ -22,7 +22,7 @@ class PetsController < ApplicationController
         format.html { redirect_to pets_path }
         format.json { }
       else
-        flash[:error] = "N'oubliez pas le nom de votre petit aniaml et la data de naissance!"
+        flash[:error] = "N'oubliez pas le nom de votre petit animal et la data de naissance!"
         format.html { render :new }
         format.json { }
       end

@@ -48,19 +48,19 @@
                 <div class="carousel-inner" >
                   <% unless pet.photos.empty? %>
                     <div class="carousel-item active">
-                      <%= image_tag pet.photos.first, class: "card-img-top" %>
+                      <%= image_tag pet.photos.first, class: "card-img-top custom-img-size" %>
                     </div>
                     <% pet.photos[1..-1].each do |p| %>
                       <div class="carousel-item">
-                        <%= image_tag p, class: "card-img-top" %>
+                        <%= image_tag p, class: "card-img-top custom-img-size" %>
                       </div>
                     <% end %>
                   <% else %>
                     <div class="carousel-item active">
-                      <%= image_tag("paw.svg", {class: "card-img-top"} ) %>
+                      <%= image_tag("paw.svg", {class: "card-img-top custom-img-size"} ) %>
                     </div>
                     <div class="carousel-item">
-                      <%= image_tag("paw.svg", {class: "card-img-top"} ) %>
+                      <%= image_tag("paw.svg", {class: "card-img-top custom-img-size"} ) %>
                     </div>
                   <%end%>
                 </div>
@@ -89,7 +89,7 @@
       <%end%>
     <%end%>
   </div>
-  <div class="container font-weight-bold mb-5">
-    <%= link_to "Retour", :back %>
+  <div class="container font-weight-bold m-5">
+    <%= link_to "< Retour", :back %>
   </div>
 </div>
