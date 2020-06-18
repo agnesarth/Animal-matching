@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  geocoded_by :full_address 
+  after_validation :geocode
+  #after_validation :geocode, if: ->(obj){ obj.full_address_change.present? and obj.full_address_changed? }
+
   PASSWORD_FORMAT = /\A
   (?=.{8,})          # Must contain 8 or more characters
   (?=.*\d)           # Must contain a digit
@@ -35,6 +39,14 @@ class User < ApplicationRecord
   has_many :pets, dependent: :destroy
   has_many :chat_rooms, dependent: :destroy
   has_many :messages, dependent: :destroy
+
+  def full_address
+    [address, city, country].compact.join(', ')
+  end  
+
+  def full_address_changed?
+    address_changed? || city_changed? || country_changed?
+  end
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
