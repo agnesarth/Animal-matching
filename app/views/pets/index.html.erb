@@ -23,20 +23,11 @@
 
 <!-- Responsive search bar-->
 <div class="d-flex justify-content-center h-100 my-4">
-  <div class="searchbar">
-    <input class="search_input" type="text" placeholder="Rechercher">
-    <a href="#" class="search_icon"><i class="fa fa-paw"></i></a>
-  </div>
-</div>
-
-<div class="d-flex justify-content-center h-100 my-4">
-  
    <%= form_tag(pets_path, method: :get, class:"searchbar") do%>
         <%= text_field_tag(:search, params[:search], class:"search_input", placeholder: "tags, age, espèce, sexe...")%>
         <%= button_tag(type: "submit", class: "search_icon") do %>
           <i class="fa fa-paw"></i>
         <% end %>
-        
       <% end %>
 </div>
 
