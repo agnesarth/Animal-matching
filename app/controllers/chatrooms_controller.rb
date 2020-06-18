@@ -1,6 +1,6 @@
 class ChatroomsController < ApplicationController
   def index
-    @chatrooms = Chatroom.all
+    @chatrooms = current_user.chatrooms
   end
 
   def new
@@ -8,7 +8,10 @@ class ChatroomsController < ApplicationController
   end
 
   def create
-    @chatroom = current_user.chatrooms.build(chatroom_params)
+    @chatroom = current_user.chatrooms.build(title: chatroom_params[:title])
+    @chatroom.users << current_user
+    @chatroom.users << chatroom_params[:user]
+
     if @chatroom.save
       flash[:success] = 'Chat (ou chien) roulette ajoutée!'
       redirect_to chatrooms_path
@@ -24,6 +27,6 @@ class ChatroomsController < ApplicationController
 
   private
     def chatroom_params
-      params.require(:chatroom).permit(:title)
+      params.require(:chatroom).permit(:title, :user)
     end
 end

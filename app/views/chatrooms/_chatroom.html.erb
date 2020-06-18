@@ -1,1 +1,4 @@
-<li><%= link_to "Entrez dans #{chatroom.title}", chatroom_path(chatroom) %></li>
+<td>
+  <% respond_to_u = chatroom.other_user(current_user) %>
+  <h5><%= link_to "Conversation avec #{respond_to_u.name}, propriétaire de #{other_user_match(respond_to_u).join(" ")}", chatroom_path(chatroom) %></h5>
+</td>
