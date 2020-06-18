@@ -16,16 +16,13 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(pet_params)
     @pet.user = current_user
-    p "*****"
-    p @pet.birthdate
-    p @pet.birthdate.strftime("%Y")
     respond_to do |format|
       if @pet.save
         flash[:success] = "Le profil de l'animal a bien été créé."
         format.html { redirect_to pets_path }
         format.json { }
       else
-        flash[:error] = "Le profil de l'animal n'a pas été créé."
+        flash[:error] = "N'oubliez pas le nom de votre petit aniaml et la data de naissance!"
         format.html { render :new }
         format.json { }
       end
