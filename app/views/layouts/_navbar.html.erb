@@ -11,8 +11,8 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>
           <div class="dropdown-menu">
-            <%= link_to "Mon profil", users_path, {:class => "dropdown-item"} %>
-            <%= link_to "Paramètres", edit_users_path, {:class => "dropdown-item"} %>
+            <%= link_to "Mon profil", users_path, class:"dropdown-item" %>
+            <%= link_to "Paramètres", edit_users_path, "data-turbolinks" => "false", class:"dropdown-item" %>
           </div>
         </li>
 
@@ -20,19 +20,19 @@
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Animaux</a>
           <div class="dropdown-menu">
             <% if user_signed_in? && !current_user.default_pet_id.nil? %>
-              <%= link_to "Rechercher des <i>amimaux</i>".html_safe, pets_path, {:class => "dropdown-item"} %>
-              <%= link_to "Mes likes / mes matches", pet_likes_path(current_user.default_pet_id), {:class => "dropdown-item"} %>
+              <%= link_to "Rechercher des <i>amimaux</i>".html_safe, pets_path, "data-turbolinks" => "false", class:"dropdown-item" %>
+              <%= link_to "Mes likes / mes matches", pet_likes_path(current_user.default_pet_id), class:"dropdown-item" %>
             <% else %>
-              <%= link_to "Créer un animal", new_pet_path, {:class => "dropdown-item"} %>
+              <%= link_to "Créer un animal", new_pet_path, class:"dropdown-item" %>
             <% end %>
           </div>
         </li>
         <li class="nav-item">
-          <%= link_to "Tags", tags_path, :class => "nav-link" %>
+          <%= link_to "Tags", tags_path, "data-turbolinks" => "false", class:"nav-link" %>
         </li>
         <% if current_user.default_pet_id && any_match? %>
         <li class="nav-item">
-          <%= link_to "Contacter mes matchs", chatrooms_path, :class => "nav-link" %>
+          <%= link_to "Contacter mes matchs", chatrooms_path, class:"nav-link" %>
         </li>
        <%end%>
       </ul>

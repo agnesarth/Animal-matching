@@ -41,7 +41,7 @@
           <div id="likeCard<%= pet.id %>" class="card bg-light mb-3">
             <div id="likeHeader<%= pet.id %>" class="card-header">
               <% name = pet.name%>
-              <%= link_to name, pet_path(pet.id), class: "h4 card-title float-left text-underline pet-card-title" %>
+              <%= link_to name, pet_path(pet.id), class: "h4 card-title float-left pet-card-title" %>
               <% pet.tags.each do |tag|%>
                 <span class='badge badge-secondary mr-2 mb-1 float-right'><%=tag.value%></span>
               <%end%>
