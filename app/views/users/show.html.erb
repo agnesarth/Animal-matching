@@ -18,11 +18,23 @@
             <% if @user.address != nil || @user.city != nil || @user.country != nil %>
               <div class="input-group info-user mb-3">
                 <span class="input-group-text info-user"><i class="fa fa-map-marker" aria-hidden="true" ></i></span>
-                <span class="user-email ml-2"><h6 class="info-user-text"><%= @user.full_address %></h6></span>
+                <span class="user-email ml-2">
+                  <h6 class="info-user-text">
+                    <% if @user.address.present?  %>
+                      <%= @user.address %>, 
+                    <% end %>
+                    <% if @user.city.present? %>
+                      <%= @user.city %>,
+                    <% end %>
+                    <% if @user.country.present? %>
+                      <%= @user.country %>
+                    <% end %>
+                  </h6>
+                </span>
               </div>
             <% end %>
             <div class="actions my-3">
-              <%= link_to "Editer mon profil", edit_users_path, class:"btn btn-primary" %>
+              <%= link_to "Editer mon profil", edit_users_path, "data-turbolinks" => "false", class:"btn btn-primary" %>
               <%= link_to "Editer mon log in", edit_user_registration_path, class:"btn btn-outline-primary" %>
             </div>
           </div>
@@ -30,39 +42,43 @@
       </div>
     </div>
   </div>
+  
   <hr />
-  <div class="mt-5 text-center col shadow p-3 mb-5 bg-light rounded">
-    <h3 class="mt-3">Mes Amimaux</h3>
+
+  <div class="mt-5 text-center col shadow p-3 mb-5 bg-white rounded my-pets">
+    <h3 class="mt-3">Mes <span class="animal-friend">Amimaux</span></h3>
     <% if @user.pets.count != 0 %>
-      <div class="row mt-5" >
+      <div class="row mt-5 d-flex justify-content-center" >
         <% @user.pets.each do |pet| %>
-          <div class='col-3 d-flex alert' style="margin: 20px;">
-            <div class='card card-lg card-body align-items-center bg-primary'>
-              <% unless pet.photos.empty? %>
-                <%= image_tag pet.photos.first, class: "avatar-pet avatar-xlg mb-3 rounded-circle" %>
-              <% else %>
-                <%= image_tag "michat.jpg", class: "avatar-pet avatar-xlg mb-3 rounded-circle"  %>
-              <%end%>
-              <h6 class='mb-0'>
-                <%= pet.name%> 
-                le <%=pet.animal %>  
-              </h6>
-              <span><%= pet.breed %></span>
-              <div class='float-right' style='margin-top: 10px;'>
-                <div class='text-center' style='margin-top: 10px;'>
-                  <%=link_to "Voir son profil", pet_path(pet), class:'btn btn-sm btn-warning' %>
-                </div>
-                <div class='float-right' style='margin-top: 10px;'>
-                  <%= form_for(current_user, url: users_path, method: :put) do |f| %>
-                    <%= f.hidden_field :default_pet_id, :value => pet.id %>
-                    <%= f.submit "Animal en vedette",class:"btn btn-sm btn-secondary" %>
+          <div class='col-3' style="margin: 20px;">
+            <div id="likeCard<%= pet.id %>" class="card bg-light mb-3">
+              <div id="likeHeader<%= pet.id %>" class="card-header">
+                <h5 class="card-title-profile float-left"><%= pet.name%></h5>
+                <h5><div class='float-right'>
+                  <%if pet.id == @user.default_pet_id%>  
+                    <i class="fa fa-star" aria-hidden="true" style="color:#f3c316"></i>
                   <%end%>
-                </div>
+                </div></h5>
               </div>
-              <div class='float-right' style='margin-top: 10px;'>
-                <%if pet.id == @user.default_pet_id%>  
-                  <i class="fa fa-star fa-3x" aria-hidden="true" style="color:yellow"></i>
+              <div id="likeBody<%= pet.id %>" class="card-body">
+                <% unless pet.photos.empty? %>
+                  <%= image_tag pet.photos.first, class: "avatar-pet avatar-xlg mb-3 rounded-circle" %>
+                <% else %>
+                  <%= image_tag "michat.jpg", class: "avatar-pet avatar-xlg mb-3 rounded-circle"  %>
                 <%end%>
+                <div class="mt-3">
+                  <div style='margin-top: 10px;'>
+                    <div class='text-center' style='margin-top: 10px;'>
+                      <%=link_to "Voir son profil", pet_path(pet), class:'btn btn-sm btn-warning' %>
+                    </div>
+                    <div style='margin-top: 10px;'>
+                      <%= form_for(current_user, url: users_path, method: :put) do |f| %>
+                        <%= f.hidden_field :default_pet_id, :value => pet.id %>
+                        <%= f.submit "Animal en vedette",class:"btn btn-sm btn-secondary mb-2" %>
+                      <%end%>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -77,6 +93,8 @@
       </div>
     </div>
   </div>
+
+
   <div class="container font-weight-bold mb-5">
     <%= link_to "Retour", :back %>
   </div>

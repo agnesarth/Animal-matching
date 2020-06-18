@@ -1,10 +1,10 @@
-
-<div class="small-jumbotron text-center ">
+<div class="text-center ">
+  <%=image_tag("doggo_home.jpg", class: "small-jumbotron", alt: "")%>
 </div>
 
 <div class="container">
-  <a tabindex="0" class="btn btn btn-outline-primary btn-info-match" role="button" data-toggle="popover" data-trigger="focus" title="C'est quoi un match ?" data-content="Rien n'est plus simple : si un animal vous plaît, cliquez sur le cœur sur son profil. Lorsque cet animal like aussi votre profil, c'est un Match !"> Match ? </a>
-  <a tabindex="0" class="btn btn btn-outline-secondary btn-info-match mx-3" role="button" data-toggle="popover" data-trigger="focus" title="Comment chercher de nouveaux amis ?" data-content="Dans la barre de recherche ajoutez les critères que vous recherchez chez vos 'amimaux'. Séparez chaque critère par un espace. Vous pouvez filtrer les résultats selon l'âge, le sexe, l'espèce et les tags attribués à chaque profil. Vous pouvez également rechercher les profils selon leur proximité géographique. Exemple : 'chien femelle 4 ans doux calme actif. Distance : < 20km'."> Recherche ? </a>
+  <a tabindex="0" class="btn btn-outline-primary btn-info-match" role="button" data-html="true" data-toggle="popover" data-trigger="focus" title="C'est quoi un match ?" data-content="Rien n'est plus simple : si un animal vous plaît, cliquez sur le cœur sur son profil. <br>Lorsque cet animal like aussi votre profil, c'est un Match !"> Match ? </a>
+  <a tabindex="0" class="btn btn-outline-secondary btn-info-match mx-3" role="button" data-html="true" data-toggle="popover" data-trigger="focus" title="Comment chercher de nouveaux amis ?" data-content="Dans la barre de recherche ajoutez les critères que vous recherchez chez vos <i>amimaux</i>. Séparez chaque critère par un espace. <br>Vous pouvez filtrer les résultats selon l'âge, le sexe, l'espèce et les tags attribués à chaque profil. <br>Vous pouvez également rechercher les profils selon leur proximité géographique. <br><strong>Exemple : 'chien femelle 4 ans doux calme actif. Distance : < 20km'.</strong>"> Recherche ? </a>
 
   <h4 class="mb-4">Rechercher par espèce, âge, sexe ou tags... et proximité</h4>
 
@@ -29,7 +29,7 @@
           <div id="likeCard<%= pet.id %>" class="card bg-light mb-3">
             <div id="likeHeader<%= pet.id %>" class="card-header">
               <% name = pet.name%>
-              <%= link_to name, pet_path(pet.id), class: "h4 card-title float-left text-underline pet-card-title" %>
+              <%= link_to name, pet_path(pet.id), class: "h4 card-title float-left pet-card-title" %>
               <% pet.tags.each do |tag|%>
                 <span class='badge badge-secondary mr-2 mb-1 float-right'><%=tag.value%></span>
               <%end%>

@@ -87,14 +87,17 @@
 @import "petsindex";
 @import "pets";
 
-// Static pages
+ // Static pages
 @import "static_pages";
 
-// Chatroom
+ // Chatroom
 @import "chatrooms";
 
+ // Likes
+@import "likes";
 
- // All site
+
+// All site
 
 html {
   height: 100%;
@@ -110,6 +113,11 @@ body {
 textarea {
   resize: none;
 }
+
+.animal-friend {
+  font-style: italic;
+}
+
     // Searchbar
 
 .searchbar{
