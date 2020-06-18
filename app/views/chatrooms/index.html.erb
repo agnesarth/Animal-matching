@@ -4,18 +4,18 @@
   <div class="row">
     <div class="col-sm-5 border-left border-right">
     <table>
-    <h4 class="mb-4">Contacter de nouveaux matchs</h4>
+    <h4 class="py-3 alert-light text-center">Contacter de nouveaux matchs</h4>
         <% my_pets_matches.each do |match|%>
           <tr>
           <td><h4 class="mx-2"><%= match.name%> </h4></td>
-          <td><p class="lead mx-2"><%= link_to 'Nouveau chat', new_chatroom_path, class: 'btn btn-sm btn-primary' %></p></td>
+          <td><p class="lead mx-2"><%= link_to 'Commencer à discuter', new_chatroom_path, class: 'btn btn-sm btn-primary' %></p></td>
           <tr>
         <%end%>
       </table>
     </div>
     <div class="col-sm-7">
       <table>
-        <h4 class="mb-4">Mes conversations en cours</h4>
+        <h4 class="py-3 alert-light text-center">Mes conversations en cours</h4>
 
         <%= render @chatrooms %>
       </table> 
