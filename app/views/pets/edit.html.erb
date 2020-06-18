@@ -30,6 +30,7 @@
           <%= f.text_field :description, autofocus: true, placeholder: @pet.description, class:"form-control" %>
         </div>
         <h6 class="card-text">Photos actuelles :</h6>
+        <% if @pet.photos.attached? %>
         <div class="d-flex flex-row justify-content-center mb-4">
           <% @pet.photos.each do |p| %>
             <%= image_tag p, class: "img-pet-new-edit" %>
@@ -37,10 +38,17 @@
               <%= link_to delete_photo_pet_url(p.id), method: :delete do %><i class="fa fa-trash"></i><% end %>
             </div>
           <% end %>
+          <% else %>
+          <p>Pas de photos encore</p>
+          <% end %>
         </div>
         <h6 class="card-text">Ajouter des photos :</h6>
         <div class="input-group mb-4 input-checkbox">
-          <%= f.file_field :photos, multiple: true, value: "", class: "uploadPreview ml-5 mt-0 mb-2" %>
+          <div class="image-upload">
+            <label class="file-input">
+              <%= f.file_field :photos, multiple: true, value: "", class: "uploadPreview ml-5 mt-0 mb-2 preview-button" %>
+            </label>
+          </div>
         </div>
         <div id="showPreview"></div>
           <div class="actions my-3">
