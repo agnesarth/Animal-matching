@@ -11,11 +11,11 @@
         </div>
         <h6 class="card-text mt-2">Date de naissance :</h6>
         <div class="input-group mb-4">
-          <%= f.date_field :birthdate, autofocus: true, placeholder: @pet.birthdate, class:"form-control" %>
+          <%= f.date_field :birthdate, max: Date.today, autofocus: true, placeholder: @pet.birthdate, class:"form-control" %>
         </div>
         <h6 class="card-text mt-2">Race :</h6>
         <div class="input-group mb-4">
-          <%if @pet.chat? %> 
+          <%if @pet.chat? %>
             <%= f.select :breed, options_for_select(Pet::CATBREED), include_blank: @pet.breed, autofocus: true, class:"form-control" %>
           <% elsif @pet.chien? %>
            <%= f.select :breed, options_for_select(Pet::DOGBREED), include_blank: @pet.breed, autofocus: true, class:"form-control" %>

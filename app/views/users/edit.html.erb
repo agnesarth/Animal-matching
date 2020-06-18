@@ -12,6 +12,18 @@
         <div class="input-group mb-4">
           <%= f.text_field :last_name, autofocus: true, placeholder: @user.last_name, class:"form-control" %>
         </div>
+        <h6 class="card-text mt-2">Adresse :</h6>
+          <div class="input-group mb-4">
+            <%= f.text_field :address, autofocus: true, placeholder: @user.address, class:"form-control" %>
+        </div>
+        <h6 class="card-text mt-2">Ville :</h6>
+          <div class="input-group mb-4">
+            <%= f.text_field :city, autofocus: true, placeholder: @user.city, class:"form-control" %>
+        </div>
+        <h6 class="card-text mt-2">Pays :</h6>
+          <div class="input-group mb-4">
+            <%= f.text_field :country, autofocus: true, placeholder: @user.country, class:"form-control" %>
+        </div>
         <%if @user.default_pet_id != nil %> 
           <h6 class="card-text mt-2">Animal en vedette :</h6>
           <div class="input-group mb-4">

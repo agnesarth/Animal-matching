@@ -17,10 +17,12 @@ class Pet < ApplicationRecord
   accepts_nested_attributes_for :tags
   CATBREED=['Manx','Birman','Persan','Siamois','Somali','Sibérien','Ragdoll', "Sphinx", "Européen","Autre"].sort
   DOGBREED=['Terrier','Dalmatien','Boxer','Berger Allemand','Labrador','Bouledogue','Chihuahua','Beagle','Setter','Cocker','Husky','Teckel', "Autre"].sort
+  DISTANCEOTHERS=['< 5km','< 20km', '< 100km']
 
   def age
-    return ((Time.zone.now - self.birthdate.to_time) / 1.year.seconds).floor
+    return Time.current.year - self.birthdate.year
   end
+
   def self.search(search)
     if search
       search_list = search.downcase.split(" ")
@@ -32,20 +34,51 @@ class Pet < ApplicationRecord
         elsif value == "femelle" || value == "mâle"
           list = Pet.where(sex: value.capitalize)
         elsif value.to_f > 0 || value == "0"
-          list = Pet.where(birthdate: (Date.today - (value.to_i + 1).to_i.years)..(Date.today - value.to_i.years))       
+          list = Pet.where(birthdate: (Date.today - (value.to_i + 1).to_i.years)..(Date.today - value.to_i.years))
         elsif !tag.nil?
           list = tag.pets
         else
           list = Pet.all
         end
-        tp list_compare = list & list_compare
+        list_compare = list & list_compare
       end
       return list_compare
     else
       return Pet.all
     end
-
-	end
+  end
+  
+  def self.distance_to_others(distance_to_others, user)
+    if distance_to_others == "< 5km"
+      list = []
+      User.near(user, 5, units: :km).each do |user|
+        user.pets.each do |pet|
+          list << pet
+        end
+      end
+      return list
+    elsif distance_to_others == "< 20km"
+      list = []
+      list = []
+      User.near(user, 20, units: :km).each do |user|
+        user.pets.each do |pet|
+          list << pet
+        end
+      end
+      return list
+    elsif distance_to_others == "< 100km"
+      list = []
+      list = []
+      User.near(user, 100, units: :km).each do |user|
+        user.pets.each do |pet|
+          list << pet
+        end
+      end
+      return list
+    else
+      return Pet.all
+    end
+  end
 
   def new_pet_send
     UserMailer.new_pet_email(self).deliver_now
@@ -66,7 +99,7 @@ class Pet < ApplicationRecord
     if my_user.default_pet_id.nil?
       current_pet = my_user.pets.last
       my_user.update(default_pet_id: current_pet.id)
-    end    
+    end
   end
 
   def reset_default_pet

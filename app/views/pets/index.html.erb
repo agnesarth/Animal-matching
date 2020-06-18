@@ -4,7 +4,7 @@
 
 <div class="container">
   <a tabindex="0" class="btn btn btn-outline-primary btn-info-match" role="button" data-toggle="popover" data-trigger="focus" title="C'est quoi un match ?" data-content="Rien n'est plus simple : si un animal vous plaît, cliquez sur le cœur sur son profil. Lorsque cet animal like aussi votre profil, c'est un Match !"> Match ? </a>
-  <a tabindex="0" class="btn btn btn-outline-secondary btn-info-match mx-3" role="button" data-toggle="popover" data-trigger="focus" title="Comment chercher de nouveaux amis ?" data-content="Rien n'est plus simple : dans la barre de recherche ajoutez les critères que vous recherchez, séparés par un espace. Vous pouvez chercher une valeur spécifique d'age, de sexe et d'espèce, mais aussi ajouter plusieurs tags différents. Exemple : 'chien femelle 4 ans doux calme actif's."> Recherche ? </a>
+  <a tabindex="0" class="btn btn btn-outline-secondary btn-info-match mx-3" role="button" data-toggle="popover" data-trigger="focus" title="Comment chercher de nouveaux amis ?" data-content="Dans la barre de recherche ajoutez les critères que vous recherchez chez vos 'amimaux'. Séparez chaque critère par un espace. Vous pouvez filtrer les résultats selon l'âge, le sexe, l'espèce et les tags attribués à chaque profil. Exemple : 'chien femelle 4 ans doux calme actif'."> Recherche ? </a>
 
   <h4 class="mb-4">Rechercher par espèce, age, sexe ou tags</h4>
 
@@ -12,23 +12,22 @@
 
   <div class="form-inline form-inline-search my-4">
       <%= form_tag(pets_path, method: :get, class:"form-group form-control alert-light") do%>
-        <%= text_field_tag(:search, params[:search], class:"form-control col-sm-10 col-xs-10", placeholder: "tags, age, espèce, sexe...")%>
+        <%= text_field_tag(:search, params[:search], class:"form-control col-sm-8 col-xs-8", placeholder: "tags, age, espèce, sexe...")%>
+        <%= hidden_field_tag :user_id , @current_user.id %>
+        <%= select_tag :distance_to_others, options_for_select(Pet::DISTANCEOTHERS), prompt: "Distance", autofocus: true, class:"form-control col-sm-2 col-xs-2" %>
         <%= submit_tag "Rechercher", class:"btn btn-outline-primary btn-main-page" %>
       <% end %>
   </div>
 
-
 </div>
 
-    <!-- Responsive search bar-->
-    <div class="d-flex justify-content-center h-100 my-4">
-        <div class="searchbar">
-          <input class="search_input" type="text" placeholder="Rechercher">
-          <a href="#" class="search_icon"><i class="fa fa-paw"></i></a>
-        </div>
-      </div>
-
-
+<!-- Responsive search bar-->
+<div class="d-flex justify-content-center h-100 my-4">
+  <div class="searchbar">
+    <input class="search_input" type="text" placeholder="Rechercher">
+    <a href="#" class="search_icon"><i class="fa fa-paw"></i></a>
+  </div>
+</div>
 
 <div class="container justify-content-around">
   <div class="row justify-content-around ml-3 mr-3">
@@ -48,19 +47,19 @@
                 <div class="carousel-inner" >
                   <% unless pet.photos.empty? %>
                     <div class="carousel-item active">
-                      <%= image_tag pet.photos.first, class: "card-img-top" %>
+                      <%= image_tag pet.photos.first, class: "custom-img-size" %>
                     </div>
                     <% pet.photos[1..-1].each do |p| %>
                       <div class="carousel-item">
-                        <%= image_tag p, class: "card-img-top" %>
+                        <%= image_tag p, class: "custom-img-size" %>
                       </div>
                     <% end %>
                   <% else %>
                     <div class="carousel-item active">
-                      <%= image_tag("paw.svg", {class: "card-img-top"} ) %>
+                      <%= image_tag("paw.svg", {class: "custom-img-size"} ) %>
                     </div>
                     <div class="carousel-item">
-                      <%= image_tag("paw.svg", {class: "card-img-top"} ) %>
+                      <%= image_tag("paw.svg", {class: "custom-img-size"} ) %>
                     </div>
                   <%end%>
                 </div>
@@ -68,12 +67,18 @@
               <!---------------------CARD BODY END--------------------->
               <div class="mt-3">
                 <% if pet.short_description != nil %>
-                  <h6 class="card-subtitle my-3 text-primary"><em>"<%= pet.short_description%>"</em></h6>
+                  <h6 class="card-subtitle my-3 text-primary text-truncate"><em>"<%= pet.short_description%>"</em></h6>
                 <% end %>
                 <h6 class="card-subtitle mt-2 float-left">
-                <%= pet.animal.capitalize %>, 
-                <%= year = pet.age %> an<%if year > 1 %>s<%end%>, 
-                <%= pet.sex %>
+                  <%= pet.animal.capitalize %>,
+                  <% if pet.birthdate != nil %>
+                    <% if pet.age > 1 %>
+                      <%= pet.age %> ans,
+                    <% else %>
+                      <%= pet.age %> an,
+                    <% end %>
+                  <% end %>
+                  <%= pet.sex %>
                 </h6>
                 <%= link_to pet_likes_path(pet.id), method: :post, remote: true do %>
                   <i id="likeButton<%= pet.id %>" class="btn btn-outline-primary btn-sm fa fa-heart float-right"></i>
@@ -85,7 +90,7 @@
       <%end%>
     <%end%>
   </div>
-  <div class="container font-weight-bold mb-5">
-    <%= link_to "Retour", :back %>
+  <div class="container font-weight-bold m-5">
+    <%= link_to "< Retour", :back %>
   </div>
 </div>
