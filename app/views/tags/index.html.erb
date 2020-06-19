@@ -14,12 +14,12 @@
       </tr>
     </thead>
     <tbody>
-    <% @tags.each do |tag| %>
-      <tr>
-        <th scope="row" class="text-center"><%=tag.id%></th>
-        <td class="text-center"><%=tag.value%></td>
-      </tr>
-    <%end%>
+      <% @tags.each do |tag| %>
+        <tr>
+          <th scope="row" class="text-center"><%=tag.id%></th>
+          <td class="text-center"><%=tag.value%></td>
+        </tr>
+      <%end%>
     </tbody>
   </table> 
   <div class="text-center mt-5">
