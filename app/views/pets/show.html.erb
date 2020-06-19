@@ -20,11 +20,11 @@
     <p><strong>Race :</strong> <%= @pet.breed %></p>
     <p><strong>Genre :</strong> <%= @pet.sex %></p>
     <p><strong>Date de naissance :</strong> <%= @pet.birthdate.strftime("%d/%m/%Y") %></p>
-    <% if @pet.age > 1 %>
-      <p><strong>Âge :</strong> <%= @pet.age %> ans</p>
-    <% else %>
-      <p><strong>Âge :</strong> <%= @pet.age %> an</p>
-    <% end %>
+      <% if @pet.age > 1 %>
+        <p><strong>Âge :</strong> <%= @pet.age %> ans</p>
+      <% else %>
+        <p><strong>Âge :</strong> <%= @pet.age %> an</p>
+      <% end %>
     <p><strong>À propos :</strong> <%= @pet.description %></p>
     <p><strong>Tags :</strong>
       <% @pet.tags.each do |tag|%>

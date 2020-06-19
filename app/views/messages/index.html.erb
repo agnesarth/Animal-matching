@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Bienvenue dans le chat</h1>
+  <div class="container mt-4">  
+    <div id="errors" class="alert alert-danger mb-3 alert-danger-chat">
+      <div class="header"> Il y a eu un problème avec votre message :( </div>
+      <ul class="text">
+      </ul>
+    </div>
+    <div id="messages" class="mb-3">
+      <%= render @messages %>
+    </div>
+    <div class="container mb-4">
+      <textarea id="message" placeholder="votre message ici" class="form-control">
+      </textarea>
+    </div>
+  </div>
+</div> 
