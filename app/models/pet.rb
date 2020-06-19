@@ -30,7 +30,7 @@ class Pet < ApplicationRecord
       search_list.each do |value|
         tag = Tag.find_by(value: value)
         if value == "chat" || value == "chien"
-          list = Pet.where(animal: value)s
+          list = Pet.where(animal: value)
         elsif value == "femelle" || value == "mâle"
           list = Pet.where(sex: value.capitalize)
         elsif value.to_f > 0 || value == "0"
