@@ -54,7 +54,7 @@
 
 ## Versioning
 
-- Ruby ``2.5.1``
+- Ruby ``2.5.1p57``
 
 - Rails ``5.2.4.3``
 
