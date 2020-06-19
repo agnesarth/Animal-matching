@@ -99,16 +99,16 @@
 
   <% else %>
 
-  <!-- Responsive search bar-->
-  <div class="d-flex justify-content-center h-100 my-4">
-    <h5 class="mr-4 pt-3">Rechercher dans mes likes : </h5>
-    <%= form_tag(pet_likes_path, method: :get, class:"searchbar") do%>
-      <%= text_field_tag(:search, params[:search], class:"search_input", placeholder: "tags, age, espèce, sexe...")%>
-      <%= button_tag(type: "submit", class: "search_icon") do %>
-        <i class="fa fa-paw"></i>
+    <!-- Responsive search bar-->
+    <div class="d-flex justify-content-center h-100 my-4">
+      <h5 class="mr-4 pt-3">Rechercher dans mes likes : </h5>
+      <%= form_tag(pet_likes_path, method: :get, class:"searchbar") do%>
+        <%= text_field_tag(:search, params[:search], class:"search_input", placeholder: "tags, age, espèce, sexe...")%>
+        <%= button_tag(type: "submit", class: "search_icon") do %>
+          <i class="fa fa-paw"></i>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
   
     <div class="row justify-content-around ml-2 mr-2 mt-4">
       <% @my_search.each do |pet| %>

@@ -10,7 +10,9 @@
         <% my_pets_matches.each do |match|%>
           <tr class="d-flex justify-content-between wrap">
             <td>
-              <h5 class="mx-2"><%= match.name%>, <small><%= match.animal%> <%= match.sex.downcase%></small></h5>
+              <h5 class="mx-2">
+                <%= link_to match.name, pet_path(match.id) %> <small><%= match.animal%> <%= match.sex.downcase%></small>
+              </h5>
             </td>
           </tr>
         <%end%>

@@ -7,6 +7,6 @@
       <% else %>
         <%= link_to "Conversation avec #{respond_to_u.name}", chatroom_path(chatroom) %>, propriétaire de <%=other_user_match(respond_to_u).join(" ")%>
       <% end %>
-    </h6>
+    </h5>
   <%end%>
 </tr>
