@@ -20,14 +20,6 @@ class TagsController < ApplicationController
     end
   end
 
-  def index
-    @tags = Tag.all
-  end
-
-  def show
-    @tag = Tag.find(params[:id])
-  end
-
   def destroy
     @tag = Tag.find(params[:id])
     if @tag.destroy
