@@ -3,7 +3,6 @@ class Like < ApplicationRecord
 #  after_commit :new_match_user2, on: :create
   after_create :match_pet
   before_destroy :unmatch, on: :destroy
-
   belongs_to :liker, class_name: "Pet"
   belongs_to :liked, class_name: "Pet"
   validates :liked, uniqueness: { scope: [:liker]}

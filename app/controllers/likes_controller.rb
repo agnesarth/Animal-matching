@@ -47,12 +47,12 @@ class LikesController < ApplicationController
   end
 
   def chatroom_match!(like, pet)
-      @title = "#{Pet.find(like.liked_id).name} et #{Pet.find(like.liker_id).name}"
-      @chatroom = Chatroom.new
-      @chatroom = current_user.chatrooms.build(title: @title)
-      @chatroom.users << current_user
-      @chatroom.users << pet.user
-      @chatroom.save
+    @title = "#{Pet.find(like.liked_id).name} et #{Pet.find(like.liker_id).name}"
+    @chatroom = Chatroom.new
+    @chatroom = current_user.chatrooms.build(title: @title)
+    @chatroom.users << current_user
+    @chatroom.users << pet.user
+    @chatroom.save
   end
 
   def get_pets(likes)
@@ -61,7 +61,6 @@ class LikesController < ApplicationController
       search_likes << Pet.find(like.liked_id)
     end
     return search_likes
-
   end
 
 end

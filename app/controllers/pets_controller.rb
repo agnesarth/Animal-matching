@@ -59,7 +59,6 @@ class PetsController < ApplicationController
 
   def delete_photo
     @photo = ActiveStorage::Attachment.find(params[:id])
-
     respond_to do |format|
       if @photo.purge
         format.html { redirect_to request.referrer }

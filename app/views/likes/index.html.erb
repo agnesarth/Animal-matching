@@ -1,7 +1,6 @@
 <div class="text-center ">
   <%=image_tag("doggo_home.jpg", class: "small-jumbotron", alt: "")%>
 </div>
-
 <div class="container text-center">
   <% if @my_matches.empty? %>
     <h2>Mes Matchs</h2>
@@ -86,9 +85,6 @@
     </div>
   <% end %>
 </div>
-
-
-
 <div class="container text-center mb-5">
   <h2>Mes Likes</h2>
   <% if @my_likes.empty? %>
@@ -139,7 +135,7 @@
                     </div>
                   <%end%>
                 </div>
-                      <!---------------------CARD BODY END--------------------->
+                <!---------------------CARD BODY END--------------------->
                 <div class="mt-3">
                   <% if pet.short_description != nil %>
                     <h6 class="card-subtitle my-3 text-primary text-truncate"><em>"<%= pet.short_description%>"</em></h6>
@@ -167,7 +163,6 @@
     </div>
   <% end %>
 </div>
-
 <div class="container font-weight-bold mb-5">
   <%= link_to "Retour", :back %>
 </div>

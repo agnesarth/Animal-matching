@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= favicon_link_tag(source = "paw.jpeg", options = {}) %>
+    <%= favicon_link_tag(source = "paw.jpg", options = {}) %>
     <title>Whispaw</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', "data-turbolinks-track": true %>
   </head>
-
   <body
     <% if content_for?(:body_attributes) %>
-    <%= yield(:body_attributes) %>
+      <%= yield(:body_attributes) %>
     <% end %>>
     <div id="content-wrap">
       <%= render 'layouts/navbar'%>

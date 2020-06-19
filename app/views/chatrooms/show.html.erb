@@ -1,12 +1,9 @@
 <div class="container">
   <h2 class ="my-3 text-center mt-5 mb-5"><%= @chatroom.title %></h2>
-
   <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
     <%= render @chatroom.messages %>
   </div>
-
-<hr />
-
+  <hr />
   <%= form_for @message, url: "#" do |f| %>
     <div class="form-group">
       <%= f.label "Message" %>
@@ -17,7 +14,6 @@
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.submit "Envoyer", class: 'btn btn-primary btn-lg mb-3' %>
   <% end %>
-
   <div class="container font-weight-bold mb-5 mt-4">
     <%= link_to "Retour", :back %>
   </div>

@@ -13,14 +13,13 @@ class Pet < ApplicationRecord
   validates :birthdate, presence: true
   validates :animal, presence: true
   enum animal: [ :chat, :chien ]
-#  validates :age, :numericality => {:greater_than => 0, message: "L'âge doit être supérieur à 0."}
   accepts_nested_attributes_for :tags
   CATBREED=['Manx','Birman','Persan','Siamois','Somali','Sibérien','Ragdoll', "Sphinx", "Européen","Autre"].sort
   DOGBREED=['Terrier','Dalmatien','Boxer','Berger Allemand','Labrador','Bouledogue','Chihuahua','Beagle','Setter','Cocker','Husky','Teckel', "Autre"].sort
   DISTANCEOTHERS=['< 5km','< 20km', '< 100km']
 
   def age
-    return Time.current.year - self.birthdate.year
+    return (Date.today - self.birthdate).to_i / 365
   end
 
   def self.search(search)
@@ -110,7 +109,6 @@ class Pet < ApplicationRecord
     else
       my_user.update(default_pet_id: nil)
     end
-
   end
 
 end

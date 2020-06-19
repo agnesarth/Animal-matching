@@ -1,6 +1,5 @@
 <div class="container">
   <div class="mt-5 col-md-6 offset-md-3 shadow p-3 mb-5 rounded bg-devise container-pet shadow container-pet-show text-center">
-  
     <div id="demo" class="carousel slide" data-ride="carousel" data-interval="7000">
       <div class="carousel-inner" >
         <% unless @pet.photos.empty? %>
@@ -17,7 +16,6 @@
         <%end%>
       </div>
     </div>
-  
     <h4><%= @pet.name %> · <%= @pet.animal %></h4>
     <p><strong>Race :</strong> <%= @pet.breed %></p>
     <p><strong>Genre :</strong> <%= @pet.sex %></p>
@@ -27,7 +25,6 @@
     <% else %>
       <p><strong>Âge :</strong> <%= @pet.age %> an</p>
     <% end %>
-
     <p><strong>À propos :</strong> <%= @pet.description %></p>
     <p><strong>Tags :</strong>
       <% @pet.tags.each do |tag|%>

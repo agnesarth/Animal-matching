@@ -13,8 +13,6 @@ class User < ApplicationRecord
   #after_commit :welcome_send
   #before_action :default_pet
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
