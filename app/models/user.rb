@@ -11,7 +11,7 @@ class User < ApplicationRecord
   /x
 
   after_commit :welcome_send
-  before_action :default_pet
+  
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
