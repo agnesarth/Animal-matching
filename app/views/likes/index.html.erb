@@ -5,7 +5,7 @@
 <div class="container text-center">
   <% if @my_matches.empty? %>
     <h2>Mes Matchs</h2>
-    <div class="text-center">
+    <div class="text-center mt-5 text-match">
       <h4>Oh you can't hurry love, oh you just have to wait...</h4>
       <h6>On n'est pas totalement d'accord<br>
         Le monde est plein <span class="animal-friend">d'amimaux</span>,
@@ -16,7 +16,7 @@
     </div>
   <% else %>
     <h2>Mes Matchs <small><em> ...les petits chanceux !</em></small></h2>
-    <div class="row justify-content-around ml-2 mr-2 mt-4">
+    <div class="row justify-content-around ml-2 mr-2 mt-5">
       <% @my_matches.each do |like| %>
         <div class="col-sm-4">
           <div id="likeCard<%= like.liked_id %>" class="card scale-down bg-custom text-white mb-3">
@@ -50,10 +50,16 @@
               </div>
               <!---------------------CARD BODY END--------------------->
               <div class="mt-3">
-                <% if like.liked.user.distance_to(current_user) < 1 %>
-                  <h6 class="card-subtitle my-3 text-white">À moins de 1 km</h6>
+                <% if like.liked.user.address.present? || like.liked.user.city.present? || like.liked.user.country.present? %>
+                  <% if like.liked.user.distance_to(current_user) < 1 %>
+                    <h6 class="card-subtitle my-3 text-white">À moins de 1 km</h6>
+                  <% else %>
+                    <h6 class="card-subtitle my-3 text-white">À <%= like.liked.user.distance_to(current_user).round %> km</h6>
+                  <% end %>
                 <% else %>
-                  <h6 class="card-subtitle my-3 text-white">À <%= like.liked.user.distance_to(current_user).round %> km</h6>
+                  <% if like.liked.short_description != nil %>
+                    <h6 class="card-subtitle my-3 text-white text-truncate"><em>"<%= like.liked.short_description%>"</em></h6>
+                  <% end %>
                 <% end %>
                 <h6 class="card-subtitle mt-2 float-left">
                   <%= like.liked.animal.capitalize %>,
@@ -84,8 +90,17 @@
 
 
 <div class="container text-center mb-5">
-  <h1>Mes Likes</h1>
-<!-- Responsive search bar-->
+  <h2>Mes Likes</h2>
+  <% if @my_likes.empty? %>
+    <div class="text-center mt-5">
+      <h4>Dépèche-toi, 
+        <%=link_to pets_path, class:"go-like" do%>
+          va liker les animaux les plus cools <i class="fa fa-paw"></i>
+        <%end%>
+      du web</h4>
+    </div>
+  <% else %>
+  <!-- Responsive search bar-->
   <div class="d-flex justify-content-center h-100 my-4">
     <h5 class="mr-4 pt-3">Rechercher dans mes likes : </h5>
     <%= form_tag(pet_likes_path, method: :get, class:"searchbar") do%>
@@ -95,15 +110,6 @@
       <% end %>
     <% end %>
   </div>
-  <% if @my_likes.empty? %>
-    <div class="text-center">
-      <h3>Dépèche-toi, 
-        <%=link_to pets_path, class:"go-like" do%>
-          va liker les animaux les plus cools <i class="fa fa-paw"></i>
-        <%end%>
-      du web</h3>
-    </div>
-  <% else %>
     <div class="row justify-content-around ml-2 mr-2 mt-4">
       <% @my_search.each do |pet| %>
         <div class="col-sm-4">
