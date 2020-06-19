@@ -2,7 +2,6 @@
   <div class="mt-5 col-md-6 offset-md-3 shadow p-3 mb-5 rounded bg-devise container-pet shadow text-center">
     <i class="fa fa-paw mt-2 fa-5x"></i>
     <h3 class="mt-3 mb-5">Edite ton ami à quatre pattes</h3>
-
     <div class="text-center my-2">
       <%= form_for @pet, :url => pet_path(@pet.id), method: :patch, multipart: true do |f| %>
         <h6 class="card-text mt-2">Nom :</h6>
@@ -30,24 +29,24 @@
           <%= f.text_field :description, autofocus: true, placeholder: @pet.description, class:"form-control" %>
         </div>
         <h6 class="card-text mb-2">Photos actuelles :</h6>
-        <% if @pet.photos.attached? %>
         <div class="input-group mb-4 input-checkbox">
-          <% @pet.photos.each do |p| %>
-          <% id = "photo" + p.id.to_s %>
-            <%= image_tag p, class: "img-pet-new-edit form-border thick-lined mb-2", id: id %>
-            <div class="maintext">
-              <%= link_to delete_photo_pet_url(p.id), method: :delete, remote: true do %><i class="trash-icon fa fa-trash"></i><% end %>
-            </div>
-          <% end %>
+          <% if @pet.photos.attached? %>
+            <% @pet.photos.each do |p| %>
+              <% id = "photo" + p.id.to_s %>
+              <%= image_tag p, class: "img-pet-new-edit form-border thick-lined mb-2", id: id %>
+              <div class="maintext">
+                <%= link_to delete_photo_pet_url(p.id), method: :delete, remote: true do %><i class="trash-icon fa fa-trash"></i><% end %>
+              </div>
+            <% end %>
           <% else %>
-          <p>Pas de photos encore</p>
+            <p>Pas de photos encore</p>
           <% end %>
         </div>
         <h6 class="card-text">Ajouter des photos :</h6>
         <div class="input-group mb-4 input-checkbox">
-            <label class="file-input">
-              <%= f.file_field :photos, multiple: true, value: "", class: "uploadPreview ml-5 mt-0 mb-2 preview-button" %>
-            </label>
+          <label class="file-input">
+            <%= f.file_field :photos, multiple: true, value: "", class: "uploadPreview ml-5 mt-0 mb-2 preview-button" %>
+          </label>
         </div>
         <div id="showPreview"></div>
           <div class="actions my-3">
