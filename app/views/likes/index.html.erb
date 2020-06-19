@@ -49,8 +49,8 @@
               </div>
               <!---------------------CARD BODY END--------------------->
               <div class="mt-3">
-                <% if like.liked.user.address.present? || like.liked.user.city.present? || like.liked.user.country.present? %>
-                  <% if like.liked.user.distance_to(current_user) < 1 %>
+                <% if (like.liked.user.address.present? || like.liked.user.city.present? || like.liked.user.country.present?) && (current_user.address.present? || current_user.city.present? || current_user.country.present?) %>
+                  <% if (like.liked.user.distance_to(current_user).to_i < 1) %>
                     <h6 class="card-subtitle my-3 text-white">À moins de 1 km</h6>
                   <% else %>
                     <h6 class="card-subtitle my-3 text-white">À <%= like.liked.user.distance_to(current_user).round %> km</h6>
@@ -72,9 +72,9 @@
                   <%= like.liked.sex %>
                 </h6>
                 <h5 class="float-right">
-                  <%=link_to "Écris-lui!", chatrooms_path, class:"btn btn-dark btn-sm mr-1" %>
+                  <%=link_to "Écris-lui!", chatrooms_path, class:"btn btn-primary btn-sm mr-1" %>
                   <%= link_to pet_like_path(like.liked_id, like.id), method: :delete, remote: true do %>
-                    <i id="dislikeButton<%= like.liked_id %>" class="btn btn-primary btn-sm fa fa-heart"></i>
+                    <i id="dislikeButton<%= like.liked_id %>" class="btn btn-dark btn-sm fa fa-ban"></i>
                   <% end %>
                 </h5>
               </div>            
@@ -156,7 +156,7 @@
                     <%= pet.sex %>
                   </h6>
                   <%= link_to pet_like_path(pet.id, pet.likes_as_liked.find_by(liker_id: current_pet).id), method: :delete, remote: true do %>
-                    <i id="dislikeButton<%= pet.id %>" class="btn btn-primary btn-sm fa fa-heart float-right"></i>
+                    <i id="dislikeButton<%= pet.id %>" class="btn btn-primary btn-sm fa fa-ban float-right"></i>
                   <% end %>
                 </div>
               </div>
