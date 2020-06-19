@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  geocoded_by :full_address 
+  geocoded_by :full_address
   after_validation :geocode, if: ->(obj){ obj.full_address.present? and obj.full_address_changed? }
 
   PASSWORD_FORMAT = /\A
@@ -11,7 +11,6 @@ class User < ApplicationRecord
   /x
 
   #after_commit :welcome_send
-  #before_action :default_pet
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -40,7 +39,7 @@ class User < ApplicationRecord
 
   def full_address
     [address, city, country].compact.join(', ')
-  end  
+  end
 
   def full_address_changed?
     address_changed? || city_changed? || country_changed?
@@ -62,8 +61,8 @@ class User < ApplicationRecord
       self.default_pet_id.update(current_pet.id)
       return true
     else
-      return true 
-    end  
+      return true
+    end
   end
 
   def name
