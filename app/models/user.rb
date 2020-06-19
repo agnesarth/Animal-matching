@@ -10,8 +10,8 @@ class User < ApplicationRecord
   (?=.*[[:^alnum:]]) # Must contain a symbol
   /x
 
-  #after_commit :welcome_send
-  #before_action :default_pet
+  after_commit :welcome_send
+  
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

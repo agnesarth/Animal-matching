@@ -1,5 +1,5 @@
 class Pet < ApplicationRecord
-  #after_create :new_pet_send
+  after_create :new_pet_send
   after_create :default_pet
   before_destroy :reset_default_pet
 
