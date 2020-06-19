@@ -26,7 +26,7 @@
     <% @pets_list.each do |pet| %>
       <% unless liked?(pet)%>
         <div class="col-sm-4">
-          <div id="likeCard<%= pet.id %>" class="card bg-light mb-3">
+          <div id="likeCard<%= pet.id %>" class="card bg-light mb-4">
             <div id="likeHeader<%= pet.id %>" class="card-header">
               <% name = pet.name%>
               <%= link_to name, pet_path(pet.id), class: "h4 card-title float-left pet-card-title" %>
