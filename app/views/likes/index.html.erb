@@ -18,7 +18,7 @@
     <div class="row justify-content-around ml-2 mr-2 mt-5">
       <% @my_matches.each do |like| %>
         <div class="col-sm-4">
-          <div id="likeCard<%= like.liked_id %>" class="card scale-down bg-custom text-white mb-3">
+          <div id="likeCard<%= like.liked_id %>" class="card bg-custom text-white mb-4">
             <div id="likeHeader<%= like.liked_id %>" class="card-header">
               <% name = like.liked.name%>
               <%= link_to name, pet_path(like.liked_id), class: "h4 card-title float-left text-light pet-card-title" %>
@@ -33,16 +33,16 @@
                 <div class="carousel-inner" >
                   <% unless like.liked.photos.empty? %>
                     <div class="carousel-item active">
-                      <%= image_tag like.liked.photos.first, class: "card-img-top" %>
+                      <%= image_tag like.liked.photos.first, class: "custom-img-size" %>
                     </div>
                     <% like.liked.photos[1..-1].each do |p| %>
                       <div class="carousel-item">
-                        <%= image_tag p, class: "card-img-top" %>
+                        <%= image_tag p, class: "custom-img-size" %>
                       </div>
                     <% end %>
                   <% else %>
                     <div class="carousel-item active">
-                      <%= image_tag("paw.svg", {class: "card-img-top"} ) %>
+                      <%= image_tag("paw.svg", {class: "custom-img-size"} ) %>
                     </div>
                   <% end %>
                 </div>
@@ -109,7 +109,7 @@
     <div class="row justify-content-around ml-2 mr-2 mt-4">
       <% @my_search.each do |pet| %>
         <div class="col-sm-4">
-          <div id="likeCard<%= pet.id %>" class="card bg-light mb-3" ">
+          <div id="likeCard<%= pet.id %>" class="card bg-light mb-4">
             <div id="likeHeader<%= pet.id %>" class="card-header">
               <% name = pet.name %>
               <%= link_to name, pet_path(pet.id), class: "h4 card-title float-left" %>
@@ -122,19 +122,16 @@
                 <div class="carousel-inner" >
                   <% unless pet.photos.empty? %>
                     <div class="carousel-item active">
-                      <%= image_tag pet.photos.first, class: "card-img-top" %>
+                      <%= image_tag pet.photos.first, class: "custom-img-size" %>
                     </div>
                     <% pet.photos[1..-1].each do |p| %>
                       <div class="carousel-item">
-                        <%= image_tag p, class: "card-img-top" %>
+                        <%= image_tag p, class: "custom-img-size" %>
                       </div>
                     <%end%>
                   <% else %>
                     <div class="carousel-item active">
-                      <%= image_tag("paw.svg", {class: "card-img-top"} ) %>
-                    </div>
-                    <div class="carousel-item">
-                      <%= image_tag("paw.svg", {class: "card-img-top"} ) %>
+                      <%= image_tag("paw.svg", {class: "custom-img-size"} ) %>
                     </div>
                   <%end%>
                 </div>
