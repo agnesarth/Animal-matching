@@ -4,9 +4,9 @@ class Message < ApplicationRecord
   belongs_to :chatroom
   validates :body, presence: true, length: {minimum: 2, maximum: 1000}
 
-
   def timestamp
     created_at.strftime('%d/%m %H:%M ')
   end
+  
 end
 
