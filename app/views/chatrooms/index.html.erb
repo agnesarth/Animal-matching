@@ -5,22 +5,20 @@
   <h3 class="text-center mb-5">Échanger avec les matchs de <%= current_pet.name %></h3>
   <div class="row mb-5">
     <div class="col-sm-5 border-right">
-      <table>
+      <div>
         <h4 class="py-3 alert-light text-center mb-3">Mes matchs</h4>
         <% my_pets_matches.each do |match|%>
-          <tr class="d-flex justify-content-between wrap">
-            <td>
-              <h5 class="mx-2"><%= match.name%>, <small><%= match.animal%> <%= match.sex.downcase%></small></h5>
-            </td>
-          </tr>
+          <div class="d-flex justify-content-between wrap">
+              <h5 class="mx-2"><%= link_to match.name, pet_path(match.id)%>, <small><%= match.animal%> <%= match.sex.downcase%></small></h5>            
+          </div>
         <%end%>
-      </table>
+      </div>
     </div>
     <div class="col-sm-7">
-      <table>
+      <div>
         <h4 class="py-3 alert-light text-center mb-3">Mes conversations en cours</h4>
         <%= render @chatrooms %>
-      </table> 
+      </div> 
     </div>
   </div>
   <div class="container font-weight-bold mb-5">
