@@ -20,7 +20,7 @@ class Pet < ApplicationRecord
   DISTANCEOTHERS=['< 5km','< 20km', '< 100km']
 
   def age
-    return Time.current.year - self.birthdate.year
+    return (Date.today - self.birthdate).to_i / 365
   end
 
   def self.search(search)
@@ -30,7 +30,7 @@ class Pet < ApplicationRecord
       search_list.each do |value|
         tag = Tag.find_by(value: value)
         if value == "chat" || value == "chien"
-          list = Pet.where(animal: value)
+          list = Pet.where(animal: value)s
         elsif value == "femelle" || value == "mâle"
           list = Pet.where(sex: value.capitalize)
         elsif value.to_f > 0 || value == "0"
