@@ -85,6 +85,7 @@
     </div>
   <% end %>
 </div>
+
 <div class="container text-center mb-5">
   <h2>Mes Likes</h2>
   <% if @my_likes.empty? %>
@@ -95,7 +96,9 @@
         <%end%>
       du web</h4>
     </div>
+
   <% else %>
+
   <!-- Responsive search bar-->
   <div class="d-flex justify-content-center h-100 my-4">
     <h5 class="mr-4 pt-3">Rechercher dans mes likes : </h5>
@@ -106,6 +109,7 @@
       <% end %>
     <% end %>
   </div>
+  
     <div class="row justify-content-around ml-2 mr-2 mt-4">
       <% @my_search.each do |pet| %>
         <div class="col-sm-4">
