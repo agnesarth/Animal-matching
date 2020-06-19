@@ -6,11 +6,11 @@
   <div class="row mb-5">
     <div class="col-sm-5 border-right">
       <table>
-        <h4 class="py-3 alert-light text-center mb-3">Contacter de nouveaux matchs</h4>
+        <h4 class="py-3 alert-light text-center mb-3">Mes matchs</h4>
         <% my_pets_matches.each do |match|%>
           <tr class="d-flex justify-content-between wrap">
             <td>
-              <h6 class="mx-2"><%= match.name%></h6>
+              <h5 class="mx-2"><%= match.name%>, <small><%= match.animal%> <%= match.sex.downcase%></small></h5>
             </td>
           </tr>
         <%end%>

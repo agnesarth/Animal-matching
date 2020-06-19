@@ -1,7 +1,7 @@
 <tr>
   <% respond_to_u = chatroom.other_user(current_user) %>
   <%if display_chat?(respond_to_u.pets)%>
-    <h6 class="mx-2"><i class="fa fa-paw"></i> 
+    <h5 class="mx-2"><i class="fa fa-paw"></i> 
       <% if respond_to_u.first_name != nil %>
         <%= link_to "Conversation avec #{respond_to_u.first_name}", chatroom_path(chatroom) %>, propriétaire de <%=other_user_match(respond_to_u).join(" ")%>
       <% else %>

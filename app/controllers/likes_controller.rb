@@ -33,7 +33,11 @@ class LikesController < ApplicationController
   def destroy
     @pet = Pet.find(params['pet_id'])
     @like = Like.find(params['id'])
-    @like.destroy
+    @like.destroy!
+    respond_to do |format|
+      format.html { redirect_to pets_path, error: "Like supprimé." }
+      format.js { }
+    end
   end
 
   def current_pet
