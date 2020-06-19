@@ -3,6 +3,7 @@
     <div class="mt-5 col-md-6 offset-md-3 shadow p-3 mb-5 rounded bg-devise">
       <i class="fa fa-paw mt-2 fa-5x"></i>
       <h2 class="mt-3 mb-3">Changer de mot de passe</h2>
+      <p class="text-red mt-3">Votre mot de passe doit faire 8 lettres minimum et contenir au moins une minuscule, une majuscule, un chiffre et un caractère spécial.</p>
       <div class="text-center my-2">
         <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
@@ -11,7 +12,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fa fa-key"></i></span>
             </div>
-            <%= f.password_field :password, autocomplete: "new-password", placeholder: "6 caractères minimum", class:"form-control" %>
+            <%= f.password_field :password, autocomplete: "new-password", placeholder: "8 caractères minimum", class:"form-control" %>
           </div>
           <div class="input-group my-3">
             <div class="input-group-prepend">
