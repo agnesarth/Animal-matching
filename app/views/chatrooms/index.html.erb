@@ -2,15 +2,17 @@
   <%=image_tag("kingcat.jpg", class: "small-jumbotron", alt: "")%>
 </div>
 <div class="container mb-5">
-  <h2 class="text-center mb-5">Echanger avec les matchs de <%= current_pet.name %></h2>
+  <h3 class="text-center mb-5">Échanger avec les matchs de <%= current_pet.name %></h3>
 
   <div class="row mb-5">
-    <div class="col-sm-5 border-left border-right">
+    <div class="col-sm-5 border-right">
       <table>
         <h4 class="py-3 alert-light text-center mb-3">Contacter de nouveaux matchs</h4>
         <% my_pets_matches.each do |match|%>
           <tr class="d-flex justify-content-between wrap">
-            <td><h4 class="mx-2"><%= match.name%></h4></td>
+            <td>
+              <h6 class="mx-2"><%= match.name%></h6>
+            </td>
           <tr>
         <%end%>
       </table>
@@ -21,6 +23,9 @@
         <%= render @chatrooms %>
       </table> 
     </div>
+  </div>
+  <div class="container font-weight-bold mb-5">
+    <%= link_to "Retour", :back %>
   </div>
 </div>
 
