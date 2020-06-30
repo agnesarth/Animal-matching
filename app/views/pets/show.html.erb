@@ -8,9 +8,9 @@
         <li class="breadcrumb-item">
           <%= link_to "Mon profil", users_path, class:"item-breadcrumb" %>
         </li>
-      <% else %>
+      <% elsif @my_matches %>
         <li class="breadcrumb-item">
-          <%= link_to "Mes matchs", users_path, class:"item-breadcrumb" %>
+          <%= link_to "Mes matchs", pet_likes_path(current_user.default_pet_id), class:"item-breadcrumb" %>
         </li>
       <% end %>
       <li class="breadcrumb-item">

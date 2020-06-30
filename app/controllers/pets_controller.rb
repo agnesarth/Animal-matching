@@ -32,6 +32,7 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id])
+    @my_matches = Like.where(match: true, liker_id: current_user.default_pet_id)
   end
 
   def edit
