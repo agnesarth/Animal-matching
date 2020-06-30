@@ -1,7 +1,17 @@
 <div class="text-center ">
   <%=image_tag("cat_white_home.jpg", class: "small-jumbotron", alt: "")%>
 </div>
-<div class="container">
+<div class="container mb-5">
+  <div class="font-weight-bold mb-5">
+    <ol class="breadcrumb-container">
+      <li class="breadcrumb-item">
+        <%= link_to "Accueil", root_path, class:"item-breadcrumb" %>
+      </li>
+      <li class="breadcrumb-item">
+        <%= link_to "Tags", tags_path, "data-turbolinks" => "false", class:"item-breadcrumb" %>
+      </li>
+    </ol>
+  </div>
   <div class="text-center">
     <h2>Liste des tags</h2>
   </div>
@@ -24,8 +34,5 @@
   </table> 
   <div class="text-center mt-5">
     <%= link_to "Créer un tag", new_tag_path, class: "btn btn-primary" %>
-  </div>
-  <div class="container font-weight-bold mb-5 mt-5">
-    <%= link_to "Retour", :back %>
   </div>
 </div>

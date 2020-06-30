@@ -1,4 +1,23 @@
-<div class="container">
+<div class="container mb-5">
+  <div class="font-weight-bold mt-5 mb-5">
+    <ol class="breadcrumb-container">
+      <li class="breadcrumb-item">
+        <%= link_to "Accueil", root_path, class:"item-breadcrumb" %>
+      </li>
+      <% if current_user == @pet.user %>
+        <li class="breadcrumb-item">
+          <%= link_to "Mon profil", users_path, class:"item-breadcrumb" %>
+        </li>
+      <% else %>
+        <li class="breadcrumb-item">
+          <%= link_to "Mes matchs", users_path, class:"item-breadcrumb" %>
+        </li>
+      <% end %>
+      <li class="breadcrumb-item">
+        <%= link_to @pet.name, pet_path(@pet.id), class:"item-breadcrumb" %>
+      </li>
+    </ol>
+  </div>
   <div class="mt-5 col-md-6 offset-md-3 shadow p-3 mb-5 rounded bg-devise container-pet shadow container-pet-show text-center">
     <div id="demo" class="carousel slide" data-ride="carousel" data-interval="7000">
       <div class="carousel-inner" >
@@ -37,8 +56,5 @@
         <%= link_to 'Supprimer', pet_path(@pet), data: { confirm: "Etes-vous certain(e)?" }, method: :delete, class: "btn btn-outline-primary" %>
       <%end%>
     </div>
-  </div>
-  <div class="container font-weight-bold mb-5">
-    <%= link_to "Retour", :back, "data-turbolinks" => "false" %>
   </div>
 </div>

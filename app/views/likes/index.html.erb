@@ -1,89 +1,101 @@
 <div class="text-center ">
   <%=image_tag("doggo_home.jpg", class: "small-jumbotron", alt: "")%>
 </div>
-<div class="container text-center">
-  <% if @my_matches.empty? %>
-    <h2>Mes Matchs</h2>
-    <div class="text-center mt-5 text-match">
-      <h4>Oh you can't hurry love, oh you just have to wait...</h4>
-      <h6>On n'est pas totalement d'accord<br>
-        Le monde est plein <span class="animal-friend">d'amimaux</span>,
-        <%=link_to pets_path, class:"go-like" do%>
-          va les liker<i class="fa fa-paw ml-1"></i>
-        <%end%>
-      </h6>
-    </div>
-  <% else %>
-    <h2>Mes Matchs <small><em> ...les petits chanceux !</em></small></h2>
-    <div class="row justify-content-around ml-2 mr-2 mt-5">
-      <% @my_matches.each do |like| %>
-        <div class="col-sm-4">
-          <div id="likeCard<%= like.liked_id %>" class="card bg-custom text-white mb-4">
-            <div id="likeHeader<%= like.liked_id %>" class="card-header">
-              <% name = like.liked.name%>
-              <%= link_to name, pet_path(like.liked_id), class: "h4 card-title float-left text-light pet-card-title" %>
-              <span class="badge badge-warning float-right mr-2">C'est un match</span><br>
-              <% like.liked.tags.each do |tag|%>
-                <span class='badge badge-secondary mr-2 mb-1 float-right'><%=tag.value%></span>
-              <%end%>
-            </div>
-            <div id="likeBody<%= like.liked_id %>" class="card-body">
-              <!---------------------IMAGE CAROUSEL--------------------->
-              <div id="demo" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner" >
-                  <% unless like.liked.photos.empty? %>
-                    <div class="carousel-item active">
-                      <%= image_tag like.liked.photos.first, class: "custom-img-size" %>
-                    </div>
-                    <% like.liked.photos[1..-1].each do |p| %>
-                      <div class="carousel-item">
-                        <%= image_tag p, class: "custom-img-size" %>
+<div class="container">
+  <div class="font-weight-bold mb-5">
+    <ol class="breadcrumb-container">
+      <li class="breadcrumb-item">
+        <%= link_to "Accueil", root_path, class:"item-breadcrumb" %>
+      </li>
+      <li class="breadcrumb-item">
+        <%= link_to "Mes matches et likes", pet_likes_path(current_user.default_pet_id), class:"item-breadcrumb" %>
+      </li>
+    </ol>
+  </div>
+  <div class="text-center">
+    <% if @my_matches.empty? %>
+      <h2>Mes Matchs</h2>
+      <div class="text-center mt-5 text-match">
+        <h4>Oh you can't hurry love, oh you just have to wait...</h4>
+        <h6>On n'est pas totalement d'accord<br>
+          Le monde est plein <span class="animal-friend">d'amimaux</span>,
+          <%=link_to pets_path, class:"go-like" do%>
+            va les liker<i class="fa fa-paw ml-1"></i>
+          <%end%>
+        </h6>
+      </div>
+    <% else %>
+      <h2>Mes Matchs <small><em> ...les petits chanceux !</em></small></h2>
+      <div class="row justify-content-around ml-2 mr-2 mt-5 mb-5">
+        <% @my_matches.each do |like| %>
+          <div class="col-sm-4">
+            <div id="likeCard<%= like.liked_id %>" class="card bg-custom text-white mb-4">
+              <div id="likeHeader<%= like.liked_id %>" class="card-header">
+                <% name = like.liked.name%>
+                <%= link_to name, pet_path(like.liked_id), class: "h4 card-title float-left text-light pet-card-title" %>
+                <span class="badge badge-warning float-right mr-2">C'est un match</span><br>
+                <% like.liked.tags.each do |tag|%>
+                  <span class='badge badge-secondary mr-2 mb-1 float-right'><%=tag.value%></span>
+                <%end%>
+              </div>
+              <div id="likeBody<%= like.liked_id %>" class="card-body">
+                <!---------------------IMAGE CAROUSEL--------------------->
+                <div id="demo" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner" >
+                    <% unless like.liked.photos.empty? %>
+                      <div class="carousel-item active">
+                        <%= image_tag like.liked.photos.first, class: "custom-img-size" %>
+                      </div>
+                      <% like.liked.photos[1..-1].each do |p| %>
+                        <div class="carousel-item">
+                          <%= image_tag p, class: "custom-img-size" %>
+                        </div>
+                      <% end %>
+                    <% else %>
+                      <div class="carousel-item active">
+                        <%= image_tag("paw.svg", {class: "custom-img-size"} ) %>
                       </div>
                     <% end %>
-                  <% else %>
-                    <div class="carousel-item active">
-                      <%= image_tag("paw.svg", {class: "custom-img-size"} ) %>
-                    </div>
-                  <% end %>
+                  </div>
                 </div>
-              </div>
-              <!---------------------CARD BODY END--------------------->
-              <div class="mt-3">
-                <% if (like.liked.user.address.present? || like.liked.user.city.present? || like.liked.user.country.present?) && (current_user.address.present? || current_user.city.present? || current_user.country.present?) %>
-                  <% if (like.liked.user.distance_to(current_user).to_i < 1) %>
-                    <h6 class="card-subtitle my-3 text-white">À moins de 1 km</h6>
-                  <% else %>
-                    <h6 class="card-subtitle my-3 text-white">À <%= like.liked.user.distance_to(current_user).round %> km</h6>
-                  <% end %>
-                <% else %>
-                  <% if like.liked.short_description != nil %>
-                    <h6 class="card-subtitle my-3 text-white text-truncate"><em>"<%= like.liked.short_description%>"</em></h6>
-                  <% end %>
-                <% end %>
-                <h6 class="card-subtitle mt-2 float-left">
-                  <%= like.liked.animal.capitalize %>,
-                  <% if like.liked.birthdate != nil %>
-                    <% if like.liked.age > 1 %>
-                      <%= like.liked.age %> ans,
+                <!---------------------CARD BODY END--------------------->
+                <div class="mt-3">
+                  <% if (like.liked.user.address.present? || like.liked.user.city.present? || like.liked.user.country.present?) && (current_user.address.present? || current_user.city.present? || current_user.country.present?) %>
+                    <% if (like.liked.user.distance_to(current_user).to_i < 1) %>
+                      <h6 class="card-subtitle my-3 text-white">À moins de 1 km</h6>
                     <% else %>
-                      <%= like.liked.age %> an,
+                      <h6 class="card-subtitle my-3 text-white">À <%= like.liked.user.distance_to(current_user).round %> km</h6>
+                    <% end %>
+                  <% else %>
+                    <% if like.liked.short_description != nil %>
+                      <h6 class="card-subtitle my-3 text-white text-truncate"><em>"<%= like.liked.short_description%>"</em></h6>
                     <% end %>
                   <% end %>
-                  <%= like.liked.sex %>
-                </h6>
-                <h5 class="float-right">
-                  <%=link_to "Écris-lui!", chatrooms_path, class:"btn btn-primary btn-sm mr-1" %>
-                  <%= link_to pet_like_path(like.liked_id, like.id), method: :delete, remote: true do %>
-                    <i id="dislikeButton<%= like.liked_id %>" class="btn btn-dark btn-sm fa fa-ban"></i>
-                  <% end %>
-                </h5>
-              </div>            
+                  <h6 class="card-subtitle mt-2 float-left">
+                    <%= like.liked.animal.capitalize %>,
+                    <% if like.liked.birthdate != nil %>
+                      <% if like.liked.age > 1 %>
+                        <%= like.liked.age %> ans,
+                      <% else %>
+                        <%= like.liked.age %> an,
+                      <% end %>
+                    <% end %>
+                    <%= like.liked.sex %>
+                  </h6>
+                  <h5 class="float-right">
+                    <%=link_to "Écris-lui !", chatrooms_path, class:"btn btn-primary btn-sm mr-1" %>
+                    <%= link_to pet_like_path(like.liked_id, like.id), method: :delete, remote: true do %>
+                      <i id="dislikeButton<%= like.liked_id %>" class="btn btn-dark btn-sm fa fa-ban"></i>
+                    <% end %>
+                  </h5>
+                </div>            
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <div class="container text-center mb-5">
@@ -166,7 +178,4 @@
       <% end %>
     </div>
   <% end %>
-</div>
-<div class="container font-weight-bold mb-5">
-  <%= link_to "Retour", :back %>
 </div>
