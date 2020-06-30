@@ -180,3 +180,22 @@ textarea {
 .dropdown-item:focus {
   background-color: #6f0c1e;
 }
+
+ // Return field
+
+.breadcrumb-container li {
+  display: inline-block;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  color: #9d112a;
+}
+
+.item-breadcrumb:hover {
+  text-decoration: none;
+}
+
+.breadcrumb-container {
+  margin-block-start: 0;
+  padding-inline-start: 0;
+}
