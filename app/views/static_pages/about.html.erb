@@ -1,4 +1,14 @@
 <div class="container container-about">
+  <div class="font-weight-bold mb-5">
+    <ol class="breadcrumb-container">
+      <li class="breadcrumb-item">
+        <%= link_to "Accueil", pets_path, "data-turbolinks" => "false", class:"item-breadcrumb" %>
+      </li>
+      <li class="breadcrumb-item">
+        <%= link_to "À propos de Whispaw", whispaw_path, class:"item-breadcrumb" %>
+      </li>
+    </ol>
+  </div>
   <ul class="text-center">
     <h1> L'épopée de Whispaw ®  </h1>
   </ul>
@@ -142,7 +152,7 @@
     </div>
   </div>
 </div>
-<div class="container container-about">
+<div class="container container-about mb-5">
   <ul class="text-right">
     <h2> Time teller</h2>
   </ul>
@@ -197,7 +207,4 @@
       </div>
     </div>
   </section>
-  <div class="container font-weight-bold mt-5 mb-5">
-    <%= link_to "Retour", :back %>
-  </div>
 </div>

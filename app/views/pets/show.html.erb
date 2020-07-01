@@ -2,13 +2,13 @@
   <div class="font-weight-bold mt-5 mb-5">
     <ol class="breadcrumb-container">
       <li class="breadcrumb-item">
-        <%= link_to "Accueil", root_path, class:"item-breadcrumb" %>
+        <%= link_to "Accueil", pets_path, "data-turbolinks" => "false", class:"item-breadcrumb" %>
       </li>
       <% if current_user == @pet.user %>
         <li class="breadcrumb-item">
           <%= link_to "Mon profil", users_path, class:"item-breadcrumb" %>
         </li>
-      <% elsif @my_matches %>
+      <% elsif @my_matches.where(liked_id: @pet.id).exists? %>
         <li class="breadcrumb-item">
           <%= link_to "Mes matchs", pet_likes_path(current_user.default_pet_id), class:"item-breadcrumb" %>
         </li>
